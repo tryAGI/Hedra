@@ -16,6 +16,30 @@ var openApiDocument = new OpenApiStringReader().Read(yamlOrJson, out var diagnos
 
 //openApiDocument.Components.Schemas["GenerateCompletionRequest"]!.Properties["stream"]!.Default = new OpenApiBoolean(true);
 
+openApiDocument.Servers.Clear();
+openApiDocument.Servers.Add(new OpenApiServer
+{
+    Url = "https://mercury.dev.dream-ai.com/api"
+});
+
+openApiDocument.SecurityRequirements = new List<OpenApiSecurityRequirement>
+{
+    new()
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "APIKeyHeader"
+                }
+            },
+            new List<string>()
+        }
+    }
+};
+
 yamlOrJson = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
 _ = new OpenApiStringReader().Read(yamlOrJson, out diagnostics);
 

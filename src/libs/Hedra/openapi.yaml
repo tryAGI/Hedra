@@ -1,0 +1,563 @@
+openapi: 3.0.1
+info:
+  title: Hedra API
+  description: "\n\n## Base URL\nAll paths are referenced from the base URL: `https://mercury.dev.dream-ai.com/api`\n\n## Example usage\n### 1. Upload audio\n`audio_response = requests.post(f\"{BASE_URL}/v1/audio\", headers={'X-API-KEY': API_KEY}, files={'file': open('audio.mp3','rb')})`\n\n### 2. Upload image\n`image_response = requests.post(f\"{BASE_URL}/v1/portrait\", headers={'X-API-KEY': API_KEY}, files={'file': open('img.png','rb')})`\n\n### 3. Generate character video\n`video_response = requests.post(f\"{BASE_URL}/v1/characters\", headers={'X-API-KEY': API_KEY}, json={\"avatarImage\": image_response.json()[\"url\"], \"audioSource\": \"audio\", \"voiceUrl\": audio_response.json()[\"url\"]})`\n\n### 4. Call the Project endpoint to see your project / job status and get access to the URL of your generated character.\n`project_status = requests.get(f\"{BASE_URL}/v1/projects/{project_id}\", headers={'X-API-KEY': API_KEY})`\n\n"
+  version: 0.1.0
+servers:
+  - url: https://mercury.dev.dream-ai.com/api
+paths:
+  /ping:
+    get:
+      summary: Ping
+      operationId: ping_ping_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: { }
+  /v1/voices:
+    get:
+      tags:
+        - Voice
+      summary: Retrieve available voices
+      operationId: api_access_get_voices_v1_voices_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicesResponseBody'
+      security:
+        - APIKeyHeader: [ ]
+  /v1/audio:
+    post:
+      tags:
+        - Audio
+      summary: Upload audio
+      operationId: api_access_upload_audio_v1_audio_post
+      parameters:
+        - name: content-length
+          in: header
+          schema:
+            title: Content-Length
+            type: integer
+            default: -1
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_api_access_upload_audio_v1_audio_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadAudioResponseBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: [ ]
+  /v1/portrait:
+    post:
+      tags:
+        - Portrait
+      summary: Upload image
+      operationId: api_access_upload_image_v1_portrait_post
+      parameters:
+        - name: aspect_ratio
+          in: query
+          schema:
+            title: Aspect Ratio
+            type: string
+            default: '1:1'
+        - name: content-length
+          in: header
+          schema:
+            title: Content-Length
+            type: integer
+            default: -1
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_api_access_upload_image_v1_portrait_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadAudioResponseBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: [ ]
+  /v1/characters:
+    post:
+      tags:
+        - Characters
+      summary: Initialize character generation
+      operationId: api_access_initialize_talking_head_avatar_v1_characters_post
+      parameters:
+        - name: content-length
+          in: header
+          schema:
+            title: Content-Length
+            type: integer
+            default: -1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiGenerateTalkingAvatarRequestBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiProjectInitializationResponseBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: [ ]
+  /v1/projects:
+    get:
+      tags:
+        - Projects
+      summary: Get all project for the current user
+      operationId: api_access_get_all_user_projects_v1_projects_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserAvatarJobsResponse'
+      security:
+        - APIKeyHeader: [ ]
+  '/v1/projects/{project_id}':
+    get:
+      tags:
+        - Projects
+      summary: Get project
+      operationId: api_access_get_project_v1_projects__project_id__get
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            title: Project Id
+            type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvatarProjectItem'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: [ ]
+    delete:
+      tags:
+        - Projects
+      summary: Delete a project
+      operationId: api_access_delete_project_v1_projects__project_id__delete
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            title: Project Id
+            type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: { }
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: [ ]
+  '/v1/projects/{project_id}/sharing':
+    post:
+      tags:
+        - Projects
+      summary: Share or unshare a project
+      operationId: api_access_share_project_v1_projects__project_id__sharing_post
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            title: Project Id
+            type: string
+        - name: shared
+          in: query
+          schema:
+            title: Shared
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: { }
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: [ ]
+components:
+  schemas:
+    ApiGenerateTalkingAvatarRequestBody:
+      title: ApiGenerateTalkingAvatarRequestBody
+      type: object
+      properties:
+        text:
+          title: Text
+          type: string
+          description: text to convert to audio. Ignored if audio_source is not tts
+          default: ''
+        voiceId:
+          title: Voiceid
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Voice ID
+        voiceUrl:
+          title: Voiceurl
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL of audio uploaded using the /v1/audio endpoint
+        avatarImage:
+          title: Avatarimage
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL of image uploaded via /v1/portrait
+        aspectRatio:
+          title: Aspectratio
+          enum:
+            - '1:1'
+            - '16:9'
+            - '9:16'
+          type: string
+          description: URL of audio uploaded using the /v1/audio endpoint
+          default: '1:1'
+        audioSource:
+          title: Audiosource
+          enum:
+            - tts
+            - audio
+          type: string
+          description: '`tts` for text to speech or `audio`'
+          default: audio
+        avatarImageInput:
+          anyOf:
+            - $ref: '#/components/schemas/AvatarImageInput'
+            - type: 'null'
+          description: Image metadata
+    ApiProjectInitializationResponseBody:
+      title: ApiProjectInitializationResponseBody
+      required:
+        - jobId
+      type: object
+      properties:
+        jobId:
+          title: Jobid
+          type: string
+    AvatarImageInput:
+      title: AvatarImageInput
+      required:
+        - prompt
+      type: object
+      properties:
+        seed:
+          title: Seed
+          type: integer
+        prompt:
+          title: Prompt
+          type: string
+    AvatarProjectItem:
+      title: AvatarProjectItem
+      required:
+        - aspectRatio
+      type: object
+      properties:
+        id:
+          title: Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        createdAt:
+          title: Createdat
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+        username:
+          title: Username
+          anyOf:
+            - type: string
+            - type: 'null'
+        videoUrl:
+          title: Videourl
+          anyOf:
+            - type: string
+            - type: 'null'
+        avatarImageUrl:
+          title: Avatarimageurl
+          anyOf:
+            - type: string
+            - type: 'null'
+        aspectRatio:
+          title: Aspectratio
+          enum:
+            - '1:1'
+            - '16:9'
+            - '9:16'
+          type: string
+        text:
+          title: Text
+          anyOf:
+            - type: string
+            - type: 'null'
+        voiceId:
+          title: Voiceid
+          anyOf:
+            - type: string
+            - type: 'null'
+        voiceUrl:
+          title: Voiceurl
+          anyOf:
+            - type: string
+            - type: 'null'
+        userId:
+          title: Userid
+          anyOf:
+            - type: string
+            - type: 'null'
+        jobType:
+          title: Jobtype
+          anyOf:
+            - type: string
+            - type: 'null'
+        status:
+          title: Status
+          anyOf:
+            - type: string
+            - type: 'null'
+        stage:
+          title: Stage
+          anyOf:
+            - type: string
+            - type: 'null'
+        progress:
+          title: Progress
+          anyOf:
+            - type: number
+            - type: 'null'
+        errorMessage:
+          title: Errormessage
+          anyOf:
+            - type: string
+            - type: 'null'
+        audioSource:
+          title: Audiosource
+          anyOf:
+            - type: string
+            - type: 'null'
+        avatarImageInput:
+          title: Avatarimageinput
+          anyOf:
+            - type: object
+            - type: 'null'
+        shared:
+          title: Shared
+          type: boolean
+          default: false
+    Body_api_access_upload_audio_v1_audio_post:
+      title: Body_api_access_upload_audio_v1_audio_post
+      required:
+        - file
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+    Body_api_access_upload_image_v1_portrait_post:
+      title: Body_api_access_upload_image_v1_portrait_post
+      required:
+        - file
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+    GetUserAvatarJobsResponse:
+      title: GetUserAvatarJobsResponse
+      required:
+        - projects
+      type: object
+      properties:
+        projects:
+          title: Projects
+          type: array
+          items:
+            $ref: '#/components/schemas/AvatarProjectItem'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    UploadAudioResponseBody:
+      title: UploadAudioResponseBody
+      required:
+        - url
+      type: object
+      properties:
+        url:
+          title: Url
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+        - loc
+        - msg
+        - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    Voice:
+      title: Voice
+      required:
+        - voice_id
+        - service
+      type: object
+      properties:
+        voice_id:
+          title: Voice Id
+          type: string
+        service:
+          title: Service
+          anyOf:
+            - enum:
+                - eleven
+              type: string
+            - enum:
+                - cartesia
+              type: string
+        name:
+          title: Name
+          anyOf:
+            - type: string
+            - type: 'null'
+        description:
+          title: Description
+          anyOf:
+            - type: string
+            - type: 'null'
+        labels:
+          title: Labels
+          anyOf:
+            - type: object
+              additionalProperties:
+                type: string
+            - type: 'null'
+        preview_url:
+          title: Preview Url
+          anyOf:
+            - type: string
+            - type: 'null'
+        premium:
+          title: Premium
+          type: boolean
+          default: false
+        user_id:
+          title: User Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        created_at:
+          title: Created At
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+        updated_at:
+          title: Updated At
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+    VoicesResponseBody:
+      title: VoicesResponseBody
+      required:
+        - supported_voices
+      type: object
+      properties:
+        supported_voices:
+          title: Supported Voices
+          type: array
+          items:
+            $ref: '#/components/schemas/Voice'
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-API-Key
+      in: header
+security:
+  - APIKeyHeader: [ ]
