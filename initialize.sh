@@ -1,8 +1,8 @@
 dotnet tool install --global autosdk.cli --prerelease
 
 autosdk init \
-  SolutionName \
-  SomeClient \
-  https://raw.githubusercontent.com/api/openapi.json \
-  CompanyName \
+  Hedra \
+  HedraClient \
+  https://mercury.dev.dream-ai.com/api/openapi.json \
+  tryAGI \
   --output .
