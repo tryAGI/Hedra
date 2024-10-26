@@ -29,29 +29,25 @@ namespace Hedra
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<global::System.Collections.Generic.Dictionary<string, string>, object>? Labels { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Labels { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("preview_url")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? PreviewUrl { get; set; }
+        public string? PreviewUrl { get; set; }
 
         /// <summary>
         /// Default Value: false
@@ -63,22 +59,19 @@ namespace Hedra
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? UserId { get; set; }
+        public string? UserId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<global::System.DateTime?, object>? CreatedAt { get; set; }
+        public global::System.DateTime? CreatedAt { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<global::System.DateTime?, object>? UpdatedAt { get; set; }
+        public global::System.DateTime? UpdatedAt { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
