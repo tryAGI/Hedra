@@ -154,20 +154,18 @@ namespace Hedra
         /// `tts` for text to speech or `audio`<br/>
         /// Default Value: audio
         /// </param>
-        /// <param name="avatarImageInput">
-        /// Image metadata
-        /// </param>
+        /// <param name="avatarImageInput"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Hedra.ApiProjectInitializationResponseBody> InitializeCharacterGenerationAsync(
             int? contentLength = default,
             string? text = default,
-            global::Hedra.AnyOf<string, object>? voiceId = default,
-            global::Hedra.AnyOf<string, object>? voiceUrl = default,
-            global::Hedra.AnyOf<string, object>? avatarImage = default,
+            string? voiceId = default,
+            string? voiceUrl = default,
+            string? avatarImage = default,
             global::Hedra.ApiGenerateTalkingAvatarRequestBodyAspectRatio? aspectRatio = default,
             global::Hedra.ApiGenerateTalkingAvatarRequestBodyAudioSource? audioSource = default,
-            global::Hedra.AnyOf<global::Hedra.AvatarImageInput2, object>? avatarImageInput = default,
+            global::Hedra.AvatarImageInput? avatarImageInput = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Hedra.ApiGenerateTalkingAvatarRequestBody

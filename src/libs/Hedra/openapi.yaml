@@ -254,22 +254,19 @@ components:
           default: ''
         voiceId:
           title: Voiceid
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
           description: Voice ID
+          nullable: true
         voiceUrl:
           title: Voiceurl
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
           description: URL of audio uploaded using the /v1/audio endpoint
+          nullable: true
         avatarImage:
           title: Avatarimage
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
           description: URL of image uploaded via /v1/portrait
+          nullable: true
         aspectRatio:
           title: Aspectratio
           enum:
@@ -288,10 +285,7 @@ components:
           description: '`tts` for text to speech or `audio`'
           default: audio
         avatarImageInput:
-          anyOf:
-            - $ref: '#/components/schemas/AvatarImageInput'
-            - type: 'null'
-          description: Image metadata
+          $ref: '#/components/schemas/AvatarImageInput'
     ApiProjectInitializationResponseBody:
       title: ApiProjectInitializationResponseBody
       required:
@@ -321,30 +315,25 @@ components:
       properties:
         id:
           title: Id
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         createdAt:
           title: Createdat
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
+          type: string
+          format: date-time
+          nullable: true
         username:
           title: Username
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         videoUrl:
           title: Videourl
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         avatarImageUrl:
           title: Avatarimageurl
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         aspectRatio:
           title: Aspectratio
           enum:
@@ -354,59 +343,48 @@ components:
           type: string
         text:
           title: Text
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         voiceId:
           title: Voiceid
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         voiceUrl:
           title: Voiceurl
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         userId:
           title: Userid
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         jobType:
           title: Jobtype
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         status:
           title: Status
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         stage:
           title: Stage
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         progress:
           title: Progress
-          anyOf:
-            - type: number
-            - type: 'null'
+          type: number
+          nullable: true
         errorMessage:
           title: Errormessage
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         audioSource:
           title: Audiosource
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         avatarImageInput:
           title: Avatarimageinput
-          anyOf:
-            - type: object
-            - type: 'null'
+          type: object
+          nullable: true
         shared:
           title: Shared
           type: boolean
@@ -502,47 +480,40 @@ components:
               type: string
         name:
           title: Name
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         description:
           title: Description
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         labels:
           title: Labels
-          anyOf:
-            - type: object
-              additionalProperties:
-                type: string
-            - type: 'null'
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
         preview_url:
           title: Preview Url
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         premium:
           title: Premium
           type: boolean
           default: false
         user_id:
           title: User Id
-          anyOf:
-            - type: string
-            - type: 'null'
+          type: string
+          nullable: true
         created_at:
           title: Created At
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
+          type: string
+          format: date-time
+          nullable: true
         updated_at:
           title: Updated At
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
+          type: string
+          format: date-time
+          nullable: true
     VoicesResponseBody:
       title: VoicesResponseBody
       required:

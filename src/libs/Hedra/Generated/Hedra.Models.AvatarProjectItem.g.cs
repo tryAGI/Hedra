@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Hedra
@@ -14,36 +12,31 @@ namespace Hedra
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createdAt")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<global::System.DateTime?, object>? CreatedAt { get; set; }
+        public global::System.DateTime? CreatedAt { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("username")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? Username { get; set; }
+        public string? Username { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("videoUrl")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? VideoUrl { get; set; }
+        public string? VideoUrl { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("avatarImageUrl")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? AvatarImageUrl { get; set; }
+        public string? AvatarImageUrl { get; set; }
 
         /// <summary>
         /// 
@@ -57,78 +50,67 @@ namespace Hedra
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? Text { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voiceId")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? VoiceId { get; set; }
+        public string? VoiceId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voiceUrl")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? VoiceUrl { get; set; }
+        public string? VoiceUrl { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userId")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? UserId { get; set; }
+        public string? UserId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("jobType")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? JobType { get; set; }
+        public string? JobType { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? Status { get; set; }
+        public string? Status { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stage")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? Stage { get; set; }
+        public string? Stage { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("progress")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<double?, object>? Progress { get; set; }
+        public double? Progress { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("errorMessage")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? ErrorMessage { get; set; }
+        public string? ErrorMessage { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audioSource")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? AudioSource { get; set; }
+        public string? AudioSource { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("avatarImageInput")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<object, object>? AvatarImageInput { get; set; }
+        public object? AvatarImageInput { get; set; }
 
         /// <summary>
         /// Default Value: false

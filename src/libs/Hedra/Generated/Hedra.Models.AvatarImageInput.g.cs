@@ -6,7 +6,7 @@ namespace Hedra
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class AvatarImageInput2
+    public sealed partial class AvatarImageInput
     {
         /// <summary>
         /// 
@@ -58,14 +58,14 @@ namespace Hedra
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Hedra.AvatarImageInput2? FromJson(
+        public static global::Hedra.AvatarImageInput? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Hedra.AvatarImageInput2),
-                jsonSerializerContext) as global::Hedra.AvatarImageInput2;
+                typeof(global::Hedra.AvatarImageInput),
+                jsonSerializerContext) as global::Hedra.AvatarImageInput;
         }
 
         /// <summary>
@@ -75,11 +75,11 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Hedra.AvatarImageInput2? FromJson(
+        public static global::Hedra.AvatarImageInput? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Hedra.AvatarImageInput2>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Hedra.AvatarImageInput>(
                 json,
                 jsonSerializerOptions);
         }

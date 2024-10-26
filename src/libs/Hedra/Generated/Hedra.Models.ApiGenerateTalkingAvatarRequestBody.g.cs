@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Hedra
@@ -20,22 +18,19 @@ namespace Hedra
         /// Voice ID
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voiceId")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? VoiceId { get; set; }
+        public string? VoiceId { get; set; }
 
         /// <summary>
         /// URL of audio uploaded using the /v1/audio endpoint
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voiceUrl")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? VoiceUrl { get; set; }
+        public string? VoiceUrl { get; set; }
 
         /// <summary>
         /// URL of image uploaded via /v1/portrait
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("avatarImage")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<string, object>? AvatarImage { get; set; }
+        public string? AvatarImage { get; set; }
 
         /// <summary>
         /// URL of audio uploaded using the /v1/audio endpoint<br/>
@@ -54,11 +49,10 @@ namespace Hedra
         public global::Hedra.ApiGenerateTalkingAvatarRequestBodyAudioSource? AudioSource { get; set; }
 
         /// <summary>
-        /// Image metadata
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("avatarImageInput")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
-        public global::Hedra.AnyOf<global::Hedra.AvatarImageInput2, object>? AvatarImageInput { get; set; }
+        public global::Hedra.AvatarImageInput? AvatarImageInput { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
