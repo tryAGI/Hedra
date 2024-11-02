@@ -17,7 +17,41 @@
 using Hedra;
 
 using var client = new HedraClient(apiKey);
+
+UploadAudioResponseBody uploadAudio = await client.Audio.UploadAudioAsync(
+    file: H.Resources.hello_wav.AsBytes(),
+    filename: H.Resources.hello_wav.FileName);
+UploadAudioResponseBody uploadImage = await client.Portrait.UploadImageAsync(
+    file: H.Resources.girl_png.AsBytes(),
+    filename: H.Resources.girl_png.FileName);
+
+ApiProjectInitializationResponseBody initializeCharacter = await client.Characters.InitializeCharacterGenerationAsync(
+    audioSource: ApiGenerateTalkingAvatarRequestBodyAudioSource.Audio,
+    avatarImage: uploadImage.Url,
+    voiceUrl: uploadAudio.Url);
+
+Console.WriteLine($"JobId: {initializeCharacter.JobId}");
+
+AvatarProjectItem projectStatus;
+do
+{
+    await Task.Delay(TimeSpan.FromSeconds(5));
+    
+    projectStatus = await client.Projects.GetProjectAsync(
+        projectId: initializeCharacter.JobId);
+}
+while (projectStatus.VideoUrl == null && projectStatus.ErrorMessage == null);
+
+if (projectStatus.ErrorMessage != null)
+{
+    Console.WriteLine($"Error: {projectStatus.ErrorMessage.Value.Object}");
+}
+Console.WriteLine(projectStatus.VideoUrl);
 ```
+
+<video src='your URL here' width=180 ></video>
+
+![Output sample](assets/hello.mp4)
 
 ## Support
 
