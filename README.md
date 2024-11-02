@@ -44,7 +44,7 @@ while (projectStatus.VideoUrl == null && projectStatus.ErrorMessage == null);
 
 if (projectStatus.ErrorMessage != null)
 {
-    Console.WriteLine($"Error: {projectStatus.ErrorMessage.Value.Object}");
+    Console.WriteLine($"Error: {projectStatus.ErrorMessage}");
 }
 Console.WriteLine(projectStatus.VideoUrl);
 ```
