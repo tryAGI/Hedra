@@ -49,9 +49,9 @@ if (projectStatus.ErrorMessage != null)
 Console.WriteLine(projectStatus.VideoUrl);
 ```
 
-<video src='your URL here' width=180 ></video>
-
-![Output sample](assets/hello.mp4)
+![Input Image](src/tests/IntegrationTests/Resources/girl.png)
+<audio src='https://github.com/tryAGI/Hedra/raw/refs/heads/main/src/tests/IntegrationTests/Resources/hello.wav' controls></audio>
+<video src='https://github.com/tryAGI/Hedra/raw/refs/heads/main/assets/hello.mp4' width=180 ></video>
 
 ## Support
 
