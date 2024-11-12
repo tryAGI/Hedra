@@ -12,7 +12,7 @@ namespace Hedra
         /// Default Value: false
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Hedra.ApiException"></exception>
         global::System.Threading.Tasks.Task<string> ShareOrUnshareAProjectAsync(
             string projectId,
             bool? shared = default,

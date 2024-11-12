@@ -124,91 +124,75 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="AvatarProjectItem" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="id"></param>
+        /// <param name="createdAt"></param>
+        /// <param name="username"></param>
+        /// <param name="videoUrl"></param>
+        /// <param name="avatarImageUrl"></param>
+        /// <param name="aspectRatio"></param>
+        /// <param name="text"></param>
+        /// <param name="voiceId"></param>
+        /// <param name="voiceUrl"></param>
+        /// <param name="userId"></param>
+        /// <param name="jobType"></param>
+        /// <param name="status"></param>
+        /// <param name="stage"></param>
+        /// <param name="progress"></param>
+        /// <param name="errorMessage"></param>
+        /// <param name="audioSource"></param>
+        /// <param name="avatarImageInput"></param>
+        /// <param name="shared">
+        /// Default Value: false
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public AvatarProjectItem(
+            global::Hedra.AvatarProjectItemAspectRatio aspectRatio,
+            string? id,
+            global::System.DateTime? createdAt,
+            string? username,
+            string? videoUrl,
+            string? avatarImageUrl,
+            string? text,
+            string? voiceId,
+            string? voiceUrl,
+            string? userId,
+            string? jobType,
+            string? status,
+            string? stage,
+            double? progress,
+            string? errorMessage,
+            string? audioSource,
+            object? avatarImageInput,
+            bool? shared)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.AspectRatio = aspectRatio;
+            this.Id = id;
+            this.CreatedAt = createdAt;
+            this.Username = username;
+            this.VideoUrl = videoUrl;
+            this.AvatarImageUrl = avatarImageUrl;
+            this.Text = text;
+            this.VoiceId = voiceId;
+            this.VoiceUrl = voiceUrl;
+            this.UserId = userId;
+            this.JobType = jobType;
+            this.Status = status;
+            this.Stage = stage;
+            this.Progress = progress;
+            this.ErrorMessage = errorMessage;
+            this.AudioSource = audioSource;
+            this.AvatarImageInput = avatarImageInput;
+            this.Shared = shared;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="AvatarProjectItem" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public AvatarProjectItem()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Hedra.AvatarProjectItem? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Hedra.AvatarProjectItem),
-                jsonSerializerContext) as global::Hedra.AvatarProjectItem;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Hedra.AvatarProjectItem? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Hedra.AvatarProjectItem>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Hedra.AvatarProjectItem?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Hedra.AvatarProjectItem),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Hedra.AvatarProjectItem;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Hedra.AvatarProjectItem?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Hedra.AvatarProjectItem?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

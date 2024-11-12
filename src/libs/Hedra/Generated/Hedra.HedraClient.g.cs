@@ -36,6 +36,11 @@ namespace Hedra
         /// <inheritdoc/>
         public global::System.Collections.Generic.List<global::Hedra.EndPointAuthorization> Authorizations { get; }
 
+        /// <inheritdoc/>
+        public bool ReadResponseAsString { get; set; }
+#if DEBUG
+            = true;
+#endif
         /// <summary>
         /// 
         /// </summary>
@@ -47,6 +52,7 @@ namespace Hedra
         /// </summary>
         public VoiceClient Voice => new VoiceClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
@@ -55,6 +61,7 @@ namespace Hedra
         /// </summary>
         public AudioClient Audio => new AudioClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
@@ -63,6 +70,7 @@ namespace Hedra
         /// </summary>
         public PortraitClient Portrait => new PortraitClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
@@ -71,6 +79,7 @@ namespace Hedra
         /// </summary>
         public CharactersClient Characters => new CharactersClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
@@ -79,6 +88,7 @@ namespace Hedra
         /// </summary>
         public ProjectsClient Projects => new ProjectsClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
