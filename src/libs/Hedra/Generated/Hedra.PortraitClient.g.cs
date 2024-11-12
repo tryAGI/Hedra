@@ -25,6 +25,11 @@ namespace Hedra
         /// <inheritdoc/>
         public global::System.Collections.Generic.List<global::Hedra.EndPointAuthorization> Authorizations { get; }
 
+        /// <inheritdoc/>
+        public bool ReadResponseAsString { get; set; }
+#if DEBUG
+            = true;
+#endif
         /// <summary>
         /// 
         /// </summary>
