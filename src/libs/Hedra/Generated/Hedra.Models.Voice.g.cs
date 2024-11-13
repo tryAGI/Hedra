@@ -21,7 +21,7 @@ namespace Hedra
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("service")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::Hedra.VoiceServiceVariant1?, global::Hedra.VoiceServiceVariant2?>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Hedra.AnyOf<global::Hedra.VoiceServiceVariant1?, global::Hedra.VoiceServiceVariant2?> Service { get; set; }
 
