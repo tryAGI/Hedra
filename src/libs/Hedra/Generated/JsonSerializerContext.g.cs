@@ -23,7 +23,8 @@ namespace Hedra
             typeof(global::Hedra.JsonConverters.VoiceServiceVariant1NullableJsonConverter),
             typeof(global::Hedra.JsonConverters.VoiceServiceVariant2JsonConverter),
             typeof(global::Hedra.JsonConverters.VoiceServiceVariant2NullableJsonConverter),
-            typeof(global::Hedra.JsonConverters.AnyOfJsonConverterFactory2),
+            typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<string, int?>),
+            typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::Hedra.VoiceServiceVariant1?, global::Hedra.VoiceServiceVariant2?>),
         })]
 
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.JsonSerializerContextTypes))]
