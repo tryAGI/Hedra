@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// URL of audio uploaded using the /v1/audio endpoint<br/>
+    /// Desired aspect ratio for the generated video<br/>
     /// Default Value: 1:1
     /// </summary>
     public enum ApiGenerateTalkingAvatarRequestBodyAspectRatio

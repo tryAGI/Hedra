@@ -80,7 +80,8 @@ namespace Hedra
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        public string? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AvatarProjectStatusJsonConverter))]
+        public global::Hedra.AvatarProjectStatus? Status { get; set; }
 
         /// <summary>
         /// 
@@ -160,7 +161,7 @@ namespace Hedra
             string? voiceUrl,
             string? userId,
             string? jobType,
-            string? status,
+            global::Hedra.AvatarProjectStatus? status,
             string? stage,
             double? progress,
             string? errorMessage,

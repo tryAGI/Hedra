@@ -19,6 +19,8 @@ namespace Hedra
             typeof(global::Hedra.JsonConverters.ApiGenerateTalkingAvatarRequestBodyAudioSourceNullableJsonConverter),
             typeof(global::Hedra.JsonConverters.AvatarProjectItemAspectRatioJsonConverter),
             typeof(global::Hedra.JsonConverters.AvatarProjectItemAspectRatioNullableJsonConverter),
+            typeof(global::Hedra.JsonConverters.AvatarProjectStatusJsonConverter),
+            typeof(global::Hedra.JsonConverters.AvatarProjectStatusNullableJsonConverter),
             typeof(global::Hedra.JsonConverters.VoiceServiceVariant1JsonConverter),
             typeof(global::Hedra.JsonConverters.VoiceServiceVariant1NullableJsonConverter),
             typeof(global::Hedra.JsonConverters.VoiceServiceVariant2JsonConverter),
