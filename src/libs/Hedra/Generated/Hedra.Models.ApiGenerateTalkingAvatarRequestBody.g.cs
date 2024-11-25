@@ -33,7 +33,7 @@ namespace Hedra
         public string? AvatarImage { get; set; }
 
         /// <summary>
-        /// URL of audio uploaded using the /v1/audio endpoint<br/>
+        /// Desired aspect ratio for the generated video<br/>
         /// Default Value: 1:1
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("aspectRatio")]
@@ -76,7 +76,7 @@ namespace Hedra
         /// URL of image uploaded via /v1/portrait
         /// </param>
         /// <param name="aspectRatio">
-        /// URL of audio uploaded using the /v1/audio endpoint<br/>
+        /// Desired aspect ratio for the generated video<br/>
         /// Default Value: 1:1
         /// </param>
         /// <param name="audioSource">

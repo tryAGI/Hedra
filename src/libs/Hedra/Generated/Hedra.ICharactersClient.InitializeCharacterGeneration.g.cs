@@ -37,7 +37,7 @@ namespace Hedra
         /// URL of image uploaded via /v1/portrait
         /// </param>
         /// <param name="aspectRatio">
-        /// URL of audio uploaded using the /v1/audio endpoint<br/>
+        /// Desired aspect ratio for the generated video<br/>
         /// Default Value: 1:1
         /// </param>
         /// <param name="audioSource">

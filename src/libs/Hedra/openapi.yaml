@@ -274,7 +274,7 @@ components:
             - '16:9'
             - '9:16'
           type: string
-          description: URL of audio uploaded using the /v1/audio endpoint
+          description: Desired aspect ratio for the generated video
           default: '1:1'
         audioSource:
           title: Audiosource
@@ -362,9 +362,7 @@ components:
           type: string
           nullable: true
         status:
-          title: Status
-          type: string
-          nullable: true
+          $ref: '#/components/schemas/AvatarProjectStatus'
         stage:
           title: Stage
           type: string
@@ -389,6 +387,14 @@ components:
           title: Shared
           type: boolean
           default: false
+    AvatarProjectStatus:
+      title: AvatarProjectStatus
+      enum:
+        - Queued
+        - InProgress
+        - Completed
+        - Failed
+      type: string
     Body_api_access_upload_audio_v1_audio_post:
       title: Body_api_access_upload_audio_v1_audio_post
       required:
