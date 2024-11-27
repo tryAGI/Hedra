@@ -3,37 +3,37 @@
 
 namespace Hedra
 {
-    public partial class VoiceClient
+    public partial class HedraClient
     {
-        partial void PrepareRetrieveAvailableVoicesArguments(
+        partial void PreparePing2Arguments(
             global::System.Net.Http.HttpClient httpClient);
-        partial void PrepareRetrieveAvailableVoicesRequest(
+        partial void PreparePing2Request(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage);
-        partial void ProcessRetrieveAvailableVoicesResponse(
+        partial void ProcessPing2Response(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessRetrieveAvailableVoicesResponseContent(
+        partial void ProcessPing2ResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Retrieve available voices
+        /// Ping
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Hedra.VoicesResponseBody> RetrieveAvailableVoicesAsync(
+        public async global::System.Threading.Tasks.Task<string> Ping2Async(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareRetrieveAvailableVoicesArguments(
+            PreparePing2Arguments(
                 httpClient: HttpClient);
 
             var __pathBuilder = new PathBuilder(
-                path: "/v1/voices",
+                path: "/ping",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -63,7 +63,7 @@ namespace Hedra
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareRetrieveAvailableVoicesRequest(
+            PreparePing2Request(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest);
 
@@ -75,7 +75,7 @@ namespace Hedra
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessRetrieveAvailableVoicesResponse(
+            ProcessPing2Response(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
 
@@ -87,7 +87,7 @@ namespace Hedra
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessRetrieveAvailableVoicesResponseContent(
+                ProcessPing2ResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -111,9 +111,7 @@ namespace Hedra
                     };
                 }
 
-                return
-                    global::Hedra.VoicesResponseBody.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                return __content;
             }
             else
             {
@@ -135,11 +133,9 @@ namespace Hedra
                     };
                 }
 
-                using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                var __content = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                return
-                    await global::Hedra.VoicesResponseBody.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
+                return __content;
             }
         }
     }

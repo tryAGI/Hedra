@@ -33,12 +33,16 @@ namespace Hedra
                 httpClient: HttpClient);
 
             var __pathBuilder = new PathBuilder(
-                path: "/ping",
+                path: "/healthz",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
+#if NET6_0_OR_GREATER
+            __httpRequest.Version = global::System.Net.HttpVersion.Version11;
+            __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
+#endif
 
             foreach (var __authorization in Authorizations)
             {
