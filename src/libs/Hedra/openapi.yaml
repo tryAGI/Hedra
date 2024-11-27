@@ -231,6 +231,16 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
         - APIKeyHeader: [ ]
+  /healthz:
+    get:
+      summary: Ping
+      operationId: ping_healthz_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: { }
   /ping:
     get:
       summary: Ping

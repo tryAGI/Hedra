@@ -5,10 +5,7 @@ namespace Hedra
 {
     public sealed partial class HedraClient
     {
-        /// <summary>
-        /// Authorize using ApiKey authentication.
-        /// </summary>
-        /// <param name="apiKey"></param>
+        /// <inheritdoc/>
         public void AuthorizeUsingApiKeyInHeader(
             string apiKey)
         {
