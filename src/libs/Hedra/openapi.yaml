@@ -251,6 +251,30 @@ paths:
           content:
             application/json:
               schema: { }
+  /v1/user/register:
+    post:
+      summary: Register User
+      description: "This is the registration endpoint, ported from the golang API.\nHowever, this is using a new url / path (/v1/user/register instead of /register -- which will end up being:\n/api/v1/user/register"
+      operationId: register_user_v1_user_register_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterUserModel'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
     ApiGenerateTalkingAvatarRequestBody:
@@ -436,6 +460,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AvatarProjectItem'
+    GetUserResponse:
+      title: GetUserResponse
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserInfo'
     HTTPValidationError:
       title: HTTPValidationError
       type: object
@@ -445,6 +477,40 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
+    RegisterUserModel:
+      title: RegisterUserModel
+      required:
+        - residence_not_blocked
+        - tos_accepted
+        - tos_version
+      type: object
+      properties:
+        residence_not_blocked:
+          title: Residence Not Blocked
+          type: string
+        tos_accepted:
+          title: Tos Accepted
+          type: boolean
+        tos_version:
+          title: Tos Version
+          type: string
+        marketing_email_consent:
+          title: Marketing Email Consent
+          type: string
+          nullable: true
+    TierLimits:
+      title: TierLimits
+      required:
+        - maxInputLength
+        - maxAudioDuration
+      type: object
+      properties:
+        maxInputLength:
+          title: Maxinputlength
+          type: integer
+        maxAudioDuration:
+          title: Maxaudioduration
+          type: integer
     UploadAudioResponseBody:
       title: UploadAudioResponseBody
       required:
@@ -454,6 +520,109 @@ components:
         url:
           title: Url
           type: string
+    UserInfo:
+      title: UserInfo
+      required:
+        - userId
+        - username
+        - avatarConsent
+        - tosAcceptableDate
+        - tosAcceptedVersion
+        - marketingEmailConsent
+        - residenceLegalConfirmed
+        - dresidenceLegalUpdatedAt
+        - tierLimits
+      type: object
+      properties:
+        userId:
+          title: Userid
+          type: string
+        username:
+          title: Username
+          type: string
+        avatarUrl:
+          title: Avatarurl
+          type: string
+          nullable: true
+        accountTier:
+          title: Accounttier
+          type: string
+          default: free
+        apiAccountTier:
+          title: Apiaccounttier
+          type: string
+          default: free
+        webSubscriptionEnd:
+          title: Websubscriptionend
+          type: integer
+          nullable: true
+        avatarProjectCreditUsed:
+          title: Avatarprojectcreditused
+          type: integer
+          default: 0
+        avatarProjectCreditLimit:
+          title: Avatarprojectcreditlimit
+          type: integer
+          default: 250
+        avatarProjectWebCreditUsed:
+          title: Avatarprojectwebcreditused
+          type: integer
+          default: 0
+        avatarProjectWebCreditLimit:
+          title: Avatarprojectwebcreditlimit
+          type: integer
+          default: 0
+        allowWebCreditOverages:
+          title: Allowwebcreditoverages
+          type: boolean
+          default: false
+        webCreditOverageMax:
+          title: Webcreditoveragemax
+          type: integer
+          default: 300
+        allowApiCreditOverages:
+          title: Allowapicreditoverages
+          type: boolean
+          default: false
+        apiCreditOverageMax:
+          title: Apicreditoveragemax
+          type: integer
+          default: 300
+        avatarConsent:
+          title: Avatarconsent
+          type: boolean
+        subscriptionState:
+          title: Subscriptionstate
+          type: string
+          nullable: true
+        tosAcceptableDate:
+          title: Tosacceptabledate
+          type: string
+          nullable: true
+        tosAcceptedVersion:
+          title: Tosacceptedversion
+          type: string
+          nullable: true
+        apiSubscriptionState:
+          title: Apisubscriptionstate
+          type: string
+          nullable: true
+        apiTOSAcceptance:
+          title: Apitosacceptance
+          type: boolean
+          default: false
+          nullable: true
+        marketingEmailConsent:
+          title: Marketingemailconsent
+          type: string
+        residenceLegalConfirmed:
+          title: Residencelegalconfirmed
+          type: string
+        dresidenceLegalUpdatedAt:
+          title: Dresidencelegalupdatedat
+          type: string
+        tierLimits:
+          $ref: '#/components/schemas/TierLimits'
     ValidationError:
       title: ValidationError
       required:
