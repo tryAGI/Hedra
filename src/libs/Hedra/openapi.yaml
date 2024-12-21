@@ -299,7 +299,7 @@ components:
         avatarImage:
           title: Avatarimage
           type: string
-          description: URL of image uploaded via /v1/portrait
+          description: URL of image uploaded via /v1/portrait or base64-encoded image
           nullable: true
         aspectRatio:
           title: Aspectratio
