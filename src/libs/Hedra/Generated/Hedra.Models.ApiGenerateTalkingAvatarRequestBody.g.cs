@@ -27,7 +27,7 @@ namespace Hedra
         public string? VoiceUrl { get; set; }
 
         /// <summary>
-        /// URL of image uploaded via /v1/portrait
+        /// URL of image uploaded via /v1/portrait or base64-encoded image
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("avatarImage")]
         public string? AvatarImage { get; set; }
@@ -73,7 +73,7 @@ namespace Hedra
         /// URL of audio uploaded using the /v1/audio endpoint
         /// </param>
         /// <param name="avatarImage">
-        /// URL of image uploaded via /v1/portrait
+        /// URL of image uploaded via /v1/portrait or base64-encoded image
         /// </param>
         /// <param name="aspectRatio">
         /// Desired aspect ratio for the generated video<br/>
