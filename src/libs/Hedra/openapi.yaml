@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Hedra API
   description: "\n\n## Base URL\nAll paths are referenced from the base URL: `https://mercury.dev.dream-ai.com/api`\n\n## Example usage\n### 1. Upload audio\n`audio_response = requests.post(f\"{BASE_URL}/v1/audio\", headers={'X-API-KEY': API_KEY}, files={'file': open('audio.mp3','rb')})`\n\n### 2. Upload image\n`image_response = requests.post(f\"{BASE_URL}/v1/portrait\", headers={'X-API-KEY': API_KEY}, files={'file': open('img.png','rb')})`\n\n### 3. Generate character video\n`video_response = requests.post(f\"{BASE_URL}/v1/characters\", headers={'X-API-KEY': API_KEY}, json={\"avatarImage\": image_response.json()[\"url\"], \"audioSource\": \"audio\", \"voiceUrl\": audio_response.json()[\"url\"]})`\n\n### 4. Call the Project endpoint to see your project / job status and get access to the URL of your generated character.\n`project_status = requests.get(f\"{BASE_URL}/v1/projects/{project_id}\", headers={'X-API-KEY': API_KEY})`\n\n"
