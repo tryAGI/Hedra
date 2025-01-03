@@ -275,6 +275,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /v1/images/text-to-image:
+    post:
+      summary: Generate Image Endpoint
+      description: Generate an image from a text prompt or modify an existing image using advanced parameters.
+      operationId: generate_image_endpoint_v1_images_text_to_image_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImageGenerationRequestBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageGenerationResponseBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - JWTBearer: [ ]
 components:
   schemas:
     ApiGenerateTalkingAvatarRequestBody:
@@ -449,6 +475,77 @@ components:
           title: File
           type: string
           format: binary
+    ControlNet:
+      title: ControlNet
+      type: object
+      properties:
+        conditioning_scale:
+          title: Conditioning Scale
+          type: number
+          nullable: true
+        control_mode:
+          title: Control Mode
+          type: string
+          nullable: true
+        begin_step_percent:
+          title: Begin Step Percent
+          type: number
+          nullable: true
+        end_step_percent:
+          title: End Step Percent
+          type: number
+          nullable: true
+        control_guidance_start:
+          title: Control Guidance Start
+          type: number
+          nullable: true
+        control_guidance_end:
+          title: Control Guidance End
+          type: number
+          nullable: true
+    ControlNetUnion:
+      title: ControlNetUnion
+      type: object
+      properties:
+        conditioning_scale:
+          title: Conditioning Scale
+          type: number
+          nullable: true
+        control_mode:
+          title: Control Mode
+          type: string
+          nullable: true
+        begin_step_percent:
+          title: Begin Step Percent
+          type: number
+          nullable: true
+        end_step_percent:
+          title: End Step Percent
+          type: number
+          nullable: true
+        control_guidance_start:
+          title: Control Guidance Start
+          type: number
+          nullable: true
+        control_guidance_end:
+          title: Control Guidance End
+          type: number
+          nullable: true
+    GeneratedImage:
+      title: GeneratedImage
+      required:
+        - url
+      type: object
+      properties:
+        url:
+          title: Url
+          type: string
+          description: URL of the generated image
+        content_type:
+          title: Content Type
+          type: string
+          description: Content type of the image
+          default: image/jpeg
     GetUserAvatarJobsResponse:
       title: GetUserAvatarJobsResponse
       required:
@@ -477,6 +574,136 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
+    ImageGenerationRequestBody:
+      title: ImageGenerationRequestBody
+      required:
+        - prompt
+      type: object
+      properties:
+        prompt:
+          title: Prompt
+          type: string
+          description: The prompt to generate the image from
+        num_inference_steps:
+          title: Num Inference Steps
+          type: integer
+          description: Number of inference steps
+          nullable: true
+        controlnets:
+          title: Controlnets
+          type: array
+          items:
+            $ref: '#/components/schemas/ControlNet'
+          description: List of ControlNet configurations
+        controlnet_unions:
+          title: Controlnet Unions
+          type: array
+          items:
+            $ref: '#/components/schemas/ControlNetUnion'
+          description: List of ControlNet union configurations
+        ip_adapters:
+          title: Ip Adapters
+          type: array
+          items:
+            $ref: '#/components/schemas/IpAdapter'
+          description: List of IP-Adapter configurations
+        guidance_scale:
+          title: Guidance Scale
+          type: number
+          description: Guidance scale for the generation
+          nullable: true
+        real_cfg_scale:
+          title: Real Cfg Scale
+          type: number
+          description: Real CFG scale
+          nullable: true
+        num_images:
+          title: Num Images
+          type: integer
+          description: Number of images to generate
+          nullable: true
+        enable_safety_checker:
+          title: Enable Safety Checker
+          type: boolean
+          description: Whether to enable safety checker
+          nullable: true
+        reference_strength:
+          title: Reference Strength
+          type: number
+          description: Reference strength
+          nullable: true
+        reference_end:
+          title: Reference End
+          type: number
+          description: Reference end
+          nullable: true
+        image_url:
+          title: Image Url
+          type: string
+          description: Optional source image URL for image-to-image generation
+          nullable: true
+        strength:
+          title: Strength
+          type: number
+          description: Strength of the conditioning
+          nullable: true
+        aspect_ratio:
+          title: Aspect Ratio
+          enum:
+            - '1:1'
+            - '16:9'
+            - '9:16'
+          type: string
+          description: Desired aspect ratio for the generated image
+          default: '16:9'
+        seed:
+          title: Seed
+          type: integer
+          description: Seed for the generation
+    ImageGenerationResponseBody:
+      title: ImageGenerationResponseBody
+      required:
+        - images
+        - prompt
+      type: object
+      properties:
+        images:
+          title: Images
+          type: array
+          items:
+            $ref: '#/components/schemas/GeneratedImage'
+          description: The generated image files info
+        timings:
+          $ref: '#/components/schemas/Timings'
+        seed:
+          title: Seed
+          type: integer
+          description: Seed used for generation
+          nullable: true
+        has_nsfw_concepts:
+          title: Has Nsfw Concepts
+          type: array
+          items:
+            type: boolean
+          description: Whether images contain NSFW concepts
+          nullable: true
+        prompt:
+          title: Prompt
+          type: string
+          description: The prompt used for generating the image
+      description: Response body for image generation requests
+    IpAdapter:
+      title: IpAdapter
+      type: object
+      properties:
+        image_url:
+          title: Image Url
+          type: string
+          nullable: true
+        weight:
+          title: Weight
+          type: number
+          nullable: true
     RegisterUserModel:
       title: RegisterUserModel
       required:
@@ -512,6 +739,17 @@ components:
         maxAudioDuration:
           title: Maxaudioduration
           type: integer
+    Timings:
+      title: Timings
+      required:
+        - total
+      type: object
+      properties:
+        total:
+          title: Total
+          type: number
+          description: Total time taken for generation
+      description: Timing information for the generation process
     UploadAudioResponseBody:
       title: UploadAudioResponseBody
       required:
@@ -713,5 +951,8 @@ components:
       type: apiKey
       name: X-API-Key
       in: header
+    JWTBearer:
+      type: http
+      scheme: bearer
 security:
   - APIKeyHeader: [ ]
