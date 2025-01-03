@@ -86,78 +86,130 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GetUserAvatarJobsResponse? Type17 { get; set; }
+        public global::Hedra.ControlNet? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Hedra.AvatarProjectItem>? Type18 { get; set; }
+        public global::Hedra.ControlNetUnion? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GetUserResponse? Type19 { get; set; }
+        public global::Hedra.GeneratedImage? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.UserInfo? Type20 { get; set; }
+        public global::Hedra.GetUserAvatarJobsResponse? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.TierLimits? Type21 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.AvatarProjectItem>? Type21 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.HTTPValidationError? Type22 { get; set; }
+        public global::Hedra.GetUserResponse? Type22 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Hedra.ValidationError>? Type23 { get; set; }
+        public global::Hedra.UserInfo? Type23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.ValidationError? Type24 { get; set; }
+        public global::Hedra.TierLimits? Type24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Hedra.AnyOf<string, int?>>? Type25 { get; set; }
+        public global::Hedra.HTTPValidationError? Type25 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AnyOf<string, int?>? Type26 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.ValidationError>? Type26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.RegisterUserModel? Type27 { get; set; }
+        public global::Hedra.ValidationError? Type27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.UploadAudioResponseBody? Type28 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.AnyOf<string, int?>>? Type28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.Voice? Type29 { get; set; }
+        public global::Hedra.AnyOf<string, int?>? Type29 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AnyOf<global::Hedra.VoiceServiceVariant1?, global::Hedra.VoiceServiceVariant2?>? Type30 { get; set; }
+        public global::Hedra.ImageGenerationRequestBody? Type30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.VoiceServiceVariant1? Type31 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.ControlNet>? Type31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.VoiceServiceVariant2? Type32 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.ControlNetUnion>? Type32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type33 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.IpAdapter>? Type33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.VoicesResponseBody? Type34 { get; set; }
+        public global::Hedra.IpAdapter? Type34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Hedra.Voice>? Type35 { get; set; }
+        public global::Hedra.ImageGenerationRequestBodyAspectRatio? Type35 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.ImageGenerationResponseBody? Type36 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Hedra.GeneratedImage>? Type37 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.Timings? Type38 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<bool>? Type39 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.RegisterUserModel? Type40 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.UploadAudioResponseBody? Type41 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.Voice? Type42 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.AnyOf<global::Hedra.VoiceServiceVariant1?, global::Hedra.VoiceServiceVariant2?>? Type43 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.VoiceServiceVariant1? Type44 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.VoiceServiceVariant2? Type45 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.Dictionary<string, string>? Type46 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.VoicesResponseBody? Type47 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Hedra.Voice>? Type48 { get; set; }
     }
 }
