@@ -50,7 +50,7 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public AudioClient Audio => new AudioClient(HttpClient, authorizations: Authorizations)
+        public VoiceClient Voice => new VoiceClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -59,7 +59,7 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public VoiceClient Voice => new VoiceClient(HttpClient, authorizations: Authorizations)
+        public AudioClient Audio => new AudioClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,

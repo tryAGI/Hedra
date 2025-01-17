@@ -6,6 +6,21 @@ info:
 servers:
   - url: https://mercury.dev.dream-ai.com/api
 paths:
+  /v1/voices:
+    get:
+      tags:
+        - Voice
+      summary: Retrieve available voices
+      operationId: api_access_get_voices_v1_voices_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicesResponseBody'
+      security:
+        - APIKeyHeader: [ ]
   /v1/audio:
     post:
       tags:
@@ -38,21 +53,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-      security:
-        - APIKeyHeader: [ ]
-  /v1/voices:
-    get:
-      tags:
-        - Voice
-      summary: Retrieve available voices
-      operationId: api_access_get_voices_v1_voices_get
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/VoicesResponseBody'
       security:
         - APIKeyHeader: [ ]
   /v1/portrait:
