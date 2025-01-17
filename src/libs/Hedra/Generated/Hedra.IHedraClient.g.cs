@@ -50,12 +50,12 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public AudioClient Audio { get; }
+        public VoiceClient Voice { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        public VoiceClient Voice { get; }
+        public AudioClient Audio { get; }
 
         /// <summary>
         /// 
