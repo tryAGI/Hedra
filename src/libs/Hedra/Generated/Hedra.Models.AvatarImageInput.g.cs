@@ -32,7 +32,9 @@ namespace Hedra
         /// </summary>
         /// <param name="seed"></param>
         /// <param name="prompt"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public AvatarImageInput(
             string prompt,
             int? seed)

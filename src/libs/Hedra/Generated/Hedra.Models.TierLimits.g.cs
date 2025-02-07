@@ -33,7 +33,9 @@ namespace Hedra
         /// </summary>
         /// <param name="maxInputLength"></param>
         /// <param name="maxAudioDuration"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TierLimits(
             int maxInputLength,
             int maxAudioDuration)

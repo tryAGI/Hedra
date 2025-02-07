@@ -64,7 +64,9 @@ namespace Hedra
         /// <param name="prompt">
         /// The prompt used for generating the image
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ImageGenerationResponseBody(
             global::System.Collections.Generic.IList<global::Hedra.GeneratedImage> images,
             string prompt,
