@@ -59,7 +59,9 @@ namespace Hedra
         /// <param name="endStepPercent"></param>
         /// <param name="controlGuidanceStart"></param>
         /// <param name="controlGuidanceEnd"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ControlNetUnion(
             double? conditioningScale,
             string? controlMode,

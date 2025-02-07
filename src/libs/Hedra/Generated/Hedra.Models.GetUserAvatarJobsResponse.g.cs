@@ -25,7 +25,9 @@ namespace Hedra
         /// Initializes a new instance of the <see cref="GetUserAvatarJobsResponse" /> class.
         /// </summary>
         /// <param name="projects"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetUserAvatarJobsResponse(
             global::System.Collections.Generic.IList<global::Hedra.AvatarProjectItem> projects)
         {

@@ -27,7 +27,9 @@ namespace Hedra
         /// <param name="total">
         /// Total time taken for generation
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Timings(
             double total)
         {

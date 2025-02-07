@@ -38,7 +38,9 @@ namespace Hedra
         /// Content type of the image<br/>
         /// Default Value: image/jpeg
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GeneratedImage(
             string url,
             string? contentType)
