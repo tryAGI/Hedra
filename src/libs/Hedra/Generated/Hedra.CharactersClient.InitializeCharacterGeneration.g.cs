@@ -123,7 +123,7 @@ namespace Hedra
                 }
 
                 throw new global::Hedra.ApiException<global::Hedra.HTTPValidationError>(
-                    message: __response.ReasonPhrase ?? string.Empty,
+                    message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_422,
