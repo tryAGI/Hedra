@@ -36,6 +36,12 @@ namespace Hedra
         public string? MarketingEmailConsent { get; set; }
 
         /// <summary>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ai_training_opt_out")]
+        public bool? AiTrainingOptOut { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -50,6 +56,9 @@ namespace Hedra
         /// <param name="marketingEmailConsent">
         /// Default Value: NONE
         /// </param>
+        /// <param name="aiTrainingOptOut">
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -57,12 +66,14 @@ namespace Hedra
             string residenceNotBlocked,
             bool tosAccepted,
             string tosVersion,
-            string? marketingEmailConsent)
+            string? marketingEmailConsent,
+            bool? aiTrainingOptOut)
         {
             this.ResidenceNotBlocked = residenceNotBlocked ?? throw new global::System.ArgumentNullException(nameof(residenceNotBlocked));
             this.TosAccepted = tosAccepted;
             this.TosVersion = tosVersion ?? throw new global::System.ArgumentNullException(nameof(tosVersion));
             this.MarketingEmailConsent = marketingEmailConsent;
+            this.AiTrainingOptOut = aiTrainingOptOut;
         }
 
         /// <summary>

@@ -137,6 +137,13 @@ namespace Hedra
         public string? MarketingEmailConsent { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aiTrainingOptOut")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool AiTrainingOptOut { get; set; }
+
+        /// <summary>
         /// Default Value: NONE
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("residenceLegalConfirmed")]
@@ -210,6 +217,7 @@ namespace Hedra
         /// <param name="marketingEmailConsent">
         /// Default Value: NONE
         /// </param>
+        /// <param name="aiTrainingOptOut"></param>
         /// <param name="residenceLegalConfirmed">
         /// Default Value: NONE
         /// </param>
@@ -221,6 +229,7 @@ namespace Hedra
         public UserInfo(
             string userId,
             bool avatarConsent,
+            bool aiTrainingOptOut,
             string? username,
             string? avatarUrl,
             string? accountTier,
@@ -246,6 +255,7 @@ namespace Hedra
         {
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
             this.AvatarConsent = avatarConsent;
+            this.AiTrainingOptOut = aiTrainingOptOut;
             this.Username = username;
             this.AvatarUrl = avatarUrl;
             this.AccountTier = accountTier;
