@@ -726,6 +726,10 @@ components:
           type: string
           default: NONE
           nullable: true
+        ai_training_opt_out:
+          title: Ai Training Opt Out
+          type: boolean
+          default: false
     TierLimits:
       title: TierLimits
       required:
@@ -764,6 +768,7 @@ components:
       required:
         - userId
         - avatarConsent
+        - aiTrainingOptOut
       type: object
       properties:
         userId:
@@ -849,6 +854,9 @@ components:
           title: Marketingemailconsent
           type: string
           default: NONE
+        aiTrainingOptOut:
+          title: Aitrainingoptout
+          type: boolean
         residenceLegalConfirmed:
           title: Residencelegalconfirmed
           type: string

@@ -31,6 +31,9 @@ namespace Hedra
         /// <param name="marketingEmailConsent">
         /// Default Value: NONE
         /// </param>
+        /// <param name="aiTrainingOptOut">
+        /// Default Value: false
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Hedra.GetUserResponse> RegisterUserAsync(
@@ -38,6 +41,7 @@ namespace Hedra
             bool tosAccepted,
             string tosVersion,
             string? marketingEmailConsent = default,
+            bool? aiTrainingOptOut = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
