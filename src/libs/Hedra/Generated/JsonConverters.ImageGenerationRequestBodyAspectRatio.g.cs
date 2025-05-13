@@ -28,6 +28,10 @@ namespace Hedra.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::Hedra.ImageGenerationRequestBodyAspectRatio)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Hedra.ImageGenerationRequestBodyAspectRatio);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }
