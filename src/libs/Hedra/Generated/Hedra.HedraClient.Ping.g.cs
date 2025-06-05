@@ -32,7 +32,7 @@ namespace Hedra
             PreparePingArguments(
                 httpClient: HttpClient);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Hedra.PathBuilder(
                 path: "/healthz",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

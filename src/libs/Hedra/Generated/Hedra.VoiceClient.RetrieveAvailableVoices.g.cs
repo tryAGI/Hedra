@@ -32,7 +32,7 @@ namespace Hedra
             PrepareRetrieveAvailableVoicesArguments(
                 httpClient: HttpClient);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Hedra.PathBuilder(
                 path: "/v1/voices",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

@@ -32,7 +32,7 @@ namespace Hedra
             PreparePing2Arguments(
                 httpClient: HttpClient);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Hedra.PathBuilder(
                 path: "/ping",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
