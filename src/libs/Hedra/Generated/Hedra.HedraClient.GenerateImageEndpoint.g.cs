@@ -40,7 +40,7 @@ namespace Hedra
                 httpClient: HttpClient,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Hedra.PathBuilder(
                 path: "/v1/images/text-to-image",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

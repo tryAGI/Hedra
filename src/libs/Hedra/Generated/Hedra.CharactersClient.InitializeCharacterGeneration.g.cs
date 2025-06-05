@@ -46,7 +46,7 @@ namespace Hedra
                 contentLength: ref contentLength,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Hedra.PathBuilder(
                 path: "/v1/characters",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

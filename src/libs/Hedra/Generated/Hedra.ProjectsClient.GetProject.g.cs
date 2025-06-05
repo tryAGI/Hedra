@@ -37,7 +37,7 @@ namespace Hedra
                 httpClient: HttpClient,
                 projectId: ref projectId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Hedra.PathBuilder(
                 path: $"/v1/projects/{projectId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

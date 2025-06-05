@@ -44,7 +44,7 @@ namespace Hedra
                 projectId: ref projectId,
                 shared: ref shared);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Hedra.PathBuilder(
                 path: $"/v1/projects/{projectId}/sharing",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

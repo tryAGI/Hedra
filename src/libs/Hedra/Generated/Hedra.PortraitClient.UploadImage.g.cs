@@ -53,7 +53,7 @@ namespace Hedra
                 contentLength: ref contentLength,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Hedra.PathBuilder(
                 path: "/v1/portrait",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
