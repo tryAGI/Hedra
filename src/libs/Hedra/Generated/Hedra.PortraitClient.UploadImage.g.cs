@@ -56,7 +56,7 @@ namespace Hedra
             var __pathBuilder = new global::Hedra.PathBuilder(
                 path: "/v1/portrait",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
+            __pathBuilder
                 .AddOptionalParameter("aspect_ratio", aspectRatio) 
                 ; 
             var __path = __pathBuilder.ToString();
