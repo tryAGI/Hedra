@@ -47,7 +47,7 @@ namespace Hedra
             var __pathBuilder = new global::Hedra.PathBuilder(
                 path: $"/v1/projects/{projectId}/sharing",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
+            __pathBuilder
                 .AddOptionalParameter("shared", shared?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
