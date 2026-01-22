@@ -1,4 +1,4 @@
-openapi: 3.0.4
+openapi: '3.2.0'
 info:
   title: Hedra API
   description: "\n\n## Base URL\nAll paths are referenced from the base URL: `https://mercury.dev.dream-ai.com/api`\n\n## Example usage\n### 1. Upload audio\n`audio_response = requests.post(f\"{BASE_URL}/v1/audio\", headers={'X-API-KEY': API_KEY}, files={'file': open('audio.mp3','rb')})`\n\n### 2. Upload image\n`image_response = requests.post(f\"{BASE_URL}/v1/portrait\", headers={'X-API-KEY': API_KEY}, files={'file': open('img.png','rb')})`\n\n### 3. Generate character video\n`video_response = requests.post(f\"{BASE_URL}/v1/characters\", headers={'X-API-KEY': API_KEY}, json={\"avatarImage\": image_response.json()[\"url\"], \"audioSource\": \"audio\", \"voiceUrl\": audio_response.json()[\"url\"]})`\n\n### 4. Call the Project endpoint to see your project / job status and get access to the URL of your generated character.\n`project_status = requests.get(f\"{BASE_URL}/v1/projects/{project_id}\", headers={'X-API-KEY': API_KEY})`\n\n"
@@ -314,19 +314,22 @@ components:
           default: ''
         voiceId:
           title: Voiceid
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: Voice ID
-          nullable: true
         voiceUrl:
           title: Voiceurl
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: URL of audio uploaded using the /v1/audio endpoint
-          nullable: true
         avatarImage:
           title: Avatarimage
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: URL of image uploaded via /v1/portrait or base64-encoded image
-          nullable: true
         aspectRatio:
           title: Aspectratio
           enum:
@@ -345,7 +348,10 @@ components:
           description: '`tts` for text to speech or `audio`'
           default: audio
         avatarImageInput:
-          $ref: '#/components/schemas/AvatarImageInput'
+          anyOf:
+            - $ref: '#/components/schemas/AvatarImageInput'
+            - type: 'null'
+          description: Image metadata
     ApiProjectInitializationResponseBody:
       title: ApiProjectInitializationResponseBody
       required:
@@ -375,25 +381,30 @@ components:
       properties:
         id:
           title: Id
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         createdAt:
           title: Createdat
-          type: string
-          format: date-time
-          nullable: true
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
         username:
           title: Username
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         videoUrl:
           title: Videourl
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         avatarImageUrl:
           title: Avatarimageurl
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         aspectRatio:
           title: Aspectratio
           enum:
@@ -403,46 +414,58 @@ components:
           type: string
         text:
           title: Text
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         voiceId:
           title: Voiceid
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         voiceUrl:
           title: Voiceurl
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         userId:
           title: Userid
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         jobType:
           title: Jobtype
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         status:
-          $ref: '#/components/schemas/AvatarProjectStatus'
+          anyOf:
+            - $ref: '#/components/schemas/AvatarProjectStatus'
+            - type: 'null'
         stage:
           title: Stage
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         progress:
           title: Progress
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
         errorMessage:
           title: Errormessage
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         audioSource:
           title: Audiosource
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         avatarImageInput:
           title: Avatarimageinput
-          type: object
-          nullable: true
+          anyOf:
+            - type: object
+            - type: 'null'
         shared:
           title: Shared
           type: boolean
@@ -481,56 +504,68 @@ components:
       properties:
         conditioning_scale:
           title: Conditioning Scale
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
         control_mode:
           title: Control Mode
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         begin_step_percent:
           title: Begin Step Percent
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
         end_step_percent:
           title: End Step Percent
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
         control_guidance_start:
           title: Control Guidance Start
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
         control_guidance_end:
           title: Control Guidance End
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
     ControlNetUnion:
       title: ControlNetUnion
       type: object
       properties:
         conditioning_scale:
           title: Conditioning Scale
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
         control_mode:
           title: Control Mode
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         begin_step_percent:
           title: Begin Step Percent
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
         end_step_percent:
           title: End Step Percent
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
         control_guidance_start:
           title: Control Guidance Start
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
         control_guidance_end:
           title: Control Guidance End
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
     GeneratedImage:
       title: GeneratedImage
       required:
@@ -586,9 +621,10 @@ components:
           description: The prompt to generate the image from
         num_inference_steps:
           title: Num Inference Steps
-          type: integer
+          anyOf:
+            - type: integer
+            - type: 'null'
           description: Number of inference steps
-          nullable: true
         controlnets:
           title: Controlnets
           type: array
@@ -609,44 +645,52 @@ components:
           description: List of IP-Adapter configurations
         guidance_scale:
           title: Guidance Scale
-          type: number
+          anyOf:
+            - type: number
+            - type: 'null'
           description: Guidance scale for the generation
-          nullable: true
         real_cfg_scale:
           title: Real Cfg Scale
-          type: number
+          anyOf:
+            - type: number
+            - type: 'null'
           description: Real CFG scale
-          nullable: true
         num_images:
           title: Num Images
-          type: integer
+          anyOf:
+            - type: integer
+            - type: 'null'
           description: Number of images to generate
-          nullable: true
         enable_safety_checker:
           title: Enable Safety Checker
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: Whether to enable safety checker
-          nullable: true
         reference_strength:
           title: Reference Strength
-          type: number
+          anyOf:
+            - type: number
+            - type: 'null'
           description: Reference strength
-          nullable: true
         reference_end:
           title: Reference End
-          type: number
+          anyOf:
+            - type: number
+            - type: 'null'
           description: Reference end
-          nullable: true
         image_url:
           title: Image Url
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: Optional source image URL for image-to-image generation
-          nullable: true
         strength:
           title: Strength
-          type: number
+          anyOf:
+            - type: number
+            - type: 'null'
           description: Strength of the conditioning
-          nullable: true
         aspect_ratio:
           title: Aspect Ratio
           enum:
@@ -674,19 +718,24 @@ components:
             $ref: '#/components/schemas/GeneratedImage'
           description: The generated image files info
         timings:
-          $ref: '#/components/schemas/Timings'
+          anyOf:
+            - $ref: '#/components/schemas/Timings'
+            - type: 'null'
+          description: Timing information
         seed:
           title: Seed
-          type: integer
+          anyOf:
+            - type: integer
+            - type: 'null'
           description: Seed used for generation
-          nullable: true
         has_nsfw_concepts:
           title: Has Nsfw Concepts
-          type: array
-          items:
-            type: boolean
+          anyOf:
+            - type: array
+              items:
+                type: boolean
+            - type: 'null'
           description: Whether images contain NSFW concepts
-          nullable: true
         prompt:
           title: Prompt
           type: string
@@ -698,12 +747,14 @@ components:
       properties:
         image_url:
           title: Image Url
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         weight:
           title: Weight
-          type: number
-          nullable: true
+          anyOf:
+            - type: number
+            - type: 'null'
     RegisterUserModel:
       title: RegisterUserModel
       required:
@@ -723,9 +774,10 @@ components:
           type: string
         marketing_email_consent:
           title: Marketing Email Consent
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           default: NONE
-          nullable: true
         ai_training_opt_out:
           title: Ai Training Opt Out
           type: boolean
@@ -780,8 +832,9 @@ components:
           default: Unknown
         avatarUrl:
           title: Avatarurl
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         accountTier:
           title: Accounttier
           type: string
@@ -792,8 +845,9 @@ components:
           default: free
         webSubscriptionEnd:
           title: Websubscriptionend
-          type: integer
-          nullable: true
+          anyOf:
+            - type: integer
+            - type: 'null'
         avatarProjectCreditUsed:
           title: Avatarprojectcreditused
           type: integer
@@ -831,25 +885,30 @@ components:
           type: boolean
         subscriptionState:
           title: Subscriptionstate
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         tosAcceptableDate:
           title: Tosacceptabledate
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         tosAcceptedVersion:
           title: Tosacceptedversion
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         apiSubscriptionState:
           title: Apisubscriptionstate
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         apiTOSAcceptance:
           title: Apitosacceptance
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           default: false
-          nullable: true
         marketingEmailConsent:
           title: Marketingemailconsent
           type: string
@@ -863,9 +922,13 @@ components:
           default: NONE
         dresidenceLegalUpdatedAt:
           title: Dresidencelegalupdatedat
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         tierLimits:
+          default:
+            maxInputLength: 300
+            maxAudioDuration: 30000
           $ref: '#/components/schemas/TierLimits'
     ValidationError:
       title: ValidationError
@@ -901,48 +964,57 @@ components:
         service:
           title: Service
           anyOf:
-            - enum:
+            - const: eleven
+              enum:
                 - eleven
               type: string
-            - enum:
+            - const: cartesia
+              enum:
                 - cartesia
               type: string
         name:
           title: Name
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         description:
           title: Description
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         labels:
           title: Labels
-          type: object
-          additionalProperties:
-            type: string
-          nullable: true
+          anyOf:
+            - type: object
+              additionalProperties:
+                type: string
+            - type: 'null'
         preview_url:
           title: Preview Url
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         premium:
           title: Premium
           type: boolean
           default: false
         user_id:
           title: User Id
-          type: string
-          nullable: true
+          anyOf:
+            - type: string
+            - type: 'null'
         created_at:
           title: Created At
-          type: string
-          format: date-time
-          nullable: true
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
         updated_at:
           title: Updated At
-          type: string
-          format: date-time
-          nullable: true
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
     VoicesResponseBody:
       title: VoicesResponseBody
       required:
