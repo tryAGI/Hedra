@@ -7,7 +7,7 @@ public partial class Tests
     {
         using var client = GetAuthenticatedClient();
 
-        AvatarProjectItem  projectStatus = await client.Projects.GetProjectAsync(
+        AvatarProjectItem projectStatus = await client.Projects.GetProjectAsync(
             projectId: "75e4bc3d-ac30-4798-a6c2-f2dd3ff2b633");
        
         projectStatus.Should().NotBeNull();

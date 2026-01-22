@@ -1,3 +1,5 @@
+[assembly: Parallelize]
+
 namespace Hedra.IntegrationTests;
 
 [TestClass]
