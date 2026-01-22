@@ -49,7 +49,7 @@ namespace Hedra
         public global::Hedra.ApiGenerateTalkingAvatarRequestBodyAudioSource? AudioSource { get; set; }
 
         /// <summary>
-        /// 
+        /// Image metadata
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("avatarImageInput")]
         public global::Hedra.AvatarImageInput? AvatarImageInput { get; set; }
@@ -83,7 +83,9 @@ namespace Hedra
         /// `tts` for text to speech or `audio`<br/>
         /// Default Value: audio
         /// </param>
-        /// <param name="avatarImageInput"></param>
+        /// <param name="avatarImageInput">
+        /// Image metadata
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

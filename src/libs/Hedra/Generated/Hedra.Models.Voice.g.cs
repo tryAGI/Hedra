@@ -15,7 +15,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string VoiceId { get; set; }
+        public string VoiceId { get; set; } = default!;
 
         /// <summary>
         /// 
@@ -23,7 +23,7 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("service")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::Hedra.VoiceServiceVariant1?, global::Hedra.VoiceServiceVariant2?>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Hedra.AnyOf<global::Hedra.VoiceServiceVariant1?, global::Hedra.VoiceServiceVariant2?> Service { get; set; }
+        public global::Hedra.AnyOf<global::Hedra.VoiceServiceVariant1?, global::Hedra.VoiceServiceVariant2?> Service { get; set; } = default!;
 
         /// <summary>
         /// 

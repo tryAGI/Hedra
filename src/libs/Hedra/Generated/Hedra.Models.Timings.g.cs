@@ -13,7 +13,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double Total { get; set; }
+        public double Total { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

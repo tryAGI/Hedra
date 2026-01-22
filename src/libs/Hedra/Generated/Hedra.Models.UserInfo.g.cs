@@ -13,7 +13,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userId")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string UserId { get; set; }
+        public string UserId { get; set; } = default!;
 
         /// <summary>
         /// Default Value: Unknown
@@ -98,7 +98,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("avatarConsent")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool AvatarConsent { get; set; }
+        public bool AvatarConsent { get; set; } = default!;
 
         /// <summary>
         /// 
@@ -141,7 +141,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("aiTrainingOptOut")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool AiTrainingOptOut { get; set; }
+        public bool AiTrainingOptOut { get; set; } = default!;
 
         /// <summary>
         /// Default Value: NONE
@@ -156,7 +156,7 @@ namespace Hedra
         public string? DresidenceLegalUpdatedAt { get; set; }
 
         /// <summary>
-        /// 
+        /// Default Value: {"maxInputLength":300,"maxAudioDuration":30000}
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tierLimits")]
         public global::Hedra.TierLimits? TierLimits { get; set; }
@@ -222,7 +222,9 @@ namespace Hedra
         /// Default Value: NONE
         /// </param>
         /// <param name="dresidenceLegalUpdatedAt"></param>
-        /// <param name="tierLimits"></param>
+        /// <param name="tierLimits">
+        /// Default Value: {"maxInputLength":300,"maxAudioDuration":30000}
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

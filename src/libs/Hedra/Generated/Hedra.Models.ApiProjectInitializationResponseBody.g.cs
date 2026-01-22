@@ -13,7 +13,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("jobId")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string JobId { get; set; }
+        public string JobId { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

@@ -13,7 +13,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("projects")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Hedra.AvatarProjectItem> Projects { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.AvatarProjectItem> Projects { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

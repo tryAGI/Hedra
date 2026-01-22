@@ -13,14 +13,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxInputLength")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int MaxInputLength { get; set; }
+        public int MaxInputLength { get; set; } = default!;
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxAudioDuration")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int MaxAudioDuration { get; set; }
+        public int MaxAudioDuration { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

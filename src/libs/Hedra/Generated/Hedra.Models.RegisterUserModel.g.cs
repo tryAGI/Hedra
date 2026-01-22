@@ -13,21 +13,21 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("residence_not_blocked")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ResidenceNotBlocked { get; set; }
+        public string ResidenceNotBlocked { get; set; } = default!;
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tos_accepted")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool TosAccepted { get; set; }
+        public bool TosAccepted { get; set; } = default!;
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tos_version")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string TosVersion { get; set; }
+        public string TosVersion { get; set; } = default!;
 
         /// <summary>
         /// Default Value: NONE

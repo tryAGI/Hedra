@@ -34,47 +34,47 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.ApiGenerateTalkingAvatarRequestBodyAspectRatio? Type2 { get; set; }
+        public object? Type2 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.ApiGenerateTalkingAvatarRequestBodyAudioSource? Type3 { get; set; }
+        public global::Hedra.ApiGenerateTalkingAvatarRequestBodyAspectRatio? Type3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AvatarImageInput? Type4 { get; set; }
+        public global::Hedra.ApiGenerateTalkingAvatarRequestBodyAudioSource? Type4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int? Type5 { get; set; }
+        public global::Hedra.AvatarImageInput? Type5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.ApiProjectInitializationResponseBody? Type6 { get; set; }
+        public int? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AvatarProjectItem? Type7 { get; set; }
+        public global::Hedra.ApiProjectInitializationResponseBody? Type7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.DateTime? Type8 { get; set; }
+        public global::Hedra.AvatarProjectItem? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AvatarProjectItemAspectRatio? Type9 { get; set; }
+        public global::System.DateTime? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AvatarProjectStatus? Type10 { get; set; }
+        public global::Hedra.AvatarProjectItemAspectRatio? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Type11 { get; set; }
+        public global::Hedra.AvatarProjectStatus? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public object? Type12 { get; set; }
+        public double? Type12 { get; set; }
         /// <summary>
         /// 
         /// </summary>

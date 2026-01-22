@@ -44,7 +44,7 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("aspectRatio")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AvatarProjectItemAspectRatioJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Hedra.AvatarProjectItemAspectRatio AspectRatio { get; set; }
+        public global::Hedra.AvatarProjectItemAspectRatio AspectRatio { get; set; } = default!;
 
         /// <summary>
         /// 
@@ -80,7 +80,6 @@ namespace Hedra
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AvatarProjectStatusJsonConverter))]
         public global::Hedra.AvatarProjectStatus? Status { get; set; }
 
         /// <summary>

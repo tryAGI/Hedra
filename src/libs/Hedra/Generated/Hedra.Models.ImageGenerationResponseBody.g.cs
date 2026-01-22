@@ -13,10 +13,10 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("images")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Hedra.GeneratedImage> Images { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.GeneratedImage> Images { get; set; } = default!;
 
         /// <summary>
-        /// Timing information for the generation process
+        /// Timing information
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timings")]
         public global::Hedra.Timings? Timings { get; set; }
@@ -38,7 +38,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Prompt { get; set; }
+        public string Prompt { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,7 +53,7 @@ namespace Hedra
         /// The generated image files info
         /// </param>
         /// <param name="timings">
-        /// Timing information for the generation process
+        /// Timing information
         /// </param>
         /// <param name="seed">
         /// Seed used for generation

@@ -44,7 +44,9 @@ namespace Hedra
         /// `tts` for text to speech or `audio`<br/>
         /// Default Value: audio
         /// </param>
-        /// <param name="avatarImageInput"></param>
+        /// <param name="avatarImageInput">
+        /// Image metadata
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Hedra.ApiProjectInitializationResponseBody> InitializeCharacterGenerationAsync(
