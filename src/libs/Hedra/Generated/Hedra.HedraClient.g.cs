@@ -4,17 +4,6 @@
 namespace Hedra
 {
     /// <summary>
-    /// ## Base URL<br/>
-    /// All paths are referenced from the base URL: `https://mercury.dev.dream-ai.com/api`<br/>
-    /// ## Example usage<br/>
-    /// ### 1. Upload audio<br/>
-    /// `audio_response = requests.post(f"{BASE_URL}/v1/audio", headers={'X-API-KEY': API_KEY}, files={'file': open('audio.mp3','rb')})`<br/>
-    /// ### 2. Upload image<br/>
-    /// `image_response = requests.post(f"{BASE_URL}/v1/portrait", headers={'X-API-KEY': API_KEY}, files={'file': open('img.png','rb')})`<br/>
-    /// ### 3. Generate character video<br/>
-    /// `video_response = requests.post(f"{BASE_URL}/v1/characters", headers={'X-API-KEY': API_KEY}, json={"avatarImage": image_response.json()["url"], "audioSource": "audio", "voiceUrl": audio_response.json()["url"]})`<br/>
-    /// ### 4. Call the Project endpoint to see your project / job status and get access to the URL of your generated character.<br/>
-    /// `project_status = requests.get(f"{BASE_URL}/v1/projects/{project_id}", headers={'X-API-KEY': API_KEY})`<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -46,51 +35,6 @@ namespace Hedra
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::Hedra.SourceGenerationContext.Default;
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public VoiceClient Voice => new VoiceClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public AudioClient Audio => new AudioClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public PortraitClient Portrait => new PortraitClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public CharactersClient Characters => new CharactersClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ProjectsClient Projects => new ProjectsClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
 
         /// <summary>
         /// Creates a new instance of the HedraClient.

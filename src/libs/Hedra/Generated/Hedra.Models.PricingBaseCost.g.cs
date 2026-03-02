@@ -1,0 +1,18 @@
+
+#nullable enable
+
+namespace Hedra
+{
+    /// <summary>
+    /// Flat base cost in credits. Present for per-generation models (images). Duration-based models leave this unset.
+    /// </summary>
+    public sealed partial class PricingBaseCost
+    {
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    }
+}

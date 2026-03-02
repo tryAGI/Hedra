@@ -1,0 +1,18 @@
+
+#nullable enable
+
+namespace Hedra
+{
+    /// <summary>
+    /// The id(s) of the image(s) to reference in the generation. Only used for multi-image video generation and will supersede start_keyframe_id.
+    /// </summary>
+    public sealed partial class GenerateVideoResponseReferenceImageIds
+    {
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    }
+}

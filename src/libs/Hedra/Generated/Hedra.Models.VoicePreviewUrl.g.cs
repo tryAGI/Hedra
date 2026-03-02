@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// 
+    /// Preview URL of the Voice.
     /// </summary>
     public sealed partial class VoicePreviewUrl
     {

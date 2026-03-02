@@ -32,6 +32,18 @@ namespace Hedra
         public string Type { get; set; } = default!;
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
+        public object? Input { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ctx")]
+        public object? Ctx { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -43,17 +55,23 @@ namespace Hedra
         /// <param name="loc"></param>
         /// <param name="msg"></param>
         /// <param name="type"></param>
+        /// <param name="input"></param>
+        /// <param name="ctx"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ValidationError(
             global::System.Collections.Generic.IList<global::Hedra.AnyOf<string, int?>> loc,
             string msg,
-            string type)
+            string type,
+            object? input,
+            object? ctx)
         {
             this.Loc = loc ?? throw new global::System.ArgumentNullException(nameof(loc));
             this.Msg = msg ?? throw new global::System.ArgumentNullException(nameof(msg));
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Input = input;
+            this.Ctx = ctx;
         }
 
         /// <summary>

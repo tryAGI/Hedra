@@ -1,44 +1,144 @@
 openapi: '3.2.0'
 info:
-  title: Hedra API
-  description: "\n\n## Base URL\nAll paths are referenced from the base URL: `https://mercury.dev.dream-ai.com/api`\n\n## Example usage\n### 1. Upload audio\n`audio_response = requests.post(f\"{BASE_URL}/v1/audio\", headers={'X-API-KEY': API_KEY}, files={'file': open('audio.mp3','rb')})`\n\n### 2. Upload image\n`image_response = requests.post(f\"{BASE_URL}/v1/portrait\", headers={'X-API-KEY': API_KEY}, files={'file': open('img.png','rb')})`\n\n### 3. Generate character video\n`video_response = requests.post(f\"{BASE_URL}/v1/characters\", headers={'X-API-KEY': API_KEY}, json={\"avatarImage\": image_response.json()[\"url\"], \"audioSource\": \"audio\", \"voiceUrl\": audio_response.json()[\"url\"]})`\n\n### 4. Call the Project endpoint to see your project / job status and get access to the URL of your generated character.\n`project_status = requests.get(f\"{BASE_URL}/v1/projects/{project_id}\", headers={'X-API-KEY': API_KEY})`\n\n"
+  title: Hedra Web API
   version: 0.1.0
 servers:
   - url: https://mercury.dev.dream-ai.com/api
 paths:
-  /v1/voices:
+  /public/models:
     get:
       tags:
-        - Voice
-      summary: Retrieve available voices
-      operationId: api_access_get_voices_v1_voices_get
+        - Public
+      summary: List Models
+      operationId: list_models_public_models_get
+      parameters:
+        - name: types
+          in: query
+          schema:
+            title: Types
+            anyOf:
+              - type: array
+                items:
+                  type: string
+              - type: 'null'
       responses:
         '200':
           description: Successful Response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VoicesResponseBody'
+                title: Response List Models Public Models Get
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
       security:
         - APIKeyHeader: [ ]
-  /v1/audio:
+  /public/voices:
+    get:
+      tags:
+        - Public
+      summary: List Voices
+      operationId: list_voices_public_voices_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response List Voices Public Voices Get
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+      security:
+        - APIKeyHeader: [ ]
+  /public/assets:
+    get:
+      tags:
+        - Public
+      summary: List Assets
+      operationId: list_assets_public_assets_get
+      parameters:
+        - name: type
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/AssetType'
+        - name: ids
+          in: query
+          schema:
+            title: Ids
+            anyOf:
+              - type: string
+              - type: 'null'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response List Assets Public Assets Get
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: [ ]
     post:
       tags:
-        - Audio
-      summary: Upload audio
-      operationId: api_access_upload_audio_v1_audio_post
+        - Public
+      summary: Create Asset
+      operationId: create_asset_public_assets_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAssetRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAssetResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: [ ]
+  '/public/assets/{id}/upload':
+    post:
+      tags:
+        - Public
+      summary: Upload Asset
+      operationId: upload_asset_public_assets__id__upload_post
       parameters:
-        - name: content-length
-          in: header
+        - name: id
+          in: path
+          required: true
           schema:
-            title: Content-Length
-            type: integer
-            default: -1
+            title: Id
+            type: string
+            format: uuid
       requestBody:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Body_api_access_upload_audio_v1_audio_post'
+              $ref: '#/components/schemas/Body_upload_asset_public_assets__id__upload_post'
         required: true
       responses:
         '200':
@@ -46,7 +146,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UploadAudioResponseBody'
+                $ref: '#/components/schemas/Asset'
         '422':
           description: Validation Error
           content:
@@ -55,174 +155,73 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
         - APIKeyHeader: [ ]
-  /v1/portrait:
-    post:
+  /public/generations:
+    get:
       tags:
-        - Portrait
-      summary: Upload image
-      operationId: api_access_upload_image_v1_portrait_post
+        - Public
+      summary: 'List '
+      operationId: list__public_generations_get
       parameters:
-        - name: aspect_ratio
+        - name: type
           in: query
           schema:
-            title: Aspect Ratio
-            type: string
-            default: '1:1'
-        - name: content-length
-          in: header
-          schema:
-            title: Content-Length
-            type: integer
-            default: -1
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Body_api_access_upload_image_v1_portrait_post'
-        required: true
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UploadAudioResponseBody'
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-      security:
-        - APIKeyHeader: [ ]
-  /v1/characters:
-    post:
-      tags:
-        - Characters
-      summary: Initialize character generation
-      operationId: api_access_initialize_talking_head_avatar_v1_characters_post
-      parameters:
-        - name: content-length
-          in: header
-          schema:
-            title: Content-Length
-            type: integer
-            default: -1
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ApiGenerateTalkingAvatarRequestBody'
-        required: true
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiProjectInitializationResponseBody'
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-      security:
-        - APIKeyHeader: [ ]
-  /v1/projects:
-    get:
-      tags:
-        - Projects
-      summary: Get all project for the current user
-      operationId: api_access_get_all_user_projects_v1_projects_get
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetUserAvatarJobsResponse'
-      security:
-        - APIKeyHeader: [ ]
-  '/v1/projects/{project_id}':
-    get:
-      tags:
-        - Projects
-      summary: Get project
-      operationId: api_access_get_project_v1_projects__project_id__get
-      parameters:
-        - name: project_id
-          in: path
-          required: true
-          schema:
-            title: Project Id
-            type: string
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AvatarProjectItem'
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-      security:
-        - APIKeyHeader: [ ]
-    delete:
-      tags:
-        - Projects
-      summary: Delete a project
-      operationId: api_access_delete_project_v1_projects__project_id__delete
-      parameters:
-        - name: project_id
-          in: path
-          required: true
-          schema:
-            title: Project Id
-            type: string
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema: { }
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-      security:
-        - APIKeyHeader: [ ]
-  '/v1/projects/{project_id}/sharing':
-    post:
-      tags:
-        - Projects
-      summary: Share or unshare a project
-      operationId: api_access_share_project_v1_projects__project_id__sharing_post
-      parameters:
-        - name: project_id
-          in: path
-          required: true
-          schema:
-            title: Project Id
-            type: string
-        - name: shared
+            title: Type
+            anyOf:
+              - $ref: '#/components/schemas/AssetType'
+              - $ref: '#/components/schemas/GenerationType'
+              - type: 'null'
+        - name: created_before
           in: query
           schema:
-            title: Shared
-            type: boolean
-            default: false
+            title: Created Before
+            anyOf:
+              - type: string
+                format: date-time
+              - type: 'null'
+        - name: created_after
+          in: query
+          schema:
+            title: Created After
+            anyOf:
+              - type: string
+                format: date-time
+              - type: 'null'
+        - name: prompt_query
+          in: query
+          schema:
+            title: Prompt Query
+            anyOf:
+              - type: string
+              - type: 'null'
+        - name: agent_thread_id
+          in: query
+          schema:
+            title: Agent Thread Id
+            anyOf:
+              - type: string
+                format: uuid
+              - type: 'null'
+        - name: ids
+          in: query
+          schema:
+            title: Ids
+            anyOf:
+              - type: string
+              - type: 'null'
+        - name: paging_params
+          in: query
+          schema:
+            default:
+              limit: 100
+              offset: 0
+            $ref: '#/components/schemas/PagingParams'
       responses:
         '200':
           description: Successful Response
           content:
             application/json:
-              schema: { }
+              schema:
+                $ref: '#/components/schemas/PagedResponse_Generation_'
         '422':
           description: Validation Error
           content:
@@ -231,36 +230,47 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
         - APIKeyHeader: [ ]
-  /healthz:
-    get:
-      summary: Ping
-      operationId: ping_healthz_get
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema: { }
-  /ping:
-    get:
-      summary: Ping
-      operationId: ping_ping_get
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema: { }
-  /v1/user/register:
     post:
-      summary: Register User
-      description: "This is the registration endpoint, ported from the golang API.\nHowever, this is using a new url / path (/v1/user/register instead of /register -- which will end up being:\n/api/v1/user/register\nNOTE: this will automatically trigger creating brevo contacts"
-      operationId: register_user_v1_user_register_post
+      tags:
+        - Public
+      summary: Generate Asset
+      operationId: generate_asset_public_generations_post
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegisterUserModel'
+              title: Generate Request
+              oneOf:
+                - $ref: '#/components/schemas/GenerateVideoRequest-Input'
+                - $ref: '#/components/schemas/GenerateTextToSpeechRequest'
+                - $ref: '#/components/schemas/GenerateTextToSoundRequest'
+                - $ref: '#/components/schemas/GenerateImageRequest'
+                - $ref: '#/components/schemas/GenerateImageUpscaleRequest'
+                - $ref: '#/components/schemas/GenerateVideoUpscaleRequest'
+                - $ref: '#/components/schemas/GenerateIsolatedAudioRequest'
+                - $ref: '#/components/schemas/GenerateSpeechToSpeechRequest'
+                - $ref: '#/components/schemas/GenerateVoiceCloneRequest'
+                - $ref: '#/components/schemas/GenerateAudioFromVideoRequest'
+                - $ref: '#/components/schemas/GenerateVideoWithAudioRequest'
+                - $ref: '#/components/schemas/GenerateVideoToVideoRequest'
+                - $ref: '#/components/schemas/GenerateMotionControlRequest-Input'
+              discriminator:
+                propertyName: type
+                mapping:
+                  video: '#/components/schemas/GenerateVideoRequest-Input'
+                  text_to_speech: '#/components/schemas/GenerateTextToSpeechRequest'
+                  text_to_sound: '#/components/schemas/GenerateTextToSoundRequest'
+                  image: '#/components/schemas/GenerateImageRequest'
+                  image_to_image: '#/components/schemas/GenerateImageRequest'
+                  image_upscale: '#/components/schemas/GenerateImageUpscaleRequest'
+                  video_upscale: '#/components/schemas/GenerateVideoUpscaleRequest'
+                  audio_isolation: '#/components/schemas/GenerateIsolatedAudioRequest'
+                  speech_to_speech: '#/components/schemas/GenerateSpeechToSpeechRequest'
+                  voice_clone: '#/components/schemas/GenerateVoiceCloneRequest'
+                  audio_from_video: '#/components/schemas/GenerateAudioFromVideoRequest'
+                  video_with_audio: '#/components/schemas/GenerateVideoWithAudioRequest'
+                  video_to_video: '#/components/schemas/GenerateVideoToVideoRequest'
+                  motion_control: '#/components/schemas/GenerateMotionControlRequest-Input'
         required: true
       responses:
         '200':
@@ -268,31 +278,38 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetUserResponse'
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-  /v1/images/text-to-image:
-    post:
-      summary: Generate Image Endpoint
-      description: Generate an image from a text prompt or modify an existing image using advanced parameters.
-      operationId: generate_image_endpoint_v1_images_text_to_image_post
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ImageGenerationRequestBody'
-        required: true
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ImageGenerationResponseBody'
+                title: Response Generate Asset Public Generations Post
+                oneOf:
+                  - $ref: '#/components/schemas/GenerateVideoResponse'
+                  - $ref: '#/components/schemas/GenerateTextToSpeechResponse'
+                  - $ref: '#/components/schemas/GenerateTextToSoundResponse'
+                  - $ref: '#/components/schemas/GenerateImageResponse'
+                  - $ref: '#/components/schemas/GenerateImageUpscaleResponse'
+                  - $ref: '#/components/schemas/GenerateVideoUpscaleResponse'
+                  - $ref: '#/components/schemas/GenerateIsolatedAudioResponse'
+                  - $ref: '#/components/schemas/GenerateSpeechToSpeechResponse'
+                  - $ref: '#/components/schemas/GenerateVoiceCloneResponse'
+                  - $ref: '#/components/schemas/GenerateAudioFromVideoResponse'
+                  - $ref: '#/components/schemas/GenerateVideoWithAudioResponse'
+                  - $ref: '#/components/schemas/GenerateVideoToVideoResponse'
+                  - $ref: '#/components/schemas/GenerateMotionControlResponse'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    video: '#/components/schemas/GenerateVideoResponse'
+                    text_to_speech: '#/components/schemas/GenerateTextToSpeechResponse'
+                    text_to_sound: '#/components/schemas/GenerateTextToSoundResponse'
+                    image: '#/components/schemas/GenerateImageResponse'
+                    image_to_image: '#/components/schemas/GenerateImageResponse'
+                    image_upscale: '#/components/schemas/GenerateImageUpscaleResponse'
+                    video_upscale: '#/components/schemas/GenerateVideoUpscaleResponse'
+                    audio_isolation: '#/components/schemas/GenerateIsolatedAudioResponse'
+                    speech_to_speech: '#/components/schemas/GenerateSpeechToSpeechResponse'
+                    voice_clone: '#/components/schemas/GenerateVoiceCloneResponse'
+                    audio_from_video: '#/components/schemas/GenerateAudioFromVideoResponse'
+                    video_with_audio: '#/components/schemas/GenerateVideoWithAudioResponse'
+                    video_to_video: '#/components/schemas/GenerateVideoToVideoResponse'
+                    motion_control: '#/components/schemas/GenerateMotionControlResponse'
         '422':
           description: Validation Error
           content:
@@ -300,306 +317,3534 @@ paths:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
-        - JWTBearer: [ ]
+        - APIKeyHeader: [ ]
+  '/public/generations/{generation_id}/status':
+    get:
+      tags:
+        - Public
+      summary: Get Status
+      operationId: get_status_public_generations__generation_id__status_get
+      parameters:
+        - name: generation_id
+          in: path
+          required: true
+          schema:
+            title: Generation Id
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerationStatusResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: [ ]
+  /public/billing/credits:
+    get:
+      tags:
+        - Public
+      summary: Get Credits
+      operationId: get_credits_public_billing_credits_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditBalance'
+      security:
+        - APIKeyHeader: [ ]
 components:
   schemas:
-    ApiGenerateTalkingAvatarRequestBody:
-      title: ApiGenerateTalkingAvatarRequestBody
-      type: object
-      properties:
-        text:
-          title: Text
-          type: string
-          description: text to convert to audio. Ignored if audio_source is not tts
-          default: ''
-        voiceId:
-          title: Voiceid
-          anyOf:
-            - type: string
-            - type: 'null'
-          description: Voice ID
-        voiceUrl:
-          title: Voiceurl
-          anyOf:
-            - type: string
-            - type: 'null'
-          description: URL of audio uploaded using the /v1/audio endpoint
-        avatarImage:
-          title: Avatarimage
-          anyOf:
-            - type: string
-            - type: 'null'
-          description: URL of image uploaded via /v1/portrait or base64-encoded image
-        aspectRatio:
-          title: Aspectratio
-          enum:
-            - '1:1'
-            - '16:9'
-            - '9:16'
-          type: string
-          description: Desired aspect ratio for the generated video
-          default: '1:1'
-        audioSource:
-          title: Audiosource
-          enum:
-            - tts
-            - audio
-          type: string
-          description: '`tts` for text to speech or `audio`'
-          default: audio
-        avatarImageInput:
-          anyOf:
-            - $ref: '#/components/schemas/AvatarImageInput'
-            - type: 'null'
-          description: Image metadata
-    ApiProjectInitializationResponseBody:
-      title: ApiProjectInitializationResponseBody
+    AIModel:
+      title: AIModel
       required:
-        - jobId
+        - id
+        - name
+        - description
+        - type
+        - price_details
       type: object
       properties:
-        jobId:
-          title: Jobid
+        id:
+          title: Id
           type: string
-    AvatarImageInput:
-      title: AvatarImageInput
+          description: ID of the model
+        name:
+          title: Name
+          type: string
+          description: Name of the model
+        description:
+          title: Description
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Description of the model.
+        type:
+          title: Type
+          type: string
+          description: Type of generation the model applies to.
+        aspect_ratios:
+          title: Aspect Ratios
+          anyOf:
+            - type: array
+              items:
+                type: string
+            - type: 'null'
+          description: Aspect ratios the model supports.
+        resolutions:
+          title: Resolutions
+          anyOf:
+            - type: array
+              items:
+                type: string
+            - type: 'null'
+          description: Resolutions the model supports.
+        durations:
+          title: Durations
+          anyOf:
+            - type: array
+              items:
+                type: string
+            - type: 'null'
+          description: Durations the model supports.
+        requires_start_frame:
+          title: Requires Start Frame
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          description: Whether the model is conditioned by a start frame.
+        requires_end_frame:
+          title: Requires End Frame
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          description: Whether the model is conditioned by an end frame.
+        requires_audio_input:
+          title: Requires Audio Input
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          description: Whether the model is conditioned by audio input.
+        requires_input_video:
+          title: Requires Input Video
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          description: Whether the model requires video input (video-to-video).
+        requires_character_orientation:
+          title: Requires Character Orientation
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          description: Whether the model requires character orientation (motion control).
+        eta_ms:
+          title: Eta Ms
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Average generation duration in milliseconds.
+        tags:
+          title: Tags
+          anyOf:
+            - type: array
+              items:
+                type: string
+            - type: 'null'
+          description: Tags for model categorization.
+        max_duration_ms:
+          title: Max Duration Ms
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Maximum output duration in milliseconds for video/audio models.
+        custom_resolution:
+          title: Custom Resolution
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          description: Whether the model supports custom resolution.
+        price_details:
+          description: Pricing details of the model.
+          $ref: '#/components/schemas/AIModelPrice'
+        pricing:
+          anyOf:
+            - $ref: '#/components/schemas/Pricing'
+            - type: 'null'
+          description: 'Extensible pricing information with dimension modifiers for resolution, audio, etc.'
+        dimensions:
+          title: Dimensions
+          anyOf:
+            - type: object
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/Dimension'
+            - type: 'null'
+          description: Width and height for each aspect_ratio and resolution tuple.
+        min_prompt_length:
+          title: Min Prompt Length
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Minimum character count for text prompts. Null means no minimum.
+        max_prompt_length:
+          title: Max Prompt Length
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Maximum character count for text prompts. Null means no maximum.
+        inputs:
+          title: Inputs
+          anyOf:
+            - type: array
+              items:
+                $ref: '#/components/schemas/InputMode'
+            - type: 'null'
+          description: List of input modes the model supports. Each mode groups mutually exclusive input slots. The frontend picks one mode. text_to_video (no inputs) is always implicitly available for VIDEO type models. Null means the model has no declarative input specifications (use requires_* booleans).
+        logo_url:
+          title: Logo Url
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL of the model's logo in SVG format.
+        premium:
+          title: Premium
+          type: boolean
+          description: Whether this is a premium model.
+          default: true
+        display_order:
+          title: Display Order
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Display order for UI sorting. Lower values appear first.
+    AIModelPrice:
+      title: AIModelPrice
       required:
-        - prompt
+        - credit_cost
+        - unit_scale
+        - billing_unit
       type: object
       properties:
-        seed:
-          title: Seed
+        credit_cost:
+          title: Credit Cost
           type: integer
-        prompt:
-          title: Prompt
+          description: Credit cost of the model.
+        unit_scale:
+          title: Unit Scale
+          type: integer
+          description: Unit scaling for the cost.
+        billing_unit:
+          title: Billing Unit
           type: string
-    AvatarProjectItem:
-      title: AvatarProjectItem
+          description: 'Billing unit of the model (e.g. ''generation'', ''second'', ''character'').'
+    Asset:
+      title: Asset
       required:
-        - aspectRatio
+        - id
+        - type
+        - name
+        - thumbnail_url
+        - created_at
+        - asset
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: The id of the asset.
+          format: uuid
+        type:
+          description: The type of the asset.
+          $ref: '#/components/schemas/AssetType'
+        name:
+          title: Name
+          type: string
+          description: Name of the asset. Default to user-provided file name.
+        thumbnail_url:
+          title: Thumbnail Url
+          type: string
+          description: URL of the thumbnail image.
+        description:
+          title: Description
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Optional description of the asset.
+        is_favorite:
+          title: Is Favorite
+          type: boolean
+          description: Whether the asset is favorited by the user.
+          default: false
+        recent:
+          title: Recent
+          type: boolean
+          description: Whether this asset was recently used by the user.
+          default: false
+        created_at:
+          title: Created At
+          type: string
+          description: Date the asset was created.
+        favorited_at:
+          title: Favorited At
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Date the asset was favorited.
+        asset:
+          title: Asset
+          oneOf:
+            - $ref: '#/components/schemas/UploadedImage'
+            - $ref: '#/components/schemas/UploadedAudio'
+            - $ref: '#/components/schemas/UploadedVideo'
+            - $ref: '#/components/schemas/GeneratedAudio'
+            - $ref: '#/components/schemas/GeneratedImage'
+            - $ref: '#/components/schemas/GeneratedVideo'
+            - $ref: '#/components/schemas/Voice'
+          description: The asset itself.
+          discriminator:
+            propertyName: type
+            mapping:
+              generated_audio: '#/components/schemas/GeneratedAudio'
+              generated_image: '#/components/schemas/GeneratedImage'
+              generated_video: '#/components/schemas/GeneratedVideo'
+              uploaded_audio: '#/components/schemas/UploadedAudio'
+              uploaded_image: '#/components/schemas/UploadedImage'
+              uploaded_video: '#/components/schemas/UploadedVideo'
+              voice: '#/components/schemas/Voice'
+    AssetType:
+      title: AssetType
+      enum:
+        - text
+        - image
+        - audio
+        - video
+        - voice
+      type: string
+    BatchImageResultItem:
+      title: BatchImageResultItem
+      required:
+        - created_at
+        - status
+        - progress
       type: object
       properties:
         id:
           title: Id
           anyOf:
             - type: string
+              format: uuid
             - type: 'null'
-        createdAt:
-          title: Createdat
+          description: The id of the generation created. None if failed.
+        asset_id:
+          title: Asset Id
           anyOf:
             - type: string
-              format: date-time
+              format: uuid
             - type: 'null'
-        username:
-          title: Username
-          anyOf:
-            - type: string
-            - type: 'null'
-        videoUrl:
-          title: Videourl
-          anyOf:
-            - type: string
-            - type: 'null'
-        avatarImageUrl:
-          title: Avatarimageurl
-          anyOf:
-            - type: string
-            - type: 'null'
-        aspectRatio:
-          title: Aspectratio
-          enum:
-            - '1:1'
-            - '16:9'
-            - '9:16'
+          description: The id of the image asset resulting from the generation. None if failed.
+        created_at:
+          title: Created At
           type: string
-        text:
-          title: Text
-          anyOf:
-            - type: string
-            - type: 'null'
-        voiceId:
-          title: Voiceid
-          anyOf:
-            - type: string
-            - type: 'null'
-        voiceUrl:
-          title: Voiceurl
-          anyOf:
-            - type: string
-            - type: 'null'
-        userId:
-          title: Userid
-          anyOf:
-            - type: string
-            - type: 'null'
-        jobType:
-          title: Jobtype
-          anyOf:
-            - type: string
-            - type: 'null'
+          description: Date the generation was submitted.
         status:
-          anyOf:
-            - $ref: '#/components/schemas/AvatarProjectStatus'
-            - type: 'null'
-        stage:
-          title: Stage
-          anyOf:
-            - type: string
-            - type: 'null'
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
         progress:
           title: Progress
-          anyOf:
-            - type: number
-            - type: 'null'
-        errorMessage:
-          title: Errormessage
-          anyOf:
-            - type: string
-            - type: 'null'
-        audioSource:
-          title: Audiosource
+          type: number
+          description: Current progress to completion. Between 0-1
+        error:
+          title: Error
           anyOf:
             - type: string
             - type: 'null'
-        avatarImageInput:
-          title: Avatarimageinput
+          description: Error message if this item failed.
+      description: Individual result item in a batch image generation.
+    BatchVideoResultItem:
+      title: BatchVideoResultItem
+      required:
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        id:
+          title: Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the generation created. None if failed.
+        asset_id:
+          title: Asset Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the video asset resulting from the generation. None if failed.
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        error:
+          title: Error
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Error message if this item failed.
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. None if unavailable.
+      description: Individual result item in a batch video generation.
+    Body_upload_asset_public_assets__id__upload_post:
+      title: Body_upload_asset_public_assets__id__upload_post
+      required:
+        - file
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          unrecognizedKeywords:
+            contentMediaType: application/octet-stream
+    CreateAssetRequest:
+      title: CreateAssetRequest
+      required:
+        - name
+        - type
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Name of the asset. Default to user-provided file name.
+        type:
+          description: The type of the asset.
+          $ref: '#/components/schemas/AssetType'
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+    CreateAssetResponse:
+      title: CreateAssetResponse
+      required:
+        - name
+        - type
+        - id
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Name of the asset. Default to user-provided file name.
+        type:
+          description: The type of the asset.
+          $ref: '#/components/schemas/AssetType'
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        id:
+          title: Id
+          type: string
+          description: The id of the newly created asset. Should be used for upload.
+          format: uuid
+        upload_url:
+          title: Upload Url
+          anyOf:
+            - maxLength: 2083
+              minLength: 1
+              type: string
+              format: uri
+            - type: 'null'
+          description: Presigned S3 URL for uploading the asset file using HTTP PUT. Only present when the asset type is VIDEO.
+    CreditBalance:
+      title: CreditBalance
+      required:
+        - remaining
+        - expiring
+        - used
+      type: object
+      properties:
+        remaining:
+          title: Remaining
+          type: integer
+          description: Remaining credits not yet used.
+        expiring:
+          title: Expiring
+          type: integer
+          description: Credits that will expire in the future.
+        used:
+          title: Used
+          type: integer
+          description: Credits used in the current billing period.
+        workspace_credits:
+          title: Workspace Credits
           anyOf:
             - type: object
+              additionalProperties:
+                type: integer
             - type: 'null'
-        shared:
-          title: Shared
-          type: boolean
-          default: false
-    AvatarProjectStatus:
-      title: AvatarProjectStatus
+          description: Credits for each workspace mapped by workspace_id. Only included if user is in a workspace.
+      description: Information about the current balance of Credits and usage.
+    Dimension:
+      title: Dimension
+      required:
+        - width
+        - height
+      type: object
+      properties:
+        width:
+          title: Width
+          type: integer
+          description: Width of the image.
+        height:
+          title: Height
+          type: integer
+          description: Height of the image.
+    ErrorCode:
+      title: ErrorCode
       enum:
-        - Queued
-        - InProgress
-        - Completed
-        - Failed
+        - UNKNOWN
+        - INVALID_ARGUMENT
+        - NOT_FOUND
+        - ALREADY_EXISTS
+        - PERMISSION_DENIED
+        - MISSING_CREDITS
+        - MODERATION_FAILED
+        - FAILED_PRECONDITION
+        - DEADLINE_EXCEEDED
+        - RESOURCE_EXHAUSTED
+        - UNAVAILABLE
+        - INTERNAL
       type: string
-    Body_api_access_upload_audio_v1_audio_post:
-      title: Body_api_access_upload_audio_v1_audio_post
+      description: "Universal error code space. Modeled after gRPC status codes.\n\nEvery exception in the system carries an ErrorCode. SDK clients map\n3rd-party errors to these codes at the lowest level. Retry logic,\nHTTP status mapping, and OTEL metrics all key off this enum.\n\nNOTE: The semantic meaning of these error codes is roughly mapped from the\n    semantic of the gRPC status codes: see\n    https://grpc.io/docs/guides/status-codes/ for details."
+    GenerateAudioFromVideoRequest:
+      title: GenerateAudioFromVideoRequest
       required:
-        - file
+        - audio_generation_model_id
+        - video_id
       type: object
       properties:
-        file:
-          title: File
-          type: string
-          format: binary
-    Body_api_access_upload_image_v1_portrait_post:
-      title: Body_api_access_upload_image_v1_portrait_post
-      required:
-        - file
-      type: object
-      properties:
-        file:
-          title: File
-          type: string
-          format: binary
-    ControlNet:
-      title: ControlNet
-      type: object
-      properties:
-        conditioning_scale:
-          title: Conditioning Scale
-          anyOf:
-            - type: number
-            - type: 'null'
-        control_mode:
-          title: Control Mode
+        workspace_id:
+          title: Workspace Id
           anyOf:
             - type: string
             - type: 'null'
-        begin_step_percent:
-          title: Begin Step Percent
+        agent_thread_id:
+          title: Agent Thread Id
           anyOf:
-            - type: number
+            - type: string
+              format: uuid
             - type: 'null'
-        end_step_percent:
-          title: End Step Percent
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
           anyOf:
-            - type: number
+            - type: string
+              format: uuid
             - type: 'null'
-        control_guidance_start:
-          title: Control Guidance Start
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
           anyOf:
-            - type: number
+            - type: array
+              items:
+                type: string
+                format: uuid
             - type: 'null'
-        control_guidance_end:
-          title: Control Guidance End
-          anyOf:
-            - type: number
-            - type: 'null'
-    ControlNetUnion:
-      title: ControlNetUnion
-      type: object
-      properties:
-        conditioning_scale:
-          title: Conditioning Scale
-          anyOf:
-            - type: number
-            - type: 'null'
-        control_mode:
-          title: Control Mode
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: audio_from_video
+          title: Type
+          type: string
+          default: audio_from_video
+        audio_generation_model_id:
+          title: Audio Generation Model Id
+          type: string
+          description: ID of the model to use for video-to-audio generation (Mirelo Studio).
+          format: uuid
+        video_id:
+          title: Video Id
+          type: string
+          description: The id of the video asset to generate audio from.
+          format: uuid
+        prompt:
+          title: Prompt
           anyOf:
             - type: string
             - type: 'null'
-        begin_step_percent:
-          title: Begin Step Percent
-          anyOf:
-            - type: number
-            - type: 'null'
-        end_step_percent:
-          title: End Step Percent
-          anyOf:
-            - type: number
-            - type: 'null'
-        control_guidance_start:
-          title: Control Guidance Start
-          anyOf:
-            - type: number
-            - type: 'null'
-        control_guidance_end:
-          title: Control Guidance End
-          anyOf:
-            - type: number
-            - type: 'null'
-    GeneratedImage:
-      title: GeneratedImage
+          description: Optional prompt to guide the audio generation.
+      description: Audio generation request that extracts sound effects from video using Mirelo Studio.
+    GenerateAudioFromVideoResponse:
+      title: GenerateAudioFromVideoResponse
       required:
+        - audio_generation_model_id
+        - video_id
+        - id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: audio_from_video
+          title: Type
+          type: string
+          default: audio_from_video
+        audio_generation_model_id:
+          title: Audio Generation Model Id
+          type: string
+          description: ID of the model to use for video-to-audio generation (Mirelo Studio).
+          format: uuid
+        video_id:
+          title: Video Id
+          type: string
+          description: The id of the video asset to generate audio from.
+          format: uuid
+        prompt:
+          title: Prompt
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Optional prompt to guide the audio generation.
+        id:
+          title: Id
+          type: string
+          description: The id of the generation created.
+          format: uuid
+        asset_id:
+          title: Asset Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the audio asset resulting from the generation. Only present when generation is complete.
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+    GenerateImageRequest:
+      title: GenerateImageRequest
+      required:
+        - text_prompt
+        - ai_model_id
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          title: Type
+          enum:
+            - image
+            - image_to_image
+          type: string
+          default: image
+        text_prompt:
+          title: Text Prompt
+          type: string
+          description: The text prompt for image generation or image editing.
+        aspect_ratio:
+          title: Aspect Ratio
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: The aspect ratio to use.
+        resolution:
+          title: Resolution
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: 'The resolution to use formatted like ''540p'', ''1080p'', ''1440p (2K QHD)'', etc.'
+        start_keyframe_id:
+          title: Start Keyframe Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The model to use.
+          format: uuid
+        reference_image_ids:
+          title: Reference Image Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the image(s) to reference in the generation. This is only used for image-to-image generation and will supersede start_keyframe_id.
+        batch_size:
+          title: Batch Size
+          maximum: 8.0
+          minimum: 1.0
+          type: integer
+          description: 'Number of image variations to generate (1-8). When > 1, batch_results will contain all generation results.'
+          default: 1
+        enhance_prompt:
+          title: Enhance Prompt
+          type: boolean
+          description: 'If true, automatically enhance the prompt before generation.'
+          default: false
+    GenerateImageResponse:
+      title: GenerateImageResponse
+      required:
+        - text_prompt
+        - ai_model_id
+        - asset_id
+        - id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          title: Type
+          enum:
+            - image
+            - image_to_image
+          type: string
+          default: image
+        text_prompt:
+          title: Text Prompt
+          type: string
+          description: The text prompt for image generation or image editing.
+        aspect_ratio:
+          title: Aspect Ratio
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: The aspect ratio to use.
+        resolution:
+          title: Resolution
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: 'The resolution to use formatted like ''540p'', ''1080p'', ''1440p (2K QHD)'', etc.'
+        start_keyframe_id:
+          title: Start Keyframe Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The model to use.
+          format: uuid
+        reference_image_ids:
+          title: Reference Image Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the image(s) to reference in the generation. This is only used for image-to-image generation and will supersede start_keyframe_id.
+        batch_size:
+          title: Batch Size
+          maximum: 8.0
+          minimum: 1.0
+          type: integer
+          description: 'Number of image variations to generate (1-8). When > 1, batch_results will contain all generation results.'
+          default: 1
+        enhance_prompt:
+          title: Enhance Prompt
+          type: boolean
+          description: 'If true, automatically enhance the prompt before generation.'
+          default: false
+        asset_id:
+          title: Asset Id
+          type: string
+          description: The id of the resulting image asset.
+          format: uuid
+        id:
+          title: Id
+          type: string
+          description: The id of the generation. Can be used to check status.
+          format: uuid
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+        batch_generation_id:
+          title: Batch Generation Id
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Unique identifier linking all generations in a batch.
+        batch_results:
+          title: Batch Results
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchImageResultItem'
+          description: 'All generation results in the batch. Always populated (even for batch_size=1). The main response fields (id, asset_id, etc.) reflect the first successful generation.'
+    GenerateImageUpscaleRequest:
+      title: GenerateImageUpscaleRequest
+      required:
+        - ai_model_id
+        - image_id
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: image_upscale
+          title: Type
+          type: string
+          default: image_upscale
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The model to use for upscaling.
+          format: uuid
+        image_id:
+          title: Image Id
+          type: string
+          description: The id of the Image asset to use as the basis for upscaling.
+          format: uuid
+        upscale_factor:
+          title: Upscale Factor
+          anyOf:
+            - type: number
+            - type: 'null'
+          description: Optional upscale factor to pass to the model (e.g. 2.0 for 2x).
+    GenerateImageUpscaleResponse:
+      title: GenerateImageUpscaleResponse
+      required:
+        - ai_model_id
+        - image_id
+        - asset_id
+        - id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: image_upscale
+          title: Type
+          type: string
+          default: image_upscale
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The model to use for upscaling.
+          format: uuid
+        image_id:
+          title: Image Id
+          type: string
+          description: The id of the Image asset to use as the basis for upscaling.
+          format: uuid
+        upscale_factor:
+          title: Upscale Factor
+          anyOf:
+            - type: number
+            - type: 'null'
+          description: Optional upscale factor to pass to the model (e.g. 2.0 for 2x).
+        asset_id:
+          title: Asset Id
+          type: string
+          description: The id of the resulting image asset.
+          format: uuid
+        id:
+          title: Id
+          type: string
+          description: The id of the generation. Can be used to check status.
+          format: uuid
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+    GenerateIsolatedAudioRequest:
+      title: GenerateIsolatedAudioRequest
+      required:
+        - audio_id
+        - ai_model_id
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: audio_isolation
+          title: Type
+          type: string
+          default: audio_isolation
+        audio_id:
+          title: Audio Id
+          type: string
+          description: The id of the audio asset requiring sound isolation.
+          format: uuid
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The id of the model to use for audio isolation.
+          format: uuid
+    GenerateIsolatedAudioResponse:
+      title: GenerateIsolatedAudioResponse
+      required:
+        - audio_id
+        - ai_model_id
+        - id
+        - asset_id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: audio_isolation
+          title: Type
+          type: string
+          default: audio_isolation
+        audio_id:
+          title: Audio Id
+          type: string
+          description: The id of the audio asset requiring sound isolation.
+          format: uuid
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The id of the model to use for audio isolation.
+          format: uuid
+        id:
+          title: Id
+          type: string
+          description: The id of the generation created.
+          format: uuid
+        asset_id:
+          title: Asset Id
+          type: string
+          description: The id of the isolated audio asset resulting from the generation.
+          format: uuid
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+    GenerateMotionControlRequest-Input:
+      title: GenerateMotionControlRequest
+      required:
+        - ai_model_id
+        - video_id
+        - start_keyframe_id
+        - generated_video_inputs
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: motion_control
+          title: Type
+          type: string
+          default: motion_control
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The id of the Motion Control model to use.
+          format: uuid
+        video_id:
+          title: Video Id
+          type: string
+          description: The id of the video asset to use as motion reference.
+          format: uuid
+        start_keyframe_id:
+          title: Start Keyframe Id
+          type: string
+          description: The id of the character image asset to animate with the motion from the video.
+          format: uuid
+        generated_video_inputs:
+          description: Video generation parameters including text_prompt and character_orientation.
+          $ref: '#/components/schemas/GeneratedVideoInputs'
+      description: "Motion Control request for transferring motion from a reference video to a character image.\nProcessed through V2V infrastructure internally."
+    GenerateMotionControlRequest-Output:
+      title: GenerateMotionControlRequest
+      required:
+        - ai_model_id
+        - video_id
+        - start_keyframe_id
+        - generated_video_inputs
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: motion_control
+          title: Type
+          type: string
+          default: motion_control
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The id of the Motion Control model to use.
+          format: uuid
+        video_id:
+          title: Video Id
+          type: string
+          description: The id of the video asset to use as motion reference.
+          format: uuid
+        start_keyframe_id:
+          title: Start Keyframe Id
+          type: string
+          description: The id of the character image asset to animate with the motion from the video.
+          format: uuid
+        generated_video_inputs:
+          description: Video generation parameters including text_prompt and character_orientation.
+          $ref: '#/components/schemas/GeneratedVideoInputs'
+      description: "Motion Control request for transferring motion from a reference video to a character image.\nProcessed through V2V infrastructure internally."
+    GenerateMotionControlResponse:
+      title: GenerateMotionControlResponse
+      required:
+        - ai_model_id
+        - video_id
+        - start_keyframe_id
+        - generated_video_inputs
+        - id
+        - asset_id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: motion_control
+          title: Type
+          type: string
+          default: motion_control
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The id of the Motion Control model to use.
+          format: uuid
+        video_id:
+          title: Video Id
+          type: string
+          description: The id of the video asset to use as motion reference.
+          format: uuid
+        start_keyframe_id:
+          title: Start Keyframe Id
+          type: string
+          description: The id of the character image asset to animate with the motion from the video.
+          format: uuid
+        generated_video_inputs:
+          description: Video generation parameters including text_prompt and character_orientation.
+          $ref: '#/components/schemas/GeneratedVideoInputs'
+        id:
+          title: Id
+          type: string
+          description: The id of the generation. Can be used to check status.
+          format: uuid
+        asset_id:
+          title: Asset Id
+          type: string
+          description: The id of the output video asset.
+          format: uuid
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation.
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1.
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+      description: Response for Motion Control generations.
+    GenerateSpeechToSpeechRequest:
+      title: GenerateSpeechToSpeechRequest
+      required:
+        - audio_id
+        - ai_model_id
+        - voice_id
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: speech_to_speech
+          title: Type
+          type: string
+          default: speech_to_speech
+        audio_id:
+          title: Audio Id
+          type: string
+          description: The id of the audio asset requiring sound isolation.
+          format: uuid
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The id of the model to use for audio isolation.
+          format: uuid
+        voice_id:
+          title: Voice Id
+          type: string
+          description: The id of the Voice to use.
+          format: uuid
+    GenerateSpeechToSpeechResponse:
+      title: GenerateSpeechToSpeechResponse
+      required:
+        - audio_id
+        - ai_model_id
+        - voice_id
+        - id
+        - asset_id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: speech_to_speech
+          title: Type
+          type: string
+          default: speech_to_speech
+        audio_id:
+          title: Audio Id
+          type: string
+          description: The id of the audio asset requiring sound isolation.
+          format: uuid
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The id of the model to use for audio isolation.
+          format: uuid
+        voice_id:
+          title: Voice Id
+          type: string
+          description: The id of the Voice to use.
+          format: uuid
+        id:
+          title: Id
+          type: string
+          description: The id of the generation created.
+          format: uuid
+        asset_id:
+          title: Asset Id
+          type: string
+          description: The id of the isolated audio asset resulting from the generation.
+          format: uuid
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+    GenerateTextToSoundRequest:
+      title: GenerateTextToSoundRequest
+      required:
+        - ai_model_id
+        - text
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: text_to_sound
+          title: Type
+          type: string
+          default: text_to_sound
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The id of the model to use for sound effect generation.
+          format: uuid
+        text:
+          title: Text
+          type: string
+          description: The text description of the sound effect to generate.
+        duration_seconds:
+          title: Duration Seconds
+          anyOf:
+            - maximum: 30.0
+              minimum: 0.5
+              type: number
+            - type: 'null'
+          description: 'The duration of the sound effect in seconds (0.5-30). If not specified, duration is automatically determined from the prompt.'
+        prompt_influence:
+          title: Prompt Influence
+          anyOf:
+            - maximum: 1.0
+              minimum: 0.0
+              type: number
+            - type: 'null'
+          description: Controls how strictly the model follows the prompt (0-1). Higher values mean more literal interpretation. Defaults to 0.3.
+        loop:
+          title: Loop
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          description: Whether to create a sound effect that loops smoothly. Only available for the eleven_text_to_sound_v2 model.
+        output_format:
+          title: Output Format
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: 'Output format of the generated audio. Formatted as codec_sample_rate_bitrate (e.g., mp3_22050_32, mp3_44100_128, pcm_44100). If not specified, defaults to mp3_44100_128.'
+          default: mp3_44100_128
+    GenerateTextToSoundResponse:
+      title: GenerateTextToSoundResponse
+      required:
+        - ai_model_id
+        - text
+        - id
+        - asset_id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: text_to_sound
+          title: Type
+          type: string
+          default: text_to_sound
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The id of the model to use for sound effect generation.
+          format: uuid
+        text:
+          title: Text
+          type: string
+          description: The text description of the sound effect to generate.
+        duration_seconds:
+          title: Duration Seconds
+          anyOf:
+            - maximum: 30.0
+              minimum: 0.5
+              type: number
+            - type: 'null'
+          description: 'The duration of the sound effect in seconds (0.5-30). If not specified, duration is automatically determined from the prompt.'
+        prompt_influence:
+          title: Prompt Influence
+          anyOf:
+            - maximum: 1.0
+              minimum: 0.0
+              type: number
+            - type: 'null'
+          description: Controls how strictly the model follows the prompt (0-1). Higher values mean more literal interpretation. Defaults to 0.3.
+        loop:
+          title: Loop
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          description: Whether to create a sound effect that loops smoothly. Only available for the eleven_text_to_sound_v2 model.
+        output_format:
+          title: Output Format
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: 'Output format of the generated audio. Formatted as codec_sample_rate_bitrate (e.g., mp3_22050_32, mp3_44100_128, pcm_44100). If not specified, defaults to mp3_44100_128.'
+          default: mp3_44100_128
+        id:
+          title: Id
+          type: string
+          description: The id of the generation created.
+          format: uuid
+        asset_id:
+          title: Asset Id
+          type: string
+          description: The id of the audio asset resulting from the generation.
+          format: uuid
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+    GenerateTextToSpeechRequest:
+      title: GenerateTextToSpeechRequest
+      required:
+        - voice_id
+        - text
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: text_to_speech
+          title: Type
+          type: string
+          default: text_to_speech
+        voice_id:
+          title: Voice Id
+          type: string
+          description: The id of the Voice to use.
+          format: uuid
+        model_id:
+          title: Model Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the model to use.
+        text:
+          title: Text
+          type: string
+          description: The text to convert to speech.
+        stability:
+          title: Stability
+          maximum: 1.0
+          minimum: 0.0
+          type: number
+          description: 'Stability should be between 0-1, where 0 is the most stable and 1 is the most unstable. This varies the consistency between your outputs.'
+          default: 1.0
+        speed:
+          title: Speed
+          maximum: 1.2
+          minimum: 0.7
+          type: number
+          description: 'Speed should be between 0.7 and 1.2, where 0.7 is the slowest and 1.2 is the fastest. This varies the speed of the generated speech.'
+          default: 1.0
+        language:
+          description: Language for TTS. See SupportedLanguage enum for valid values. Defaults to 'auto'.
+          default: auto
+          $ref: '#/components/schemas/SupportedLanguage'
+    GenerateTextToSpeechResponse:
+      title: GenerateTextToSpeechResponse
+      required:
+        - voice_id
+        - text
+        - asset_id
+        - id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: text_to_speech
+          title: Type
+          type: string
+          default: text_to_speech
+        voice_id:
+          title: Voice Id
+          type: string
+          description: The id of the Voice to use.
+          format: uuid
+        model_id:
+          title: Model Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the model to use.
+        text:
+          title: Text
+          type: string
+          description: The text to convert to speech.
+        stability:
+          title: Stability
+          maximum: 1.0
+          minimum: 0.0
+          type: number
+          description: 'Stability should be between 0-1, where 0 is the most stable and 1 is the most unstable. This varies the consistency between your outputs.'
+          default: 1.0
+        speed:
+          title: Speed
+          maximum: 1.2
+          minimum: 0.7
+          type: number
+          description: 'Speed should be between 0.7 and 1.2, where 0.7 is the slowest and 1.2 is the fastest. This varies the speed of the generated speech.'
+          default: 1.0
+        language:
+          description: Language for TTS. See SupportedLanguage enum for valid values. Defaults to 'auto'.
+          default: auto
+          $ref: '#/components/schemas/SupportedLanguage'
+        asset_id:
+          title: Asset Id
+          type: string
+          description: The id of the audio asset resulting from the generation.
+          format: uuid
+        id:
+          title: Id
+          type: string
+          description: The id of the generation created.
+          format: uuid
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+    GenerateVideoRequest-Input:
+      title: GenerateVideoRequest
+      required:
+        - ai_model_id
+        - generated_video_inputs
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: video
+          title: Type
+          type: string
+          default: video
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: ID of the model to use for the generation.
+          format: uuid
+        start_keyframe_id:
+          title: Start Keyframe Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+        start_keyframe_url:
+          title: Start Keyframe Url
+          anyOf:
+            - maxLength: 2083
+              minLength: 1
+              type: string
+              format: uri
+            - type: 'null'
+          description: The URL of the image to use as the start keyframe.
+        end_keyframe_id:
+          title: End Keyframe Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Image asset to use as the end keyframe. This will be ignored if reference_image_ids is provided.
+        end_keyframe_url:
+          title: End Keyframe Url
+          anyOf:
+            - maxLength: 2083
+              minLength: 1
+              type: string
+              format: uri
+            - type: 'null'
+          description: The URL of the image to use as the end keyframe.
+        audio_id:
+          title: Audio Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Audio asset to use.
+        audio_generation:
+          anyOf:
+            - $ref: '#/components/schemas/GenerateTextToSpeechRequest'
+            - type: 'null'
+          description: 'Optional TTS parameters for server-side audio generation. If provided (and audio_id is not), audio will be generated from these params before video generation.'
+        audio_start_ms:
+          title: Audio Start Ms
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: 'Audio start offset in milliseconds. Negative values prepend silence (e.g., -1000 adds 1s silence before audio). Positive values crop from the beginning of the source audio (e.g., 2000 skips the first 2s). Use with generated_video_inputs.duration_ms to control total output length.'
+        reference_audio_ids:
+          title: Reference Audio Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the audio(s) to reference in the generation.
+        reference_image_ids:
+          title: Reference Image Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the image(s) to reference in the generation. Only used for multi-image video generation and will supersede start_keyframe_id.
+        reference_video_ids:
+          title: Reference Video Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the video(s) to reference in the generation.
+        video_id:
+          title: Video Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Video asset to use as motion input for V2V (motion control) models.
+        generated_video_inputs:
+          description: Inputs for generating the video.
+          $ref: '#/components/schemas/GeneratedVideoInputs'
+        batch_size:
+          title: Batch Size
+          maximum: 8.0
+          minimum: 1.0
+          type: integer
+          description: 'Number of video variations to generate (1-8). When > 1, batch_results will contain all generation results.'
+          default: 1
+    GenerateVideoRequest-Output:
+      title: GenerateVideoRequest
+      required:
+        - ai_model_id
+        - generated_video_inputs
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: video
+          title: Type
+          type: string
+          default: video
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: ID of the model to use for the generation.
+          format: uuid
+        start_keyframe_id:
+          title: Start Keyframe Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+        start_keyframe_url:
+          title: Start Keyframe Url
+          anyOf:
+            - maxLength: 2083
+              minLength: 1
+              type: string
+              format: uri
+            - type: 'null'
+          description: The URL of the image to use as the start keyframe.
+        end_keyframe_id:
+          title: End Keyframe Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Image asset to use as the end keyframe. This will be ignored if reference_image_ids is provided.
+        end_keyframe_url:
+          title: End Keyframe Url
+          anyOf:
+            - maxLength: 2083
+              minLength: 1
+              type: string
+              format: uri
+            - type: 'null'
+          description: The URL of the image to use as the end keyframe.
+        audio_id:
+          title: Audio Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Audio asset to use.
+        audio_generation:
+          anyOf:
+            - $ref: '#/components/schemas/GenerateTextToSpeechRequest'
+            - type: 'null'
+          description: 'Optional TTS parameters for server-side audio generation. If provided (and audio_id is not), audio will be generated from these params before video generation.'
+        audio_start_ms:
+          title: Audio Start Ms
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: 'Audio start offset in milliseconds. Negative values prepend silence (e.g., -1000 adds 1s silence before audio). Positive values crop from the beginning of the source audio (e.g., 2000 skips the first 2s). Use with generated_video_inputs.duration_ms to control total output length.'
+        reference_audio_ids:
+          title: Reference Audio Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the audio(s) to reference in the generation.
+        reference_image_ids:
+          title: Reference Image Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the image(s) to reference in the generation. Only used for multi-image video generation and will supersede start_keyframe_id.
+        reference_video_ids:
+          title: Reference Video Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the video(s) to reference in the generation.
+        video_id:
+          title: Video Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Video asset to use as motion input for V2V (motion control) models.
+        generated_video_inputs:
+          description: Inputs for generating the video.
+          $ref: '#/components/schemas/GeneratedVideoInputs'
+        batch_size:
+          title: Batch Size
+          maximum: 8.0
+          minimum: 1.0
+          type: integer
+          description: 'Number of video variations to generate (1-8). When > 1, batch_results will contain all generation results.'
+          default: 1
+    GenerateVideoResponse:
+      title: GenerateVideoResponse
+      required:
+        - ai_model_id
+        - generated_video_inputs
+        - id
+        - asset_id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: video
+          title: Type
+          type: string
+          default: video
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: ID of the model to use for the generation.
+          format: uuid
+        start_keyframe_id:
+          title: Start Keyframe Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+        start_keyframe_url:
+          title: Start Keyframe Url
+          anyOf:
+            - maxLength: 2083
+              minLength: 1
+              type: string
+              format: uri
+            - type: 'null'
+          description: The URL of the image to use as the start keyframe.
+        end_keyframe_id:
+          title: End Keyframe Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Image asset to use as the end keyframe. This will be ignored if reference_image_ids is provided.
+        end_keyframe_url:
+          title: End Keyframe Url
+          anyOf:
+            - maxLength: 2083
+              minLength: 1
+              type: string
+              format: uri
+            - type: 'null'
+          description: The URL of the image to use as the end keyframe.
+        audio_id:
+          title: Audio Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Audio asset to use.
+        audio_generation:
+          anyOf:
+            - $ref: '#/components/schemas/GenerateTextToSpeechRequest'
+            - type: 'null'
+          description: 'Optional TTS parameters for server-side audio generation. If provided (and audio_id is not), audio will be generated from these params before video generation.'
+        audio_start_ms:
+          title: Audio Start Ms
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: 'Audio start offset in milliseconds. Negative values prepend silence (e.g., -1000 adds 1s silence before audio). Positive values crop from the beginning of the source audio (e.g., 2000 skips the first 2s). Use with generated_video_inputs.duration_ms to control total output length.'
+        reference_audio_ids:
+          title: Reference Audio Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the audio(s) to reference in the generation.
+        reference_image_ids:
+          title: Reference Image Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the image(s) to reference in the generation. Only used for multi-image video generation and will supersede start_keyframe_id.
+        reference_video_ids:
+          title: Reference Video Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the video(s) to reference in the generation.
+        video_id:
+          title: Video Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Video asset to use as motion input for V2V (motion control) models.
+        generated_video_inputs:
+          description: Inputs for generating the video.
+          $ref: '#/components/schemas/GeneratedVideoInputs'
+        batch_size:
+          title: Batch Size
+          maximum: 8.0
+          minimum: 1.0
+          type: integer
+          description: 'Number of video variations to generate (1-8). When > 1, batch_results will contain all generation results.'
+          default: 1
+        id:
+          title: Id
+          type: string
+          description: The id of the generation created.
+          format: uuid
+        asset_id:
+          title: Asset Id
+          type: string
+          description: The id of the video asset resulting from the generation.
+          format: uuid
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+        batch_generation_id:
+          title: Batch Generation Id
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Unique identifier linking all generations in a batch.
+        batch_results:
+          title: Batch Results
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchVideoResultItem'
+          description: 'All generation results in the batch. Always populated (even for batch_size=1). The main response fields (id, asset_id, etc.) reflect the first successful generation.'
+    GenerateVideoToVideoRequest:
+      title: GenerateVideoToVideoRequest
+      required:
+        - ai_model_id
+        - video_id
+        - prompt
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: video_to_video
+          title: Type
+          type: string
+          default: video_to_video
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The id of the model to use for video-to-video generation.
+          format: uuid
+        video_id:
+          title: Video Id
+          type: string
+          description: The id of the video asset to transform.
+          format: uuid
+        prompt:
+          title: Prompt
+          type: string
+          description: 'Natural language transformation instructions. Use @Element1, @Image1 syntax to reference elements and images.'
+        reference_image_asset_ids:
+          title: Reference Image Asset Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: 'Optional ids of reference image assets for style transfer. Reference as @Image1, @Image2, etc. in prompt.'
+        elements:
+          title: Elements
+          anyOf:
+            - type: array
+              items:
+                $ref: '#/components/schemas/KlingO1EditElement'
+            - type: 'null'
+          description: 'Optional elements for character tracking. Reference as @Element1, @Element2, etc. in prompt.'
+        keep_audio:
+          title: Keep Audio
+          type: boolean
+          description: Whether to preserve the original audio from the input video. Automatically disabled when generate_audio is enabled.
+          default: true
+      description: "Video-to-video edit request for Kling O1 Edit model.\nTransforms videos using natural language while preserving motion."
+    GenerateVideoToVideoResponse:
+      title: GenerateVideoToVideoResponse
+      required:
+        - ai_model_id
+        - video_id
+        - prompt
+        - id
+        - asset_id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: video_to_video
+          title: Type
+          type: string
+          default: video_to_video
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The id of the model to use for video-to-video generation.
+          format: uuid
+        video_id:
+          title: Video Id
+          type: string
+          description: The id of the video asset to transform.
+          format: uuid
+        prompt:
+          title: Prompt
+          type: string
+          description: 'Natural language transformation instructions. Use @Element1, @Image1 syntax to reference elements and images.'
+        reference_image_asset_ids:
+          title: Reference Image Asset Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: 'Optional ids of reference image assets for style transfer. Reference as @Image1, @Image2, etc. in prompt.'
+        elements:
+          title: Elements
+          anyOf:
+            - type: array
+              items:
+                $ref: '#/components/schemas/KlingO1EditElement'
+            - type: 'null'
+          description: 'Optional elements for character tracking. Reference as @Element1, @Element2, etc. in prompt.'
+        keep_audio:
+          title: Keep Audio
+          type: boolean
+          description: Whether to preserve the original audio from the input video. Automatically disabled when generate_audio is enabled.
+          default: true
+        id:
+          title: Id
+          type: string
+          description: The id of the generation. Can be used to check status.
+          format: uuid
+        asset_id:
+          title: Asset Id
+          type: string
+          description: The id of the output video asset.
+          format: uuid
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation.
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1.
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+    GenerateVideoUpscaleRequest:
+      title: GenerateVideoUpscaleRequest
+      required:
+        - ai_model_id
+        - video_id
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: video_upscale
+          title: Type
+          type: string
+          default: video_upscale
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The model to use for upscaling.
+          format: uuid
+        video_id:
+          title: Video Id
+          type: string
+          description: The id of the Video asset to upscale.
+          format: uuid
+        upscale_factor:
+          title: Upscale Factor
+          anyOf:
+            - type: number
+            - type: 'null'
+          description: Computed scale factor derived from target_resolution and source video dimensions.
+        target_resolution:
+          title: Target Resolution
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: 'Target output resolution. Must be one of: 1080p, 2K, 4K.'
+    GenerateVideoUpscaleResponse:
+      title: GenerateVideoUpscaleResponse
+      required:
+        - ai_model_id
+        - video_id
+        - asset_id
+        - id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: video_upscale
+          title: Type
+          type: string
+          default: video_upscale
+        ai_model_id:
+          title: Ai Model Id
+          type: string
+          description: The model to use for upscaling.
+          format: uuid
+        video_id:
+          title: Video Id
+          type: string
+          description: The id of the Video asset to upscale.
+          format: uuid
+        upscale_factor:
+          title: Upscale Factor
+          anyOf:
+            - type: number
+            - type: 'null'
+          description: Computed scale factor derived from target_resolution and source video dimensions.
+        target_resolution:
+          title: Target Resolution
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: 'Target output resolution. Must be one of: 1080p, 2K, 4K.'
+        asset_id:
+          title: Asset Id
+          type: string
+          description: The id of the resulting upscaled video asset.
+          format: uuid
+        id:
+          title: Id
+          type: string
+          description: The id of the generation. Can be used to check status.
+          format: uuid
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+    GenerateVideoWithAudioRequest:
+      title: GenerateVideoWithAudioRequest
+      required:
+        - video_generation_model_id
+        - video_id
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: video_with_audio
+          title: Type
+          type: string
+          default: video_with_audio
+        video_generation_model_id:
+          title: Video Generation Model Id
+          type: string
+          description: ID of the model to use for video-to-video with audio generation (Mirelo Studio).
+          format: uuid
+        video_id:
+          title: Video Id
+          type: string
+          description: The id of the video asset to add sound effects to.
+          format: uuid
+        prompt:
+          title: Prompt
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Optional prompt to guide the audio generation for the video.
+      description: Video generation request that adds synchronized sound effects to video using Mirelo Studio.
+    GenerateVideoWithAudioResponse:
+      title: GenerateVideoWithAudioResponse
+      required:
+        - video_generation_model_id
+        - video_id
+        - id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: video_with_audio
+          title: Type
+          type: string
+          default: video_with_audio
+        video_generation_model_id:
+          title: Video Generation Model Id
+          type: string
+          description: ID of the model to use for video-to-video with audio generation (Mirelo Studio).
+          format: uuid
+        video_id:
+          title: Video Id
+          type: string
+          description: The id of the video asset to add sound effects to.
+          format: uuid
+        prompt:
+          title: Prompt
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Optional prompt to guide the audio generation for the video.
+        id:
+          title: Id
+          type: string
+          description: The id of the generation created.
+          format: uuid
+        asset_id:
+          title: Asset Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the video asset with audio resulting from the generation. Only present when generation is complete.
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+    GenerateVoiceCloneRequest:
+      title: GenerateVoiceCloneRequest
+      required:
+        - audio_id
+        - name
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: voice_clone
+          title: Type
+          type: string
+          default: voice_clone
+        audio_id:
+          title: Audio Id
+          type: string
+          description: The id of the Audio asset to use as the basis for the clone.
+          format: uuid
+        name:
+          title: Name
+          type: string
+          description: The name of the new voice. Required by ElevenLabs to create a new voice.
+    GenerateVoiceCloneResponse:
+      title: GenerateVoiceCloneResponse
+      required:
+        - audio_id
+        - name
+        - id
+        - asset_id
+        - created_at
+        - status
+        - progress
+      type: object
+      properties:
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+        agent_thread_id:
+          title: Agent Thread Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: Optional agent thread ID to associate this generation with.
+        generation_id:
+          title: Generation Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: 'Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size > 1), use generation_ids instead.'
+        generation_ids:
+          title: Generation Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        type:
+          const: voice_clone
+          title: Type
+          type: string
+          default: voice_clone
+        audio_id:
+          title: Audio Id
+          type: string
+          description: The id of the Audio asset to use as the basis for the clone.
+          format: uuid
+        name:
+          title: Name
+          type: string
+          description: The name of the new voice. Required by ElevenLabs to create a new voice.
+        id:
+          title: Id
+          type: string
+          description: The id of the generation. Can be used to check status.
+          format: uuid
+        asset_id:
+          title: Asset Id
+          type: string
+          description: The id of the resulting Voice asset.
+          format: uuid
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time until completion in seconds. May be None if no historical data available.
+    GeneratedAudio:
+      title: GeneratedAudio
+      required:
+        - duration_ms
         - url
+        - generated_audio_inputs
       type: object
       properties:
+        type:
+          const: generated_audio
+          title: Type
+          type: string
+          default: generated_audio
+        duration_ms:
+          title: Duration Ms
+          type: integer
+          description: Duration of the audio in seconds.
         url:
           title: Url
           type: string
-          description: URL of the generated image
-        content_type:
-          title: Content Type
+          description: URL of the audio.
+        generated_audio_inputs:
+          description: Inputs for generating the audio.
+          $ref: '#/components/schemas/GeneratedAudioInputs'
+        transcriptions:
+          title: Transcriptions
+          anyOf:
+            - type: array
+              items:
+                type: object
+            - type: 'null'
+          description: Transcriptions of the audio.
+    GeneratedAudioInputs:
+      title: GeneratedAudioInputs
+      required:
+        - text_prompt
+      type: object
+      properties:
+        text_prompt:
+          title: Text Prompt
           type: string
-          description: Content type of the image
-          default: image/jpeg
-    GetUserAvatarJobsResponse:
-      title: GetUserAvatarJobsResponse
+          description: Prompt for audio generation.
+        ai_model_id:
+          title: Ai Model Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the model used for generation.
+        voice_name:
+          title: Voice Name
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: The display name of the voice used for generation.
+        voice_id:
+          title: Voice Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the voice used for generation.
+        stability:
+          title: Stability
+          anyOf:
+            - type: number
+            - type: 'null'
+          description: Stability setting used for generation (0-1).
+        speed:
+          title: Speed
+          anyOf:
+            - type: number
+            - type: 'null'
+          description: Speed setting used for generation (0.7-1.2).
+        language:
+          title: Language
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Language used for generation.
+    GeneratedImage:
+      title: GeneratedImage
       required:
-        - projects
+        - width
+        - height
+        - url
+        - generated_image_inputs
       type: object
       properties:
-        projects:
-          title: Projects
-          type: array
-          items:
-            $ref: '#/components/schemas/AvatarProjectItem'
-    GetUserResponse:
-      title: GetUserResponse
+        type:
+          const: generated_image
+          title: Type
+          type: string
+          default: generated_image
+        width:
+          title: Width
+          type: integer
+          description: Width of the image.
+        height:
+          title: Height
+          type: integer
+          description: Height of the image.
+        url:
+          title: Url
+          type: string
+          description: URL of the image.
+        generated_image_inputs:
+          description: Inputs for generating the image.
+          $ref: '#/components/schemas/GeneratedImageInputs'
+    GeneratedImageInputs:
+      title: GeneratedImageInputs
       required:
-        - data
+        - text_prompt
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/UserInfo'
+        text_prompt:
+          title: Text Prompt
+          type: string
+          description: Prompt for image generation.
+        ai_model_id:
+          title: Ai Model Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the model used for generation.
+        aspect_ratio:
+          title: Aspect Ratio
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Aspect ratio used for generation.
+        resolution:
+          title: Resolution
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Resolution used for generation.
+        start_keyframe_id:
+          title: Start Keyframe Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Image asset used as the start keyframe.
+        reference_image_ids:
+          title: Reference Image Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the image(s) referenced in the generation.
+    GeneratedVideo:
+      title: GeneratedVideo
+      required:
+        - width
+        - height
+        - duration_ms
+        - preview_url
+        - generated_video_inputs
+        - keyframe_start
+        - audio
+      type: object
+      properties:
+        type:
+          const: generated_video
+          title: Type
+          type: string
+          default: generated_video
+        width:
+          title: Width
+          type: integer
+          description: Width of the image.
+        height:
+          title: Height
+          type: integer
+          description: Height of the image.
+        url:
+          title: Url
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL of the image.
+        download_url:
+          title: Download Url
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL to download the video
+        streaming_url:
+          title: Streaming Url
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL to stream the video
+        poster_url:
+          title: Poster Url
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL of the poster image
+        duration_ms:
+          title: Duration Ms
+          type: integer
+          description: Duration of the video.
+        preview_url:
+          title: Preview Url
+          type: string
+          description: URL of the preview for animated thumbnails.
+        generated_video_inputs:
+          description: Inputs for generating the video.
+          $ref: '#/components/schemas/GeneratedVideoInputs'
+        keyframe_start:
+          anyOf:
+            - $ref: '#/components/schemas/Asset'
+            - type: 'null'
+          description: URL of the Image asset used as the start keyframe.
+        keyframe_end:
+          anyOf:
+            - $ref: '#/components/schemas/Asset'
+            - type: 'null'
+          description: URL of the Image asset used as the end keyframe.
+        audio:
+          anyOf:
+            - $ref: '#/components/schemas/Asset'
+            - type: 'null'
+          description: URL of the Audio asset used as the basis for the video.
+        reference_audio_ids:
+          title: Reference Audio Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the audio(s) referenced in the generation.
+        reference_image_ids:
+          title: Reference Image Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the image(s) referenced in the generation.
+        reference_video_ids:
+          title: Reference Video Ids
+          anyOf:
+            - type: array
+              items:
+                type: string
+                format: uuid
+            - type: 'null'
+          description: The id(s) of the video(s) referenced in the generation.
+        source_video_id:
+          title: Source Video Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the Video asset used as source input for motion control/video-to-video generation.
+    GeneratedVideoInputs:
+      title: GeneratedVideoInputs
+      required:
+        - text_prompt
+      type: object
+      properties:
+        text_prompt:
+          title: Text Prompt
+          type: string
+          description: Prompt for video generation.
+        ai_model_id:
+          title: Ai Model Id
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          description: The id of the model used for generation.
+        resolution:
+          title: Resolution
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Resolution for the video.
+        aspect_ratio:
+          title: Aspect Ratio
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Aspect ratio for the video.
+        duration_ms:
+          title: Duration Ms
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Duration of the video in milliseconds.
+        bounding_box_target:
+          anyOf:
+            - $ref: '#/components/schemas/NormalizedPoint'
+            - type: 'null'
+          description: Normalized coordinates for primary speaker position (Character3 only)
+        character_orientation:
+          title: Character Orientation
+          anyOf:
+            - enum:
+                - video
+                - image
+              type: string
+            - type: 'null'
+          description: 'For motion control models: ''video'' matches reference video orientation (better for complex motions, max 30s), ''image'' preserves character image orientation (better for camera movements, max 10s).'
+        enhance_prompt:
+          title: Enhance Prompt
+          type: boolean
+          description: 'If true, automatically enhance the prompt before generation.'
+          default: false
+        multi_prompt:
+          title: Multi Prompt
+          anyOf:
+            - type: array
+              items:
+                $ref: '#/components/schemas/VideoShot'
+            - type: 'null'
+          description: 'List of shots for multi-shot video generation. When provided, text_prompt is ignored and total duration is the sum of shot durations.'
+        shot_type:
+          title: Shot Type
+          anyOf:
+            - const: customize
+              type: string
+            - type: 'null'
+          description: Shot type for multi-shot generation. Currently only 'customize' is supported.
+    Generation:
+      title: Generation
+      required:
+        - id
+        - type
+        - input
+        - status
+        - progress
+        - created_at
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: ID of the generation and associated asset.
+          format: uuid
+        type:
+          description: Type of generation.
+          $ref: '#/components/schemas/AssetType'
+        input:
+          title: Input
+          oneOf:
+            - $ref: '#/components/schemas/GenerateVideoRequest-Output'
+            - $ref: '#/components/schemas/GenerateTextToSpeechRequest'
+            - $ref: '#/components/schemas/GenerateTextToSoundRequest'
+            - $ref: '#/components/schemas/GenerateImageRequest'
+            - $ref: '#/components/schemas/GenerateImageUpscaleRequest'
+            - $ref: '#/components/schemas/GenerateVideoUpscaleRequest'
+            - $ref: '#/components/schemas/GenerateIsolatedAudioRequest'
+            - $ref: '#/components/schemas/GenerateSpeechToSpeechRequest'
+            - $ref: '#/components/schemas/GenerateVoiceCloneRequest'
+            - $ref: '#/components/schemas/GenerateAudioFromVideoRequest'
+            - $ref: '#/components/schemas/GenerateVideoWithAudioRequest'
+            - $ref: '#/components/schemas/GenerateVideoToVideoRequest'
+            - $ref: '#/components/schemas/GenerateMotionControlRequest-Output'
+          description: Inputs for the generation
+          discriminator:
+            propertyName: type
+            mapping:
+              audio_from_video: '#/components/schemas/GenerateAudioFromVideoRequest'
+              audio_isolation: '#/components/schemas/GenerateIsolatedAudioRequest'
+              image: '#/components/schemas/GenerateImageRequest'
+              image_to_image: '#/components/schemas/GenerateImageRequest'
+              image_upscale: '#/components/schemas/GenerateImageUpscaleRequest'
+              motion_control: '#/components/schemas/GenerateMotionControlRequest-Output'
+              speech_to_speech: '#/components/schemas/GenerateSpeechToSpeechRequest'
+              text_to_sound: '#/components/schemas/GenerateTextToSoundRequest'
+              text_to_speech: '#/components/schemas/GenerateTextToSpeechRequest'
+              video: '#/components/schemas/GenerateVideoRequest-Output'
+              video_to_video: '#/components/schemas/GenerateVideoToVideoRequest'
+              video_upscale: '#/components/schemas/GenerateVideoUpscaleRequest'
+              video_with_audio: '#/components/schemas/GenerateVideoWithAudioRequest'
+              voice_clone: '#/components/schemas/GenerateVoiceCloneRequest'
+        status:
+          description: Status of the generation
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        eta_sec:
+          title: Eta Sec
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Estimated time remaining in seconds until generation completes.
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        credit_cost:
+          title: Credit Cost
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Credits consumed (debits) for this generation.
+        batch_generation_id:
+          title: Batch Generation Id
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Unique identifier linking all generations in a batch.
+        asset:
+          anyOf:
+            - $ref: '#/components/schemas/Asset'
+            - type: 'null'
+          description: The generated asset. Value is not present unless the status of the generation is 'complete'
+        audio_start_ms:
+          title: Audio Start Ms
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: 'Audio start offset in ms. Negative = prepend silence, positive = crop from start.'
+        error:
+          anyOf:
+            - $ref: '#/components/schemas/GenerationError'
+            - type: 'null'
+          description: Generation error if any. Value is not present unless the status of the generation is 'error' and error_message field is not present.
+        error_message:
+          title: Error Message
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Error message. Value is not present unless the status of the generation is 'error' and error field is not present.
+    GenerationError:
+      title: GenerationError
+      required:
+        - type
+        - message
+      type: object
+      properties:
+        type:
+          description: The class of error encountered.
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          title: Message
+          type: string
+          description: The error message.
+    GenerationStatus:
+      title: GenerationStatus
+      enum:
+        - complete
+        - error
+        - processing
+        - queued
+        - finalizing
+      type: string
+    GenerationStatusResponse:
+      title: GenerationStatusResponse
+      required:
+        - id
+        - asset_id
+        - type
+        - status
+        - progress
+        - created_at
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: ID of the generation.
+          format: uuid
+        asset_id:
+          title: Asset Id
+          type: string
+          description: ID of the generated asset.
+          format: uuid
+        type:
+          description: Type of generation.
+          $ref: '#/components/schemas/AssetType'
+        status:
+          description: Status of the generation.
+          $ref: '#/components/schemas/GenerationStatus'
+        progress:
+          title: Progress
+          type: number
+          description: Current progress to completion. Between 0-1
+        created_at:
+          title: Created At
+          type: string
+          description: Date the generation was submitted.
+        error:
+          anyOf:
+            - $ref: '#/components/schemas/GenerationError'
+            - type: 'null'
+          description: Generation error if any. Value is not present unless the status of the generation is 'error' and error_message field is not present.
+        error_message:
+          title: Error Message
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Error message. Value is not present unless the status of the generation is 'error'
+        url:
+          title: Url
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL of the generated asset.
+        download_url:
+          title: Download Url
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL to download the asset.
+        streaming_url:
+          title: Streaming Url
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL to stream the asset.
+        workspace_id:
+          title: Workspace Id
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: ID of the workspace this generation belongs to.
+    GenerationType:
+      title: GenerationType
+      enum:
+        - image
+        - video
+        - text_to_speech
+        - speech_to_speech
+        - voice_clone
+        - audio_isolation
+        - video_stitching
+        - video_upscale
+        - video_to_video
+        - image_upscale
+        - agent_response
+        - audio_from_video
+        - text_to_sound
+        - assets_to_image_text_prompt
+        - assets_to_audio_text_prompt
+      type: string
+      description: "Generation type enum\n\nNOTE: this enum is used to determine the type of generation and is used to determine\nthe type of asset that will be generated."
     HTTPValidationError:
       title: HTTPValidationError
       type: object
@@ -609,327 +3854,340 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    ImageGenerationRequestBody:
-      title: ImageGenerationRequestBody
+    InputMode:
+      title: InputMode
       required:
-        - prompt
+        - mode
+        - slots
       type: object
       properties:
-        prompt:
-          title: Prompt
+        mode:
+          title: Mode
           type: string
-          description: The prompt to generate the image from
-        num_inference_steps:
-          title: Num Inference Steps
-          anyOf:
-            - type: integer
-            - type: 'null'
-          description: Number of inference steps
-        controlnets:
-          title: Controlnets
+          description: 'Mode name identifying this input combination (e.g., ''image_to_video'', ''first_last_frame_to_video'', ''reference_to_video'', ''video_to_video'').'
+        slots:
+          title: Slots
           type: array
           items:
-            $ref: '#/components/schemas/ControlNet'
-          description: List of ControlNet configurations
-        controlnet_unions:
-          title: Controlnet Unions
-          type: array
-          items:
-            $ref: '#/components/schemas/ControlNetUnion'
-          description: List of ControlNet union configurations
-        ip_adapters:
-          title: Ip Adapters
-          type: array
-          items:
-            $ref: '#/components/schemas/IpAdapter'
-          description: List of IP-Adapter configurations
-        guidance_scale:
-          title: Guidance Scale
-          anyOf:
-            - type: number
-            - type: 'null'
-          description: Guidance scale for the generation
-        real_cfg_scale:
-          title: Real Cfg Scale
-          anyOf:
-            - type: number
-            - type: 'null'
-          description: Real CFG scale
-        num_images:
-          title: Num Images
-          anyOf:
-            - type: integer
-            - type: 'null'
-          description: Number of images to generate
-        enable_safety_checker:
-          title: Enable Safety Checker
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          description: Whether to enable safety checker
-        reference_strength:
-          title: Reference Strength
-          anyOf:
-            - type: number
-            - type: 'null'
-          description: Reference strength
-        reference_end:
-          title: Reference End
-          anyOf:
-            - type: number
-            - type: 'null'
-          description: Reference end
-        image_url:
-          title: Image Url
-          anyOf:
-            - type: string
-            - type: 'null'
-          description: Optional source image URL for image-to-image generation
-        strength:
-          title: Strength
-          anyOf:
-            - type: number
-            - type: 'null'
-          description: Strength of the conditioning
-        aspect_ratio:
-          title: Aspect Ratio
-          enum:
-            - '1:1'
-            - '16:9'
-            - '9:16'
+            $ref: '#/components/schemas/InputSlot'
+          description: Ordered list of input slots available in this mode.
+      description: "A named input mode grouping mutually exclusive input slots.\n\nEach mode represents a distinct way to use the model (e.g., image_to_video\nvs first_last_frame_to_video). The frontend selects one mode at a time and\npresents only that mode's slots.\n\nThe text_to_video mode (no input files) is always implicitly available\nfor VIDEO type models and is never included in the inputs list."
+    InputSlot:
+      title: InputSlot
+      required:
+        - type
+        - role
+      type: object
+      properties:
+        type:
+          title: Type
           type: string
-          description: Desired aspect ratio for the generated image
-          default: '16:9'
-        seed:
-          title: Seed
+          description: 'Media type: ''image'', ''video'', or ''audio''.'
+        role:
+          title: Role
+          type: string
+          description: 'Semantic role distinguishing this slot (e.g., ''start_frame'', ''end_frame'', ''reference'', ''audio_input'', ''input_video'').'
+        required:
+          title: Required
+          type: boolean
+          description: Whether this input is mandatory.
+          default: false
+        max_count:
+          title: Max Count
           type: integer
-          description: Seed for the generation
-    ImageGenerationResponseBody:
-      title: ImageGenerationResponseBody
-      required:
-        - images
-        - prompt
-      type: object
-      properties:
-        images:
-          title: Images
-          type: array
-          items:
-            $ref: '#/components/schemas/GeneratedImage'
-          description: The generated image files info
-        timings:
-          anyOf:
-            - $ref: '#/components/schemas/Timings'
-            - type: 'null'
-          description: Timing information
-        seed:
-          title: Seed
+          description: Maximum number of files for this slot.
+          default: 1
+        max_file_size_bytes:
+          title: Max File Size Bytes
           anyOf:
             - type: integer
             - type: 'null'
-          description: Seed used for generation
-        has_nsfw_concepts:
-          title: Has Nsfw Concepts
+          description: Maximum file size in bytes.
+        min_dimension_px:
+          title: Min Dimension Px
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Minimum width or height in pixels.
+        max_dimension_px:
+          title: Max Dimension Px
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Maximum width or height in pixels.
+        min_duration_ms:
+          title: Min Duration Ms
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Minimum duration in milliseconds (video/audio only).
+        max_duration_ms:
+          title: Max Duration Ms
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Maximum duration in milliseconds (video/audio only).
+        max_total_duration_ms:
+          title: Max Total Duration Ms
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Maximum combined duration across all files in this slot in milliseconds (video/audio only).
+      description: "A typed input slot describing one kind of input a model accepts.\n\nEach slot has a media type (image, video, audio) and a role that distinguishes\nit from other slots of the same type (e.g., start_frame vs end_frame vs reference)."
+    KlingO1EditElement:
+      title: KlingO1EditElement
+      required:
+        - frontal_image_asset_id
+      type: object
+      properties:
+        frontal_image_asset_id:
+          title: Frontal Image Asset Id
+          type: string
+          description: ID of the frontal image asset for this element.
+          format: uuid
+        reference_image_asset_ids:
+          title: Reference Image Asset Ids
           anyOf:
             - type: array
               items:
-                type: boolean
+                type: string
+                format: uuid
             - type: 'null'
-          description: Whether images contain NSFW concepts
-        prompt:
-          title: Prompt
-          type: string
-          description: The prompt used for generating the image
-      description: Response body for image generation requests
-    IpAdapter:
-      title: IpAdapter
-      type: object
-      properties:
-        image_url:
-          title: Image Url
-          anyOf:
-            - type: string
-            - type: 'null'
-        weight:
-          title: Weight
-          anyOf:
-            - type: number
-            - type: 'null'
-    RegisterUserModel:
-      title: RegisterUserModel
+          description: Optional IDs of additional reference image assets (different angles).
+      description: "Element for character tracking in Kling O1 Edit.\n\nReference as @Element1, @Element2, etc. in prompt."
+    NormalizedPoint:
+      maxItems: 2
+      minItems: 2
+      type: array
+      unrecognizedKeywords:
+        prefixItems:
+          - type: number
+            maximum: 1.0
+            minimum: 0.0
+            title: X
+            description: Normalized x coordinate.
+          - type: number
+            maximum: 1.0
+            minimum: 0.0
+            title: Y
+            description: Normalized y coordinate.
+    PageInfo:
+      title: PageInfo
       required:
-        - residence_not_blocked
-        - tos_accepted
-        - tos_version
+        - limit
+        - offset
       type: object
       properties:
-        residence_not_blocked:
-          title: Residence Not Blocked
-          type: string
-        tos_accepted:
-          title: Tos Accepted
-          type: boolean
-        tos_version:
-          title: Tos Version
-          type: string
-        marketing_email_consent:
-          title: Marketing Email Consent
-          anyOf:
-            - type: string
-            - type: 'null'
-          default: NONE
-        ai_training_opt_out:
-          title: Ai Training Opt Out
-          type: boolean
-          default: false
-    TierLimits:
-      title: TierLimits
-      required:
-        - maxInputLength
-        - maxAudioDuration
-      type: object
-      properties:
-        maxInputLength:
-          title: Maxinputlength
+        limit:
+          title: Limit
           type: integer
-        maxAudioDuration:
-          title: Maxaudioduration
+          description: Number of items returned in the page.
+        offset:
+          title: Offset
           type: integer
-    Timings:
-      title: Timings
+          description: Number of records skipped.
+    PagedResponse_Generation_:
+      title: 'PagedResponse[Generation]'
       required:
-        - total
+        - page_info
+        - data
       type: object
       properties:
-        total:
-          title: Total
-          type: number
-          description: Total time taken for generation
-      description: Timing information for the generation process
-    UploadAudioResponseBody:
-      title: UploadAudioResponseBody
-      required:
-        - url
+        page_info:
+          description: Paging information.
+          $ref: '#/components/schemas/PageInfo'
+        data:
+          title: Data
+          type: array
+          items:
+            $ref: '#/components/schemas/Generation'
+          description: Page data.
+    PagingParams:
+      title: PagingParams
       type: object
       properties:
-        url:
-          title: Url
-          type: string
-    UserInfo:
-      title: UserInfo
-      required:
-        - userId
-        - avatarConsent
-        - aiTrainingOptOut
+        limit:
+          title: Limit
+          type: integer
+          description: Number of items returned in the page.
+          default: 100
+        offset:
+          title: Offset
+          type: integer
+          description: Number of records skipped.
+          default: 0
+    Pricing:
+      title: Pricing
       type: object
       properties:
-        userId:
-          title: Userid
-          type: string
-        username:
-          title: Username
-          type: string
-          default: Unknown
-        avatarUrl:
-          title: Avatarurl
-          anyOf:
-            - type: string
-            - type: 'null'
-        accountTier:
-          title: Accounttier
-          type: string
-          default: free
-        apiAccountTier:
-          title: Apiaccounttier
-          type: string
-          default: free
-        webSubscriptionEnd:
-          title: Websubscriptionend
+        base_cost:
+          title: Base Cost
           anyOf:
             - type: integer
             - type: 'null'
-        avatarProjectCreditUsed:
-          title: Avatarprojectcreditused
-          type: integer
-          default: 0
-        avatarProjectCreditLimit:
-          title: Avatarprojectcreditlimit
-          type: integer
-          default: 250
-        avatarProjectWebCreditUsed:
-          title: Avatarprojectwebcreditused
-          type: integer
-          default: 0
-        avatarProjectWebCreditLimit:
-          title: Avatarprojectwebcreditlimit
-          type: integer
-          default: 0
-        allowWebCreditOverages:
-          title: Allowwebcreditoverages
-          type: boolean
-          default: false
-        webCreditOverageMax:
-          title: Webcreditoveragemax
-          type: integer
-          default: 300
-        allowApiCreditOverages:
-          title: Allowapicreditoverages
-          type: boolean
-          default: false
-        apiCreditOverageMax:
-          title: Apicreditoveragemax
-          type: integer
-          default: 300
-        avatarConsent:
-          title: Avatarconsent
-          type: boolean
-        subscriptionState:
-          title: Subscriptionstate
+          description: Flat base cost in credits. Present for per-generation models (images). Duration-based models leave this unset.
+        credits_per_second:
+          title: Credits Per Second
           anyOf:
-            - type: string
+            - type: integer
             - type: 'null'
-        tosAcceptableDate:
-          title: Tosacceptabledate
-          anyOf:
-            - type: string
-            - type: 'null'
-        tosAcceptedVersion:
-          title: Tosacceptedversion
-          anyOf:
-            - type: string
-            - type: 'null'
-        apiSubscriptionState:
-          title: Apisubscriptionstate
-          anyOf:
-            - type: string
-            - type: 'null'
-        apiTOSAcceptance:
-          title: Apitosacceptance
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-        marketingEmailConsent:
-          title: Marketingemailconsent
+          description: Credit cost per second. Only present for duration-based models. Image/per-generation models leave this unset.
+        modifiers:
+          title: Modifiers
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: number
+              description: "Pricing modifier multiplier applied to a dimension option.\n- 1.0 = no change (base price)\n- 2.0 = double the base price\n- 0.5 = half the base price"
+          description: 'Pricing modifiers by dimension. Each dimension (e.g. ''resolution'', ''generate_audio'') maps option values to their price multipliers. Only non-1.0 modifiers are included (1.0 is the implicit default). Example: {''resolution'': {''540p'': 0.5, ''1080p'': 3.0}}'
+      description: "Extensible pricing information for AI models.\n\nPrice is calculated as:\n    credits = ceil((base_cost + credits_per_second * duration_seconds) * product(modifiers))\n\nFor video models (per-second billing):\n    - base_cost is typically 0\n    - credits_per_second is the per-second rate\n    - duration_seconds is the video length\n    - modifiers adjust for resolution, audio generation, etc.\n\nFor image models (per-generation billing):\n    - base_cost is the flat cost per generation (e.g., 5 credits)\n    - credits_per_second is 0\n    - duration_seconds is ignored (or 0)\n    - modifiers can still adjust for resolution, style, etc.\n\nModifiers are only included when they affect pricing (i.e., non-1.0 values)."
+    SupportedLanguage:
+      title: SupportedLanguage
+      enum:
+        - Chinese
+        - 'Chinese,Yue'
+        - English
+        - Arabic
+        - Russian
+        - Spanish
+        - French
+        - Portuguese
+        - German
+        - Turkish
+        - Dutch
+        - Ukrainian
+        - Vietnamese
+        - Indonesian
+        - Japanese
+        - Italian
+        - Korean
+        - Thai
+        - Polish
+        - Romanian
+        - Greek
+        - Czech
+        - Finnish
+        - Hindi
+        - Bulgarian
+        - Danish
+        - Hebrew
+        - Malay
+        - Persian
+        - Slovak
+        - Swedish
+        - Croatian
+        - Filipino
+        - Hungarian
+        - Norwegian
+        - Slovenian
+        - Catalan
+        - Nynorsk
+        - Tamil
+        - Afrikaans
+        - auto
+      type: string
+    UploadedAudio:
+      title: UploadedAudio
+      required:
+        - duration_ms
+        - url
+      type: object
+      properties:
+        type:
+          const: uploaded_audio
+          title: Type
           type: string
-          default: NONE
-        aiTrainingOptOut:
-          title: Aitrainingoptout
-          type: boolean
-        residenceLegalConfirmed:
-          title: Residencelegalconfirmed
+          default: uploaded_audio
+        duration_ms:
+          title: Duration Ms
+          type: integer
+          description: Duration of the audio in seconds.
+        url:
+          title: Url
           type: string
-          default: NONE
-        dresidenceLegalUpdatedAt:
-          title: Dresidencelegalupdatedat
+          description: URL of the audio.
+        transcriptions:
+          title: Transcriptions
+          anyOf:
+            - type: array
+              items:
+                type: object
+            - type: 'null'
+          description: Transcriptions of the audio.
+    UploadedImage:
+      title: UploadedImage
+      required:
+        - width
+        - height
+        - url
+      type: object
+      properties:
+        type:
+          const: uploaded_image
+          title: Type
+          type: string
+          default: uploaded_image
+        width:
+          title: Width
+          type: integer
+          description: Width of the image.
+        height:
+          title: Height
+          type: integer
+          description: Height of the image.
+        url:
+          title: Url
+          type: string
+          description: URL of the image.
+    UploadedVideo:
+      title: UploadedVideo
+      required:
+        - width
+        - height
+        - duration_ms
+        - url
+      type: object
+      properties:
+        type:
+          const: uploaded_video
+          title: Type
+          type: string
+          default: uploaded_video
+        width:
+          title: Width
+          type: integer
+          description: Width of the video.
+        height:
+          title: Height
+          type: integer
+          description: Height of the video.
+        duration_ms:
+          title: Duration Ms
+          type: integer
+          description: Duration of the video in milliseconds.
+        url:
+          title: Url
+          type: string
+          description: URL of the video.
+        download_url:
+          title: Download Url
           anyOf:
             - type: string
             - type: 'null'
-        tierLimits:
-          default:
-            maxInputLength: 300
-            maxAudioDuration: 30000
-          $ref: '#/components/schemas/TierLimits'
+          description: URL to download the video.
+        streaming_url:
+          title: Streaming Url
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL to stream the video.
+        poster_url:
+          title: Poster Url
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: URL of the poster image.
     ValidationError:
       title: ValidationError
       required:
@@ -951,88 +4209,84 @@ components:
         type:
           title: Error Type
           type: string
-    Voice:
-      title: Voice
+        input:
+          title: Input
+        ctx:
+          title: Context
+          type: object
+    VideoShot:
+      title: VideoShot
       required:
-        - voice_id
-        - service
+        - prompt
+        - duration_ms
       type: object
       properties:
-        voice_id:
-          title: Voice Id
+        prompt:
+          title: Prompt
           type: string
-        service:
-          title: Service
-          anyOf:
-            - const: eleven
-              enum:
-                - eleven
-              type: string
-            - const: cartesia
-              enum:
-                - cartesia
-              type: string
-        name:
-          title: Name
+          description: Prompt for this shot.
+        duration_ms:
+          title: Duration Ms
+          maximum: 15000.0
+          minimum: 3000.0
+          type: integer
+          description: Duration of this shot in milliseconds (3000-15000).
+      description: A single shot in a multi-shot video generation.
+    Voice:
+      title: Voice
+      type: object
+      properties:
+        type:
+          const: voice
+          title: Type
+          type: string
+          default: voice
+        external_id:
+          title: External Id
           anyOf:
             - type: string
             - type: 'null'
-        description:
-          title: Description
-          anyOf:
-            - type: string
-            - type: 'null'
+          description: External ID of the Voice.
         labels:
           title: Labels
-          anyOf:
-            - type: object
-              additionalProperties:
-                type: string
-            - type: 'null'
+          type: array
+          items:
+            $ref: '#/components/schemas/VoiceLabel'
+          description: Labels that help identify the characteristics of the Voice.
         preview_url:
           title: Preview Url
           anyOf:
             - type: string
             - type: 'null'
-        premium:
-          title: Premium
-          type: boolean
-          default: false
-        user_id:
-          title: User Id
+          description: Preview URL of the Voice.
+        source:
+          title: Source
           anyOf:
             - type: string
             - type: 'null'
-        created_at:
-          title: Created At
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-        updated_at:
-          title: Updated At
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-    VoicesResponseBody:
-      title: VoicesResponseBody
+          description: Source of the Voice.
+    VoiceLabel:
+      title: VoiceLabel
       required:
-        - supported_voices
+        - name
+        - value
       type: object
       properties:
-        supported_voices:
-          title: Supported Voices
-          type: array
-          items:
-            $ref: '#/components/schemas/Voice'
+        name:
+          title: Name
+          type: string
+          description: Label name.
+        value:
+          title: Value
+          type: string
+          description: Label value.
   securitySchemes:
     APIKeyHeader:
       type: apiKey
       name: X-API-Key
       in: header
-    JWTBearer:
-      type: http
-      scheme: bearer
 security:
   - APIKeyHeader: [ ]
+tags:
+  - name: Public
+    description: Public endpoints are available to API users.

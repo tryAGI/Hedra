@@ -1,6 +1,6 @@
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-curl -o openapi.yaml https://mercury.dev.dream-ai.com/api/openapi.json
+curl -o openapi.yaml https://api.hedra.com/web-app/openapi.json
 dotnet run --project ../../helpers/FixOpenApiSpec openapi.yaml
 if [ $? -ne 0 ]; then
  echo "Failed, exiting..."

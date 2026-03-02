@@ -11,7 +11,7 @@ public partial class Tests
             Environment.GetEnvironmentVariable("HEDRA_API_KEY") ??
             throw new AssertInconclusiveException("HEDRA_API_KEY environment variable is not found.");
 
-        var client = new HedraClient(apiKey);
+        var client = new HedraClient(apiKey, baseUri: new Uri("https://api.hedra.com/web-app"));
         
         return client;
     }

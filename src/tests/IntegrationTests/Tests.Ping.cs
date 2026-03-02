@@ -7,9 +7,13 @@ public partial class Tests
     {
         using var client = GetAuthenticatedClient();
 
-        var response = await client.PingAsync();
+        var response = await client.ListModelsAsync();
         
         response.Should().NotBeNull();
-        response.Should().Be("{\"status\":\"healthy\"}");
+
+        foreach (var value in response)
+        {
+            Console.WriteLine(value.Id);
+        }
     }
 }
