@@ -46,7 +46,7 @@ namespace Hedra
         public global::System.Guid AiModelId { get; set; } = default!;
 
         /// <summary>
-        /// The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+        /// The id of the Image asset to use as the start keyframe.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_keyframe_id")]
         public global::System.Guid? StartKeyframeId { get; set; }
@@ -58,7 +58,7 @@ namespace Hedra
         public string? StartKeyframeUrl { get; set; }
 
         /// <summary>
-        /// The id of the Image asset to use as the end keyframe. This will be ignored if reference_image_ids is provided.
+        /// The id of the Image asset to use as the end keyframe.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end_keyframe_id")]
         public global::System.Guid? EndKeyframeId { get; set; }
@@ -94,7 +94,7 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::System.Guid>? ReferenceAudioIds { get; set; }
 
         /// <summary>
-        /// The id(s) of the image(s) to reference in the generation. Only used for multi-image video generation and will supersede start_keyframe_id.
+        /// The id(s) of the image(s) to reference in the generation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("reference_image_ids")]
         public global::System.Collections.Generic.IList<global::System.Guid>? ReferenceImageIds { get; set; }
@@ -151,13 +151,13 @@ namespace Hedra
         /// ID of the model to use for the generation.
         /// </param>
         /// <param name="startKeyframeId">
-        /// The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+        /// The id of the Image asset to use as the start keyframe.
         /// </param>
         /// <param name="startKeyframeUrl">
         /// The URL of the image to use as the start keyframe.
         /// </param>
         /// <param name="endKeyframeId">
-        /// The id of the Image asset to use as the end keyframe. This will be ignored if reference_image_ids is provided.
+        /// The id of the Image asset to use as the end keyframe.
         /// </param>
         /// <param name="endKeyframeUrl">
         /// The URL of the image to use as the end keyframe.
@@ -175,7 +175,7 @@ namespace Hedra
         /// The id(s) of the audio(s) to reference in the generation.
         /// </param>
         /// <param name="referenceImageIds">
-        /// The id(s) of the image(s) to reference in the generation. Only used for multi-image video generation and will supersede start_keyframe_id.
+        /// The id(s) of the image(s) to reference in the generation.
         /// </param>
         /// <param name="referenceVideoIds">
         /// The id(s) of the video(s) to reference in the generation.

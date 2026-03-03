@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+    /// The id of the Image asset to use as the start keyframe.
     /// </summary>
     public sealed partial class GenerateImageResponseStartKeyframeId
     {

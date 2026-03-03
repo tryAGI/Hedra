@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// The id(s) of the image(s) to reference in the generation. Only used for multi-image video generation and will supersede start_keyframe_id.
+    /// The id(s) of the image(s) to reference in the generation.
     /// </summary>
     public sealed partial class GenerateVideoResponseReferenceImageIds
     {
