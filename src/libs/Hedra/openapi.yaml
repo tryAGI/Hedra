@@ -725,8 +725,7 @@ components:
         file:
           title: File
           type: string
-          unrecognizedKeywords:
-            contentMediaType: application/octet-stream
+          format: binary
     CreateAssetRequest:
       title: CreateAssetRequest
       required:
