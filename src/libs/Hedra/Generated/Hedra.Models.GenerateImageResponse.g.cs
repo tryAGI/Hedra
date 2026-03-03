@@ -59,7 +59,7 @@ namespace Hedra
         public string? Resolution { get; set; }
 
         /// <summary>
-        /// The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+        /// The id of the Image asset to use as the start keyframe.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_keyframe_id")]
         public global::System.Guid? StartKeyframeId { get; set; }
@@ -177,7 +177,7 @@ namespace Hedra
         /// The resolution to use formatted like '540p', '1080p', '1440p (2K QHD)', etc.
         /// </param>
         /// <param name="startKeyframeId">
-        /// The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+        /// The id of the Image asset to use as the start keyframe.
         /// </param>
         /// <param name="aiModelId">
         /// The model to use.

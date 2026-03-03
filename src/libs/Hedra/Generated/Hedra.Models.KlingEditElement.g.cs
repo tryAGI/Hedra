@@ -4,10 +4,10 @@
 namespace Hedra
 {
     /// <summary>
-    /// Element for character tracking in Kling O1 Edit.<br/>
+    /// Element for character/subject consistency in Kling video generation.<br/>
     /// Reference as @Element1, @Element2, etc. in prompt.
     /// </summary>
-    public sealed partial class KlingO1EditElement
+    public sealed partial class KlingEditElement
     {
         /// <summary>
         /// ID of the frontal image asset for this element.
@@ -29,7 +29,7 @@ namespace Hedra
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="KlingO1EditElement" /> class.
+        /// Initializes a new instance of the <see cref="KlingEditElement" /> class.
         /// </summary>
         /// <param name="frontalImageAssetId">
         /// ID of the frontal image asset for this element.
@@ -40,7 +40,7 @@ namespace Hedra
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public KlingO1EditElement(
+        public KlingEditElement(
             global::System.Guid frontalImageAssetId,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageAssetIds)
         {
@@ -49,9 +49,9 @@ namespace Hedra
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="KlingO1EditElement" /> class.
+        /// Initializes a new instance of the <see cref="KlingEditElement" /> class.
         /// </summary>
-        public KlingO1EditElement()
+        public KlingEditElement()
         {
         }
     }

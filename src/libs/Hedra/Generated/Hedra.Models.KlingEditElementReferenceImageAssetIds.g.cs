@@ -6,7 +6,7 @@ namespace Hedra
     /// <summary>
     /// Optional IDs of additional reference image assets (different angles).
     /// </summary>
-    public sealed partial class KlingO1EditElementReferenceImageAssetIds
+    public sealed partial class KlingEditElementReferenceImageAssetIds
     {
 
         /// <summary>

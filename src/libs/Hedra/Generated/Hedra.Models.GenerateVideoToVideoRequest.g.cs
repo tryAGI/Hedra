@@ -70,7 +70,7 @@ namespace Hedra
         /// Optional elements for character tracking. Reference as @Element1, @Element2, etc. in prompt.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("elements")]
-        public global::System.Collections.Generic.IList<global::Hedra.KlingO1EditElement>? Elements { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.KlingEditElement>? Elements { get; set; }
 
         /// <summary>
         /// Whether to preserve the original audio from the input video. Automatically disabled when generate_audio is enabled.<br/>
@@ -133,7 +133,7 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageAssetIds,
-            global::System.Collections.Generic.IList<global::Hedra.KlingO1EditElement>? elements,
+            global::System.Collections.Generic.IList<global::Hedra.KlingEditElement>? elements,
             bool? keepAudio)
         {
             this.AiModelId = aiModelId;

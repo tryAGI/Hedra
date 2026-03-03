@@ -1050,7 +1050,7 @@ components:
             - type: string
               format: uuid
             - type: 'null'
-          description: The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+          description: The id of the Image asset to use as the start keyframe.
         ai_model_id:
           title: Ai Model Id
           type: string
@@ -1146,7 +1146,7 @@ components:
             - type: string
               format: uuid
             - type: 'null'
-          description: The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+          description: The id of the Image asset to use as the start keyframe.
         ai_model_id:
           title: Ai Model Id
           type: string
@@ -2266,7 +2266,7 @@ components:
             - type: string
               format: uuid
             - type: 'null'
-          description: The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+          description: The id of the Image asset to use as the start keyframe.
         start_keyframe_url:
           title: Start Keyframe Url
           anyOf:
@@ -2282,7 +2282,7 @@ components:
             - type: string
               format: uuid
             - type: 'null'
-          description: The id of the Image asset to use as the end keyframe. This will be ignored if reference_image_ids is provided.
+          description: The id of the Image asset to use as the end keyframe.
         end_keyframe_url:
           title: End Keyframe Url
           anyOf:
@@ -2327,7 +2327,7 @@ components:
                 type: string
                 format: uuid
             - type: 'null'
-          description: The id(s) of the image(s) to reference in the generation. Only used for multi-image video generation and will supersede start_keyframe_id.
+          description: The id(s) of the image(s) to reference in the generation.
         reference_video_ids:
           title: Reference Video Ids
           anyOf:
@@ -2405,7 +2405,7 @@ components:
             - type: string
               format: uuid
             - type: 'null'
-          description: The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+          description: The id of the Image asset to use as the start keyframe.
         start_keyframe_url:
           title: Start Keyframe Url
           anyOf:
@@ -2421,7 +2421,7 @@ components:
             - type: string
               format: uuid
             - type: 'null'
-          description: The id of the Image asset to use as the end keyframe. This will be ignored if reference_image_ids is provided.
+          description: The id of the Image asset to use as the end keyframe.
         end_keyframe_url:
           title: End Keyframe Url
           anyOf:
@@ -2466,7 +2466,7 @@ components:
                 type: string
                 format: uuid
             - type: 'null'
-          description: The id(s) of the image(s) to reference in the generation. Only used for multi-image video generation and will supersede start_keyframe_id.
+          description: The id(s) of the image(s) to reference in the generation.
         reference_video_ids:
           title: Reference Video Ids
           anyOf:
@@ -2549,7 +2549,7 @@ components:
             - type: string
               format: uuid
             - type: 'null'
-          description: The id of the Image asset to use as the start keyframe. This will be ignored if reference_image_ids is provided.
+          description: The id of the Image asset to use as the start keyframe.
         start_keyframe_url:
           title: Start Keyframe Url
           anyOf:
@@ -2565,7 +2565,7 @@ components:
             - type: string
               format: uuid
             - type: 'null'
-          description: The id of the Image asset to use as the end keyframe. This will be ignored if reference_image_ids is provided.
+          description: The id of the Image asset to use as the end keyframe.
         end_keyframe_url:
           title: End Keyframe Url
           anyOf:
@@ -2610,7 +2610,7 @@ components:
                 type: string
                 format: uuid
             - type: 'null'
-          description: The id(s) of the image(s) to reference in the generation. Only used for multi-image video generation and will supersede start_keyframe_id.
+          description: The id(s) of the image(s) to reference in the generation.
         reference_video_ids:
           title: Reference Video Ids
           anyOf:
@@ -2745,7 +2745,7 @@ components:
           anyOf:
             - type: array
               items:
-                $ref: '#/components/schemas/KlingO1EditElement'
+                $ref: '#/components/schemas/KlingEditElement'
             - type: 'null'
           description: 'Optional elements for character tracking. Reference as @Element1, @Element2, etc. in prompt.'
         keep_audio:
@@ -2828,7 +2828,7 @@ components:
           anyOf:
             - type: array
               items:
-                $ref: '#/components/schemas/KlingO1EditElement'
+                $ref: '#/components/schemas/KlingEditElement'
             - type: 'null'
           description: 'Optional elements for character tracking. Reference as @Element1, @Element2, etc. in prompt.'
         keep_audio:
@@ -3933,8 +3933,8 @@ components:
             - type: 'null'
           description: Maximum combined duration across all files in this slot in milliseconds (video/audio only).
       description: "A typed input slot describing one kind of input a model accepts.\n\nEach slot has a media type (image, video, audio) and a role that distinguishes\nit from other slots of the same type (e.g., start_frame vs end_frame vs reference)."
-    KlingO1EditElement:
-      title: KlingO1EditElement
+    KlingEditElement:
+      title: KlingEditElement
       required:
         - frontal_image_asset_id
       type: object
@@ -3953,7 +3953,7 @@ components:
                 format: uuid
             - type: 'null'
           description: Optional IDs of additional reference image assets (different angles).
-      description: "Element for character tracking in Kling O1 Edit.\n\nReference as @Element1, @Element2, etc. in prompt."
+      description: "Element for character/subject consistency in Kling video generation.\n\nReference as @Element1, @Element2, etc. in prompt."
     NormalizedPoint:
       maxItems: 2
       minItems: 2
