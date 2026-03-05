@@ -32,6 +32,7 @@ namespace Hedra
         /// <exception cref="global::Hedra.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Hedra.Asset> UploadAssetAsync(
             global::System.Guid id,
+
             global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

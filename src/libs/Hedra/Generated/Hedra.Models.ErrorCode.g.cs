@@ -17,51 +17,51 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        UNKNOWN,
+        Unknown,
         /// <summary>
         /// 
         /// </summary>
-        INVALIDARGUMENT,
+        InvalidArgument,
         /// <summary>
         /// 
         /// </summary>
-        NOTFOUND,
+        NotFound,
         /// <summary>
         /// 
         /// </summary>
-        ALREADYEXISTS,
+        AlreadyExists,
         /// <summary>
         /// 
         /// </summary>
-        PERMISSIONDENIED,
+        PermissionDenied,
         /// <summary>
         /// 
         /// </summary>
-        MISSINGCREDITS,
+        MissingCredits,
         /// <summary>
         /// 
         /// </summary>
-        MODERATIONFAILED,
+        ModerationFailed,
         /// <summary>
         /// 
         /// </summary>
-        FAILEDPRECONDITION,
+        FailedPrecondition,
         /// <summary>
         /// 
         /// </summary>
-        DEADLINEEXCEEDED,
+        DeadlineExceeded,
         /// <summary>
         /// 
         /// </summary>
-        RESOURCEEXHAUSTED,
+        ResourceExhausted,
         /// <summary>
         /// 
         /// </summary>
-        UNAVAILABLE,
+        Unavailable,
         /// <summary>
         /// 
         /// </summary>
-        INTERNAL,
+        Internal,
     }
 
     /// <summary>
@@ -76,18 +76,18 @@ namespace Hedra
         {
             return value switch
             {
-                ErrorCode.UNKNOWN => "UNKNOWN",
-                ErrorCode.INVALIDARGUMENT => "INVALID_ARGUMENT",
-                ErrorCode.NOTFOUND => "NOT_FOUND",
-                ErrorCode.ALREADYEXISTS => "ALREADY_EXISTS",
-                ErrorCode.PERMISSIONDENIED => "PERMISSION_DENIED",
-                ErrorCode.MISSINGCREDITS => "MISSING_CREDITS",
-                ErrorCode.MODERATIONFAILED => "MODERATION_FAILED",
-                ErrorCode.FAILEDPRECONDITION => "FAILED_PRECONDITION",
-                ErrorCode.DEADLINEEXCEEDED => "DEADLINE_EXCEEDED",
-                ErrorCode.RESOURCEEXHAUSTED => "RESOURCE_EXHAUSTED",
-                ErrorCode.UNAVAILABLE => "UNAVAILABLE",
-                ErrorCode.INTERNAL => "INTERNAL",
+                ErrorCode.Unknown => "UNKNOWN",
+                ErrorCode.InvalidArgument => "INVALID_ARGUMENT",
+                ErrorCode.NotFound => "NOT_FOUND",
+                ErrorCode.AlreadyExists => "ALREADY_EXISTS",
+                ErrorCode.PermissionDenied => "PERMISSION_DENIED",
+                ErrorCode.MissingCredits => "MISSING_CREDITS",
+                ErrorCode.ModerationFailed => "MODERATION_FAILED",
+                ErrorCode.FailedPrecondition => "FAILED_PRECONDITION",
+                ErrorCode.DeadlineExceeded => "DEADLINE_EXCEEDED",
+                ErrorCode.ResourceExhausted => "RESOURCE_EXHAUSTED",
+                ErrorCode.Unavailable => "UNAVAILABLE",
+                ErrorCode.Internal => "INTERNAL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -98,18 +98,18 @@ namespace Hedra
         {
             return value switch
             {
-                "UNKNOWN" => ErrorCode.UNKNOWN,
-                "INVALID_ARGUMENT" => ErrorCode.INVALIDARGUMENT,
-                "NOT_FOUND" => ErrorCode.NOTFOUND,
-                "ALREADY_EXISTS" => ErrorCode.ALREADYEXISTS,
-                "PERMISSION_DENIED" => ErrorCode.PERMISSIONDENIED,
-                "MISSING_CREDITS" => ErrorCode.MISSINGCREDITS,
-                "MODERATION_FAILED" => ErrorCode.MODERATIONFAILED,
-                "FAILED_PRECONDITION" => ErrorCode.FAILEDPRECONDITION,
-                "DEADLINE_EXCEEDED" => ErrorCode.DEADLINEEXCEEDED,
-                "RESOURCE_EXHAUSTED" => ErrorCode.RESOURCEEXHAUSTED,
-                "UNAVAILABLE" => ErrorCode.UNAVAILABLE,
-                "INTERNAL" => ErrorCode.INTERNAL,
+                "UNKNOWN" => ErrorCode.Unknown,
+                "INVALID_ARGUMENT" => ErrorCode.InvalidArgument,
+                "NOT_FOUND" => ErrorCode.NotFound,
+                "ALREADY_EXISTS" => ErrorCode.AlreadyExists,
+                "PERMISSION_DENIED" => ErrorCode.PermissionDenied,
+                "MISSING_CREDITS" => ErrorCode.MissingCredits,
+                "MODERATION_FAILED" => ErrorCode.ModerationFailed,
+                "FAILED_PRECONDITION" => ErrorCode.FailedPrecondition,
+                "DEADLINE_EXCEEDED" => ErrorCode.DeadlineExceeded,
+                "RESOURCE_EXHAUSTED" => ErrorCode.ResourceExhausted,
+                "UNAVAILABLE" => ErrorCode.Unavailable,
+                "INTERNAL" => ErrorCode.Internal,
                 _ => null,
             };
         }
