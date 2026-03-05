@@ -76,15 +76,9 @@ namespace Hedra
             __httpRequestContent.Add(
                 content: new global::System.Net.Http.StringContent($"{id}"),
                 name: "\"id\"");
-            var __contentFile = new global::System.Net.Http.ByteArrayContent(request.File ?? global::System.Array.Empty<byte>());
             __httpRequestContent.Add(
-                content: __contentFile,
-                name: "\"file\"",
-                fileName: request.Filename != null ? $"\"{request.Filename}\"" : string.Empty);
-            if (__contentFile.Headers.ContentDisposition != null)
-            {
-                __contentFile.Headers.ContentDisposition.FileNameStar = null;
-            }
+                content: new global::System.Net.Http.StringContent($"{request.File}"),
+                name: "\"file\"");
             __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
@@ -222,19 +216,16 @@ namespace Hedra
         /// </summary>
         /// <param name="id"></param>
         /// <param name="file"></param>
-        /// <param name="filename"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Hedra.Asset> UploadAssetAsync(
             global::System.Guid id,
-            byte[] file,
-            string filename,
+            string file,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost
             {
                 File = file,
-                Filename = filename,
             };
 
             return await UploadAssetAsync(
