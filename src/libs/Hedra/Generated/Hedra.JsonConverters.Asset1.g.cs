@@ -71,18 +71,24 @@ namespace Hedra.JsonConverters
                 voice = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
-            var result = new global::Hedra.Asset1(
+            var __value = new global::Hedra.Asset1(
                 discriminator?.Type,
                 uploadedImage,
+
                 uploadedAudio,
+
                 uploadedVideo,
+
                 generatedAudio,
+
                 generatedImage,
+
                 generatedVideo,
+
                 voice
                 );
 
-            return result;
+            return __value;
         }
 
         /// <inheritdoc />

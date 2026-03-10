@@ -113,24 +113,36 @@ namespace Hedra.JsonConverters
                 motionControl = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
-            var result = new global::Hedra.GenerateAssetPublicGenerationsPostRequest(
+            var __value = new global::Hedra.GenerateAssetPublicGenerationsPostRequest(
                 discriminator?.Type,
                 video,
+
                 textToSpeech,
+
                 textToSound,
+
                 image,
+
                 imageUpscale,
+
                 videoUpscale,
+
                 audioIsolation,
+
                 speechToSpeech,
+
                 voiceClone,
+
                 audioFromVideo,
+
                 videoWithAudio,
+
                 videoToVideo,
+
                 motionControl
                 );
 
-            return result;
+            return __value;
         }
 
         /// <inheritdoc />
