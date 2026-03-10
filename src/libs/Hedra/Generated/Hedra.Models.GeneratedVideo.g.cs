@@ -77,8 +77,7 @@ namespace Hedra
         /// URL of the Image asset used as the start keyframe.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keyframe_start")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.Asset? KeyframeStart { get; set; } = default!;
+        public global::Hedra.Asset? KeyframeStart { get; set; }
 
         /// <summary>
         /// URL of the Image asset used as the end keyframe.
@@ -90,8 +89,7 @@ namespace Hedra
         /// URL of the Audio asset used as the basis for the video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.Asset? Audio { get; set; } = default!;
+        public global::Hedra.Asset? Audio { get; set; }
 
         /// <summary>
         /// The id(s) of the audio(s) referenced in the generation.
@@ -186,14 +184,14 @@ namespace Hedra
             int durationMs,
             string previewUrl,
             global::Hedra.GeneratedVideoInputs generatedVideoInputs,
-            global::Hedra.Asset? keyframeStart,
-            global::Hedra.Asset? audio,
             string? type,
             string? url,
             string? downloadUrl,
             string? streamingUrl,
             string? posterUrl,
+            global::Hedra.Asset? keyframeStart,
             global::Hedra.Asset? keyframeEnd,
+            global::Hedra.Asset? audio,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceAudioIds,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageIds,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceVideoIds,
@@ -204,14 +202,14 @@ namespace Hedra
             this.DurationMs = durationMs;
             this.PreviewUrl = previewUrl ?? throw new global::System.ArgumentNullException(nameof(previewUrl));
             this.GeneratedVideoInputs = generatedVideoInputs ?? throw new global::System.ArgumentNullException(nameof(generatedVideoInputs));
-            this.KeyframeStart = keyframeStart ?? throw new global::System.ArgumentNullException(nameof(keyframeStart));
-            this.Audio = audio ?? throw new global::System.ArgumentNullException(nameof(audio));
             this.Type = type;
             this.Url = url;
             this.DownloadUrl = downloadUrl;
             this.StreamingUrl = streamingUrl;
             this.PosterUrl = posterUrl;
+            this.KeyframeStart = keyframeStart;
             this.KeyframeEnd = keyframeEnd;
+            this.Audio = audio;
             this.ReferenceAudioIds = referenceAudioIds;
             this.ReferenceImageIds = referenceImageIds;
             this.ReferenceVideoIds = referenceVideoIds;
