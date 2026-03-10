@@ -51,9 +51,11 @@ namespace Hedra.JsonConverters
             {
             }
 
-            var result = new global::Hedra.AnyOf<T1, T2, T3>(
+            var __value = new global::Hedra.AnyOf<T1, T2, T3>(
                 value1,
+
                 value2,
+
                 value3
                 );
 
@@ -76,7 +78,7 @@ namespace Hedra.JsonConverters
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
-            return result;
+            return __value;
         }
 
         /// <inheritdoc />
