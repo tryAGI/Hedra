@@ -26,8 +26,7 @@ namespace Hedra
         /// Description of the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public string? Description { get; set; } = default!;
+        public string? Description { get; set; }
 
         /// <summary>
         /// Type of generation the model applies to.
@@ -255,9 +254,9 @@ namespace Hedra
         public AIModel(
             string id,
             string name,
-            string? description,
             string type,
             global::Hedra.AIModelPrice priceDetails,
+            string? description,
             global::System.Collections.Generic.IList<string>? aspectRatios,
             global::System.Collections.Generic.IList<string>? resolutions,
             global::System.Collections.Generic.IList<string>? durations,
@@ -281,9 +280,9 @@ namespace Hedra
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.PriceDetails = priceDetails ?? throw new global::System.ArgumentNullException(nameof(priceDetails));
+            this.Description = description;
             this.AspectRatios = aspectRatios;
             this.Resolutions = resolutions;
             this.Durations = durations;
