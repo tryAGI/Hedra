@@ -10,10 +10,10 @@ C# SDK for the [Hedra](https://www.hedra.com/) AI video generation platform, aut
 
 ```bash
 # Build the solution
-dotnet build Hedra.sln
+dotnet build Hedra.slnx
 
 # Build for release (also produces NuGet package)
-dotnet build Hedra.sln -c Release
+dotnet build Hedra.slnx -c Release
 
 # Run integration tests (requires HEDRA_API_KEY env var)
 dotnet test src/tests/IntegrationTests/Hedra.IntegrationTests.csproj
