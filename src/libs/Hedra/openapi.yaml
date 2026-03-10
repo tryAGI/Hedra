@@ -831,6 +831,7 @@ components:
         - INVALID_ARGUMENT
         - NOT_FOUND
         - ALREADY_EXISTS
+        - UNAUTHORIZED
         - PERMISSION_DENIED
         - MISSING_CREDITS
         - MODERATION_FAILED
