@@ -33,6 +33,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        Unauthorized,
+        /// <summary>
+        /// 
+        /// </summary>
         PermissionDenied,
         /// <summary>
         /// 
@@ -80,6 +84,7 @@ namespace Hedra
                 ErrorCode.InvalidArgument => "INVALID_ARGUMENT",
                 ErrorCode.NotFound => "NOT_FOUND",
                 ErrorCode.AlreadyExists => "ALREADY_EXISTS",
+                ErrorCode.Unauthorized => "UNAUTHORIZED",
                 ErrorCode.PermissionDenied => "PERMISSION_DENIED",
                 ErrorCode.MissingCredits => "MISSING_CREDITS",
                 ErrorCode.ModerationFailed => "MODERATION_FAILED",
@@ -102,6 +107,7 @@ namespace Hedra
                 "INVALID_ARGUMENT" => ErrorCode.InvalidArgument,
                 "NOT_FOUND" => ErrorCode.NotFound,
                 "ALREADY_EXISTS" => ErrorCode.AlreadyExists,
+                "UNAUTHORIZED" => ErrorCode.Unauthorized,
                 "PERMISSION_DENIED" => ErrorCode.PermissionDenied,
                 "MISSING_CREDITS" => ErrorCode.MissingCredits,
                 "MODERATION_FAILED" => ErrorCode.ModerationFailed,
