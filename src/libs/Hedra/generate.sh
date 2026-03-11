@@ -12,4 +12,6 @@ autosdk generate openapi.yaml \
   --targetFramework net10.0 \
   --output Generated \
   --exclude-deprecated-operations \
-  --methodNamingConvention Summary
+  --methodNamingConvention Summary \
+  --base-url https://mercury.dev.dream-ai.com/api \
+  --security-scheme ApiKey:Header:X-API-Key

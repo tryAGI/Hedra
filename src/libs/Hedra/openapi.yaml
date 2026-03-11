@@ -3,7 +3,7 @@ info:
   title: Hedra Web API
   version: 0.1.0
 servers:
-  - url: https://mercury.dev.dream-ai.com/api
+  - url: /web-app
 paths:
   /public/models:
     get:
@@ -4286,8 +4286,6 @@ components:
       type: apiKey
       name: X-API-Key
       in: header
-security:
-  - APIKeyHeader: [ ]
 tags:
   - name: Public
     description: Public endpoints are available to API users.
