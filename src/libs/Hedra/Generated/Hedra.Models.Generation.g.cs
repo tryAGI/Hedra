@@ -13,7 +13,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid Id { get; set; } = default!;
+        public required global::System.Guid Id { get; set; }
 
         /// <summary>
         /// Type of generation.
@@ -21,7 +21,7 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AssetTypeJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.AssetType Type { get; set; } = default!;
+        public required global::Hedra.AssetType Type { get; set; }
 
         /// <summary>
         /// Inputs for the generation
@@ -29,7 +29,7 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.InputJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.Input Input { get; set; } = default!;
+        public required global::Hedra.Input Input { get; set; }
 
         /// <summary>
         /// Status of the generation
@@ -37,14 +37,14 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.GenerationStatusJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.GenerationStatus Status { get; set; } = default!;
+        public required global::Hedra.GenerationStatus Status { get; set; }
 
         /// <summary>
         /// Current progress to completion. Between 0-1
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("progress")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public double Progress { get; set; } = default!;
+        public required double Progress { get; set; }
 
         /// <summary>
         /// Estimated time remaining in seconds until generation completes.
@@ -57,7 +57,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string CreatedAt { get; set; } = default!;
+        public required string CreatedAt { get; set; }
 
         /// <summary>
         /// Credits consumed (debits) for this generation.

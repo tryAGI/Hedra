@@ -44,21 +44,21 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AiModelId { get; set; } = default!;
+        public required global::System.Guid AiModelId { get; set; }
 
         /// <summary>
         /// The id of the video asset to transform.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("video_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid VideoId { get; set; } = default!;
+        public required global::System.Guid VideoId { get; set; }
 
         /// <summary>
         /// Natural language transformation instructions. Use @Element1, @Image1 syntax to reference elements and images.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Prompt { get; set; } = default!;
+        public required string Prompt { get; set; }
 
         /// <summary>
         /// Optional ids of reference image assets for style transfer. Reference as @Image1, @Image2, etc. in prompt.

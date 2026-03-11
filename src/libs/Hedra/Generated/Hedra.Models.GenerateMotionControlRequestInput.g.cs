@@ -44,28 +44,28 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AiModelId { get; set; } = default!;
+        public required global::System.Guid AiModelId { get; set; }
 
         /// <summary>
         /// The id of the video asset to use as motion reference.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("video_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid VideoId { get; set; } = default!;
+        public required global::System.Guid VideoId { get; set; }
 
         /// <summary>
         /// The id of the character image asset to animate with the motion from the video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_keyframe_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid StartKeyframeId { get; set; } = default!;
+        public required global::System.Guid StartKeyframeId { get; set; }
 
         /// <summary>
         /// Video generation parameters including text_prompt and character_orientation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generated_video_inputs")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.GeneratedVideoInputs GeneratedVideoInputs { get; set; } = default!;
+        public required global::Hedra.GeneratedVideoInputs GeneratedVideoInputs { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

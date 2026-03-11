@@ -43,7 +43,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid VoiceId { get; set; } = default!;
+        public required global::System.Guid VoiceId { get; set; }
 
         /// <summary>
         /// The id of the model to use.
@@ -56,7 +56,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Text { get; set; } = default!;
+        public required string Text { get; set; }
 
         /// <summary>
         /// Stability should be between 0-1, where 0 is the most stable and 1 is the most unstable. This varies the consistency between your outputs.<br/>

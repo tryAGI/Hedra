@@ -43,14 +43,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AudioId { get; set; } = default!;
+        public required global::System.Guid AudioId { get; set; }
 
         /// <summary>
         /// The name of the new voice. Required by ElevenLabs to create a new voice.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Name { get; set; } = default!;
+        public required string Name { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

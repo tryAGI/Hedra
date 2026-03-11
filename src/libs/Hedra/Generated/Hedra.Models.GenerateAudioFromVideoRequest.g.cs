@@ -43,14 +43,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_generation_model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AudioGenerationModelId { get; set; } = default!;
+        public required global::System.Guid AudioGenerationModelId { get; set; }
 
         /// <summary>
         /// The id of the video asset to generate audio from.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("video_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid VideoId { get; set; } = default!;
+        public required global::System.Guid VideoId { get; set; }
 
         /// <summary>
         /// Optional prompt to guide the audio generation.

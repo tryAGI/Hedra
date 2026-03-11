@@ -19,28 +19,28 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("width")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Width { get; set; } = default!;
+        public required int Width { get; set; }
 
         /// <summary>
         /// Height of the video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("height")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Height { get; set; } = default!;
+        public required int Height { get; set; }
 
         /// <summary>
         /// Duration of the video in milliseconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int DurationMs { get; set; } = default!;
+        public required int DurationMs { get; set; }
 
         /// <summary>
         /// URL of the video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Url { get; set; } = default!;
+        public required string Url { get; set; }
 
         /// <summary>
         /// URL to download the video.

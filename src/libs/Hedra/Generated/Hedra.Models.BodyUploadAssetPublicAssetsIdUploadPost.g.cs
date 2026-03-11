@@ -13,7 +13,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string File { get; set; } = default!;
+        public required string File { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

@@ -43,14 +43,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AiModelId { get; set; } = default!;
+        public required global::System.Guid AiModelId { get; set; }
 
         /// <summary>
         /// The text description of the sound effect to generate.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Text { get; set; } = default!;
+        public required string Text { get; set; }
 
         /// <summary>
         /// The duration of the sound effect in seconds (0.5-30). If not specified, duration is automatically determined from the prompt.

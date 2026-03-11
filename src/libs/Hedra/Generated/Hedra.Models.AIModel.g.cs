@@ -13,14 +13,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Id { get; set; } = default!;
+        public required string Id { get; set; }
 
         /// <summary>
         /// Name of the model
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Name { get; set; } = default!;
+        public required string Name { get; set; }
 
         /// <summary>
         /// Description of the model.
@@ -33,7 +33,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Type { get; set; } = default!;
+        public required string Type { get; set; }
 
         /// <summary>
         /// Aspect ratios the model supports.
@@ -112,7 +112,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("price_details")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.AIModelPrice PriceDetails { get; set; } = default!;
+        public required global::Hedra.AIModelPrice PriceDetails { get; set; }
 
         /// <summary>
         /// Extensible pricing information with dimension modifiers for resolution, audio, etc.

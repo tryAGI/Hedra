@@ -19,14 +19,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("width")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Width { get; set; } = default!;
+        public required int Width { get; set; }
 
         /// <summary>
         /// Height of the image.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("height")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Height { get; set; } = default!;
+        public required int Height { get; set; }
 
         /// <summary>
         /// URL of the image.
@@ -57,21 +57,21 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int DurationMs { get; set; } = default!;
+        public required int DurationMs { get; set; }
 
         /// <summary>
         /// URL of the preview for animated thumbnails.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("preview_url")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string PreviewUrl { get; set; } = default!;
+        public required string PreviewUrl { get; set; }
 
         /// <summary>
         /// Inputs for generating the video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generated_video_inputs")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.GeneratedVideoInputs GeneratedVideoInputs { get; set; } = default!;
+        public required global::Hedra.GeneratedVideoInputs GeneratedVideoInputs { get; set; }
 
         /// <summary>
         /// URL of the Image asset used as the start keyframe.

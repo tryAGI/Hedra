@@ -13,7 +13,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid Id { get; set; } = default!;
+        public required global::System.Guid Id { get; set; }
 
         /// <summary>
         /// The type of the asset.
@@ -21,21 +21,21 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AssetTypeJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.AssetType Type { get; set; } = default!;
+        public required global::Hedra.AssetType Type { get; set; }
 
         /// <summary>
         /// Name of the asset. Default to user-provided file name.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Name { get; set; } = default!;
+        public required string Name { get; set; }
 
         /// <summary>
         /// URL of the thumbnail image.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("thumbnail_url")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string ThumbnailUrl { get; set; } = default!;
+        public required string ThumbnailUrl { get; set; }
 
         /// <summary>
         /// Optional description of the asset.
@@ -62,7 +62,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string CreatedAt { get; set; } = default!;
+        public required string CreatedAt { get; set; }
 
         /// <summary>
         /// Date the asset was favorited.
@@ -76,7 +76,7 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("asset")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.Asset1JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.Asset1 Asset1 { get; set; } = default!;
+        public required global::Hedra.Asset1 Asset1 { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

@@ -13,14 +13,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("page_info")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.PageInfo PageInfo { get; set; } = default!;
+        public required global::Hedra.PageInfo PageInfo { get; set; }
 
         /// <summary>
         /// Page data.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Hedra.Generation> Data { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Hedra.Generation> Data { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
