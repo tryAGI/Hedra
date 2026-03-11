@@ -14,7 +14,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("frontal_image_asset_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid FrontalImageAssetId { get; set; } = default!;
+        public required global::System.Guid FrontalImageAssetId { get; set; }
 
         /// <summary>
         /// Optional IDs of additional reference image assets (different angles).

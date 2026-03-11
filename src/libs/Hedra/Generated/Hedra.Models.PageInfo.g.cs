@@ -13,14 +13,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Limit { get; set; } = default!;
+        public required int Limit { get; set; }
 
         /// <summary>
         /// Number of records skipped.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("offset")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Offset { get; set; } = default!;
+        public required int Offset { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

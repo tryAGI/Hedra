@@ -44,7 +44,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text_prompt")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string TextPrompt { get; set; } = default!;
+        public required string TextPrompt { get; set; }
 
         /// <summary>
         /// The aspect ratio to use.
@@ -69,7 +69,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AiModelId { get; set; } = default!;
+        public required global::System.Guid AiModelId { get; set; }
 
         /// <summary>
         /// The id(s) of the image(s) to reference in the generation. This is only used for image-to-image generation and will supersede start_keyframe_id.

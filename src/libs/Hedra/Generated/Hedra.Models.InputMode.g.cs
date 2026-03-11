@@ -18,14 +18,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Mode { get; set; } = default!;
+        public required string Mode { get; set; }
 
         /// <summary>
         /// Ordered list of input slots available in this mode.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("slots")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Hedra.InputSlot> Slots { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Hedra.InputSlot> Slots { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

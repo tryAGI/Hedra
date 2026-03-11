@@ -43,7 +43,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AiModelId { get; set; } = default!;
+        public required global::System.Guid AiModelId { get; set; }
 
         /// <summary>
         /// The id of the Image asset to use as the start keyframe.
@@ -116,7 +116,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generated_video_inputs")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.GeneratedVideoInputs GeneratedVideoInputs { get; set; } = default!;
+        public required global::Hedra.GeneratedVideoInputs GeneratedVideoInputs { get; set; }
 
         /// <summary>
         /// Number of video variations to generate (1-8). When &gt; 1, batch_results will contain all generation results.<br/>

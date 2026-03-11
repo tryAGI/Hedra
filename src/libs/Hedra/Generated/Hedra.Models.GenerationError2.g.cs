@@ -14,14 +14,14 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.ErrorCodeJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.ErrorCode Type { get; set; } = default!;
+        public required global::Hedra.ErrorCode Type { get; set; }
 
         /// <summary>
         /// The error message.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Message { get; set; } = default!;
+        public required string Message { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

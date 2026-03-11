@@ -43,14 +43,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AiModelId { get; set; } = default!;
+        public required global::System.Guid AiModelId { get; set; }
 
         /// <summary>
         /// The id of the Video asset to upscale.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("video_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid VideoId { get; set; } = default!;
+        public required global::System.Guid VideoId { get; set; }
 
         /// <summary>
         /// Computed scale factor derived from target_resolution and source video dimensions.

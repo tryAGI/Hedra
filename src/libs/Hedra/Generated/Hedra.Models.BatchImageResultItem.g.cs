@@ -25,7 +25,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string CreatedAt { get; set; } = default!;
+        public required string CreatedAt { get; set; }
 
         /// <summary>
         /// Status of the generation
@@ -33,14 +33,14 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.GenerationStatusJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.GenerationStatus Status { get; set; } = default!;
+        public required global::Hedra.GenerationStatus Status { get; set; }
 
         /// <summary>
         /// Current progress to completion. Between 0-1
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("progress")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public double Progress { get; set; } = default!;
+        public required double Progress { get; set; }
 
         /// <summary>
         /// Error message if this item failed.

@@ -43,14 +43,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AiModelId { get; set; } = default!;
+        public required global::System.Guid AiModelId { get; set; }
 
         /// <summary>
         /// The id of the Image asset to use as the basis for upscaling.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid ImageId { get; set; } = default!;
+        public required global::System.Guid ImageId { get; set; }
 
         /// <summary>
         /// Optional upscale factor to pass to the model (e.g. 2.0 for 2x).
@@ -63,21 +63,21 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("asset_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AssetId { get; set; } = default!;
+        public required global::System.Guid AssetId { get; set; }
 
         /// <summary>
         /// The id of the generation. Can be used to check status.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid Id { get; set; } = default!;
+        public required global::System.Guid Id { get; set; }
 
         /// <summary>
         /// Date the generation was submitted.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string CreatedAt { get; set; } = default!;
+        public required string CreatedAt { get; set; }
 
         /// <summary>
         /// Status of the generation
@@ -85,14 +85,14 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.GenerationStatusJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.GenerationStatus Status { get; set; } = default!;
+        public required global::Hedra.GenerationStatus Status { get; set; }
 
         /// <summary>
         /// Current progress to completion. Between 0-1
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("progress")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public double Progress { get; set; } = default!;
+        public required double Progress { get; set; }
 
         /// <summary>
         /// Estimated time until completion in seconds. May be None if no historical data available.

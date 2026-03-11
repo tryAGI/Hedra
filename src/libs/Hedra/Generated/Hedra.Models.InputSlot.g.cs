@@ -15,14 +15,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Type { get; set; } = default!;
+        public required string Type { get; set; }
 
         /// <summary>
         /// Semantic role distinguishing this slot (e.g., 'start_frame', 'end_frame', 'reference', 'audio_input', 'input_video').
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Role { get; set; } = default!;
+        public required string Role { get; set; }
 
         /// <summary>
         /// Whether this input is mandatory.<br/>

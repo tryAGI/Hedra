@@ -13,7 +13,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text_prompt")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string TextPrompt { get; set; } = default!;
+        public required string TextPrompt { get; set; }
 
         /// <summary>
         /// The id of the model used for generation.

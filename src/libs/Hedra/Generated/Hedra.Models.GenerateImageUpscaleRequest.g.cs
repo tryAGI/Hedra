@@ -43,14 +43,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AiModelId { get; set; } = default!;
+        public required global::System.Guid AiModelId { get; set; }
 
         /// <summary>
         /// The id of the Image asset to use as the basis for upscaling.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid ImageId { get; set; } = default!;
+        public required global::System.Guid ImageId { get; set; }
 
         /// <summary>
         /// Optional upscale factor to pass to the model (e.g. 2.0 for 2x).

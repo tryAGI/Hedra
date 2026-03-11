@@ -13,21 +13,21 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("remaining")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Remaining { get; set; } = default!;
+        public required int Remaining { get; set; }
 
         /// <summary>
         /// Credits that will expire in the future.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("expiring")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Expiring { get; set; } = default!;
+        public required int Expiring { get; set; }
 
         /// <summary>
         /// Credits used in the current billing period.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("used")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Used { get; set; } = default!;
+        public required int Used { get; set; }
 
         /// <summary>
         /// Credits for each workspace mapped by workspace_id. Only included if user is in a workspace.

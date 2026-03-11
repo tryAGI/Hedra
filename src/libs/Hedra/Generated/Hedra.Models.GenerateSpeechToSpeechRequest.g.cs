@@ -43,21 +43,21 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AudioId { get; set; } = default!;
+        public required global::System.Guid AudioId { get; set; }
 
         /// <summary>
         /// The id of the model to use for audio isolation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid AiModelId { get; set; } = default!;
+        public required global::System.Guid AiModelId { get; set; }
 
         /// <summary>
         /// The id of the Voice to use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Guid VoiceId { get; set; } = default!;
+        public required global::System.Guid VoiceId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

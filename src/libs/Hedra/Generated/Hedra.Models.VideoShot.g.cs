@@ -13,14 +13,14 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Prompt { get; set; } = default!;
+        public required string Prompt { get; set; }
 
         /// <summary>
         /// Duration of this shot in milliseconds (3000-15000).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int DurationMs { get; set; } = default!;
+        public required int DurationMs { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

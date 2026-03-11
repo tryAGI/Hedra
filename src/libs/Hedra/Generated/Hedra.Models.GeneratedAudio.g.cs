@@ -19,21 +19,21 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int DurationMs { get; set; } = default!;
+        public required int DurationMs { get; set; }
 
         /// <summary>
         /// URL of the audio.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Url { get; set; } = default!;
+        public required string Url { get; set; }
 
         /// <summary>
         /// Inputs for generating the audio.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generated_audio_inputs")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.GeneratedAudioInputs GeneratedAudioInputs { get; set; } = default!;
+        public required global::Hedra.GeneratedAudioInputs GeneratedAudioInputs { get; set; }
 
         /// <summary>
         /// Transcriptions of the audio.

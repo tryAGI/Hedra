@@ -13,7 +13,7 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Name { get; set; } = default!;
+        public required string Name { get; set; }
 
         /// <summary>
         /// The type of the asset.
@@ -21,7 +21,7 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AssetTypeJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Hedra.AssetType Type { get; set; } = default!;
+        public required global::Hedra.AssetType Type { get; set; }
 
         /// <summary>
         /// 

@@ -13,21 +13,21 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("credit_cost")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int CreditCost { get; set; } = default!;
+        public required int CreditCost { get; set; }
 
         /// <summary>
         /// Unit scaling for the cost.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("unit_scale")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int UnitScale { get; set; } = default!;
+        public required int UnitScale { get; set; }
 
         /// <summary>
         /// Billing unit of the model (e.g. 'generation', 'second', 'character').
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("billing_unit")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string BillingUnit { get; set; } = default!;
+        public required string BillingUnit { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
