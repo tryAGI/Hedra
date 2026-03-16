@@ -1,7 +1,12 @@
 site_name: Hedra .NET Documentation
 nav:
 - Overview: index.md
-# EXAMPLES #
+# EXAMPLES:START
+- Examples:
+  - GetProject: samples/GetProject.md
+  - GirlSaysHello: samples/GirlSaysHello.md
+  - Ping: samples/Ping.md
+# EXAMPLES:END
         
 theme:
   name: material
