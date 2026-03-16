@@ -42,7 +42,7 @@ namespace Hedra
         /// Maximum file size in bytes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_file_size_bytes")]
-        public int? MaxFileSizeBytes { get; set; }
+        public long? MaxFileSizeBytes { get; set; }
 
         /// <summary>
         /// Minimum width or height in pixels.
@@ -123,7 +123,7 @@ namespace Hedra
             string role,
             bool? required,
             int? maxCount,
-            int? maxFileSizeBytes,
+            long? maxFileSizeBytes,
             int? minDimensionPx,
             int? maxDimensionPx,
             int? minDurationMs,
