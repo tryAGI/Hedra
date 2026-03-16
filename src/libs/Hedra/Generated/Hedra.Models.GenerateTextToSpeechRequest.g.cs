@@ -60,14 +60,14 @@ namespace Hedra
 
         /// <summary>
         /// Stability should be between 0-1, where 0 is the most stable and 1 is the most unstable. This varies the consistency between your outputs.<br/>
-        /// Default Value: 1.0
+        /// Default Value: 1F
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stability")]
         public double? Stability { get; set; }
 
         /// <summary>
         /// Speed should be between 0.7 and 1.2, where 0.7 is the slowest and 1.2 is the fastest. This varies the speed of the generated speech.<br/>
-        /// Default Value: 1.0
+        /// Default Value: 1F
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speed")]
         public double? Speed { get; set; }
@@ -113,11 +113,11 @@ namespace Hedra
         /// </param>
         /// <param name="stability">
         /// Stability should be between 0-1, where 0 is the most stable and 1 is the most unstable. This varies the consistency between your outputs.<br/>
-        /// Default Value: 1.0
+        /// Default Value: 1F
         /// </param>
         /// <param name="speed">
         /// Speed should be between 0.7 and 1.2, where 0.7 is the slowest and 1.2 is the fastest. This varies the speed of the generated speech.<br/>
-        /// Default Value: 1.0
+        /// Default Value: 1F
         /// </param>
         /// <param name="language">
         /// Language for TTS. See SupportedLanguage enum for valid values. Defaults to 'auto'.<br/>
