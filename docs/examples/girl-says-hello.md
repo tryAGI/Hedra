@@ -16,23 +16,23 @@ Console.WriteLine($"Using model: {modelId}");
 
 // 2. Create and upload an audio asset
 CreateAssetResponse audioAsset = await client.CreateAssetAsync(
-    name: "hello.wav",
+    name: H.Resources.hello_wav.FileName,
     type: AssetType.Audio);
 
 Asset uploadedAudio = await client.UploadAssetAsync(
     id: audioAsset.Id,
     file: Convert.ToBase64String(
-        await File.ReadAllBytesAsync("hello.wav")));
+        H.Resources.hello_wav.AsBytes()));
 
 // 3. Create and upload an image asset
 CreateAssetResponse imageAsset = await client.CreateAssetAsync(
-    name: "girl.png",
+    name: H.Resources.girl_png.FileName,
     type: AssetType.Image);
 
 Asset uploadedImage = await client.UploadAssetAsync(
     id: imageAsset.Id,
     file: Convert.ToBase64String(
-        await File.ReadAllBytesAsync("girl.png")));
+        H.Resources.girl_png.AsBytes()));
 
 // 4. Generate a talking avatar video
 GenerateAssetPublicGenerationsPostResponse generation = await client.GenerateAssetAsync(

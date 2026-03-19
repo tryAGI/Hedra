@@ -25,7 +25,7 @@ public partial class Tests
 
         //// 2. Create and upload an audio asset
         CreateAssetResponse audioAsset = await client.CreateAssetAsync(
-            name: "hello.wav",
+            name: H.Resources.hello_wav.FileName,
             type: AssetType.Audio);
 
         audioAsset.Should().NotBeNull();
@@ -33,13 +33,13 @@ public partial class Tests
         Asset uploadedAudio = await client.UploadAssetAsync(
             id: audioAsset.Id,
             file: Convert.ToBase64String(
-                await File.ReadAllBytesAsync("hello.wav")));
+                H.Resources.hello_wav.AsBytes()));
 
         uploadedAudio.Should().NotBeNull();
 
         //// 3. Create and upload an image asset
         CreateAssetResponse imageAsset = await client.CreateAssetAsync(
-            name: "girl.png",
+            name: H.Resources.girl_png.FileName,
             type: AssetType.Image);
 
         imageAsset.Should().NotBeNull();
@@ -47,7 +47,7 @@ public partial class Tests
         Asset uploadedImage = await client.UploadAssetAsync(
             id: imageAsset.Id,
             file: Convert.ToBase64String(
-                await File.ReadAllBytesAsync("girl.png")));
+                H.Resources.girl_png.AsBytes()));
 
         uploadedImage.Should().NotBeNull();
 
