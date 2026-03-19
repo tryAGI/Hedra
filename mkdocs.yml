@@ -5,6 +5,7 @@ nav:
 - Examples:
   - Ping: examples/ping.md
   - Girl Says Hello: examples/girl-says-hello.md
+  - Get Generation Status: examples/get-generation-status.md
 # EXAMPLES:END
         
 theme:
