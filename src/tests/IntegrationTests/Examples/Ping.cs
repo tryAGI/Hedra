@@ -1,3 +1,9 @@
+/*
+order: 10
+title: Ping
+slug: ping
+*/
+
 namespace Hedra.IntegrationTests;
 
 public partial class Tests
