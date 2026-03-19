@@ -73,7 +73,7 @@ namespace Hedra
                 path: "/public/generations",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
-                .AddOptionalParameter("type", type?.ToString() ?? string.Empty)
+                .AddOptionalParameter("type", type?.ToString())
                 .AddOptionalParameter("created_before", createdBefore?.ToString())
                 .AddOptionalParameter("created_after", createdAfter?.ToString())
                 .AddOptionalParameter("prompt_query", promptQuery)
