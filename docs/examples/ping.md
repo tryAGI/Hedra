@@ -1,3 +1,9 @@
+# Ping
+
+
+
+This example assumes `using Hedra;` is in scope and `apiKey` contains your Hedra API key.
+
 ```csharp
 using var client = new HedraClient(apiKey);
 

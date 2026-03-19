@@ -3,9 +3,8 @@ nav:
 - Overview: index.md
 # EXAMPLES:START
 - Examples:
-  - GetProject: samples/GetProject.md
-  - GirlSaysHello: samples/GirlSaysHello.md
-  - Ping: samples/Ping.md
+  - Ping: examples/ping.md
+  - Girl Says Hello: examples/girl-says-hello.md
 # EXAMPLES:END
         
 theme:
