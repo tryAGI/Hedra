@@ -23,12 +23,10 @@ namespace Hedra
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Upload Asset
         /// </summary>
         /// <param name="id"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
@@ -227,7 +225,6 @@ namespace Hedra
                 }
             }
         }
-
         /// <summary>
         /// Upload Asset
         /// </summary>

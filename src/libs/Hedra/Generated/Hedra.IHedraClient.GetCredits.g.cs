@@ -4,7 +4,6 @@ namespace Hedra
 {
     public partial interface IHedraClient
     {
-
         /// <summary>
         /// Get Credits
         /// </summary>
