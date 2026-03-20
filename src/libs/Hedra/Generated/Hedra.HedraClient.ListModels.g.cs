@@ -21,7 +21,6 @@ namespace Hedra
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// List Models
         /// </summary>

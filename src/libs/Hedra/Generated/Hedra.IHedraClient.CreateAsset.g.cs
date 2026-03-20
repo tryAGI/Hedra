@@ -4,11 +4,9 @@ namespace Hedra
 {
     public partial interface IHedraClient
     {
-
         /// <summary>
         /// Create Asset
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
@@ -16,7 +14,6 @@ namespace Hedra
 
             global::Hedra.CreateAssetRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create Asset
         /// </summary>

@@ -21,11 +21,9 @@ namespace Hedra
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Create Asset
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
@@ -219,7 +217,6 @@ namespace Hedra
                 }
             }
         }
-
         /// <summary>
         /// Create Asset
         /// </summary>

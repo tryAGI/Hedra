@@ -4,12 +4,10 @@ namespace Hedra
 {
     public partial interface IHedraClient
     {
-
         /// <summary>
         /// Upload Asset
         /// </summary>
         /// <param name="id"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
@@ -18,7 +16,6 @@ namespace Hedra
 
             global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Upload Asset
         /// </summary>
