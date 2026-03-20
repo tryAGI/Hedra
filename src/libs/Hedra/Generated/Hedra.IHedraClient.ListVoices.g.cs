@@ -4,6 +4,7 @@ namespace Hedra
 {
     public partial interface IHedraClient
     {
+
         /// <summary>
         /// List Voices
         /// </summary>
