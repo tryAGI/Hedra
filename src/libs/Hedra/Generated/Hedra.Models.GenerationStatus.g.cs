@@ -19,15 +19,15 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        Finalizing,
+        /// <summary>
+        /// 
+        /// </summary>
         Processing,
         /// <summary>
         /// 
         /// </summary>
         Queued,
-        /// <summary>
-        /// 
-        /// </summary>
-        Finalizing,
     }
 
     /// <summary>
@@ -44,9 +44,9 @@ namespace Hedra
             {
                 GenerationStatus.Complete => "complete",
                 GenerationStatus.Error => "error",
+                GenerationStatus.Finalizing => "finalizing",
                 GenerationStatus.Processing => "processing",
                 GenerationStatus.Queued => "queued",
-                GenerationStatus.Finalizing => "finalizing",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -59,9 +59,9 @@ namespace Hedra
             {
                 "complete" => GenerationStatus.Complete,
                 "error" => GenerationStatus.Error,
+                "finalizing" => GenerationStatus.Finalizing,
                 "processing" => GenerationStatus.Processing,
                 "queued" => GenerationStatus.Queued,
-                "finalizing" => GenerationStatus.Finalizing,
                 _ => null,
             };
         }

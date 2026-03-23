@@ -11,15 +11,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        Video,
+        AudioFromVideo,
         /// <summary>
         /// 
         /// </summary>
-        TextToSpeech,
-        /// <summary>
-        /// 
-        /// </summary>
-        TextToSound,
+        AudioIsolation,
         /// <summary>
         /// 
         /// </summary>
@@ -35,11 +31,7 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        VideoUpscale,
-        /// <summary>
-        /// 
-        /// </summary>
-        AudioIsolation,
+        MotionControl,
         /// <summary>
         /// 
         /// </summary>
@@ -47,15 +39,15 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        VoiceClone,
+        TextToSound,
         /// <summary>
         /// 
         /// </summary>
-        AudioFromVideo,
+        TextToSpeech,
         /// <summary>
         /// 
         /// </summary>
-        VideoWithAudio,
+        Video,
         /// <summary>
         /// 
         /// </summary>
@@ -63,7 +55,15 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        MotionControl,
+        VideoUpscale,
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoWithAudio,
+        /// <summary>
+        /// 
+        /// </summary>
+        VoiceClone,
     }
 
     /// <summary>
@@ -78,20 +78,20 @@ namespace Hedra
         {
             return value switch
             {
-                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.Video => "video",
-                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSpeech => "text_to_speech",
-                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSound => "text_to_sound",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.AudioFromVideo => "audio_from_video",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.AudioIsolation => "audio_isolation",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.Image => "image",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.ImageToImage => "image_to_image",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.ImageUpscale => "image_upscale",
-                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoUpscale => "video_upscale",
-                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.AudioIsolation => "audio_isolation",
-                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.SpeechToSpeech => "speech_to_speech",
-                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VoiceClone => "voice_clone",
-                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.AudioFromVideo => "audio_from_video",
-                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoWithAudio => "video_with_audio",
-                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoToVideo => "video_to_video",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.MotionControl => "motion_control",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.SpeechToSpeech => "speech_to_speech",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSound => "text_to_sound",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSpeech => "text_to_speech",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.Video => "video",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoToVideo => "video_to_video",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoUpscale => "video_upscale",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoWithAudio => "video_with_audio",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VoiceClone => "voice_clone",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -102,20 +102,20 @@ namespace Hedra
         {
             return value switch
             {
-                "video" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.Video,
-                "text_to_speech" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSpeech,
-                "text_to_sound" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSound,
+                "audio_from_video" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.AudioFromVideo,
+                "audio_isolation" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.AudioIsolation,
                 "image" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.Image,
                 "image_to_image" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.ImageToImage,
                 "image_upscale" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.ImageUpscale,
-                "video_upscale" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoUpscale,
-                "audio_isolation" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.AudioIsolation,
-                "speech_to_speech" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.SpeechToSpeech,
-                "voice_clone" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VoiceClone,
-                "audio_from_video" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.AudioFromVideo,
-                "video_with_audio" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoWithAudio,
-                "video_to_video" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoToVideo,
                 "motion_control" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.MotionControl,
+                "speech_to_speech" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.SpeechToSpeech,
+                "text_to_sound" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSound,
+                "text_to_speech" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSpeech,
+                "video" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.Video,
+                "video_to_video" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoToVideo,
+                "video_upscale" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoUpscale,
+                "video_with_audio" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoWithAudio,
+                "voice_clone" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VoiceClone,
                 _ => null,
             };
         }

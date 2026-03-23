@@ -11,11 +11,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        Video,
+        Image,
         /// <summary>
         /// 
         /// </summary>
-        Image,
+        Video,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Hedra
         {
             return value switch
             {
-                GeneratedVideoInputsCharacterOrientation2.Video => "video",
                 GeneratedVideoInputsCharacterOrientation2.Image => "image",
+                GeneratedVideoInputsCharacterOrientation2.Video => "video",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Hedra
         {
             return value switch
             {
-                "video" => GeneratedVideoInputsCharacterOrientation2.Video,
                 "image" => GeneratedVideoInputsCharacterOrientation2.Image,
+                "video" => GeneratedVideoInputsCharacterOrientation2.Video,
                 _ => null,
             };
         }
