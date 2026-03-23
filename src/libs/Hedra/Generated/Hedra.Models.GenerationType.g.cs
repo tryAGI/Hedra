@@ -13,55 +13,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        Image,
-        /// <summary>
-        /// 
-        /// </summary>
-        Video,
-        /// <summary>
-        /// 
-        /// </summary>
-        TextToSpeech,
-        /// <summary>
-        /// 
-        /// </summary>
-        SpeechToSpeech,
-        /// <summary>
-        /// 
-        /// </summary>
-        VoiceClone,
-        /// <summary>
-        /// 
-        /// </summary>
-        AudioIsolation,
-        /// <summary>
-        /// 
-        /// </summary>
-        VideoStitching,
-        /// <summary>
-        /// 
-        /// </summary>
-        VideoUpscale,
-        /// <summary>
-        /// 
-        /// </summary>
-        VideoToVideo,
-        /// <summary>
-        /// 
-        /// </summary>
-        ImageUpscale,
-        /// <summary>
-        /// 
-        /// </summary>
         AgentResponse,
         /// <summary>
         /// 
         /// </summary>
-        AudioFromVideo,
-        /// <summary>
-        /// 
-        /// </summary>
-        TextToSound,
+        AssetsToAudioTextPrompt,
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +25,51 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        AssetsToAudioTextPrompt,
+        AudioFromVideo,
+        /// <summary>
+        /// 
+        /// </summary>
+        AudioIsolation,
+        /// <summary>
+        /// 
+        /// </summary>
+        Image,
+        /// <summary>
+        /// 
+        /// </summary>
+        ImageUpscale,
+        /// <summary>
+        /// 
+        /// </summary>
+        SpeechToSpeech,
+        /// <summary>
+        /// 
+        /// </summary>
+        TextToSound,
+        /// <summary>
+        /// 
+        /// </summary>
+        TextToSpeech,
+        /// <summary>
+        /// 
+        /// </summary>
+        Video,
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoStitching,
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoToVideo,
+        /// <summary>
+        /// 
+        /// </summary>
+        VideoUpscale,
+        /// <summary>
+        /// 
+        /// </summary>
+        VoiceClone,
     }
 
     /// <summary>
@@ -84,21 +84,21 @@ namespace Hedra
         {
             return value switch
             {
-                GenerationType.Image => "image",
-                GenerationType.Video => "video",
-                GenerationType.TextToSpeech => "text_to_speech",
-                GenerationType.SpeechToSpeech => "speech_to_speech",
-                GenerationType.VoiceClone => "voice_clone",
-                GenerationType.AudioIsolation => "audio_isolation",
-                GenerationType.VideoStitching => "video_stitching",
-                GenerationType.VideoUpscale => "video_upscale",
-                GenerationType.VideoToVideo => "video_to_video",
-                GenerationType.ImageUpscale => "image_upscale",
                 GenerationType.AgentResponse => "agent_response",
-                GenerationType.AudioFromVideo => "audio_from_video",
-                GenerationType.TextToSound => "text_to_sound",
-                GenerationType.AssetsToImageTextPrompt => "assets_to_image_text_prompt",
                 GenerationType.AssetsToAudioTextPrompt => "assets_to_audio_text_prompt",
+                GenerationType.AssetsToImageTextPrompt => "assets_to_image_text_prompt",
+                GenerationType.AudioFromVideo => "audio_from_video",
+                GenerationType.AudioIsolation => "audio_isolation",
+                GenerationType.Image => "image",
+                GenerationType.ImageUpscale => "image_upscale",
+                GenerationType.SpeechToSpeech => "speech_to_speech",
+                GenerationType.TextToSound => "text_to_sound",
+                GenerationType.TextToSpeech => "text_to_speech",
+                GenerationType.Video => "video",
+                GenerationType.VideoStitching => "video_stitching",
+                GenerationType.VideoToVideo => "video_to_video",
+                GenerationType.VideoUpscale => "video_upscale",
+                GenerationType.VoiceClone => "voice_clone",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -109,21 +109,21 @@ namespace Hedra
         {
             return value switch
             {
-                "image" => GenerationType.Image,
-                "video" => GenerationType.Video,
-                "text_to_speech" => GenerationType.TextToSpeech,
-                "speech_to_speech" => GenerationType.SpeechToSpeech,
-                "voice_clone" => GenerationType.VoiceClone,
-                "audio_isolation" => GenerationType.AudioIsolation,
-                "video_stitching" => GenerationType.VideoStitching,
-                "video_upscale" => GenerationType.VideoUpscale,
-                "video_to_video" => GenerationType.VideoToVideo,
-                "image_upscale" => GenerationType.ImageUpscale,
                 "agent_response" => GenerationType.AgentResponse,
-                "audio_from_video" => GenerationType.AudioFromVideo,
-                "text_to_sound" => GenerationType.TextToSound,
-                "assets_to_image_text_prompt" => GenerationType.AssetsToImageTextPrompt,
                 "assets_to_audio_text_prompt" => GenerationType.AssetsToAudioTextPrompt,
+                "assets_to_image_text_prompt" => GenerationType.AssetsToImageTextPrompt,
+                "audio_from_video" => GenerationType.AudioFromVideo,
+                "audio_isolation" => GenerationType.AudioIsolation,
+                "image" => GenerationType.Image,
+                "image_upscale" => GenerationType.ImageUpscale,
+                "speech_to_speech" => GenerationType.SpeechToSpeech,
+                "text_to_sound" => GenerationType.TextToSound,
+                "text_to_speech" => GenerationType.TextToSpeech,
+                "video" => GenerationType.Video,
+                "video_stitching" => GenerationType.VideoStitching,
+                "video_to_video" => GenerationType.VideoToVideo,
+                "video_upscale" => GenerationType.VideoUpscale,
+                "voice_clone" => GenerationType.VoiceClone,
                 _ => null,
             };
         }

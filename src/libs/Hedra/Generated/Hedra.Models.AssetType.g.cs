@@ -11,7 +11,7 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        Text,
+        Audio,
         /// <summary>
         /// 
         /// </summary>
@@ -19,7 +19,7 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        Audio,
+        Text,
         /// <summary>
         /// 
         /// </summary>
@@ -42,9 +42,9 @@ namespace Hedra
         {
             return value switch
             {
-                AssetType.Text => "text",
-                AssetType.Image => "image",
                 AssetType.Audio => "audio",
+                AssetType.Image => "image",
+                AssetType.Text => "text",
                 AssetType.Video => "video",
                 AssetType.Voice => "voice",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -57,9 +57,9 @@ namespace Hedra
         {
             return value switch
             {
-                "text" => AssetType.Text,
-                "image" => AssetType.Image,
                 "audio" => AssetType.Audio,
+                "image" => AssetType.Image,
+                "text" => AssetType.Text,
                 "video" => AssetType.Video,
                 "voice" => AssetType.Voice,
                 _ => null,
