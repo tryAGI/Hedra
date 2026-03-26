@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Hedra
@@ -40,10 +42,11 @@ namespace Hedra
         public int? DurationMs { get; set; }
 
         /// <summary>
-        /// Normalized coordinates for primary speaker position (Character3 only)
+        /// Normalized coordinates for speaker position(s). A single point for single-speaker; a list for multi-speaker (one per speaker, same length as audio_id list).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("bounding_box_target")]
-        public byte[]? BoundingBoxTarget { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<byte[], global::System.Collections.Generic.IList<byte[]>, object>))]
+        public global::Hedra.AnyOf<byte[], global::System.Collections.Generic.IList<byte[]>, object>? BoundingBoxTarget { get; set; }
 
         /// <summary>
         /// For motion control models: 'video' matches reference video orientation (better for complex motions, max 30s), 'image' preserves character image orientation (better for camera movements, max 10s).
@@ -95,7 +98,7 @@ namespace Hedra
         /// Duration of the video in milliseconds.
         /// </param>
         /// <param name="boundingBoxTarget">
-        /// Normalized coordinates for primary speaker position (Character3 only)
+        /// Normalized coordinates for speaker position(s). A single point for single-speaker; a list for multi-speaker (one per speaker, same length as audio_id list).
         /// </param>
         /// <param name="characterOrientation">
         /// For motion control models: 'video' matches reference video orientation (better for complex motions, max 30s), 'image' preserves character image orientation (better for camera movements, max 10s).
@@ -119,7 +122,7 @@ namespace Hedra
             string? resolution,
             string? aspectRatio,
             int? durationMs,
-            byte[]? boundingBoxTarget,
+            global::Hedra.AnyOf<byte[], global::System.Collections.Generic.IList<byte[]>, object>? boundingBoxTarget,
             global::Hedra.GeneratedVideoInputsCharacterOrientation2? characterOrientation,
             bool? enhancePrompt,
             global::System.Collections.Generic.IList<global::Hedra.VideoShot>? multiPrompt,

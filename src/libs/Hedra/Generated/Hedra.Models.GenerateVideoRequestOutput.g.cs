@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Hedra
@@ -70,10 +72,11 @@ namespace Hedra
         public string? EndKeyframeUrl { get; set; }
 
         /// <summary>
-        /// The id of the Audio asset to use.
+        /// The id of the Audio asset to use, or a list of ids for multi-speaker generation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_id")]
-        public global::System.Guid? AudioId { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>))]
+        public global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>? AudioId { get; set; }
 
         /// <summary>
         /// Optional TTS parameters for server-side audio generation. If provided (and audio_id is not), audio will be generated from these params before video generation.
@@ -163,7 +166,7 @@ namespace Hedra
         /// The URL of the image to use as the end keyframe.
         /// </param>
         /// <param name="audioId">
-        /// The id of the Audio asset to use.
+        /// The id of the Audio asset to use, or a list of ids for multi-speaker generation.
         /// </param>
         /// <param name="audioGeneration">
         /// Optional TTS parameters for server-side audio generation. If provided (and audio_id is not), audio will be generated from these params before video generation.
@@ -205,7 +208,7 @@ namespace Hedra
             string? startKeyframeUrl,
             global::System.Guid? endKeyframeId,
             string? endKeyframeUrl,
-            global::System.Guid? audioId,
+            global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>? audioId,
             global::Hedra.GenerateTextToSpeechRequest? audioGeneration,
             int? audioStartMs,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceAudioIds,
