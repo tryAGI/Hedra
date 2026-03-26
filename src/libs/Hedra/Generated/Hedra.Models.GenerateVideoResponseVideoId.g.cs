@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// The id of the Video asset to use as motion input for V2V (motion control) models.
+    /// The id of the Video asset to use as input. For V2V (motion control) models this is the driving video; for Google Veo models this triggers video extension.
     /// </summary>
     public sealed partial class GenerateVideoResponseVideoId
     {

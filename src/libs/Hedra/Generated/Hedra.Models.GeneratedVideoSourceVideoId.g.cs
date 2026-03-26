@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// The id of the Video asset used as source input for motion control/video-to-video generation.
+    /// The id of the Video asset used as source input for motion control, video-to-video, or video extension generation.
     /// </summary>
     public sealed partial class GeneratedVideoSourceVideoId
     {

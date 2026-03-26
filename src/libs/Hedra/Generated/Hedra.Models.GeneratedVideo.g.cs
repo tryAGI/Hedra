@@ -110,7 +110,7 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::System.Guid>? ReferenceVideoIds { get; set; }
 
         /// <summary>
-        /// The id of the Video asset used as source input for motion control/video-to-video generation.
+        /// The id of the Video asset used as source input for motion control, video-to-video, or video extension generation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source_video_id")]
         public global::System.Guid? SourceVideoId { get; set; }
@@ -173,7 +173,7 @@ namespace Hedra
         /// The id(s) of the video(s) referenced in the generation.
         /// </param>
         /// <param name="sourceVideoId">
-        /// The id of the Video asset used as source input for motion control/video-to-video generation.
+        /// The id of the Video asset used as source input for motion control, video-to-video, or video extension generation.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
