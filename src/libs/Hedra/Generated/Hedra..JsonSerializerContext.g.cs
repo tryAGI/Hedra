@@ -14,39 +14,73 @@ namespace Hedra
         Converters = new global::System.Type[]
         {
             typeof(global::Hedra.JsonConverters.AssetAsset1DiscriminatorTypeJsonConverter),
+
             typeof(global::Hedra.JsonConverters.AssetAsset1DiscriminatorTypeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.AssetTypeJsonConverter),
+
             typeof(global::Hedra.JsonConverters.AssetTypeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.ErrorCodeJsonConverter),
+
             typeof(global::Hedra.JsonConverters.ErrorCodeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerateImageRequestTypeJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerateImageRequestTypeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerateImageResponseTypeJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerateImageResponseTypeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GeneratedVideoInputsCharacterOrientation2JsonConverter),
+
             typeof(global::Hedra.JsonConverters.GeneratedVideoInputsCharacterOrientation2NullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerationInputDiscriminatorTypeJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerationInputDiscriminatorTypeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerationStatusJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerationStatusNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerationTypeJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerationTypeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.SupportedLanguageJsonConverter),
+
             typeof(global::Hedra.JsonConverters.SupportedLanguageNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerateAssetPublicGenerationsPostRequestDiscriminatorTypeJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerateAssetPublicGenerationsPostRequestDiscriminatorTypeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerateAssetPublicGenerationsPostResponseDiscriminatorTypeJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerateAssetPublicGenerationsPostResponseDiscriminatorTypeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.Asset1JsonConverter),
+
             typeof(global::Hedra.JsonConverters.InputJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerateAssetPublicGenerationsPostRequestJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerateAssetPublicGenerationsPostResponseJsonConverter),
+
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>),
+
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>),
+
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>),
+
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<byte[], global::System.Collections.Generic.IList<byte[]>, object>),
+
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<string, int?>),
+
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>),
+
             typeof(global::Hedra.JsonConverters.UnixTimestampJsonConverter),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.JsonSerializerContextTypes))]
