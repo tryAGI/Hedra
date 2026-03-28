@@ -2,7 +2,7 @@
 set -euo pipefail
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-curl --fail --silent --show-error -o openapi.json https://api.hedra.com/web-app/openapi.json
+curl --fail --silent --show-error -L -o openapi.json https://api.hedra.com/web-app/openapi.json
 autosdk generate openapi.json \
   --namespace Hedra \
   --clientClassName HedraClient \
