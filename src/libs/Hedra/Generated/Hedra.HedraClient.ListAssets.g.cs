@@ -155,7 +155,7 @@ namespace Hedra
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<global::Hedra.Asset>), JsonSerializerContext) as global::System.Collections.Generic.IList<global::Hedra.Asset> ??
+                        (global::System.Collections.Generic.IList<global::Hedra.Asset>?)global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<global::Hedra.Asset>), JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -186,7 +186,7 @@ namespace Hedra
                     ).ConfigureAwait(false);
 
                     return
-                        await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<global::Hedra.Asset>), JsonSerializerContext).ConfigureAwait(false) as global::System.Collections.Generic.IList<global::Hedra.Asset> ??
+                        (global::System.Collections.Generic.IList<global::Hedra.Asset>?)await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<global::Hedra.Asset>), JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
