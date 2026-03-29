@@ -154,44 +154,11 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateImageResponse" /> class.
         /// </summary>
-        /// <param name="workspaceId"></param>
-        /// <param name="agentThreadId">
-        /// Optional agent thread ID to associate this generation with.
-        /// </param>
-        /// <param name="generationId">
-        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
-        /// </param>
-        /// <param name="generationIds">
-        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
-        /// </param>
-        /// <param name="type">
-        /// Default Value: image
-        /// </param>
         /// <param name="textPrompt">
         /// The text prompt for image generation or image editing.
         /// </param>
-        /// <param name="aspectRatio">
-        /// The aspect ratio to use.
-        /// </param>
-        /// <param name="resolution">
-        /// The resolution to use formatted like '540p', '1080p', '1440p (2K QHD)', etc.
-        /// </param>
-        /// <param name="startKeyframeId">
-        /// The id of the Image asset to use as the start keyframe.
-        /// </param>
         /// <param name="aiModelId">
         /// The model to use.
-        /// </param>
-        /// <param name="referenceImageIds">
-        /// The id(s) of the image(s) to reference in the generation. This is only used for image-to-image generation and will supersede start_keyframe_id.
-        /// </param>
-        /// <param name="batchSize">
-        /// Number of image variations to generate (1-8). When &gt; 1, batch_results will contain all generation results.<br/>
-        /// Default Value: 1
-        /// </param>
-        /// <param name="enhancePrompt">
-        /// If true, automatically enhance the prompt before generation.<br/>
-        /// Default Value: false
         /// </param>
         /// <param name="assetId">
         /// The id of the resulting image asset.
@@ -207,6 +174,39 @@ namespace Hedra
         /// </param>
         /// <param name="progress">
         /// Current progress to completion. Between 0-1
+        /// </param>
+        /// <param name="workspaceId"></param>
+        /// <param name="agentThreadId">
+        /// Optional agent thread ID to associate this generation with.
+        /// </param>
+        /// <param name="generationId">
+        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
+        /// </param>
+        /// <param name="generationIds">
+        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: image
+        /// </param>
+        /// <param name="aspectRatio">
+        /// The aspect ratio to use.
+        /// </param>
+        /// <param name="resolution">
+        /// The resolution to use formatted like '540p', '1080p', '1440p (2K QHD)', etc.
+        /// </param>
+        /// <param name="startKeyframeId">
+        /// The id of the Image asset to use as the start keyframe.
+        /// </param>
+        /// <param name="referenceImageIds">
+        /// The id(s) of the image(s) to reference in the generation. This is only used for image-to-image generation and will supersede start_keyframe_id.
+        /// </param>
+        /// <param name="batchSize">
+        /// Number of image variations to generate (1-8). When &gt; 1, batch_results will contain all generation results.<br/>
+        /// Default Value: 1
+        /// </param>
+        /// <param name="enhancePrompt">
+        /// If true, automatically enhance the prompt before generation.<br/>
+        /// Default Value: false
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -243,24 +243,24 @@ namespace Hedra
             string? batchGenerationId,
             global::System.Collections.Generic.IList<global::Hedra.BatchImageResultItem>? batchResults)
         {
-            this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
-            this.AiModelId = aiModelId;
-            this.AssetId = assetId;
-            this.Id = id;
-            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
-            this.Status = status;
-            this.Progress = progress;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.AspectRatio = aspectRatio;
             this.Resolution = resolution;
             this.StartKeyframeId = startKeyframeId;
+            this.AiModelId = aiModelId;
             this.ReferenceImageIds = referenceImageIds;
             this.BatchSize = batchSize;
             this.EnhancePrompt = enhancePrompt;
+            this.AssetId = assetId;
+            this.Id = id;
+            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
+            this.Status = status;
+            this.Progress = progress;
             this.EtaSec = etaSec;
             this.BatchGenerationId = batchGenerationId;
             this.BatchResults = batchResults;

@@ -117,19 +117,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateMotionControlResponse" /> class.
         /// </summary>
-        /// <param name="workspaceId"></param>
-        /// <param name="agentThreadId">
-        /// Optional agent thread ID to associate this generation with.
-        /// </param>
-        /// <param name="generationId">
-        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
-        /// </param>
-        /// <param name="generationIds">
-        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
-        /// </param>
-        /// <param name="type">
-        /// Default Value: motion_control
-        /// </param>
         /// <param name="aiModelId">
         /// The id of the Motion Control model to use.
         /// </param>
@@ -157,6 +144,19 @@ namespace Hedra
         /// <param name="progress">
         /// Current progress to completion. Between 0-1.
         /// </param>
+        /// <param name="workspaceId"></param>
+        /// <param name="agentThreadId">
+        /// Optional agent thread ID to associate this generation with.
+        /// </param>
+        /// <param name="generationId">
+        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
+        /// </param>
+        /// <param name="generationIds">
+        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: motion_control
+        /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </param>
@@ -180,6 +180,11 @@ namespace Hedra
             string? type,
             int? etaSec)
         {
+            this.WorkspaceId = workspaceId;
+            this.AgentThreadId = agentThreadId;
+            this.GenerationId = generationId;
+            this.GenerationIds = generationIds;
+            this.Type = type;
             this.AiModelId = aiModelId;
             this.VideoId = videoId;
             this.StartKeyframeId = startKeyframeId;
@@ -189,11 +194,6 @@ namespace Hedra
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
             this.Status = status;
             this.Progress = progress;
-            this.WorkspaceId = workspaceId;
-            this.AgentThreadId = agentThreadId;
-            this.GenerationId = generationId;
-            this.GenerationIds = generationIds;
-            this.Type = type;
             this.EtaSec = etaSec;
         }
 

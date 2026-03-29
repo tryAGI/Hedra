@@ -115,30 +115,11 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVideoUpscaleResponse" /> class.
         /// </summary>
-        /// <param name="workspaceId"></param>
-        /// <param name="agentThreadId">
-        /// Optional agent thread ID to associate this generation with.
-        /// </param>
-        /// <param name="generationId">
-        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
-        /// </param>
-        /// <param name="generationIds">
-        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
-        /// </param>
-        /// <param name="type">
-        /// Default Value: video_upscale
-        /// </param>
         /// <param name="aiModelId">
         /// The model to use for upscaling.
         /// </param>
         /// <param name="videoId">
         /// The id of the Video asset to upscale.
-        /// </param>
-        /// <param name="upscaleFactor">
-        /// Computed scale factor derived from target_resolution and source video dimensions.
-        /// </param>
-        /// <param name="targetResolution">
-        /// Target output resolution. Must be one of: 1080p, 2K, 4K.
         /// </param>
         /// <param name="assetId">
         /// The id of the resulting upscaled video asset.
@@ -154,6 +135,25 @@ namespace Hedra
         /// </param>
         /// <param name="progress">
         /// Current progress to completion. Between 0-1
+        /// </param>
+        /// <param name="workspaceId"></param>
+        /// <param name="agentThreadId">
+        /// Optional agent thread ID to associate this generation with.
+        /// </param>
+        /// <param name="generationId">
+        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
+        /// </param>
+        /// <param name="generationIds">
+        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: video_upscale
+        /// </param>
+        /// <param name="upscaleFactor">
+        /// Computed scale factor derived from target_resolution and source video dimensions.
+        /// </param>
+        /// <param name="targetResolution">
+        /// Target output resolution. Must be one of: 1080p, 2K, 4K.
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -178,20 +178,20 @@ namespace Hedra
             string? targetResolution,
             int? etaSec)
         {
-            this.AiModelId = aiModelId;
-            this.VideoId = videoId;
-            this.AssetId = assetId;
-            this.Id = id;
-            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
-            this.Status = status;
-            this.Progress = progress;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AiModelId = aiModelId;
+            this.VideoId = videoId;
             this.UpscaleFactor = upscaleFactor;
             this.TargetResolution = targetResolution;
+            this.AssetId = assetId;
+            this.Id = id;
+            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
+            this.Status = status;
+            this.Progress = progress;
             this.EtaSec = etaSec;
         }
 

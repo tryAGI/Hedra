@@ -131,39 +131,11 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateTextToSpeechResponse" /> class.
         /// </summary>
-        /// <param name="workspaceId"></param>
-        /// <param name="agentThreadId">
-        /// Optional agent thread ID to associate this generation with.
-        /// </param>
-        /// <param name="generationId">
-        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
-        /// </param>
-        /// <param name="generationIds">
-        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
-        /// </param>
-        /// <param name="type">
-        /// Default Value: text_to_speech
-        /// </param>
         /// <param name="voiceId">
         /// The id of the Voice to use.
         /// </param>
-        /// <param name="modelId">
-        /// The id of the model to use.
-        /// </param>
         /// <param name="text">
         /// The text to convert to speech.
-        /// </param>
-        /// <param name="stability">
-        /// Stability should be between 0-1, where 0 is the most stable and 1 is the most unstable. This varies the consistency between your outputs.<br/>
-        /// Default Value: 1F
-        /// </param>
-        /// <param name="speed">
-        /// Speed should be between 0.7 and 1.2, where 0.7 is the slowest and 1.2 is the fastest. This varies the speed of the generated speech.<br/>
-        /// Default Value: 1F
-        /// </param>
-        /// <param name="language">
-        /// Language for TTS. See SupportedLanguage enum for valid values. Defaults to 'auto'.<br/>
-        /// Default Value: auto
         /// </param>
         /// <param name="assetId">
         /// The id of the audio asset resulting from the generation.
@@ -179,6 +151,34 @@ namespace Hedra
         /// </param>
         /// <param name="progress">
         /// Current progress to completion. Between 0-1
+        /// </param>
+        /// <param name="workspaceId"></param>
+        /// <param name="agentThreadId">
+        /// Optional agent thread ID to associate this generation with.
+        /// </param>
+        /// <param name="generationId">
+        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
+        /// </param>
+        /// <param name="generationIds">
+        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: text_to_speech
+        /// </param>
+        /// <param name="modelId">
+        /// The id of the model to use.
+        /// </param>
+        /// <param name="stability">
+        /// Stability should be between 0-1, where 0 is the most stable and 1 is the most unstable. This varies the consistency between your outputs.<br/>
+        /// Default Value: 1F
+        /// </param>
+        /// <param name="speed">
+        /// Speed should be between 0.7 and 1.2, where 0.7 is the slowest and 1.2 is the fastest. This varies the speed of the generated speech.<br/>
+        /// Default Value: 1F
+        /// </param>
+        /// <param name="language">
+        /// Language for TTS. See SupportedLanguage enum for valid values. Defaults to 'auto'.<br/>
+        /// Default Value: auto
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -205,22 +205,22 @@ namespace Hedra
             global::Hedra.SupportedLanguage? language,
             int? etaSec)
         {
-            this.VoiceId = voiceId;
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
-            this.AssetId = assetId;
-            this.Id = id;
-            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
-            this.Status = status;
-            this.Progress = progress;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.VoiceId = voiceId;
             this.ModelId = modelId;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Stability = stability;
             this.Speed = speed;
             this.Language = language;
+            this.AssetId = assetId;
+            this.Id = id;
+            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
+            this.Status = status;
+            this.Progress = progress;
             this.EtaSec = etaSec;
         }
 

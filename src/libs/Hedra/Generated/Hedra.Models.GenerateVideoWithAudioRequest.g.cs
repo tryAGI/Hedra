@@ -67,6 +67,12 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVideoWithAudioRequest" /> class.
         /// </summary>
+        /// <param name="videoGenerationModelId">
+        /// ID of the model to use for video-to-video with audio generation (Mirelo Studio).
+        /// </param>
+        /// <param name="videoId">
+        /// The id of the video asset to add sound effects to.
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -79,12 +85,6 @@ namespace Hedra
         /// </param>
         /// <param name="type">
         /// Default Value: video_with_audio
-        /// </param>
-        /// <param name="videoGenerationModelId">
-        /// ID of the model to use for video-to-video with audio generation (Mirelo Studio).
-        /// </param>
-        /// <param name="videoId">
-        /// The id of the video asset to add sound effects to.
         /// </param>
         /// <param name="prompt">
         /// Optional prompt to guide the audio generation for the video.
@@ -102,13 +102,13 @@ namespace Hedra
             string? type,
             string? prompt)
         {
-            this.VideoGenerationModelId = videoGenerationModelId;
-            this.VideoId = videoId;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.VideoGenerationModelId = videoGenerationModelId;
+            this.VideoId = videoId;
             this.Prompt = prompt;
         }
 

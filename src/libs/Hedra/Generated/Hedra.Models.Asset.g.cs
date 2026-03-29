@@ -99,6 +99,12 @@ namespace Hedra
         /// <param name="thumbnailUrl">
         /// URL of the thumbnail image.
         /// </param>
+        /// <param name="createdAt">
+        /// Date the asset was created.
+        /// </param>
+        /// <param name="asset1">
+        /// The asset itself.
+        /// </param>
         /// <param name="description">
         /// Optional description of the asset.
         /// </param>
@@ -110,14 +116,8 @@ namespace Hedra
         /// Whether this asset was recently used by the user.<br/>
         /// Default Value: false
         /// </param>
-        /// <param name="createdAt">
-        /// Date the asset was created.
-        /// </param>
         /// <param name="favoritedAt">
         /// Date the asset was favorited.
-        /// </param>
-        /// <param name="asset1">
-        /// The asset itself.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -138,12 +138,12 @@ namespace Hedra
             this.Type = type;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.ThumbnailUrl = thumbnailUrl ?? throw new global::System.ArgumentNullException(nameof(thumbnailUrl));
-            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
-            this.Asset1 = asset1;
             this.Description = description;
             this.IsFavorite = isFavorite;
             this.Recent = recent;
+            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
             this.FavoritedAt = favoritedAt;
+            this.Asset1 = asset1;
         }
 
         /// <summary>

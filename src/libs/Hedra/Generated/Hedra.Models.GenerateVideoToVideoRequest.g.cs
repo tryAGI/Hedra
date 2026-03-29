@@ -88,6 +88,15 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVideoToVideoRequest" /> class.
         /// </summary>
+        /// <param name="aiModelId">
+        /// The id of the model to use for video-to-video generation.
+        /// </param>
+        /// <param name="videoId">
+        /// The id of the video asset to transform.
+        /// </param>
+        /// <param name="prompt">
+        /// Natural language transformation instructions. Use @Element1, @Image1 syntax to reference elements and images.
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -100,15 +109,6 @@ namespace Hedra
         /// </param>
         /// <param name="type">
         /// Default Value: video_to_video
-        /// </param>
-        /// <param name="aiModelId">
-        /// The id of the model to use for video-to-video generation.
-        /// </param>
-        /// <param name="videoId">
-        /// The id of the video asset to transform.
-        /// </param>
-        /// <param name="prompt">
-        /// Natural language transformation instructions. Use @Element1, @Image1 syntax to reference elements and images.
         /// </param>
         /// <param name="referenceImageAssetIds">
         /// Optional ids of reference image assets for style transfer. Reference as @Image1, @Image2, etc. in prompt.
@@ -136,14 +136,14 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::Hedra.KlingEditElement>? elements,
             bool? keepAudio)
         {
-            this.AiModelId = aiModelId;
-            this.VideoId = videoId;
-            this.Prompt = prompt ?? throw new global::System.ArgumentNullException(nameof(prompt));
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AiModelId = aiModelId;
+            this.VideoId = videoId;
+            this.Prompt = prompt ?? throw new global::System.ArgumentNullException(nameof(prompt));
             this.ReferenceImageAssetIds = referenceImageAssetIds;
             this.Elements = elements;
             this.KeepAudio = keepAudio;

@@ -178,11 +178,14 @@ namespace Hedra
         /// <param name="name">
         /// Name of the model
         /// </param>
-        /// <param name="description">
-        /// Description of the model.
-        /// </param>
         /// <param name="type">
         /// Type of generation the model applies to.
+        /// </param>
+        /// <param name="priceDetails">
+        /// Pricing details of the model.
+        /// </param>
+        /// <param name="description">
+        /// Description of the model.
         /// </param>
         /// <param name="aspectRatios">
         /// Aspect ratios the model supports.
@@ -219,9 +222,6 @@ namespace Hedra
         /// </param>
         /// <param name="customResolution">
         /// Whether the model supports custom resolution.
-        /// </param>
-        /// <param name="priceDetails">
-        /// Pricing details of the model.
         /// </param>
         /// <param name="pricing">
         /// Extensible pricing information with dimension modifiers for resolution, audio, etc.
@@ -280,9 +280,8 @@ namespace Hedra
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
-            this.PriceDetails = priceDetails ?? throw new global::System.ArgumentNullException(nameof(priceDetails));
             this.Description = description;
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.AspectRatios = aspectRatios;
             this.Resolutions = resolutions;
             this.Durations = durations;
@@ -295,6 +294,7 @@ namespace Hedra
             this.Tags = tags;
             this.MaxDurationMs = maxDurationMs;
             this.CustomResolution = customResolution;
+            this.PriceDetails = priceDetails ?? throw new global::System.ArgumentNullException(nameof(priceDetails));
             this.Pricing = pricing;
             this.Dimensions = dimensions;
             this.MinPromptLength = minPromptLength;

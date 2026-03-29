@@ -61,6 +61,12 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVoiceCloneRequest" /> class.
         /// </summary>
+        /// <param name="audioId">
+        /// The id of the Audio asset to use as the basis for the clone.
+        /// </param>
+        /// <param name="name">
+        /// The name of the new voice. Required by ElevenLabs to create a new voice.
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -74,12 +80,6 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: voice_clone
         /// </param>
-        /// <param name="audioId">
-        /// The id of the Audio asset to use as the basis for the clone.
-        /// </param>
-        /// <param name="name">
-        /// The name of the new voice. Required by ElevenLabs to create a new voice.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -92,13 +92,13 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type)
         {
-            this.AudioId = audioId;
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AudioId = audioId;
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
         }
 
         /// <summary>

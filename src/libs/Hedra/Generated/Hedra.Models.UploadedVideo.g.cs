@@ -69,9 +69,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadedVideo" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Default Value: uploaded_video
-        /// </param>
         /// <param name="width">
         /// Width of the video.
         /// </param>
@@ -83,6 +80,9 @@ namespace Hedra
         /// </param>
         /// <param name="url">
         /// URL of the video.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: uploaded_video
         /// </param>
         /// <param name="downloadUrl">
         /// URL to download the video.
@@ -106,11 +106,11 @@ namespace Hedra
             string? streamingUrl,
             string? posterUrl)
         {
+            this.Type = type;
             this.Width = width;
             this.Height = height;
             this.DurationMs = durationMs;
             this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
-            this.Type = type;
             this.DownloadUrl = downloadUrl;
             this.StreamingUrl = streamingUrl;
             this.PosterUrl = posterUrl;

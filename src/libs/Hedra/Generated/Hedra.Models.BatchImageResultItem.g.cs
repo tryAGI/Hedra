@@ -57,12 +57,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchImageResultItem" /> class.
         /// </summary>
-        /// <param name="id">
-        /// The id of the generation created. None if failed.
-        /// </param>
-        /// <param name="assetId">
-        /// The id of the image asset resulting from the generation. None if failed.
-        /// </param>
         /// <param name="createdAt">
         /// Date the generation was submitted.
         /// </param>
@@ -71,6 +65,12 @@ namespace Hedra
         /// </param>
         /// <param name="progress">
         /// Current progress to completion. Between 0-1
+        /// </param>
+        /// <param name="id">
+        /// The id of the generation created. None if failed.
+        /// </param>
+        /// <param name="assetId">
+        /// The id of the image asset resulting from the generation. None if failed.
         /// </param>
         /// <param name="error">
         /// Error message if this item failed.
@@ -86,11 +86,11 @@ namespace Hedra
             global::System.Guid? assetId,
             string? error)
         {
+            this.Id = id;
+            this.AssetId = assetId;
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
             this.Status = status;
             this.Progress = progress;
-            this.Id = id;
-            this.AssetId = assetId;
             this.Error = error;
         }
 

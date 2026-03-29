@@ -103,19 +103,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVoiceCloneResponse" /> class.
         /// </summary>
-        /// <param name="workspaceId"></param>
-        /// <param name="agentThreadId">
-        /// Optional agent thread ID to associate this generation with.
-        /// </param>
-        /// <param name="generationId">
-        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
-        /// </param>
-        /// <param name="generationIds">
-        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
-        /// </param>
-        /// <param name="type">
-        /// Default Value: voice_clone
-        /// </param>
         /// <param name="audioId">
         /// The id of the Audio asset to use as the basis for the clone.
         /// </param>
@@ -136,6 +123,19 @@ namespace Hedra
         /// </param>
         /// <param name="progress">
         /// Current progress to completion. Between 0-1
+        /// </param>
+        /// <param name="workspaceId"></param>
+        /// <param name="agentThreadId">
+        /// Optional agent thread ID to associate this generation with.
+        /// </param>
+        /// <param name="generationId">
+        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
+        /// </param>
+        /// <param name="generationIds">
+        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: voice_clone
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -158,6 +158,11 @@ namespace Hedra
             string? type,
             int? etaSec)
         {
+            this.WorkspaceId = workspaceId;
+            this.AgentThreadId = agentThreadId;
+            this.GenerationId = generationId;
+            this.GenerationIds = generationIds;
+            this.Type = type;
             this.AudioId = audioId;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Id = id;
@@ -165,11 +170,6 @@ namespace Hedra
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
             this.Status = status;
             this.Progress = progress;
-            this.WorkspaceId = workspaceId;
-            this.AgentThreadId = agentThreadId;
-            this.GenerationId = generationId;
-            this.GenerationIds = generationIds;
-            this.Type = type;
             this.EtaSec = etaSec;
         }
 
