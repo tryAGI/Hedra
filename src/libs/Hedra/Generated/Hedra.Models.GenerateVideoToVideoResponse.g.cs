@@ -129,19 +129,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVideoToVideoResponse" /> class.
         /// </summary>
-        /// <param name="workspaceId"></param>
-        /// <param name="agentThreadId">
-        /// Optional agent thread ID to associate this generation with.
-        /// </param>
-        /// <param name="generationId">
-        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
-        /// </param>
-        /// <param name="generationIds">
-        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
-        /// </param>
-        /// <param name="type">
-        /// Default Value: video_to_video
-        /// </param>
         /// <param name="aiModelId">
         /// The id of the model to use for video-to-video generation.
         /// </param>
@@ -150,16 +137,6 @@ namespace Hedra
         /// </param>
         /// <param name="prompt">
         /// Natural language transformation instructions. Use @Element1, @Image1 syntax to reference elements and images.
-        /// </param>
-        /// <param name="referenceImageAssetIds">
-        /// Optional ids of reference image assets for style transfer. Reference as @Image1, @Image2, etc. in prompt.
-        /// </param>
-        /// <param name="elements">
-        /// Optional elements for character tracking. Reference as @Element1, @Element2, etc. in prompt.
-        /// </param>
-        /// <param name="keepAudio">
-        /// Whether to preserve the original audio from the input video. Automatically disabled when generate_audio is enabled.<br/>
-        /// Default Value: true
         /// </param>
         /// <param name="id">
         /// The id of the generation. Can be used to check status.
@@ -175,6 +152,29 @@ namespace Hedra
         /// </param>
         /// <param name="progress">
         /// Current progress to completion. Between 0-1.
+        /// </param>
+        /// <param name="workspaceId"></param>
+        /// <param name="agentThreadId">
+        /// Optional agent thread ID to associate this generation with.
+        /// </param>
+        /// <param name="generationId">
+        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
+        /// </param>
+        /// <param name="generationIds">
+        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: video_to_video
+        /// </param>
+        /// <param name="referenceImageAssetIds">
+        /// Optional ids of reference image assets for style transfer. Reference as @Image1, @Image2, etc. in prompt.
+        /// </param>
+        /// <param name="elements">
+        /// Optional elements for character tracking. Reference as @Element1, @Element2, etc. in prompt.
+        /// </param>
+        /// <param name="keepAudio">
+        /// Whether to preserve the original audio from the input video. Automatically disabled when generate_audio is enabled.<br/>
+        /// Default Value: true
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -201,22 +201,22 @@ namespace Hedra
             bool? keepAudio,
             int? etaSec)
         {
-            this.AiModelId = aiModelId;
-            this.VideoId = videoId;
-            this.Prompt = prompt ?? throw new global::System.ArgumentNullException(nameof(prompt));
-            this.Id = id;
-            this.AssetId = assetId;
-            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
-            this.Status = status;
-            this.Progress = progress;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AiModelId = aiModelId;
+            this.VideoId = videoId;
+            this.Prompt = prompt ?? throw new global::System.ArgumentNullException(nameof(prompt));
             this.ReferenceImageAssetIds = referenceImageAssetIds;
             this.Elements = elements;
             this.KeepAudio = keepAudio;
+            this.Id = id;
+            this.AssetId = assetId;
+            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
+            this.Status = status;
+            this.Progress = progress;
             this.EtaSec = etaSec;
         }
 

@@ -100,6 +100,12 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateImageRequest" /> class.
         /// </summary>
+        /// <param name="textPrompt">
+        /// The text prompt for image generation or image editing.
+        /// </param>
+        /// <param name="aiModelId">
+        /// The model to use.
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -113,9 +119,6 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: image
         /// </param>
-        /// <param name="textPrompt">
-        /// The text prompt for image generation or image editing.
-        /// </param>
         /// <param name="aspectRatio">
         /// The aspect ratio to use.
         /// </param>
@@ -124,9 +127,6 @@ namespace Hedra
         /// </param>
         /// <param name="startKeyframeId">
         /// The id of the Image asset to use as the start keyframe.
-        /// </param>
-        /// <param name="aiModelId">
-        /// The model to use.
         /// </param>
         /// <param name="referenceImageIds">
         /// The id(s) of the image(s) to reference in the generation. This is only used for image-to-image generation and will supersede start_keyframe_id.
@@ -157,16 +157,16 @@ namespace Hedra
             int? batchSize,
             bool? enhancePrompt)
         {
-            this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
-            this.AiModelId = aiModelId;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.AspectRatio = aspectRatio;
             this.Resolution = resolution;
             this.StartKeyframeId = startKeyframeId;
+            this.AiModelId = aiModelId;
             this.ReferenceImageIds = referenceImageIds;
             this.BatchSize = batchSize;
             this.EnhancePrompt = enhancePrompt;

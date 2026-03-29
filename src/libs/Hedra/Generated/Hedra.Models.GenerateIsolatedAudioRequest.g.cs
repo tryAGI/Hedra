@@ -61,6 +61,12 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateIsolatedAudioRequest" /> class.
         /// </summary>
+        /// <param name="audioId">
+        /// The id of the audio asset requiring sound isolation.
+        /// </param>
+        /// <param name="aiModelId">
+        /// The id of the model to use for audio isolation.
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -74,12 +80,6 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: audio_isolation
         /// </param>
-        /// <param name="audioId">
-        /// The id of the audio asset requiring sound isolation.
-        /// </param>
-        /// <param name="aiModelId">
-        /// The id of the model to use for audio isolation.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -92,13 +92,13 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type)
         {
-            this.AudioId = audioId;
-            this.AiModelId = aiModelId;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AudioId = audioId;
+            this.AiModelId = aiModelId;
         }
 
         /// <summary>

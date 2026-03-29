@@ -67,6 +67,12 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateImageUpscaleRequest" /> class.
         /// </summary>
+        /// <param name="aiModelId">
+        /// The model to use for upscaling.
+        /// </param>
+        /// <param name="imageId">
+        /// The id of the Image asset to use as the basis for upscaling.
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -79,12 +85,6 @@ namespace Hedra
         /// </param>
         /// <param name="type">
         /// Default Value: image_upscale
-        /// </param>
-        /// <param name="aiModelId">
-        /// The model to use for upscaling.
-        /// </param>
-        /// <param name="imageId">
-        /// The id of the Image asset to use as the basis for upscaling.
         /// </param>
         /// <param name="upscaleFactor">
         /// Optional upscale factor to pass to the model (e.g. 2.0 for 2x).
@@ -102,13 +102,13 @@ namespace Hedra
             string? type,
             double? upscaleFactor)
         {
-            this.AiModelId = aiModelId;
-            this.ImageId = imageId;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AiModelId = aiModelId;
+            this.ImageId = imageId;
             this.UpscaleFactor = upscaleFactor;
         }
 

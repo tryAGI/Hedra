@@ -119,11 +119,11 @@ namespace Hedra
         /// <param name="progress">
         /// Current progress to completion. Between 0-1
         /// </param>
-        /// <param name="etaSec">
-        /// Estimated time remaining in seconds until generation completes.
-        /// </param>
         /// <param name="createdAt">
         /// Date the generation was submitted.
+        /// </param>
+        /// <param name="etaSec">
+        /// Estimated time remaining in seconds until generation completes.
         /// </param>
         /// <param name="creditCost">
         /// Credits consumed (debits) for this generation.
@@ -166,8 +166,8 @@ namespace Hedra
             this.Input = input;
             this.Status = status;
             this.Progress = progress;
-            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
             this.EtaSec = etaSec;
+            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
             this.CreditCost = creditCost;
             this.BatchGenerationId = batchGenerationId;
             this.Asset = asset;

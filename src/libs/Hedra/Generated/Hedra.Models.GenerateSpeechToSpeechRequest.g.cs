@@ -68,6 +68,15 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateSpeechToSpeechRequest" /> class.
         /// </summary>
+        /// <param name="audioId">
+        /// The id of the audio asset requiring sound isolation.
+        /// </param>
+        /// <param name="aiModelId">
+        /// The id of the model to use for audio isolation.
+        /// </param>
+        /// <param name="voiceId">
+        /// The id of the Voice to use.
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -80,15 +89,6 @@ namespace Hedra
         /// </param>
         /// <param name="type">
         /// Default Value: speech_to_speech
-        /// </param>
-        /// <param name="audioId">
-        /// The id of the audio asset requiring sound isolation.
-        /// </param>
-        /// <param name="aiModelId">
-        /// The id of the model to use for audio isolation.
-        /// </param>
-        /// <param name="voiceId">
-        /// The id of the Voice to use.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -103,14 +103,14 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type)
         {
-            this.AudioId = audioId;
-            this.AiModelId = aiModelId;
-            this.VoiceId = voiceId;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AudioId = audioId;
+            this.AiModelId = aiModelId;
+            this.VoiceId = voiceId;
         }
 
         /// <summary>

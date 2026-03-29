@@ -124,14 +124,23 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneratedVideo" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Default Value: generated_video
-        /// </param>
         /// <param name="width">
         /// Width of the image.
         /// </param>
         /// <param name="height">
         /// Height of the image.
+        /// </param>
+        /// <param name="durationMs">
+        /// Duration of the video.
+        /// </param>
+        /// <param name="previewUrl">
+        /// URL of the preview for animated thumbnails.
+        /// </param>
+        /// <param name="generatedVideoInputs">
+        /// Inputs for generating the video.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: generated_video
         /// </param>
         /// <param name="url">
         /// URL of the image.
@@ -144,15 +153,6 @@ namespace Hedra
         /// </param>
         /// <param name="posterUrl">
         /// URL of the poster image
-        /// </param>
-        /// <param name="durationMs">
-        /// Duration of the video.
-        /// </param>
-        /// <param name="previewUrl">
-        /// URL of the preview for animated thumbnails.
-        /// </param>
-        /// <param name="generatedVideoInputs">
-        /// Inputs for generating the video.
         /// </param>
         /// <param name="keyframeStart">
         /// URL of the Image asset used as the start keyframe.
@@ -197,16 +197,16 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? referenceVideoIds,
             global::System.Guid? sourceVideoId)
         {
+            this.Type = type;
             this.Width = width;
             this.Height = height;
-            this.DurationMs = durationMs;
-            this.PreviewUrl = previewUrl ?? throw new global::System.ArgumentNullException(nameof(previewUrl));
-            this.GeneratedVideoInputs = generatedVideoInputs ?? throw new global::System.ArgumentNullException(nameof(generatedVideoInputs));
-            this.Type = type;
             this.Url = url;
             this.DownloadUrl = downloadUrl;
             this.StreamingUrl = streamingUrl;
             this.PosterUrl = posterUrl;
+            this.DurationMs = durationMs;
+            this.PreviewUrl = previewUrl ?? throw new global::System.ArgumentNullException(nameof(previewUrl));
+            this.GeneratedVideoInputs = generatedVideoInputs ?? throw new global::System.ArgumentNullException(nameof(generatedVideoInputs));
             this.KeyframeStart = keyframeStart;
             this.KeyframeEnd = keyframeEnd;
             this.Audio = audio;

@@ -44,9 +44,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadedImage" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Default Value: uploaded_image
-        /// </param>
         /// <param name="width">
         /// Width of the image.
         /// </param>
@@ -55,6 +52,9 @@ namespace Hedra
         /// </param>
         /// <param name="url">
         /// URL of the image.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: uploaded_image
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -65,10 +65,10 @@ namespace Hedra
             string url,
             string? type)
         {
+            this.Type = type;
             this.Width = width;
             this.Height = height;
             this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
-            this.Type = type;
         }
 
         /// <summary>

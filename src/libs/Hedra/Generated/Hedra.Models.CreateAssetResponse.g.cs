@@ -57,10 +57,10 @@ namespace Hedra
         /// <param name="type">
         /// The type of the asset.
         /// </param>
-        /// <param name="workspaceId"></param>
         /// <param name="id">
         /// The id of the newly created asset. Should be used for upload.
         /// </param>
+        /// <param name="workspaceId"></param>
         /// <param name="uploadUrl">
         /// Presigned S3 URL for uploading the asset file using HTTP PUT. Only present when the asset type is VIDEO.
         /// </param>
@@ -76,8 +76,8 @@ namespace Hedra
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Type = type;
-            this.Id = id;
             this.WorkspaceId = workspaceId;
+            this.Id = id;
             this.UploadUrl = uploadUrl;
         }
 

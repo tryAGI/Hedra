@@ -50,9 +50,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneratedAudio" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Default Value: generated_audio
-        /// </param>
         /// <param name="durationMs">
         /// Duration of the audio in seconds.
         /// </param>
@@ -61,6 +58,9 @@ namespace Hedra
         /// </param>
         /// <param name="generatedAudioInputs">
         /// Inputs for generating the audio.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: generated_audio
         /// </param>
         /// <param name="transcriptions">
         /// Transcriptions of the audio.
@@ -75,10 +75,10 @@ namespace Hedra
             string? type,
             global::System.Collections.Generic.IList<object>? transcriptions)
         {
+            this.Type = type;
             this.DurationMs = durationMs;
             this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
             this.GeneratedAudioInputs = generatedAudioInputs ?? throw new global::System.ArgumentNullException(nameof(generatedAudioInputs));
-            this.Type = type;
             this.Transcriptions = transcriptions;
         }
 

@@ -109,27 +109,11 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateImageUpscaleResponse" /> class.
         /// </summary>
-        /// <param name="workspaceId"></param>
-        /// <param name="agentThreadId">
-        /// Optional agent thread ID to associate this generation with.
-        /// </param>
-        /// <param name="generationId">
-        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
-        /// </param>
-        /// <param name="generationIds">
-        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
-        /// </param>
-        /// <param name="type">
-        /// Default Value: image_upscale
-        /// </param>
         /// <param name="aiModelId">
         /// The model to use for upscaling.
         /// </param>
         /// <param name="imageId">
         /// The id of the Image asset to use as the basis for upscaling.
-        /// </param>
-        /// <param name="upscaleFactor">
-        /// Optional upscale factor to pass to the model (e.g. 2.0 for 2x).
         /// </param>
         /// <param name="assetId">
         /// The id of the resulting image asset.
@@ -145,6 +129,22 @@ namespace Hedra
         /// </param>
         /// <param name="progress">
         /// Current progress to completion. Between 0-1
+        /// </param>
+        /// <param name="workspaceId"></param>
+        /// <param name="agentThreadId">
+        /// Optional agent thread ID to associate this generation with.
+        /// </param>
+        /// <param name="generationId">
+        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
+        /// </param>
+        /// <param name="generationIds">
+        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: image_upscale
+        /// </param>
+        /// <param name="upscaleFactor">
+        /// Optional upscale factor to pass to the model (e.g. 2.0 for 2x).
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -168,19 +168,19 @@ namespace Hedra
             double? upscaleFactor,
             int? etaSec)
         {
-            this.AiModelId = aiModelId;
-            this.ImageId = imageId;
-            this.AssetId = assetId;
-            this.Id = id;
-            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
-            this.Status = status;
-            this.Progress = progress;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AiModelId = aiModelId;
+            this.ImageId = imageId;
             this.UpscaleFactor = upscaleFactor;
+            this.AssetId = assetId;
+            this.Id = id;
+            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
+            this.Status = status;
+            this.Progress = progress;
             this.EtaSec = etaSec;
         }
 

@@ -108,6 +108,24 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVideoWithAudioResponse" /> class.
         /// </summary>
+        /// <param name="videoGenerationModelId">
+        /// ID of the model to use for video-to-video with audio generation (Mirelo Studio).
+        /// </param>
+        /// <param name="videoId">
+        /// The id of the video asset to add sound effects to.
+        /// </param>
+        /// <param name="id">
+        /// The id of the generation created.
+        /// </param>
+        /// <param name="createdAt">
+        /// Date the generation was submitted.
+        /// </param>
+        /// <param name="status">
+        /// Status of the generation
+        /// </param>
+        /// <param name="progress">
+        /// Current progress to completion. Between 0-1
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -121,29 +139,11 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: video_with_audio
         /// </param>
-        /// <param name="videoGenerationModelId">
-        /// ID of the model to use for video-to-video with audio generation (Mirelo Studio).
-        /// </param>
-        /// <param name="videoId">
-        /// The id of the video asset to add sound effects to.
-        /// </param>
         /// <param name="prompt">
         /// Optional prompt to guide the audio generation for the video.
         /// </param>
-        /// <param name="id">
-        /// The id of the generation created.
-        /// </param>
         /// <param name="assetId">
         /// The id of the video asset with audio resulting from the generation. Only present when generation is complete.
-        /// </param>
-        /// <param name="createdAt">
-        /// Date the generation was submitted.
-        /// </param>
-        /// <param name="status">
-        /// Status of the generation
-        /// </param>
-        /// <param name="progress">
-        /// Current progress to completion. Between 0-1
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -167,19 +167,19 @@ namespace Hedra
             global::System.Guid? assetId,
             int? etaSec)
         {
-            this.VideoGenerationModelId = videoGenerationModelId;
-            this.VideoId = videoId;
-            this.Id = id;
-            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
-            this.Status = status;
-            this.Progress = progress;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.VideoGenerationModelId = videoGenerationModelId;
+            this.VideoId = videoId;
             this.Prompt = prompt;
+            this.Id = id;
             this.AssetId = assetId;
+            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
+            this.Status = status;
+            this.Progress = progress;
             this.EtaSec = etaSec;
         }
 

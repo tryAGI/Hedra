@@ -89,6 +89,12 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateTextToSpeechRequest" /> class.
         /// </summary>
+        /// <param name="voiceId">
+        /// The id of the Voice to use.
+        /// </param>
+        /// <param name="text">
+        /// The text to convert to speech.
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -102,14 +108,8 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: text_to_speech
         /// </param>
-        /// <param name="voiceId">
-        /// The id of the Voice to use.
-        /// </param>
         /// <param name="modelId">
         /// The id of the model to use.
-        /// </param>
-        /// <param name="text">
-        /// The text to convert to speech.
         /// </param>
         /// <param name="stability">
         /// Stability should be between 0-1, where 0 is the most stable and 1 is the most unstable. This varies the consistency between your outputs.<br/>
@@ -139,14 +139,14 @@ namespace Hedra
             double? speed,
             global::Hedra.SupportedLanguage? language)
         {
-            this.VoiceId = voiceId;
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.VoiceId = voiceId;
             this.ModelId = modelId;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Stability = stability;
             this.Speed = speed;
             this.Language = language;

@@ -51,9 +51,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneratedImage" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Default Value: generated_image
-        /// </param>
         /// <param name="width">
         /// Width of the image.
         /// </param>
@@ -66,6 +63,9 @@ namespace Hedra
         /// <param name="generatedImageInputs">
         /// Inputs for generating the image.
         /// </param>
+        /// <param name="type">
+        /// Default Value: generated_image
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -76,11 +76,11 @@ namespace Hedra
             global::Hedra.GeneratedImageInputs generatedImageInputs,
             string? type)
         {
+            this.Type = type;
             this.Width = width;
             this.Height = height;
             this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
             this.GeneratedImageInputs = generatedImageInputs ?? throw new global::System.ArgumentNullException(nameof(generatedImageInputs));
-            this.Type = type;
         }
 
         /// <summary>

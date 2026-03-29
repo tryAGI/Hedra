@@ -128,37 +128,11 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateTextToSoundResponse" /> class.
         /// </summary>
-        /// <param name="workspaceId"></param>
-        /// <param name="agentThreadId">
-        /// Optional agent thread ID to associate this generation with.
-        /// </param>
-        /// <param name="generationId">
-        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
-        /// </param>
-        /// <param name="generationIds">
-        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
-        /// </param>
-        /// <param name="type">
-        /// Default Value: text_to_sound
-        /// </param>
         /// <param name="aiModelId">
         /// The id of the model to use for sound effect generation.
         /// </param>
         /// <param name="text">
         /// The text description of the sound effect to generate.
-        /// </param>
-        /// <param name="durationSeconds">
-        /// The duration of the sound effect in seconds (0.5-30). If not specified, duration is automatically determined from the prompt.
-        /// </param>
-        /// <param name="promptInfluence">
-        /// Controls how strictly the model follows the prompt (0-1). Higher values mean more literal interpretation. Defaults to 0.3.
-        /// </param>
-        /// <param name="loop">
-        /// Whether to create a sound effect that loops smoothly. Only available for the eleven_text_to_sound_v2 model.
-        /// </param>
-        /// <param name="outputFormat">
-        /// Output format of the generated audio. Formatted as codec_sample_rate_bitrate (e.g., mp3_22050_32, mp3_44100_128, pcm_44100). If not specified, defaults to mp3_44100_128.<br/>
-        /// Default Value: mp3_44100_128
         /// </param>
         /// <param name="id">
         /// The id of the generation created.
@@ -174,6 +148,32 @@ namespace Hedra
         /// </param>
         /// <param name="progress">
         /// Current progress to completion. Between 0-1
+        /// </param>
+        /// <param name="workspaceId"></param>
+        /// <param name="agentThreadId">
+        /// Optional agent thread ID to associate this generation with.
+        /// </param>
+        /// <param name="generationId">
+        /// Optional pre-reserved generation ID. If provided, this ID will be used instead of generating a new one. For batch operations (batch_size &gt; 1), use generation_ids instead.
+        /// </param>
+        /// <param name="generationIds">
+        /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
+        /// </param>
+        /// <param name="type">
+        /// Default Value: text_to_sound
+        /// </param>
+        /// <param name="durationSeconds">
+        /// The duration of the sound effect in seconds (0.5-30). If not specified, duration is automatically determined from the prompt.
+        /// </param>
+        /// <param name="promptInfluence">
+        /// Controls how strictly the model follows the prompt (0-1). Higher values mean more literal interpretation. Defaults to 0.3.
+        /// </param>
+        /// <param name="loop">
+        /// Whether to create a sound effect that loops smoothly. Only available for the eleven_text_to_sound_v2 model.
+        /// </param>
+        /// <param name="outputFormat">
+        /// Output format of the generated audio. Formatted as codec_sample_rate_bitrate (e.g., mp3_22050_32, mp3_44100_128, pcm_44100). If not specified, defaults to mp3_44100_128.<br/>
+        /// Default Value: mp3_44100_128
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -200,22 +200,22 @@ namespace Hedra
             string? outputFormat,
             int? etaSec)
         {
-            this.AiModelId = aiModelId;
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
-            this.Id = id;
-            this.AssetId = assetId;
-            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
-            this.Status = status;
-            this.Progress = progress;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AiModelId = aiModelId;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.DurationSeconds = durationSeconds;
             this.PromptInfluence = promptInfluence;
             this.Loop = loop;
             this.OutputFormat = outputFormat;
+            this.Id = id;
+            this.AssetId = assetId;
+            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
+            this.Status = status;
+            this.Progress = progress;
             this.EtaSec = etaSec;
         }
 

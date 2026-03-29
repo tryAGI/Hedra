@@ -189,6 +189,27 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVideoResponse" /> class.
         /// </summary>
+        /// <param name="aiModelId">
+        /// ID of the model to use for the generation.
+        /// </param>
+        /// <param name="generatedVideoInputs">
+        /// Inputs for generating the video.
+        /// </param>
+        /// <param name="id">
+        /// The id of the generation created.
+        /// </param>
+        /// <param name="assetId">
+        /// The id of the video asset resulting from the generation.
+        /// </param>
+        /// <param name="createdAt">
+        /// Date the generation was submitted.
+        /// </param>
+        /// <param name="status">
+        /// Status of the generation
+        /// </param>
+        /// <param name="progress">
+        /// Current progress to completion. Between 0-1
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -201,9 +222,6 @@ namespace Hedra
         /// </param>
         /// <param name="type">
         /// Default Value: video
-        /// </param>
-        /// <param name="aiModelId">
-        /// ID of the model to use for the generation.
         /// </param>
         /// <param name="startKeyframeId">
         /// The id of the Image asset to use as the start keyframe.
@@ -238,27 +256,9 @@ namespace Hedra
         /// <param name="videoId">
         /// The id of the Video asset to use as input. For V2V (motion control) models this is the driving video; for Google Veo models this triggers video extension.
         /// </param>
-        /// <param name="generatedVideoInputs">
-        /// Inputs for generating the video.
-        /// </param>
         /// <param name="batchSize">
         /// Number of video variations to generate (1-8). When &gt; 1, batch_results will contain all generation results.<br/>
         /// Default Value: 1
-        /// </param>
-        /// <param name="id">
-        /// The id of the generation created.
-        /// </param>
-        /// <param name="assetId">
-        /// The id of the video asset resulting from the generation.
-        /// </param>
-        /// <param name="createdAt">
-        /// Date the generation was submitted.
-        /// </param>
-        /// <param name="status">
-        /// Status of the generation
-        /// </param>
-        /// <param name="progress">
-        /// Current progress to completion. Between 0-1
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -301,18 +301,12 @@ namespace Hedra
             string? batchGenerationId,
             global::System.Collections.Generic.IList<global::Hedra.BatchVideoResultItem>? batchResults)
         {
-            this.AiModelId = aiModelId;
-            this.GeneratedVideoInputs = generatedVideoInputs ?? throw new global::System.ArgumentNullException(nameof(generatedVideoInputs));
-            this.Id = id;
-            this.AssetId = assetId;
-            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
-            this.Status = status;
-            this.Progress = progress;
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AiModelId = aiModelId;
             this.StartKeyframeId = startKeyframeId;
             this.StartKeyframeUrl = startKeyframeUrl;
             this.EndKeyframeId = endKeyframeId;
@@ -324,7 +318,13 @@ namespace Hedra
             this.ReferenceImageIds = referenceImageIds;
             this.ReferenceVideoIds = referenceVideoIds;
             this.VideoId = videoId;
+            this.GeneratedVideoInputs = generatedVideoInputs ?? throw new global::System.ArgumentNullException(nameof(generatedVideoInputs));
             this.BatchSize = batchSize;
+            this.Id = id;
+            this.AssetId = assetId;
+            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
+            this.Status = status;
+            this.Progress = progress;
             this.EtaSec = etaSec;
             this.BatchGenerationId = batchGenerationId;
             this.BatchResults = batchResults;

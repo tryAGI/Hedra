@@ -76,6 +76,18 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateMotionControlRequestOutput" /> class.
         /// </summary>
+        /// <param name="aiModelId">
+        /// The id of the Motion Control model to use.
+        /// </param>
+        /// <param name="videoId">
+        /// The id of the video asset to use as motion reference.
+        /// </param>
+        /// <param name="startKeyframeId">
+        /// The id of the character image asset to animate with the motion from the video.
+        /// </param>
+        /// <param name="generatedVideoInputs">
+        /// Video generation parameters including text_prompt and character_orientation.
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -88,18 +100,6 @@ namespace Hedra
         /// </param>
         /// <param name="type">
         /// Default Value: motion_control
-        /// </param>
-        /// <param name="aiModelId">
-        /// The id of the Motion Control model to use.
-        /// </param>
-        /// <param name="videoId">
-        /// The id of the video asset to use as motion reference.
-        /// </param>
-        /// <param name="startKeyframeId">
-        /// The id of the character image asset to animate with the motion from the video.
-        /// </param>
-        /// <param name="generatedVideoInputs">
-        /// Video generation parameters including text_prompt and character_orientation.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -115,15 +115,15 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type)
         {
-            this.AiModelId = aiModelId;
-            this.VideoId = videoId;
-            this.StartKeyframeId = startKeyframeId;
-            this.GeneratedVideoInputs = generatedVideoInputs ?? throw new global::System.ArgumentNullException(nameof(generatedVideoInputs));
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AiModelId = aiModelId;
+            this.VideoId = videoId;
+            this.StartKeyframeId = startKeyframeId;
+            this.GeneratedVideoInputs = generatedVideoInputs ?? throw new global::System.ArgumentNullException(nameof(generatedVideoInputs));
         }
 
         /// <summary>

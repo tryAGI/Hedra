@@ -86,6 +86,12 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateTextToSoundRequest" /> class.
         /// </summary>
+        /// <param name="aiModelId">
+        /// The id of the model to use for sound effect generation.
+        /// </param>
+        /// <param name="text">
+        /// The text description of the sound effect to generate.
+        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -98,12 +104,6 @@ namespace Hedra
         /// </param>
         /// <param name="type">
         /// Default Value: text_to_sound
-        /// </param>
-        /// <param name="aiModelId">
-        /// The id of the model to use for sound effect generation.
-        /// </param>
-        /// <param name="text">
-        /// The text description of the sound effect to generate.
         /// </param>
         /// <param name="durationSeconds">
         /// The duration of the sound effect in seconds (0.5-30). If not specified, duration is automatically determined from the prompt.
@@ -134,13 +134,13 @@ namespace Hedra
             bool? loop,
             string? outputFormat)
         {
-            this.AiModelId = aiModelId;
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.AiModelId = aiModelId;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.DurationSeconds = durationSeconds;
             this.PromptInfluence = promptInfluence;
             this.Loop = loop;
