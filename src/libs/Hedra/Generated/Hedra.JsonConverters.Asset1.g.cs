@@ -104,43 +104,43 @@ namespace Hedra.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.UploadedImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.UploadedImage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.UploadedImage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UploadedImage, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UploadedImage!, typeInfo);
             }
             else if (value.IsUploadedAudio)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.UploadedAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.UploadedAudio?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.UploadedAudio).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UploadedAudio, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UploadedAudio!, typeInfo);
             }
             else if (value.IsUploadedVideo)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.UploadedVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.UploadedVideo?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.UploadedVideo).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UploadedVideo, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UploadedVideo!, typeInfo);
             }
             else if (value.IsGeneratedAudio)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GeneratedAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GeneratedAudio?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.GeneratedAudio).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeneratedAudio, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeneratedAudio!, typeInfo);
             }
             else if (value.IsGeneratedImage)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GeneratedImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GeneratedImage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.GeneratedImage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeneratedImage, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeneratedImage!, typeInfo);
             }
             else if (value.IsGeneratedVideo)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GeneratedVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GeneratedVideo?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.GeneratedVideo).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeneratedVideo, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GeneratedVideo!, typeInfo);
             }
             else if (value.IsVoice)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.Voice), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.Voice?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.Voice).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Voice, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Voice!, typeInfo);
             }
         }
     }
