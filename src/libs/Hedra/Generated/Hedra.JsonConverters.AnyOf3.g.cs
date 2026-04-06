@@ -3,7 +3,7 @@
 namespace Hedra.JsonConverters
 {
     /// <inheritdoc />
-    public class AnyOfJsonConverter<T1, T2, T3> : global::System.Text.Json.Serialization.JsonConverter<global::Hedra.AnyOf<T1, T2, T3>>
+    public class AnyOfJsonConverter<[global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicProperties)] T1, [global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicProperties)] T2, [global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers(global::System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicProperties)] T3> : global::System.Text.Json.Serialization.JsonConverter<global::Hedra.AnyOf<T1, T2, T3>>
     {
         /// <inheritdoc />
         public override global::Hedra.AnyOf<T1, T2, T3> Read(
