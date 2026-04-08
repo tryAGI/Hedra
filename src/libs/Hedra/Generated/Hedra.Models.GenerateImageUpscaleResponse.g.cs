@@ -53,7 +53,13 @@ namespace Hedra
         public required global::System.Guid ImageId { get; set; }
 
         /// <summary>
-        /// Optional upscale factor to pass to the model (e.g. 2.0 for 2x).
+        /// Target output resolution (e.g. '1080p', '2K', '4K'). Preferred over upscale_factor.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target_resolution")]
+        public string? TargetResolution { get; set; }
+
+        /// <summary>
+        /// Optional upscale factor (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("upscale_factor")]
         public double? UpscaleFactor { get; set; }
@@ -143,8 +149,11 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: image_upscale
         /// </param>
+        /// <param name="targetResolution">
+        /// Target output resolution (e.g. '1080p', '2K', '4K'). Preferred over upscale_factor.
+        /// </param>
         /// <param name="upscaleFactor">
-        /// Optional upscale factor to pass to the model (e.g. 2.0 for 2x).
+        /// Optional upscale factor (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -165,6 +174,7 @@ namespace Hedra
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
+            string? targetResolution,
             double? upscaleFactor,
             int? etaSec)
         {
@@ -175,6 +185,7 @@ namespace Hedra
             this.Type = type;
             this.AiModelId = aiModelId;
             this.ImageId = imageId;
+            this.TargetResolution = targetResolution;
             this.UpscaleFactor = upscaleFactor;
             this.AssetId = assetId;
             this.Id = id;

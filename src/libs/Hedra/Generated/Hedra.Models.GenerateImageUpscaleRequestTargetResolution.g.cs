@@ -4,9 +4,9 @@
 namespace Hedra
 {
     /// <summary>
-    /// Optional upscale factor (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
+    /// Target output resolution (e.g. '1080p', '2K', '4K'). Preferred over upscale_factor.
     /// </summary>
-    public sealed partial class GenerateImageUpscaleRequestUpscaleFactor
+    public sealed partial class GenerateImageUpscaleRequestTargetResolution
     {
 
         /// <summary>
