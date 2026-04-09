@@ -5,6 +5,25 @@ namespace Hedra
 {
     public partial class HedraClient
     {
+
+
+        private static readonly global::Hedra.EndPointSecurityRequirement s_ListModelsSecurityRequirement0 =
+            new global::Hedra.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Hedra.EndPointAuthorizationRequirement[]
+                {                    new global::Hedra.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "X-API-Key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Hedra.EndPointSecurityRequirement[] s_ListModelsSecurityRequirements =
+            new global::Hedra.EndPointSecurityRequirement[]
+            {                s_ListModelsSecurityRequirement0,
+            };
         partial void PrepareListModelsArguments(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Collections.Generic.IList<string>? types);
@@ -37,12 +56,18 @@ namespace Hedra
                 httpClient: HttpClient,
                 types: types);
 
+
+            var __authorizations = global::Hedra.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ListModelsSecurityRequirements,
+                operationName: "ListModelsAsync");
+
             var __pathBuilder = new global::Hedra.PathBuilder(
                 path: "/public/models",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("types", types?.ToString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -52,7 +77,7 @@ namespace Hedra
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

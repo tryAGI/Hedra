@@ -6,6 +6,7 @@ namespace Hedra
     public sealed partial class HedraClient
     {
         /// <inheritdoc cref="HedraClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Hedra.EndPointAuthorization}?, bool)"/>
+
         public HedraClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,
