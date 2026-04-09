@@ -75,7 +75,7 @@ namespace Hedra
 
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>),
 
-            typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<byte[], global::System.Collections.Generic.IList<byte[]>, object>),
+            typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>, object>),
 
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<string, int?>),
 
@@ -115,6 +115,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.BatchVideoResultItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.CreateAssetRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.CreateAssetResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.CreditBalance))]
@@ -161,9 +162,9 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedAudioInputs))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedImageInputs))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<byte[], global::System.Collections.Generic.IList<byte[]>, object>), TypeInfoPropertyName = "AnyOfByteArrayIListByteArrayObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<byte[]>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>, object>), TypeInfoPropertyName = "AnyOfIListDoubleIListIListDoubleObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedVideoInputsCharacterOrientation2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.VideoShot>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.VideoShot))]
@@ -208,8 +209,9 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.BatchVideoResultItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.KlingEditElement>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<byte[], global::System.Collections.Generic.List<byte[]>, object>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<byte[]>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<global::System.Collections.Generic.List<double>, global::System.Collections.Generic.List<global::System.Collections.Generic.List<double>>, object>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Collections.Generic.List<double>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.VideoShot>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.ValidationError>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.InputSlot>))]
