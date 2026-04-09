@@ -5,6 +5,25 @@ namespace Hedra
 {
     public partial class HedraClient
     {
+
+
+        private static readonly global::Hedra.EndPointSecurityRequirement s_GetCreditsSecurityRequirement0 =
+            new global::Hedra.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Hedra.EndPointAuthorizationRequirement[]
+                {                    new global::Hedra.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "X-API-Key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Hedra.EndPointSecurityRequirement[] s_GetCreditsSecurityRequirements =
+            new global::Hedra.EndPointSecurityRequirement[]
+            {                s_GetCreditsSecurityRequirement0,
+            };
         partial void PrepareGetCreditsArguments(
             global::System.Net.Http.HttpClient httpClient);
         partial void PrepareGetCreditsRequest(
@@ -32,9 +51,15 @@ namespace Hedra
             PrepareGetCreditsArguments(
                 httpClient: HttpClient);
 
+
+            var __authorizations = global::Hedra.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetCreditsSecurityRequirements,
+                operationName: "GetCreditsAsync");
+
             var __pathBuilder = new global::Hedra.PathBuilder(
                 path: "/public/billing/credits",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -44,7 +69,7 @@ namespace Hedra
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
