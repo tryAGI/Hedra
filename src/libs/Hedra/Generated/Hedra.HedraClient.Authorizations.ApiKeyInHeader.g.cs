@@ -26,6 +26,7 @@ namespace Hedra
             Authorizations.Add(new global::Hedra.EndPointAuthorization
             {
                 Type = "ApiKey",
+                SchemeId = "ApikeyXApiKey",
                 Location = "Header",
                 Name = "X-API-Key",
                 Value = apiKey,
