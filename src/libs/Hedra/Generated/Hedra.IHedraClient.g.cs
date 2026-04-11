@@ -19,6 +19,27 @@ namespace Hedra
         /// </summary>
         public System.Uri? BaseUri { get; }
 
+
+        /// <summary>
+        /// The server options available for this client.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::Hedra.AutoSDKServer> AvailableServers { get; }
+
+        /// <summary>
+        /// The currently selected server for this client, if any.
+        /// </summary>
+        public global::Hedra.AutoSDKServer? SelectedServer { get; set; }
+
+        /// <summary>
+        /// Selects one of the generated server options by id.
+        /// </summary>
+        public bool TrySelectServer(string serverId);
+
+        /// <summary>
+        /// Clears the currently selected server.
+        /// </summary>
+        public void ClearSelectedServer();
+
         /// <summary>
         /// The authorizations to use for the requests.
         /// </summary>
@@ -32,11 +53,11 @@ namespace Hedra
         /// ensuring <see cref="ApiException.ResponseBody"/> is populated.
         /// </summary>
         public bool ReadResponseAsString { get; set; }
-
         /// <summary>
         /// Client-wide request defaults such as headers, query parameters, retries, and timeout.
         /// </summary>
         public global::Hedra.AutoSDKClientOptions Options { get; }
+
 
         /// <summary>
         /// 
