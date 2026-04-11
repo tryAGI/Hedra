@@ -6,6 +6,19 @@ namespace Hedra
     public partial class HedraClient
     {
 
+        private static readonly global::Hedra.AutoSDKServer[] s_UploadAssetServers = new global::Hedra.AutoSDKServer[]
+        {            new global::Hedra.AutoSDKServer(
+                id: "https-mercury-dev-dream-ai-com-api",
+                name: "mercury.dev.dream-ai.com api",
+                url: "https://mercury.dev.dream-ai.com/api",
+                description: ""),
+            new global::Hedra.AutoSDKServer(
+                id: "file-web-app",
+                name: " web-app",
+                url: "file:///web-app",
+                description: ""),
+        };
+
 
         private static readonly global::Hedra.EndPointSecurityRequirement s_UploadAssetSecurityRequirement0 =
             new global::Hedra.EndPointSecurityRequirement
@@ -91,7 +104,9 @@ namespace Hedra
             {
                             var __pathBuilder = new global::Hedra.PathBuilder(
                                 path: $"/public/assets/{id}/upload",
-                                baseUri: HttpClient.BaseAddress);
+                                baseUri: ResolveBaseUri(
+                                servers: s_UploadAssetServers,
+                                defaultBaseUrl: "https://mercury.dev.dream-ai.com/api"));
                             var __path = __pathBuilder.ToString();
                 __path = global::Hedra.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,

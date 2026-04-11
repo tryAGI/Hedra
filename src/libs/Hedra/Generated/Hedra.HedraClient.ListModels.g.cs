@@ -6,6 +6,19 @@ namespace Hedra
     public partial class HedraClient
     {
 
+        private static readonly global::Hedra.AutoSDKServer[] s_ListModelsServers = new global::Hedra.AutoSDKServer[]
+        {            new global::Hedra.AutoSDKServer(
+                id: "https-mercury-dev-dream-ai-com-api",
+                name: "mercury.dev.dream-ai.com api",
+                url: "https://mercury.dev.dream-ai.com/api",
+                description: ""),
+            new global::Hedra.AutoSDKServer(
+                id: "file-web-app",
+                name: " web-app",
+                url: "file:///web-app",
+                description: ""),
+        };
+
 
         private static readonly global::Hedra.EndPointSecurityRequirement s_ListModelsSecurityRequirement0 =
             new global::Hedra.EndPointSecurityRequirement
@@ -83,7 +96,9 @@ namespace Hedra
             {
                             var __pathBuilder = new global::Hedra.PathBuilder(
                                 path: "/public/models",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: ResolveBaseUri(
+                                servers: s_ListModelsServers,
+                                defaultBaseUrl: "https://mercury.dev.dream-ai.com/api")); 
                             __pathBuilder
                                 .AddOptionalParameter("types", types?.ToString()) 
                                 ;
