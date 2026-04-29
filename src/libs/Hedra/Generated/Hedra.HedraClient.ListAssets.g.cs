@@ -148,7 +148,7 @@ namespace Hedra
                 PrepareListAssetsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    type: type,
+                    type: type!,
                     ids: ids);
 
                 return __httpRequest;

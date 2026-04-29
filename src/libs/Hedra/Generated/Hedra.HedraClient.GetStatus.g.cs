@@ -139,7 +139,7 @@ namespace Hedra
                 PrepareGetStatusRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    generationId: generationId);
+                    generationId: generationId!);
 
                 return __httpRequest;
             }
