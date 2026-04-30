@@ -32,8 +32,8 @@ public partial class Tests
 
         Asset uploadedAudio = await client.UploadAssetAsync(
             id: audioAsset.Id,
-            file: Convert.ToBase64String(
-                H.Resources.hello_wav.AsBytes()));
+            file: H.Resources.hello_wav.AsBytes(),
+            filename: H.Resources.hello_wav.FileName);
 
         uploadedAudio.Should().NotBeNull();
 
@@ -46,8 +46,8 @@ public partial class Tests
 
         Asset uploadedImage = await client.UploadAssetAsync(
             id: imageAsset.Id,
-            file: Convert.ToBase64String(
-                H.Resources.girl_png.AsBytes()));
+            file: H.Resources.girl_png.AsBytes(),
+            filename: H.Resources.girl_png.FileName);
 
         uploadedImage.Should().NotBeNull();
 
