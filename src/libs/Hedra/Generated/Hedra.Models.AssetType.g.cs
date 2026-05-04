@@ -23,6 +23,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        ThreeD,
+        /// <summary>
+        /// 
+        /// </summary>
         Video,
         /// <summary>
         /// 
@@ -45,6 +49,7 @@ namespace Hedra
                 AssetType.Audio => "audio",
                 AssetType.Image => "image",
                 AssetType.Text => "text",
+                AssetType.ThreeD => "three_d",
                 AssetType.Video => "video",
                 AssetType.Voice => "voice",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -60,6 +65,7 @@ namespace Hedra
                 "audio" => AssetType.Audio,
                 "image" => AssetType.Image,
                 "text" => AssetType.Text,
+                "three_d" => AssetType.ThreeD,
                 "video" => AssetType.Video,
                 "voice" => AssetType.Voice,
                 _ => null,
