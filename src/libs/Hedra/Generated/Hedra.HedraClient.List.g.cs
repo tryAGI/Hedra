@@ -92,6 +92,46 @@ namespace Hedra
             global::Hedra.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await ListAsResponseAsync(
+                type: type,
+                createdBefore: createdBefore,
+                createdAfter: createdAfter,
+                promptQuery: promptQuery,
+                agentThreadId: agentThreadId,
+                ids: ids,
+                pagingParams: pagingParams,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// List 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="createdBefore"></param>
+        /// <param name="createdAfter"></param>
+        /// <param name="promptQuery"></param>
+        /// <param name="agentThreadId"></param>
+        /// <param name="ids"></param>
+        /// <param name="pagingParams">
+        /// Default Value: {"limit":100,"offset":0}
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Hedra.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Hedra.AutoSDKHttpResponse<global::Hedra.PagedResponseGeneration>> ListAsResponseAsync(
+            global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>? type = default,
+            global::System.DateTime? createdBefore = default,
+            global::System.DateTime? createdAfter = default,
+            string? promptQuery = default,
+            global::System.Guid? agentThreadId = default,
+            string? ids = default,
+            global::Hedra.PagingParams? pagingParams = default,
+            global::Hedra.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareListArguments(
@@ -126,18 +166,19 @@ namespace Hedra
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Hedra.PathBuilder(
                                 path: "/public/generations",
                                 baseUri: ResolveBaseUri(
                                 servers: s_ListServers,
-                                defaultBaseUrl: "https://mercury.dev.dream-ai.com/api")); 
+                                defaultBaseUrl: "https://mercury.dev.dream-ai.com/api"));
                             __pathBuilder
                                 .AddOptionalParameter("type", type?.ToString())
                                 .AddOptionalParameter("created_before", createdBefore?.ToString())
                                 .AddOptionalParameter("created_after", createdAfter?.ToString())
                                 .AddOptionalParameter("prompt_query", promptQuery)
                                 .AddOptionalParameter("agent_thread_id", agentThreadId?.ToString())
-                                .AddOptionalParameter("ids", ids) 
+                                .AddOptionalParameter("ids", ids)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Hedra.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -215,6 +256,8 @@ namespace Hedra
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -225,6 +268,11 @@ namespace Hedra
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Hedra.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Hedra.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -242,6 +290,8 @@ namespace Hedra
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -251,8 +301,7 @@ namespace Hedra
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Hedra.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -261,6 +310,11 @@ namespace Hedra
                         __attempt < __maxAttempts &&
                         global::Hedra.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Hedra.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Hedra.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Hedra.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -277,14 +331,15 @@ namespace Hedra
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Hedra.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -324,6 +379,8 @@ namespace Hedra
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -344,6 +401,8 @@ namespace Hedra
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                             // Validation Error
@@ -406,9 +465,13 @@ namespace Hedra
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Hedra.PagedResponseGeneration.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Hedra.PagedResponseGeneration.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Hedra.AutoSDKHttpResponse<global::Hedra.PagedResponseGeneration>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Hedra.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -436,9 +499,13 @@ namespace Hedra
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Hedra.PagedResponseGeneration.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Hedra.PagedResponseGeneration.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Hedra.AutoSDKHttpResponse<global::Hedra.PagedResponseGeneration>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Hedra.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
