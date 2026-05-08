@@ -34,6 +34,19 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickUploadedImage(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hedra.UploadedImage? value)
+        {
+            value = UploadedImage;
+            return IsUploadedImage;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.UploadedAudio? UploadedAudio { get; init; }
 #else
@@ -47,6 +60,19 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UploadedAudio))]
 #endif
         public bool IsUploadedAudio => UploadedAudio != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickUploadedAudio(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hedra.UploadedAudio? value)
+        {
+            value = UploadedAudio;
+            return IsUploadedAudio;
+        }
 
         /// <summary>
         /// 
@@ -68,6 +94,19 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickUploadedVideo(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hedra.UploadedVideo? value)
+        {
+            value = UploadedVideo;
+            return IsUploadedVideo;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.GeneratedAudio? GeneratedAudio { get; init; }
 #else
@@ -81,6 +120,19 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GeneratedAudio))]
 #endif
         public bool IsGeneratedAudio => GeneratedAudio != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickGeneratedAudio(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hedra.GeneratedAudio? value)
+        {
+            value = GeneratedAudio;
+            return IsGeneratedAudio;
+        }
 
         /// <summary>
         /// 
@@ -102,6 +154,19 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickGeneratedImage(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hedra.GeneratedImage? value)
+        {
+            value = GeneratedImage;
+            return IsGeneratedImage;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.GeneratedVideo? GeneratedVideo { get; init; }
 #else
@@ -119,6 +184,19 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickGeneratedVideo(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hedra.GeneratedVideo? value)
+        {
+            value = GeneratedVideo;
+            return IsGeneratedVideo;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.Voice? Voice { get; init; }
 #else
@@ -132,6 +210,19 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Voice))]
 #endif
         public bool IsVoice => Voice != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickVoice(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hedra.Voice? value)
+        {
+            value = Voice;
+            return IsVoice;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -321,13 +412,13 @@ namespace Hedra
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Hedra.UploadedImage?, TResult>? uploadedImage = null,
-            global::System.Func<global::Hedra.UploadedAudio?, TResult>? uploadedAudio = null,
-            global::System.Func<global::Hedra.UploadedVideo?, TResult>? uploadedVideo = null,
-            global::System.Func<global::Hedra.GeneratedAudio?, TResult>? generatedAudio = null,
-            global::System.Func<global::Hedra.GeneratedImage?, TResult>? generatedImage = null,
-            global::System.Func<global::Hedra.GeneratedVideo?, TResult>? generatedVideo = null,
-            global::System.Func<global::Hedra.Voice?, TResult>? voice = null,
+            global::System.Func<global::Hedra.UploadedImage, TResult>? uploadedImage = null,
+            global::System.Func<global::Hedra.UploadedAudio, TResult>? uploadedAudio = null,
+            global::System.Func<global::Hedra.UploadedVideo, TResult>? uploadedVideo = null,
+            global::System.Func<global::Hedra.GeneratedAudio, TResult>? generatedAudio = null,
+            global::System.Func<global::Hedra.GeneratedImage, TResult>? generatedImage = null,
+            global::System.Func<global::Hedra.GeneratedVideo, TResult>? generatedVideo = null,
+            global::System.Func<global::Hedra.Voice, TResult>? voice = null,
             bool validate = true)
         {
             if (validate)
@@ -371,13 +462,67 @@ namespace Hedra
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Hedra.UploadedImage?>? uploadedImage = null,
-            global::System.Action<global::Hedra.UploadedAudio?>? uploadedAudio = null,
-            global::System.Action<global::Hedra.UploadedVideo?>? uploadedVideo = null,
-            global::System.Action<global::Hedra.GeneratedAudio?>? generatedAudio = null,
-            global::System.Action<global::Hedra.GeneratedImage?>? generatedImage = null,
-            global::System.Action<global::Hedra.GeneratedVideo?>? generatedVideo = null,
-            global::System.Action<global::Hedra.Voice?>? voice = null,
+            global::System.Action<global::Hedra.UploadedImage>? uploadedImage = null,
+
+            global::System.Action<global::Hedra.UploadedAudio>? uploadedAudio = null,
+
+            global::System.Action<global::Hedra.UploadedVideo>? uploadedVideo = null,
+
+            global::System.Action<global::Hedra.GeneratedAudio>? generatedAudio = null,
+
+            global::System.Action<global::Hedra.GeneratedImage>? generatedImage = null,
+
+            global::System.Action<global::Hedra.GeneratedVideo>? generatedVideo = null,
+
+            global::System.Action<global::Hedra.Voice>? voice = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsUploadedImage)
+            {
+                uploadedImage?.Invoke(UploadedImage!);
+            }
+            else if (IsUploadedAudio)
+            {
+                uploadedAudio?.Invoke(UploadedAudio!);
+            }
+            else if (IsUploadedVideo)
+            {
+                uploadedVideo?.Invoke(UploadedVideo!);
+            }
+            else if (IsGeneratedAudio)
+            {
+                generatedAudio?.Invoke(GeneratedAudio!);
+            }
+            else if (IsGeneratedImage)
+            {
+                generatedImage?.Invoke(GeneratedImage!);
+            }
+            else if (IsGeneratedVideo)
+            {
+                generatedVideo?.Invoke(GeneratedVideo!);
+            }
+            else if (IsVoice)
+            {
+                voice?.Invoke(Voice!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Hedra.UploadedImage>? uploadedImage = null,
+            global::System.Action<global::Hedra.UploadedAudio>? uploadedAudio = null,
+            global::System.Action<global::Hedra.UploadedVideo>? uploadedVideo = null,
+            global::System.Action<global::Hedra.GeneratedAudio>? generatedAudio = null,
+            global::System.Action<global::Hedra.GeneratedImage>? generatedImage = null,
+            global::System.Action<global::Hedra.GeneratedVideo>? generatedVideo = null,
+            global::System.Action<global::Hedra.Voice>? voice = null,
             bool validate = true)
         {
             if (validate)
