@@ -19,6 +19,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        RichText,
+        /// <summary>
+        /// 
+        /// </summary>
         Text,
         /// <summary>
         /// 
@@ -48,6 +52,7 @@ namespace Hedra
             {
                 AssetType.Audio => "audio",
                 AssetType.Image => "image",
+                AssetType.RichText => "rich_text",
                 AssetType.Text => "text",
                 AssetType.ThreeD => "three_d",
                 AssetType.Video => "video",
@@ -64,6 +69,7 @@ namespace Hedra
             {
                 "audio" => AssetType.Audio,
                 "image" => AssetType.Image,
+                "rich_text" => AssetType.RichText,
                 "text" => AssetType.Text,
                 "three_d" => AssetType.ThreeD,
                 "video" => AssetType.Video,
