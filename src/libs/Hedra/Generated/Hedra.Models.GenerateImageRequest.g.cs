@@ -178,5 +178,6 @@ namespace Hedra
         public GenerateImageRequest()
         {
         }
+
     }
 }

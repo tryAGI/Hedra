@@ -100,5 +100,6 @@ namespace Hedra
         public BatchImageResultItem()
         {
         }
+
     }
 }

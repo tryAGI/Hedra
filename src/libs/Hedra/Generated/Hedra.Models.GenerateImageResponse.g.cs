@@ -272,5 +272,6 @@ namespace Hedra
         public GenerateImageResponse()
         {
         }
+
     }
 }

@@ -148,5 +148,6 @@ namespace Hedra
         public InputSlot()
         {
         }
+
     }
 }

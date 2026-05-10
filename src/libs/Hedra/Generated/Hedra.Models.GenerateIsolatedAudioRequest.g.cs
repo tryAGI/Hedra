@@ -107,5 +107,6 @@ namespace Hedra
         public GenerateIsolatedAudioRequest()
         {
         }
+
     }
 }

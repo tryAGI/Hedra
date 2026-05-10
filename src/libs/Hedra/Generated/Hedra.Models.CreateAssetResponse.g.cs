@@ -87,5 +87,6 @@ namespace Hedra
         public CreateAssetResponse()
         {
         }
+
     }
 }

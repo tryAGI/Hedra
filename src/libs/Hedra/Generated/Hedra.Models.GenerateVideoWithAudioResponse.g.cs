@@ -189,5 +189,6 @@ namespace Hedra
         public GenerateVideoWithAudioResponse()
         {
         }
+
     }
 }

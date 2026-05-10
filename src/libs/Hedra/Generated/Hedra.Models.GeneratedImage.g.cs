@@ -89,5 +89,6 @@ namespace Hedra
         public GeneratedImage()
         {
         }
+
     }
 }

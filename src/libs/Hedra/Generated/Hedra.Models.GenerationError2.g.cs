@@ -55,5 +55,6 @@ namespace Hedra
         public GenerationError2()
         {
         }
+
     }
 }

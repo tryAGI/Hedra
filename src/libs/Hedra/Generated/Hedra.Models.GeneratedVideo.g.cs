@@ -222,5 +222,6 @@ namespace Hedra
         public GeneratedVideo()
         {
         }
+
     }
 }
