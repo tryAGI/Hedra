@@ -56,5 +56,6 @@ namespace Hedra
         public PagingParams()
         {
         }
+
     }
 }

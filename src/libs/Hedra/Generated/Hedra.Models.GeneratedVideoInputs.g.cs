@@ -144,5 +144,6 @@ namespace Hedra
         public GeneratedVideoInputs()
         {
         }
+
     }
 }

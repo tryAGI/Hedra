@@ -77,5 +77,6 @@ namespace Hedra
         public CreditBalance()
         {
         }
+
     }
 }

@@ -179,5 +179,6 @@ namespace Hedra
         public GenerateIsolatedAudioResponse()
         {
         }
+
     }
 }

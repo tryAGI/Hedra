@@ -230,5 +230,6 @@ namespace Hedra
         public GenerateTextToSpeechResponse()
         {
         }
+
     }
 }

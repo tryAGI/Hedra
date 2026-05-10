@@ -40,5 +40,6 @@ namespace Hedra
         public GenerateAssetPublicGenerationsPostResponseDiscriminator()
         {
         }
+
     }
 }

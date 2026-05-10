@@ -155,5 +155,6 @@ namespace Hedra
         public GenerateVideoToVideoRequest()
         {
         }
+
     }
 }

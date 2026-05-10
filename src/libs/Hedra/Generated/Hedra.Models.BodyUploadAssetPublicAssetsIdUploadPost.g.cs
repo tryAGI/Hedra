@@ -50,5 +50,6 @@ namespace Hedra
         public BodyUploadAssetPublicAssetsIdUploadPost()
         {
         }
+
     }
 }

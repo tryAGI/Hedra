@@ -132,5 +132,6 @@ namespace Hedra
         public GenerateMotionControlRequestInput()
         {
         }
+
     }
 }

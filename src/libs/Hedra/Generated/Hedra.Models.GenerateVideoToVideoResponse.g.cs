@@ -226,5 +226,6 @@ namespace Hedra
         public GenerateVideoToVideoResponse()
         {
         }
+
     }
 }

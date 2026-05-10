@@ -76,5 +76,6 @@ namespace Hedra
         public Pricing()
         {
         }
+
     }
 }
