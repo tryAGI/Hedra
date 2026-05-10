@@ -47,6 +47,13 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public global::Hedra.UploadedImage PickUploadedImage() => IsUploadedImage
+            ? UploadedImage!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'UploadedImage' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.UploadedAudio? UploadedAudio { get; init; }
 #else
@@ -73,6 +80,13 @@ namespace Hedra
             value = UploadedAudio;
             return IsUploadedAudio;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.UploadedAudio PickUploadedAudio() => IsUploadedAudio
+            ? UploadedAudio!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'UploadedAudio' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -107,6 +121,13 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public global::Hedra.UploadedVideo PickUploadedVideo() => IsUploadedVideo
+            ? UploadedVideo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'UploadedVideo' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.GeneratedAudio? GeneratedAudio { get; init; }
 #else
@@ -133,6 +154,13 @@ namespace Hedra
             value = GeneratedAudio;
             return IsGeneratedAudio;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GeneratedAudio PickGeneratedAudio() => IsGeneratedAudio
+            ? GeneratedAudio!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GeneratedAudio' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -167,6 +195,13 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public global::Hedra.GeneratedImage PickGeneratedImage() => IsGeneratedImage
+            ? GeneratedImage!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GeneratedImage' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.GeneratedVideo? GeneratedVideo { get; init; }
 #else
@@ -197,6 +232,13 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public global::Hedra.GeneratedVideo PickGeneratedVideo() => IsGeneratedVideo
+            ? GeneratedVideo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GeneratedVideo' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.Voice? Voice { get; init; }
 #else
@@ -223,6 +265,13 @@ namespace Hedra
             value = Voice;
             return IsVoice;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.Voice PickVoice() => IsVoice
+            ? Voice!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Voice' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -240,6 +289,11 @@ namespace Hedra
         {
             UploadedImage = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Asset1 FromUploadedImage(global::Hedra.UploadedImage? value) => new Asset1(value);
 
         /// <summary>
         /// 
@@ -262,6 +316,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public static Asset1 FromUploadedAudio(global::Hedra.UploadedAudio? value) => new Asset1(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Asset1(global::Hedra.UploadedVideo value) => new Asset1((global::Hedra.UploadedVideo?)value);
 
         /// <summary>
@@ -276,6 +335,11 @@ namespace Hedra
         {
             UploadedVideo = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Asset1 FromUploadedVideo(global::Hedra.UploadedVideo? value) => new Asset1(value);
 
         /// <summary>
         /// 
@@ -298,6 +362,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public static Asset1 FromGeneratedAudio(global::Hedra.GeneratedAudio? value) => new Asset1(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Asset1(global::Hedra.GeneratedImage value) => new Asset1((global::Hedra.GeneratedImage?)value);
 
         /// <summary>
@@ -312,6 +381,11 @@ namespace Hedra
         {
             GeneratedImage = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Asset1 FromGeneratedImage(global::Hedra.GeneratedImage? value) => new Asset1(value);
 
         /// <summary>
         /// 
@@ -334,6 +408,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public static Asset1 FromGeneratedVideo(global::Hedra.GeneratedVideo? value) => new Asset1(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Asset1(global::Hedra.Voice value) => new Asset1((global::Hedra.Voice?)value);
 
         /// <summary>
@@ -348,6 +427,11 @@ namespace Hedra
         {
             Voice = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Asset1 FromVoice(global::Hedra.Voice? value) => new Asset1(value);
 
         /// <summary>
         /// 

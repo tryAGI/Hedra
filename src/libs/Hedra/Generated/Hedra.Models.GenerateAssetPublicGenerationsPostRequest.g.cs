@@ -47,6 +47,13 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public global::Hedra.GenerateVideoRequestInput PickVideo() => IsVideo
+            ? Video!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Video' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.GenerateTextToSpeechRequest? TextToSpeech { get; init; }
 #else
@@ -73,6 +80,13 @@ namespace Hedra
             value = TextToSpeech;
             return IsTextToSpeech;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GenerateTextToSpeechRequest PickTextToSpeech() => IsTextToSpeech
+            ? TextToSpeech!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TextToSpeech' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -107,6 +121,13 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public global::Hedra.GenerateTextToSoundRequest PickTextToSound() => IsTextToSound
+            ? TextToSound!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TextToSound' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.GenerateImageRequest? Image { get; init; }
 #else
@@ -133,6 +154,13 @@ namespace Hedra
             value = Image;
             return IsImage;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GenerateImageRequest PickImage() => IsImage
+            ? Image!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Image' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -167,6 +195,13 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public global::Hedra.GenerateImageUpscaleRequest PickImageUpscale() => IsImageUpscale
+            ? ImageUpscale!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ImageUpscale' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.GenerateVideoUpscaleRequest? VideoUpscale { get; init; }
 #else
@@ -193,6 +228,13 @@ namespace Hedra
             value = VideoUpscale;
             return IsVideoUpscale;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GenerateVideoUpscaleRequest PickVideoUpscale() => IsVideoUpscale
+            ? VideoUpscale!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'VideoUpscale' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -227,6 +269,13 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public global::Hedra.GenerateIsolatedAudioRequest PickAudioIsolation() => IsAudioIsolation
+            ? AudioIsolation!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AudioIsolation' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hedra.GenerateSpeechToSpeechRequest? SpeechToSpeech { get; init; }
 #else
@@ -253,6 +302,13 @@ namespace Hedra
             value = SpeechToSpeech;
             return IsSpeechToSpeech;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GenerateSpeechToSpeechRequest PickSpeechToSpeech() => IsSpeechToSpeech
+            ? SpeechToSpeech!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SpeechToSpeech' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -285,6 +341,13 @@ namespace Hedra
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GenerateVoiceCloneRequest PickVoiceClone() => IsVoiceClone
+            ? VoiceClone!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'VoiceClone' but the value was {ToString()}.");
+
+        /// <summary>
         /// Audio generation request that extracts sound effects from video using Mirelo Studio.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -315,6 +378,13 @@ namespace Hedra
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GenerateAudioFromVideoRequest PickAudioFromVideo() => IsAudioFromVideo
+            ? AudioFromVideo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AudioFromVideo' but the value was {ToString()}.");
+
+        /// <summary>
         /// Video generation request that adds synchronized sound effects to video using Mirelo Studio.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -343,6 +413,13 @@ namespace Hedra
             value = VideoWithAudio;
             return IsVideoWithAudio;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GenerateVideoWithAudioRequest PickVideoWithAudio() => IsVideoWithAudio
+            ? VideoWithAudio!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'VideoWithAudio' but the value was {ToString()}.");
 
         /// <summary>
         /// Video-to-video edit request for Kling O1 Edit model.<br/>
@@ -376,6 +453,13 @@ namespace Hedra
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GenerateVideoToVideoRequest PickVideoToVideo() => IsVideoToVideo
+            ? VideoToVideo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'VideoToVideo' but the value was {ToString()}.");
+
+        /// <summary>
         /// Motion Control request for transferring motion from a reference video to a character image.<br/>
         /// Processed through V2V infrastructure internally.
         /// </summary>
@@ -405,6 +489,13 @@ namespace Hedra
             value = MotionControl;
             return IsMotionControl;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GenerateMotionControlRequestInput PickMotionControl() => IsMotionControl
+            ? MotionControl!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'MotionControl' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -422,6 +513,11 @@ namespace Hedra
         {
             Video = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromVideo(global::Hedra.GenerateVideoRequestInput? value) => new GenerateAssetPublicGenerationsPostRequest(value);
 
         /// <summary>
         /// 
@@ -444,6 +540,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromTextToSpeech(global::Hedra.GenerateTextToSpeechRequest? value) => new GenerateAssetPublicGenerationsPostRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GenerateAssetPublicGenerationsPostRequest(global::Hedra.GenerateTextToSoundRequest value) => new GenerateAssetPublicGenerationsPostRequest((global::Hedra.GenerateTextToSoundRequest?)value);
 
         /// <summary>
@@ -458,6 +559,11 @@ namespace Hedra
         {
             TextToSound = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromTextToSound(global::Hedra.GenerateTextToSoundRequest? value) => new GenerateAssetPublicGenerationsPostRequest(value);
 
         /// <summary>
         /// 
@@ -480,6 +586,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromImage(global::Hedra.GenerateImageRequest? value) => new GenerateAssetPublicGenerationsPostRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GenerateAssetPublicGenerationsPostRequest(global::Hedra.GenerateImageUpscaleRequest value) => new GenerateAssetPublicGenerationsPostRequest((global::Hedra.GenerateImageUpscaleRequest?)value);
 
         /// <summary>
@@ -494,6 +605,11 @@ namespace Hedra
         {
             ImageUpscale = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromImageUpscale(global::Hedra.GenerateImageUpscaleRequest? value) => new GenerateAssetPublicGenerationsPostRequest(value);
 
         /// <summary>
         /// 
@@ -516,6 +632,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromVideoUpscale(global::Hedra.GenerateVideoUpscaleRequest? value) => new GenerateAssetPublicGenerationsPostRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GenerateAssetPublicGenerationsPostRequest(global::Hedra.GenerateIsolatedAudioRequest value) => new GenerateAssetPublicGenerationsPostRequest((global::Hedra.GenerateIsolatedAudioRequest?)value);
 
         /// <summary>
@@ -530,6 +651,11 @@ namespace Hedra
         {
             AudioIsolation = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromAudioIsolation(global::Hedra.GenerateIsolatedAudioRequest? value) => new GenerateAssetPublicGenerationsPostRequest(value);
 
         /// <summary>
         /// 
@@ -552,6 +678,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromSpeechToSpeech(global::Hedra.GenerateSpeechToSpeechRequest? value) => new GenerateAssetPublicGenerationsPostRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GenerateAssetPublicGenerationsPostRequest(global::Hedra.GenerateVoiceCloneRequest value) => new GenerateAssetPublicGenerationsPostRequest((global::Hedra.GenerateVoiceCloneRequest?)value);
 
         /// <summary>
@@ -566,6 +697,11 @@ namespace Hedra
         {
             VoiceClone = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromVoiceClone(global::Hedra.GenerateVoiceCloneRequest? value) => new GenerateAssetPublicGenerationsPostRequest(value);
 
         /// <summary>
         /// 
@@ -588,6 +724,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromAudioFromVideo(global::Hedra.GenerateAudioFromVideoRequest? value) => new GenerateAssetPublicGenerationsPostRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GenerateAssetPublicGenerationsPostRequest(global::Hedra.GenerateVideoWithAudioRequest value) => new GenerateAssetPublicGenerationsPostRequest((global::Hedra.GenerateVideoWithAudioRequest?)value);
 
         /// <summary>
@@ -602,6 +743,11 @@ namespace Hedra
         {
             VideoWithAudio = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromVideoWithAudio(global::Hedra.GenerateVideoWithAudioRequest? value) => new GenerateAssetPublicGenerationsPostRequest(value);
 
         /// <summary>
         /// 
@@ -624,6 +770,11 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromVideoToVideo(global::Hedra.GenerateVideoToVideoRequest? value) => new GenerateAssetPublicGenerationsPostRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GenerateAssetPublicGenerationsPostRequest(global::Hedra.GenerateMotionControlRequestInput value) => new GenerateAssetPublicGenerationsPostRequest((global::Hedra.GenerateMotionControlRequestInput?)value);
 
         /// <summary>
@@ -638,6 +789,11 @@ namespace Hedra
         {
             MotionControl = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GenerateAssetPublicGenerationsPostRequest FromMotionControl(global::Hedra.GenerateMotionControlRequestInput? value) => new GenerateAssetPublicGenerationsPostRequest(value);
 
         /// <summary>
         /// 
