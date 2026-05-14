@@ -42,6 +42,13 @@ namespace Hedra.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Hedra.UploadedVideo)}");
                 uploadedVideo = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Hedra.Uploaded3D? uploadedThreeD = default;
+            if (discriminator?.Type == global::Hedra.AssetAsset1DiscriminatorType.UploadedThreeD)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.Uploaded3D), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.Uploaded3D> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Hedra.Uploaded3D)}");
+                uploadedThreeD = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Hedra.GeneratedAudio? generatedAudio = default;
             if (discriminator?.Type == global::Hedra.AssetAsset1DiscriminatorType.GeneratedAudio)
             {
@@ -78,6 +85,8 @@ namespace Hedra.JsonConverters
                 uploadedAudio,
 
                 uploadedVideo,
+
+                uploadedThreeD,
 
                 generatedAudio,
 
@@ -117,6 +126,12 @@ namespace Hedra.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.UploadedVideo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.UploadedVideo?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.UploadedVideo).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.UploadedVideo!, typeInfo);
+            }
+            else if (value.IsUploadedThreeD)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.Uploaded3D), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.Uploaded3D?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.Uploaded3D).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UploadedThreeD!, typeInfo);
             }
             else if (value.IsGeneratedAudio)
             {

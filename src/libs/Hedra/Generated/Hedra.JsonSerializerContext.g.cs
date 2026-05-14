@@ -104,6 +104,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.UploadedImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.UploadedAudio))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.UploadedVideo))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.Uploaded3D))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedAudio))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedVideo))]

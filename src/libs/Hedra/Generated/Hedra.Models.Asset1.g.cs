@@ -129,6 +129,43 @@ namespace Hedra
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Hedra.Uploaded3D? UploadedThreeD { get; init; }
+#else
+        public global::Hedra.Uploaded3D? UploadedThreeD { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UploadedThreeD))]
+#endif
+        public bool IsUploadedThreeD => UploadedThreeD != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickUploadedThreeD(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hedra.Uploaded3D? value)
+        {
+            value = UploadedThreeD;
+            return IsUploadedThreeD;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.Uploaded3D PickUploadedThreeD() => IsUploadedThreeD
+            ? UploadedThreeD!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'UploadedThreeD' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Hedra.GeneratedAudio? GeneratedAudio { get; init; }
 #else
         public global::Hedra.GeneratedAudio? GeneratedAudio { get; }
@@ -344,6 +381,29 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator Asset1(global::Hedra.Uploaded3D value) => new Asset1((global::Hedra.Uploaded3D?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Hedra.Uploaded3D?(Asset1 @this) => @this.UploadedThreeD;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Asset1(global::Hedra.Uploaded3D? value)
+        {
+            UploadedThreeD = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Asset1 FromUploadedThreeD(global::Hedra.Uploaded3D? value) => new Asset1(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Asset1(global::Hedra.GeneratedAudio value) => new Asset1((global::Hedra.GeneratedAudio?)value);
 
         /// <summary>
@@ -441,6 +501,7 @@ namespace Hedra
             global::Hedra.UploadedImage? uploadedImage,
             global::Hedra.UploadedAudio? uploadedAudio,
             global::Hedra.UploadedVideo? uploadedVideo,
+            global::Hedra.Uploaded3D? uploadedThreeD,
             global::Hedra.GeneratedAudio? generatedAudio,
             global::Hedra.GeneratedImage? generatedImage,
             global::Hedra.GeneratedVideo? generatedVideo,
@@ -452,6 +513,7 @@ namespace Hedra
             UploadedImage = uploadedImage;
             UploadedAudio = uploadedAudio;
             UploadedVideo = uploadedVideo;
+            UploadedThreeD = uploadedThreeD;
             GeneratedAudio = generatedAudio;
             GeneratedImage = generatedImage;
             GeneratedVideo = generatedVideo;
@@ -466,6 +528,7 @@ namespace Hedra
             GeneratedVideo as object ??
             GeneratedImage as object ??
             GeneratedAudio as object ??
+            UploadedThreeD as object ??
             UploadedVideo as object ??
             UploadedAudio as object ??
             UploadedImage as object 
@@ -478,6 +541,7 @@ namespace Hedra
             UploadedImage?.ToString() ??
             UploadedAudio?.ToString() ??
             UploadedVideo?.ToString() ??
+            UploadedThreeD?.ToString() ??
             GeneratedAudio?.ToString() ??
             GeneratedImage?.ToString() ??
             GeneratedVideo?.ToString() ??
@@ -489,7 +553,7 @@ namespace Hedra
         /// </summary>
         public bool Validate()
         {
-            return IsUploadedImage && !IsUploadedAudio && !IsUploadedVideo && !IsGeneratedAudio && !IsGeneratedImage && !IsGeneratedVideo && !IsVoice || !IsUploadedImage && IsUploadedAudio && !IsUploadedVideo && !IsGeneratedAudio && !IsGeneratedImage && !IsGeneratedVideo && !IsVoice || !IsUploadedImage && !IsUploadedAudio && IsUploadedVideo && !IsGeneratedAudio && !IsGeneratedImage && !IsGeneratedVideo && !IsVoice || !IsUploadedImage && !IsUploadedAudio && !IsUploadedVideo && IsGeneratedAudio && !IsGeneratedImage && !IsGeneratedVideo && !IsVoice || !IsUploadedImage && !IsUploadedAudio && !IsUploadedVideo && !IsGeneratedAudio && IsGeneratedImage && !IsGeneratedVideo && !IsVoice || !IsUploadedImage && !IsUploadedAudio && !IsUploadedVideo && !IsGeneratedAudio && !IsGeneratedImage && IsGeneratedVideo && !IsVoice || !IsUploadedImage && !IsUploadedAudio && !IsUploadedVideo && !IsGeneratedAudio && !IsGeneratedImage && !IsGeneratedVideo && IsVoice;
+            return IsUploadedImage && !IsUploadedAudio && !IsUploadedVideo && !IsUploadedThreeD && !IsGeneratedAudio && !IsGeneratedImage && !IsGeneratedVideo && !IsVoice || !IsUploadedImage && IsUploadedAudio && !IsUploadedVideo && !IsUploadedThreeD && !IsGeneratedAudio && !IsGeneratedImage && !IsGeneratedVideo && !IsVoice || !IsUploadedImage && !IsUploadedAudio && IsUploadedVideo && !IsUploadedThreeD && !IsGeneratedAudio && !IsGeneratedImage && !IsGeneratedVideo && !IsVoice || !IsUploadedImage && !IsUploadedAudio && !IsUploadedVideo && IsUploadedThreeD && !IsGeneratedAudio && !IsGeneratedImage && !IsGeneratedVideo && !IsVoice || !IsUploadedImage && !IsUploadedAudio && !IsUploadedVideo && !IsUploadedThreeD && IsGeneratedAudio && !IsGeneratedImage && !IsGeneratedVideo && !IsVoice || !IsUploadedImage && !IsUploadedAudio && !IsUploadedVideo && !IsUploadedThreeD && !IsGeneratedAudio && IsGeneratedImage && !IsGeneratedVideo && !IsVoice || !IsUploadedImage && !IsUploadedAudio && !IsUploadedVideo && !IsUploadedThreeD && !IsGeneratedAudio && !IsGeneratedImage && IsGeneratedVideo && !IsVoice || !IsUploadedImage && !IsUploadedAudio && !IsUploadedVideo && !IsUploadedThreeD && !IsGeneratedAudio && !IsGeneratedImage && !IsGeneratedVideo && IsVoice;
         }
 
         /// <summary>
@@ -499,6 +563,7 @@ namespace Hedra
             global::System.Func<global::Hedra.UploadedImage, TResult>? uploadedImage = null,
             global::System.Func<global::Hedra.UploadedAudio, TResult>? uploadedAudio = null,
             global::System.Func<global::Hedra.UploadedVideo, TResult>? uploadedVideo = null,
+            global::System.Func<global::Hedra.Uploaded3D, TResult>? uploadedThreeD = null,
             global::System.Func<global::Hedra.GeneratedAudio, TResult>? generatedAudio = null,
             global::System.Func<global::Hedra.GeneratedImage, TResult>? generatedImage = null,
             global::System.Func<global::Hedra.GeneratedVideo, TResult>? generatedVideo = null,
@@ -521,6 +586,10 @@ namespace Hedra
             else if (IsUploadedVideo && uploadedVideo != null)
             {
                 return uploadedVideo(UploadedVideo!);
+            }
+            else if (IsUploadedThreeD && uploadedThreeD != null)
+            {
+                return uploadedThreeD(UploadedThreeD!);
             }
             else if (IsGeneratedAudio && generatedAudio != null)
             {
@@ -552,6 +621,8 @@ namespace Hedra
 
             global::System.Action<global::Hedra.UploadedVideo>? uploadedVideo = null,
 
+            global::System.Action<global::Hedra.Uploaded3D>? uploadedThreeD = null,
+
             global::System.Action<global::Hedra.GeneratedAudio>? generatedAudio = null,
 
             global::System.Action<global::Hedra.GeneratedImage>? generatedImage = null,
@@ -577,6 +648,10 @@ namespace Hedra
             else if (IsUploadedVideo)
             {
                 uploadedVideo?.Invoke(UploadedVideo!);
+            }
+            else if (IsUploadedThreeD)
+            {
+                uploadedThreeD?.Invoke(UploadedThreeD!);
             }
             else if (IsGeneratedAudio)
             {
@@ -603,6 +678,7 @@ namespace Hedra
             global::System.Action<global::Hedra.UploadedImage>? uploadedImage = null,
             global::System.Action<global::Hedra.UploadedAudio>? uploadedAudio = null,
             global::System.Action<global::Hedra.UploadedVideo>? uploadedVideo = null,
+            global::System.Action<global::Hedra.Uploaded3D>? uploadedThreeD = null,
             global::System.Action<global::Hedra.GeneratedAudio>? generatedAudio = null,
             global::System.Action<global::Hedra.GeneratedImage>? generatedImage = null,
             global::System.Action<global::Hedra.GeneratedVideo>? generatedVideo = null,
@@ -625,6 +701,10 @@ namespace Hedra
             else if (IsUploadedVideo)
             {
                 uploadedVideo?.Invoke(UploadedVideo!);
+            }
+            else if (IsUploadedThreeD)
+            {
+                uploadedThreeD?.Invoke(UploadedThreeD!);
             }
             else if (IsGeneratedAudio)
             {
@@ -657,6 +737,8 @@ namespace Hedra
                 typeof(global::Hedra.UploadedAudio),
                 UploadedVideo,
                 typeof(global::Hedra.UploadedVideo),
+                UploadedThreeD,
+                typeof(global::Hedra.Uploaded3D),
                 GeneratedAudio,
                 typeof(global::Hedra.GeneratedAudio),
                 GeneratedImage,
@@ -684,6 +766,7 @@ namespace Hedra
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.UploadedImage?>.Default.Equals(UploadedImage, other.UploadedImage) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.UploadedAudio?>.Default.Equals(UploadedAudio, other.UploadedAudio) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.UploadedVideo?>.Default.Equals(UploadedVideo, other.UploadedVideo) &&
+                global::System.Collections.Generic.EqualityComparer<global::Hedra.Uploaded3D?>.Default.Equals(UploadedThreeD, other.UploadedThreeD) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GeneratedAudio?>.Default.Equals(GeneratedAudio, other.GeneratedAudio) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GeneratedImage?>.Default.Equals(GeneratedImage, other.GeneratedImage) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GeneratedVideo?>.Default.Equals(GeneratedVideo, other.GeneratedVideo) &&
