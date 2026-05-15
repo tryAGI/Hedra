@@ -44,311 +44,311 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public bool? Type4 { get; set; }
+        public global::System.Collections.Generic.IList<double>? Type4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int? Type5 { get; set; }
+        public double? Type5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AIModelPrice? Type6 { get; set; }
+        public bool? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.Pricing? Type7 { get; set; }
+        public int? Type7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>>? Type8 { get; set; }
+        public global::Hedra.AIModelPrice? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>? Type9 { get; set; }
+        public global::Hedra.Pricing? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.Dimension? Type10 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>>? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Hedra.InputMode>? Type11 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.InputMode? Type12 { get; set; }
+        public global::Hedra.Dimension? Type12 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.Asset? Type13 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.InputMode>? Type13 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Guid? Type14 { get; set; }
+        public global::Hedra.InputMode? Type14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AssetType? Type15 { get; set; }
+        public global::Hedra.Asset? Type15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.Asset1? Type16 { get; set; }
+        public global::System.Guid? Type16 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.UploadedImage? Type17 { get; set; }
+        public global::Hedra.AssetType? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.UploadedAudio? Type18 { get; set; }
+        public global::Hedra.Asset1? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.UploadedVideo? Type19 { get; set; }
+        public global::Hedra.UploadedImage? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.Uploaded3D? Type20 { get; set; }
+        public global::Hedra.UploadedAudio? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GeneratedAudio? Type21 { get; set; }
+        public global::Hedra.UploadedVideo? Type21 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GeneratedImage? Type22 { get; set; }
+        public global::Hedra.Uploaded3D? Type22 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GeneratedVideo? Type23 { get; set; }
+        public global::Hedra.GeneratedAudio? Type23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.Voice? Type24 { get; set; }
+        public global::Hedra.GeneratedImage? Type24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AssetAsset1Discriminator? Type25 { get; set; }
+        public global::Hedra.GeneratedVideo? Type25 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AssetAsset1DiscriminatorType? Type26 { get; set; }
+        public global::Hedra.Voice? Type26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.BatchImageResultItem? Type27 { get; set; }
+        public global::Hedra.AssetAsset1Discriminator? Type27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerationStatus? Type28 { get; set; }
+        public global::Hedra.AssetAsset1DiscriminatorType? Type28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Type29 { get; set; }
+        public global::Hedra.BatchImageResultItem? Type29 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.BatchVideoResultItem? Type30 { get; set; }
+        public global::Hedra.GenerationStatus? Type30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost? Type31 { get; set; }
+        public global::Hedra.BatchVideoResultItem? Type31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type32 { get; set; }
+        public global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost? Type32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.CreateAssetRequest? Type33 { get; set; }
+        public byte[]? Type33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.CreateAssetResponse? Type34 { get; set; }
+        public global::Hedra.CreateAssetRequest? Type34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.CreditBalance? Type35 { get; set; }
+        public global::Hedra.CreateAssetResponse? Type35 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, int>? Type36 { get; set; }
+        public global::Hedra.CreditBalance? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.ErrorCode? Type37 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, int>? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateAudioFromVideoRequest? Type38 { get; set; }
+        public global::Hedra.ErrorCode? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Guid>? Type39 { get; set; }
+        public global::Hedra.GenerateAudioFromVideoRequest? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateAudioFromVideoResponse? Type40 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Guid>? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateImageRequest? Type41 { get; set; }
+        public global::Hedra.GenerateAudioFromVideoResponse? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateImageRequestType? Type42 { get; set; }
+        public global::Hedra.GenerateImageRequest? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateImageResponse? Type43 { get; set; }
+        public global::Hedra.GenerateImageRequestType? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateImageResponseType? Type44 { get; set; }
+        public global::Hedra.GenerateImageResponse? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Hedra.BatchImageResultItem>? Type45 { get; set; }
+        public global::Hedra.GenerateImageResponseType? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateImageUpscaleRequest? Type46 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.BatchImageResultItem>? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateImageUpscaleResponse? Type47 { get; set; }
+        public global::Hedra.GenerateImageUpscaleRequest? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateIsolatedAudioRequest? Type48 { get; set; }
+        public global::Hedra.GenerateImageUpscaleResponse? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateIsolatedAudioResponse? Type49 { get; set; }
+        public global::Hedra.GenerateIsolatedAudioRequest? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateMotionControlRequestInput? Type50 { get; set; }
+        public global::Hedra.GenerateIsolatedAudioResponse? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GeneratedVideoInputs? Type51 { get; set; }
+        public global::Hedra.GenerateMotionControlRequestInput? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateMotionControlRequestOutput? Type52 { get; set; }
+        public global::Hedra.GeneratedVideoInputs? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateMotionControlResponse? Type53 { get; set; }
+        public global::Hedra.GenerateMotionControlRequestOutput? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateSpeechToSpeechRequest? Type54 { get; set; }
+        public global::Hedra.GenerateMotionControlResponse? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateSpeechToSpeechResponse? Type55 { get; set; }
+        public global::Hedra.GenerateSpeechToSpeechRequest? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateTextToSoundRequest? Type56 { get; set; }
+        public global::Hedra.GenerateSpeechToSpeechResponse? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateTextToSoundResponse? Type57 { get; set; }
+        public global::Hedra.GenerateTextToSoundRequest? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateTextToSpeechRequest? Type58 { get; set; }
+        public global::Hedra.GenerateTextToSoundResponse? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.SupportedLanguage? Type59 { get; set; }
+        public global::Hedra.GenerateTextToSpeechRequest? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateTextToSpeechResponse? Type60 { get; set; }
+        public global::Hedra.SupportedLanguage? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVideoRequestInput? Type61 { get; set; }
+        public global::Hedra.GenerateTextToSpeechResponse? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>? Type62 { get; set; }
+        public global::Hedra.GenerateVideoRequestInput? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVideoRequestOutput? Type63 { get; set; }
+        public global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVideoResponse? Type64 { get; set; }
+        public global::Hedra.GenerateVideoRequestOutput? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Hedra.BatchVideoResultItem>? Type65 { get; set; }
+        public global::Hedra.GenerateVideoResponse? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVideoToVideoRequest? Type66 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.BatchVideoResultItem>? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Hedra.KlingEditElement>? Type67 { get; set; }
+        public global::Hedra.GenerateVideoToVideoRequest? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.KlingEditElement? Type68 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.KlingEditElement>? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVideoToVideoResponse? Type69 { get; set; }
+        public global::Hedra.KlingEditElement? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVideoUpscaleRequest? Type70 { get; set; }
+        public global::Hedra.GenerateVideoToVideoResponse? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVideoUpscaleResponse? Type71 { get; set; }
+        public global::Hedra.GenerateVideoUpscaleRequest? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVideoWithAudioRequest? Type72 { get; set; }
+        public global::Hedra.GenerateVideoUpscaleResponse? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVideoWithAudioResponse? Type73 { get; set; }
+        public global::Hedra.GenerateVideoWithAudioRequest? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVoiceCloneRequest? Type74 { get; set; }
+        public global::Hedra.GenerateVideoWithAudioResponse? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVoiceCloneResponse? Type75 { get; set; }
+        public global::Hedra.GenerateVoiceCloneRequest? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GeneratedAudioInputs? Type76 { get; set; }
+        public global::Hedra.GenerateVoiceCloneResponse? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<object>? Type77 { get; set; }
+        public global::Hedra.GeneratedAudioInputs? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GeneratedImageInputs? Type78 { get; set; }
+        public global::System.Collections.Generic.IList<object>? Type78 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AnyOf<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>, object>? Type79 { get; set; }
+        public global::Hedra.GeneratedImageInputs? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<double>? Type80 { get; set; }
+        public global::Hedra.AnyOf<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>, object>? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -505,39 +505,39 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Hedra.InputMode>? ListType1 { get; set; }
+        public global::System.Collections.Generic.List<double>? ListType1 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::System.Guid>? ListType2 { get; set; }
+        public global::System.Collections.Generic.List<global::Hedra.InputMode>? ListType2 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Hedra.BatchImageResultItem>? ListType3 { get; set; }
+        public global::System.Collections.Generic.List<global::System.Guid>? ListType3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.List<global::System.Guid>, object>? ListType4 { get; set; }
+        public global::System.Collections.Generic.List<global::Hedra.BatchImageResultItem>? ListType4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Hedra.BatchVideoResultItem>? ListType5 { get; set; }
+        public global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.List<global::System.Guid>, object>? ListType5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Hedra.KlingEditElement>? ListType6 { get; set; }
+        public global::System.Collections.Generic.List<global::Hedra.BatchVideoResultItem>? ListType6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<object>? ListType7 { get; set; }
+        public global::System.Collections.Generic.List<global::Hedra.KlingEditElement>? ListType7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AnyOf<global::System.Collections.Generic.List<double>, global::System.Collections.Generic.List<global::System.Collections.Generic.List<double>>, object>? ListType8 { get; set; }
+        public global::System.Collections.Generic.List<object>? ListType8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<double>? ListType9 { get; set; }
+        public global::Hedra.AnyOf<global::System.Collections.Generic.List<double>, global::System.Collections.Generic.List<global::System.Collections.Generic.List<double>>, object>? ListType9 { get; set; }
         /// <summary>
         /// 
         /// </summary>

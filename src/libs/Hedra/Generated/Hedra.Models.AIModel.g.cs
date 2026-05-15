@@ -42,6 +42,12 @@ namespace Hedra
         public global::System.Collections.Generic.IList<string>? AspectRatios { get; set; }
 
         /// <summary>
+        /// If set to (min, max), the model accepts any keyframe whose width/height ratio is in [min, max], not just the values in ``aspect_ratios``. The model snaps the output to its internal grid. ``aspect_ratios`` then serves as UI/preset labels rather than as an enum gate.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aspect_ratio_range")]
+        public global::System.Collections.Generic.IList<double>? AspectRatioRange { get; set; }
+
+        /// <summary>
         /// Resolutions the model supports.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("resolutions")]
@@ -190,6 +196,9 @@ namespace Hedra
         /// <param name="aspectRatios">
         /// Aspect ratios the model supports.
         /// </param>
+        /// <param name="aspectRatioRange">
+        /// If set to (min, max), the model accepts any keyframe whose width/height ratio is in [min, max], not just the values in ``aspect_ratios``. The model snaps the output to its internal grid. ``aspect_ratios`` then serves as UI/preset labels rather than as an enum gate.
+        /// </param>
         /// <param name="resolutions">
         /// Resolutions the model supports.
         /// </param>
@@ -258,6 +267,7 @@ namespace Hedra
             global::Hedra.AIModelPrice priceDetails,
             string? description,
             global::System.Collections.Generic.IList<string>? aspectRatios,
+            global::System.Collections.Generic.IList<double>? aspectRatioRange,
             global::System.Collections.Generic.IList<string>? resolutions,
             global::System.Collections.Generic.IList<string>? durations,
             bool? requiresStartFrame,
@@ -283,6 +293,7 @@ namespace Hedra
             this.Description = description;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.AspectRatios = aspectRatios;
+            this.AspectRatioRange = aspectRatioRange;
             this.Resolutions = resolutions;
             this.Durations = durations;
             this.RequiresStartFrame = requiresStartFrame;
