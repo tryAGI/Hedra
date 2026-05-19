@@ -22,6 +22,12 @@ namespace Hedra
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
+        /// The slug of the model used for generation. Alternative to `ai_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
+
+        /// <summary>
         /// The display name of the voice used for generation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice_name")]
@@ -66,6 +72,9 @@ namespace Hedra
         /// <param name="aiModelId">
         /// The id of the model used for generation.
         /// </param>
+        /// <param name="modelSlug">
+        /// The slug of the model used for generation. Alternative to `ai_model_id`.
+        /// </param>
         /// <param name="voiceName">
         /// The display name of the voice used for generation.
         /// </param>
@@ -87,6 +96,7 @@ namespace Hedra
         public GeneratedAudioInputs(
             string textPrompt,
             global::System.Guid? aiModelId,
+            string? modelSlug,
             string? voiceName,
             global::System.Guid? voiceId,
             double? stability,
@@ -95,6 +105,7 @@ namespace Hedra
         {
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.AiModelId = aiModelId;
+            this.ModelSlug = modelSlug;
             this.VoiceName = voiceName;
             this.VoiceId = voiceId;
             this.Stability = stability;

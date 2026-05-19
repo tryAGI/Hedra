@@ -16,6 +16,13 @@ namespace Hedra
         public required string Id { get; set; }
 
         /// <summary>
+        /// Stable cross-environment identifier for the model, e.g. ``google/nano-banana``. Unique and identical across local/staging/production. Prefer ``slug`` over ``id`` when referencing models — ``id`` is environment-specific and will be removed in a later migration (model-registry plan step 7).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Slug { get; set; }
+
+        /// <summary>
         /// Name of the model
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -181,6 +188,9 @@ namespace Hedra
         /// <param name="id">
         /// ID of the model
         /// </param>
+        /// <param name="slug">
+        /// Stable cross-environment identifier for the model, e.g. ``google/nano-banana``. Unique and identical across local/staging/production. Prefer ``slug`` over ``id`` when referencing models — ``id`` is environment-specific and will be removed in a later migration (model-registry plan step 7).
+        /// </param>
         /// <param name="name">
         /// Name of the model
         /// </param>
@@ -262,6 +272,7 @@ namespace Hedra
 #endif
         public AIModel(
             string id,
+            string slug,
             string name,
             string type,
             global::Hedra.AIModelPrice priceDetails,
@@ -289,6 +300,7 @@ namespace Hedra
             int? displayOrder)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.Slug = slug ?? throw new global::System.ArgumentNullException(nameof(slug));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
