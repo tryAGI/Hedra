@@ -39,11 +39,16 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
-        /// The id of the Motion Control model to use.
+        /// The id of the Motion Control model to use. Provide this OR `model_slug`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid AiModelId { get; set; }
+        public global::System.Guid? AiModelId { get; set; }
+
+        /// <summary>
+        /// The slug of the Motion Control model. Alternative to `ai_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
 
         /// <summary>
         /// The id of the video asset to use as motion reference.
@@ -117,9 +122,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateMotionControlResponse" /> class.
         /// </summary>
-        /// <param name="aiModelId">
-        /// The id of the Motion Control model to use.
-        /// </param>
         /// <param name="videoId">
         /// The id of the video asset to use as motion reference.
         /// </param>
@@ -157,6 +159,12 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: motion_control
         /// </param>
+        /// <param name="aiModelId">
+        /// The id of the Motion Control model to use. Provide this OR `model_slug`.
+        /// </param>
+        /// <param name="modelSlug">
+        /// The slug of the Motion Control model. Alternative to `ai_model_id`.
+        /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </param>
@@ -164,7 +172,6 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateMotionControlResponse(
-            global::System.Guid aiModelId,
             global::System.Guid videoId,
             global::System.Guid startKeyframeId,
             global::Hedra.GeneratedVideoInputs generatedVideoInputs,
@@ -178,6 +185,8 @@ namespace Hedra
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
+            global::System.Guid? aiModelId,
+            string? modelSlug,
             int? etaSec)
         {
             this.WorkspaceId = workspaceId;
@@ -186,6 +195,7 @@ namespace Hedra
             this.GenerationIds = generationIds;
             this.Type = type;
             this.AiModelId = aiModelId;
+            this.ModelSlug = modelSlug;
             this.VideoId = videoId;
             this.StartKeyframeId = startKeyframeId;
             this.GeneratedVideoInputs = generatedVideoInputs ?? throw new global::System.ArgumentNullException(nameof(generatedVideoInputs));

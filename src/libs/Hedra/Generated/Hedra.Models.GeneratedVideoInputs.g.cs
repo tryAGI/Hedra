@@ -22,6 +22,12 @@ namespace Hedra
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
+        /// The slug of the model used for generation. Alternative to `ai_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
+
+        /// <summary>
         /// Resolution for the video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("resolution")]
@@ -86,6 +92,9 @@ namespace Hedra
         /// <param name="aiModelId">
         /// The id of the model used for generation.
         /// </param>
+        /// <param name="modelSlug">
+        /// The slug of the model used for generation. Alternative to `ai_model_id`.
+        /// </param>
         /// <param name="resolution">
         /// Resolution for the video.
         /// </param>
@@ -117,6 +126,7 @@ namespace Hedra
         public GeneratedVideoInputs(
             string textPrompt,
             global::System.Guid? aiModelId,
+            string? modelSlug,
             string? resolution,
             string? aspectRatio,
             int? durationMs,
@@ -128,6 +138,7 @@ namespace Hedra
         {
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.AiModelId = aiModelId;
+            this.ModelSlug = modelSlug;
             this.Resolution = resolution;
             this.AspectRatio = aspectRatio;
             this.DurationMs = durationMs;

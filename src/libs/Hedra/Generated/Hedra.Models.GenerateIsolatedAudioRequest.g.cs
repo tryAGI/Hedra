@@ -46,11 +46,16 @@ namespace Hedra
         public required global::System.Guid AudioId { get; set; }
 
         /// <summary>
-        /// The id of the model to use for audio isolation.
+        /// The id of the model to use for audio isolation. Provide this OR `model_slug`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid AiModelId { get; set; }
+        public global::System.Guid? AiModelId { get; set; }
+
+        /// <summary>
+        /// The slug of the model to use for audio isolation. Alternative to `ai_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -63,9 +68,6 @@ namespace Hedra
         /// </summary>
         /// <param name="audioId">
         /// The id of the audio asset requiring sound isolation.
-        /// </param>
-        /// <param name="aiModelId">
-        /// The id of the model to use for audio isolation.
         /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
@@ -80,17 +82,24 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: audio_isolation
         /// </param>
+        /// <param name="aiModelId">
+        /// The id of the model to use for audio isolation. Provide this OR `model_slug`.
+        /// </param>
+        /// <param name="modelSlug">
+        /// The slug of the model to use for audio isolation. Alternative to `ai_model_id`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateIsolatedAudioRequest(
             global::System.Guid audioId,
-            global::System.Guid aiModelId,
             string? workspaceId,
             global::System.Guid? agentThreadId,
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
-            string? type)
+            string? type,
+            global::System.Guid? aiModelId,
+            string? modelSlug)
         {
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
@@ -99,6 +108,7 @@ namespace Hedra
             this.Type = type;
             this.AudioId = audioId;
             this.AiModelId = aiModelId;
+            this.ModelSlug = modelSlug;
         }
 
         /// <summary>

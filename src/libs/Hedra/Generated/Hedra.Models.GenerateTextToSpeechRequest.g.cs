@@ -52,6 +52,12 @@ namespace Hedra
         public global::System.Guid? ModelId { get; set; }
 
         /// <summary>
+        /// The slug of the model to use. Alternative to `model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
+
+        /// <summary>
         /// The text to convert to speech.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
@@ -111,6 +117,9 @@ namespace Hedra
         /// <param name="modelId">
         /// The id of the model to use.
         /// </param>
+        /// <param name="modelSlug">
+        /// The slug of the model to use. Alternative to `model_id`.
+        /// </param>
         /// <param name="stability">
         /// Stability should be between 0-1, where 0 is the most stable and 1 is the most unstable. This varies the consistency between your outputs.<br/>
         /// Default Value: 1F
@@ -135,6 +144,7 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
             global::System.Guid? modelId,
+            string? modelSlug,
             double? stability,
             double? speed,
             global::Hedra.SupportedLanguage? language)
@@ -146,6 +156,7 @@ namespace Hedra
             this.Type = type;
             this.VoiceId = voiceId;
             this.ModelId = modelId;
+            this.ModelSlug = modelSlug;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Stability = stability;
             this.Speed = speed;

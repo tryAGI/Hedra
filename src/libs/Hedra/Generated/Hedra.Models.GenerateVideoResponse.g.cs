@@ -39,11 +39,16 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
-        /// ID of the model to use for the generation.
+        /// ID of the model to use for the generation. Provide this OR `model_slug`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid AiModelId { get; set; }
+        public global::System.Guid? AiModelId { get; set; }
+
+        /// <summary>
+        /// Slug of the model to use for the generation. Alternative to `ai_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
 
         /// <summary>
         /// The id of the Image asset to use as the start keyframe.
@@ -189,9 +194,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVideoResponse" /> class.
         /// </summary>
-        /// <param name="aiModelId">
-        /// ID of the model to use for the generation.
-        /// </param>
         /// <param name="generatedVideoInputs">
         /// Inputs for generating the video.
         /// </param>
@@ -222,6 +224,12 @@ namespace Hedra
         /// </param>
         /// <param name="type">
         /// Default Value: video
+        /// </param>
+        /// <param name="aiModelId">
+        /// ID of the model to use for the generation. Provide this OR `model_slug`.
+        /// </param>
+        /// <param name="modelSlug">
+        /// Slug of the model to use for the generation. Alternative to `ai_model_id`.
         /// </param>
         /// <param name="startKeyframeId">
         /// The id of the Image asset to use as the start keyframe.
@@ -273,7 +281,6 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateVideoResponse(
-            global::System.Guid aiModelId,
             global::Hedra.GeneratedVideoInputs generatedVideoInputs,
             global::System.Guid id,
             global::System.Guid assetId,
@@ -285,6 +292,8 @@ namespace Hedra
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
+            global::System.Guid? aiModelId,
+            string? modelSlug,
             global::System.Guid? startKeyframeId,
             string? startKeyframeUrl,
             global::System.Guid? endKeyframeId,
@@ -307,6 +316,7 @@ namespace Hedra
             this.GenerationIds = generationIds;
             this.Type = type;
             this.AiModelId = aiModelId;
+            this.ModelSlug = modelSlug;
             this.StartKeyframeId = startKeyframeId;
             this.StartKeyframeUrl = startKeyframeUrl;
             this.EndKeyframeId = endKeyframeId;
