@@ -65,11 +65,16 @@ namespace Hedra
         public global::System.Guid? StartKeyframeId { get; set; }
 
         /// <summary>
-        /// The model to use.
+        /// The model to use. Provide this OR `model_slug`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid AiModelId { get; set; }
+        public global::System.Guid? AiModelId { get; set; }
+
+        /// <summary>
+        /// The slug of the model to use. Alternative to `ai_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
 
         /// <summary>
         /// The id(s) of the image(s) to reference in the generation. This is only used for image-to-image generation and will supersede start_keyframe_id.
@@ -103,9 +108,6 @@ namespace Hedra
         /// <param name="textPrompt">
         /// The text prompt for image generation or image editing.
         /// </param>
-        /// <param name="aiModelId">
-        /// The model to use.
-        /// </param>
         /// <param name="workspaceId"></param>
         /// <param name="agentThreadId">
         /// Optional agent thread ID to associate this generation with.
@@ -128,6 +130,12 @@ namespace Hedra
         /// <param name="startKeyframeId">
         /// The id of the Image asset to use as the start keyframe.
         /// </param>
+        /// <param name="aiModelId">
+        /// The model to use. Provide this OR `model_slug`.
+        /// </param>
+        /// <param name="modelSlug">
+        /// The slug of the model to use. Alternative to `ai_model_id`.
+        /// </param>
         /// <param name="referenceImageIds">
         /// The id(s) of the image(s) to reference in the generation. This is only used for image-to-image generation and will supersede start_keyframe_id.
         /// </param>
@@ -144,7 +152,6 @@ namespace Hedra
 #endif
         public GenerateImageRequest(
             string textPrompt,
-            global::System.Guid aiModelId,
             string? workspaceId,
             global::System.Guid? agentThreadId,
             global::System.Guid? generationId,
@@ -153,6 +160,8 @@ namespace Hedra
             string? aspectRatio,
             string? resolution,
             global::System.Guid? startKeyframeId,
+            global::System.Guid? aiModelId,
+            string? modelSlug,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageIds,
             int? batchSize,
             bool? enhancePrompt)
@@ -167,6 +176,7 @@ namespace Hedra
             this.Resolution = resolution;
             this.StartKeyframeId = startKeyframeId;
             this.AiModelId = aiModelId;
+            this.ModelSlug = modelSlug;
             this.ReferenceImageIds = referenceImageIds;
             this.BatchSize = batchSize;
             this.EnhancePrompt = enhancePrompt;
@@ -178,5 +188,6 @@ namespace Hedra
         public GenerateImageRequest()
         {
         }
+
     }
 }

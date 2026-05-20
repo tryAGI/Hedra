@@ -46,11 +46,16 @@ namespace Hedra
         public required global::System.Guid AudioId { get; set; }
 
         /// <summary>
-        /// The id of the model to use for audio isolation.
+        /// The id of the model to use for audio isolation. Provide this OR `model_slug`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid AiModelId { get; set; }
+        public global::System.Guid? AiModelId { get; set; }
+
+        /// <summary>
+        /// The slug of the model to use for audio isolation. Alternative to `ai_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
 
         /// <summary>
         /// The id of the generation created.
@@ -106,9 +111,6 @@ namespace Hedra
         /// <param name="audioId">
         /// The id of the audio asset requiring sound isolation.
         /// </param>
-        /// <param name="aiModelId">
-        /// The id of the model to use for audio isolation.
-        /// </param>
         /// <param name="id">
         /// The id of the generation created.
         /// </param>
@@ -137,6 +139,12 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: audio_isolation
         /// </param>
+        /// <param name="aiModelId">
+        /// The id of the model to use for audio isolation. Provide this OR `model_slug`.
+        /// </param>
+        /// <param name="modelSlug">
+        /// The slug of the model to use for audio isolation. Alternative to `ai_model_id`.
+        /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </param>
@@ -145,7 +153,6 @@ namespace Hedra
 #endif
         public GenerateIsolatedAudioResponse(
             global::System.Guid audioId,
-            global::System.Guid aiModelId,
             global::System.Guid id,
             global::System.Guid assetId,
             string createdAt,
@@ -156,6 +163,8 @@ namespace Hedra
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
+            global::System.Guid? aiModelId,
+            string? modelSlug,
             int? etaSec)
         {
             this.WorkspaceId = workspaceId;
@@ -165,6 +174,7 @@ namespace Hedra
             this.Type = type;
             this.AudioId = audioId;
             this.AiModelId = aiModelId;
+            this.ModelSlug = modelSlug;
             this.Id = id;
             this.AssetId = assetId;
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
@@ -179,5 +189,6 @@ namespace Hedra
         public GenerateIsolatedAudioResponse()
         {
         }
+
     }
 }

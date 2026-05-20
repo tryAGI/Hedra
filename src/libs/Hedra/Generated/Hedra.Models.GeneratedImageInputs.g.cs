@@ -22,6 +22,12 @@ namespace Hedra
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
+        /// The slug of the model used for generation. Alternative to `ai_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
+
+        /// <summary>
         /// Aspect ratio used for generation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("aspect_ratio")]
@@ -60,6 +66,9 @@ namespace Hedra
         /// <param name="aiModelId">
         /// The id of the model used for generation.
         /// </param>
+        /// <param name="modelSlug">
+        /// The slug of the model used for generation. Alternative to `ai_model_id`.
+        /// </param>
         /// <param name="aspectRatio">
         /// Aspect ratio used for generation.
         /// </param>
@@ -78,6 +87,7 @@ namespace Hedra
         public GeneratedImageInputs(
             string textPrompt,
             global::System.Guid? aiModelId,
+            string? modelSlug,
             string? aspectRatio,
             string? resolution,
             global::System.Guid? startKeyframeId,
@@ -85,6 +95,7 @@ namespace Hedra
         {
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.AiModelId = aiModelId;
+            this.ModelSlug = modelSlug;
             this.AspectRatio = aspectRatio;
             this.Resolution = resolution;
             this.StartKeyframeId = startKeyframeId;
@@ -97,5 +108,6 @@ namespace Hedra
         public GeneratedImageInputs()
         {
         }
+
     }
 }

@@ -54,5 +54,6 @@ namespace Hedra
         public VoiceLabel()
         {
         }
+
     }
 }

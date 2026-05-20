@@ -64,5 +64,6 @@ namespace Hedra
         public CreateAssetRequest()
         {
         }
+
     }
 }

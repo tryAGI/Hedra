@@ -39,11 +39,16 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
-        /// The model to use for upscaling.
+        /// The model to use for upscaling. Provide this OR `model_slug`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid AiModelId { get; set; }
+        public global::System.Guid? AiModelId { get; set; }
+
+        /// <summary>
+        /// The slug of the model to use for upscaling. Alternative to `ai_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
 
         /// <summary>
         /// The id of the Image asset to use as the basis for upscaling.
@@ -115,9 +120,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateImageUpscaleResponse" /> class.
         /// </summary>
-        /// <param name="aiModelId">
-        /// The model to use for upscaling.
-        /// </param>
         /// <param name="imageId">
         /// The id of the Image asset to use as the basis for upscaling.
         /// </param>
@@ -149,6 +151,12 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: image_upscale
         /// </param>
+        /// <param name="aiModelId">
+        /// The model to use for upscaling. Provide this OR `model_slug`.
+        /// </param>
+        /// <param name="modelSlug">
+        /// The slug of the model to use for upscaling. Alternative to `ai_model_id`.
+        /// </param>
         /// <param name="targetResolution">
         /// Target output resolution (e.g. '1080p', '2K', '4K'). Preferred over upscale_factor.
         /// </param>
@@ -162,7 +170,6 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateImageUpscaleResponse(
-            global::System.Guid aiModelId,
             global::System.Guid imageId,
             global::System.Guid assetId,
             global::System.Guid id,
@@ -174,6 +181,8 @@ namespace Hedra
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
+            global::System.Guid? aiModelId,
+            string? modelSlug,
             string? targetResolution,
             double? upscaleFactor,
             int? etaSec)
@@ -184,6 +193,7 @@ namespace Hedra
             this.GenerationIds = generationIds;
             this.Type = type;
             this.AiModelId = aiModelId;
+            this.ModelSlug = modelSlug;
             this.ImageId = imageId;
             this.TargetResolution = targetResolution;
             this.UpscaleFactor = upscaleFactor;
@@ -201,5 +211,6 @@ namespace Hedra
         public GenerateImageUpscaleResponse()
         {
         }
+
     }
 }

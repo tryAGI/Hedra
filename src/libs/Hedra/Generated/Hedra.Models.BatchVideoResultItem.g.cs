@@ -111,5 +111,6 @@ namespace Hedra
         public BatchVideoResultItem()
         {
         }
+
     }
 }

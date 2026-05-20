@@ -19,7 +19,15 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        RichText,
+        /// <summary>
+        /// 
+        /// </summary>
         Text,
+        /// <summary>
+        /// 
+        /// </summary>
+        ThreeD,
         /// <summary>
         /// 
         /// </summary>
@@ -44,7 +52,9 @@ namespace Hedra
             {
                 AssetType.Audio => "audio",
                 AssetType.Image => "image",
+                AssetType.RichText => "rich_text",
                 AssetType.Text => "text",
+                AssetType.ThreeD => "three_d",
                 AssetType.Video => "video",
                 AssetType.Voice => "voice",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -59,7 +69,9 @@ namespace Hedra
             {
                 "audio" => AssetType.Audio,
                 "image" => AssetType.Image,
+                "rich_text" => AssetType.RichText,
                 "text" => AssetType.Text,
+                "three_d" => AssetType.ThreeD,
                 "video" => AssetType.Video,
                 "voice" => AssetType.Voice,
                 _ => null,

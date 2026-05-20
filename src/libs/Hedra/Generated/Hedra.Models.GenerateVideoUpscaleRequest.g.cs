@@ -39,11 +39,16 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
-        /// The model to use for upscaling.
+        /// The model to use for upscaling. Provide this OR `model_slug`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid AiModelId { get; set; }
+        public global::System.Guid? AiModelId { get; set; }
+
+        /// <summary>
+        /// The slug of the model to use for upscaling. Alternative to `ai_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
 
         /// <summary>
         /// The id of the Video asset to upscale.
@@ -73,9 +78,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVideoUpscaleRequest" /> class.
         /// </summary>
-        /// <param name="aiModelId">
-        /// The model to use for upscaling.
-        /// </param>
         /// <param name="videoId">
         /// The id of the Video asset to upscale.
         /// </param>
@@ -92,6 +94,12 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: video_upscale
         /// </param>
+        /// <param name="aiModelId">
+        /// The model to use for upscaling. Provide this OR `model_slug`.
+        /// </param>
+        /// <param name="modelSlug">
+        /// The slug of the model to use for upscaling. Alternative to `ai_model_id`.
+        /// </param>
         /// <param name="upscaleFactor">
         /// Computed scale factor derived from target_resolution and source video dimensions.
         /// </param>
@@ -102,13 +110,14 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateVideoUpscaleRequest(
-            global::System.Guid aiModelId,
             global::System.Guid videoId,
             string? workspaceId,
             global::System.Guid? agentThreadId,
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
+            global::System.Guid? aiModelId,
+            string? modelSlug,
             double? upscaleFactor,
             string? targetResolution)
         {
@@ -118,6 +127,7 @@ namespace Hedra
             this.GenerationIds = generationIds;
             this.Type = type;
             this.AiModelId = aiModelId;
+            this.ModelSlug = modelSlug;
             this.VideoId = videoId;
             this.UpscaleFactor = upscaleFactor;
             this.TargetResolution = targetResolution;
@@ -129,5 +139,6 @@ namespace Hedra
         public GenerateVideoUpscaleRequest()
         {
         }
+
     }
 }

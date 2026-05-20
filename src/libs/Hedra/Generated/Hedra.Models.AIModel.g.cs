@@ -16,6 +16,13 @@ namespace Hedra
         public required string Id { get; set; }
 
         /// <summary>
+        /// Stable cross-environment identifier for the model, e.g. ``google/nano-banana``. Unique and identical across local/staging/production. Prefer ``slug`` over ``id`` when referencing models — ``id`` is environment-specific and will be removed in a later migration (model-registry plan step 7).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Slug { get; set; }
+
+        /// <summary>
         /// Name of the model
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -40,6 +47,12 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("aspect_ratios")]
         public global::System.Collections.Generic.IList<string>? AspectRatios { get; set; }
+
+        /// <summary>
+        /// If set to (min, max), the model accepts any keyframe whose width/height ratio is in [min, max], not just the values in ``aspect_ratios``. The model snaps the output to its internal grid. ``aspect_ratios`` then serves as UI/preset labels rather than as an enum gate.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aspect_ratio_range")]
+        public global::System.Collections.Generic.IList<double>? AspectRatioRange { get; set; }
 
         /// <summary>
         /// Resolutions the model supports.
@@ -175,6 +188,9 @@ namespace Hedra
         /// <param name="id">
         /// ID of the model
         /// </param>
+        /// <param name="slug">
+        /// Stable cross-environment identifier for the model, e.g. ``google/nano-banana``. Unique and identical across local/staging/production. Prefer ``slug`` over ``id`` when referencing models — ``id`` is environment-specific and will be removed in a later migration (model-registry plan step 7).
+        /// </param>
         /// <param name="name">
         /// Name of the model
         /// </param>
@@ -189,6 +205,9 @@ namespace Hedra
         /// </param>
         /// <param name="aspectRatios">
         /// Aspect ratios the model supports.
+        /// </param>
+        /// <param name="aspectRatioRange">
+        /// If set to (min, max), the model accepts any keyframe whose width/height ratio is in [min, max], not just the values in ``aspect_ratios``. The model snaps the output to its internal grid. ``aspect_ratios`` then serves as UI/preset labels rather than as an enum gate.
         /// </param>
         /// <param name="resolutions">
         /// Resolutions the model supports.
@@ -253,11 +272,13 @@ namespace Hedra
 #endif
         public AIModel(
             string id,
+            string slug,
             string name,
             string type,
             global::Hedra.AIModelPrice priceDetails,
             string? description,
             global::System.Collections.Generic.IList<string>? aspectRatios,
+            global::System.Collections.Generic.IList<double>? aspectRatioRange,
             global::System.Collections.Generic.IList<string>? resolutions,
             global::System.Collections.Generic.IList<string>? durations,
             bool? requiresStartFrame,
@@ -279,10 +300,12 @@ namespace Hedra
             int? displayOrder)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.Slug = slug ?? throw new global::System.ArgumentNullException(nameof(slug));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.AspectRatios = aspectRatios;
+            this.AspectRatioRange = aspectRatioRange;
             this.Resolutions = resolutions;
             this.Durations = durations;
             this.RequiresStartFrame = requiresStartFrame;
@@ -311,5 +334,6 @@ namespace Hedra
         public AIModel()
         {
         }
+
     }
 }

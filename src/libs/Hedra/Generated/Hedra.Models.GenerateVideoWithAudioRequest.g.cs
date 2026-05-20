@@ -39,11 +39,16 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
-        /// ID of the model to use for video-to-video with audio generation (Mirelo Studio).
+        /// ID of the model to use for video-to-video with audio generation (Mirelo Studio). Provide this OR `video_generation_model_slug`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("video_generation_model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid VideoGenerationModelId { get; set; }
+        public global::System.Guid? VideoGenerationModelId { get; set; }
+
+        /// <summary>
+        /// Slug of the model to use. Alternative to `video_generation_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("video_generation_model_slug")]
+        public string? VideoGenerationModelSlug { get; set; }
 
         /// <summary>
         /// The id of the video asset to add sound effects to.
@@ -67,9 +72,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVideoWithAudioRequest" /> class.
         /// </summary>
-        /// <param name="videoGenerationModelId">
-        /// ID of the model to use for video-to-video with audio generation (Mirelo Studio).
-        /// </param>
         /// <param name="videoId">
         /// The id of the video asset to add sound effects to.
         /// </param>
@@ -86,6 +88,12 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: video_with_audio
         /// </param>
+        /// <param name="videoGenerationModelId">
+        /// ID of the model to use for video-to-video with audio generation (Mirelo Studio). Provide this OR `video_generation_model_slug`.
+        /// </param>
+        /// <param name="videoGenerationModelSlug">
+        /// Slug of the model to use. Alternative to `video_generation_model_id`.
+        /// </param>
         /// <param name="prompt">
         /// Optional prompt to guide the audio generation for the video.
         /// </param>
@@ -93,13 +101,14 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateVideoWithAudioRequest(
-            global::System.Guid videoGenerationModelId,
             global::System.Guid videoId,
             string? workspaceId,
             global::System.Guid? agentThreadId,
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
+            global::System.Guid? videoGenerationModelId,
+            string? videoGenerationModelSlug,
             string? prompt)
         {
             this.WorkspaceId = workspaceId;
@@ -108,6 +117,7 @@ namespace Hedra
             this.GenerationIds = generationIds;
             this.Type = type;
             this.VideoGenerationModelId = videoGenerationModelId;
+            this.VideoGenerationModelSlug = videoGenerationModelSlug;
             this.VideoId = videoId;
             this.Prompt = prompt;
         }
@@ -118,5 +128,6 @@ namespace Hedra
         public GenerateVideoWithAudioRequest()
         {
         }
+
     }
 }

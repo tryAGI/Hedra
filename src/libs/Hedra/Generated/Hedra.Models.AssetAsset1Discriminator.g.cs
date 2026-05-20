@@ -40,5 +40,6 @@ namespace Hedra
         public AssetAsset1Discriminator()
         {
         }
+
     }
 }

@@ -40,11 +40,16 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
-        /// The id of the model to use for video-to-video generation.
+        /// The id of the model to use for video-to-video generation. Provide this OR `model_slug`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid AiModelId { get; set; }
+        public global::System.Guid? AiModelId { get; set; }
+
+        /// <summary>
+        /// The slug of the model to use. Alternative to `ai_model_id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
+        public string? ModelSlug { get; set; }
 
         /// <summary>
         /// The id of the video asset to transform.
@@ -88,9 +93,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateVideoToVideoRequest" /> class.
         /// </summary>
-        /// <param name="aiModelId">
-        /// The id of the model to use for video-to-video generation.
-        /// </param>
         /// <param name="videoId">
         /// The id of the video asset to transform.
         /// </param>
@@ -110,6 +112,12 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: video_to_video
         /// </param>
+        /// <param name="aiModelId">
+        /// The id of the model to use for video-to-video generation. Provide this OR `model_slug`.
+        /// </param>
+        /// <param name="modelSlug">
+        /// The slug of the model to use. Alternative to `ai_model_id`.
+        /// </param>
         /// <param name="referenceImageAssetIds">
         /// Optional ids of reference image assets for style transfer. Reference as @Image1, @Image2, etc. in prompt.
         /// </param>
@@ -124,7 +132,6 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GenerateVideoToVideoRequest(
-            global::System.Guid aiModelId,
             global::System.Guid videoId,
             string prompt,
             string? workspaceId,
@@ -132,6 +139,8 @@ namespace Hedra
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
+            global::System.Guid? aiModelId,
+            string? modelSlug,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageAssetIds,
             global::System.Collections.Generic.IList<global::Hedra.KlingEditElement>? elements,
             bool? keepAudio)
@@ -142,6 +151,7 @@ namespace Hedra
             this.GenerationIds = generationIds;
             this.Type = type;
             this.AiModelId = aiModelId;
+            this.ModelSlug = modelSlug;
             this.VideoId = videoId;
             this.Prompt = prompt ?? throw new global::System.ArgumentNullException(nameof(prompt));
             this.ReferenceImageAssetIds = referenceImageAssetIds;
@@ -155,5 +165,6 @@ namespace Hedra
         public GenerateVideoToVideoRequest()
         {
         }
+
     }
 }
