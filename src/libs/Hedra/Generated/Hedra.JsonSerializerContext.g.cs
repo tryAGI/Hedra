@@ -73,8 +73,6 @@ namespace Hedra
 
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>),
 
-            typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>),
-
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>, object>),
 
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<string, int?>),
@@ -135,9 +133,8 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateImageUpscaleResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateIsolatedAudioRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateIsolatedAudioResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateMotionControlRequestInput))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateMotionControlRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedVideoInputs))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateMotionControlRequestOutput))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateMotionControlResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateSpeechToSpeechRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateSpeechToSpeechResponse))]
@@ -146,9 +143,8 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateTextToSpeechRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.SupportedLanguage), TypeInfoPropertyName = "SupportedLanguage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateTextToSpeechResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateVideoRequestInput))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateVideoRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>), TypeInfoPropertyName = "AnyOfGuidIListGuidObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateVideoRequestOutput))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateVideoResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.BatchVideoResultItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateVideoToVideoRequest))]
