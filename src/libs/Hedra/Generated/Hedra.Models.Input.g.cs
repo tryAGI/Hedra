@@ -18,9 +18,9 @@ namespace Hedra
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Hedra.GenerateVideoRequestOutput? Video { get; init; }
+        public global::Hedra.GenerateVideoRequest? Video { get; init; }
 #else
-        public global::Hedra.GenerateVideoRequestOutput? Video { get; }
+        public global::Hedra.GenerateVideoRequest? Video { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Hedra
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Hedra.GenerateVideoRequestOutput? value)
+            out global::Hedra.GenerateVideoRequest? value)
         {
             value = Video;
             return IsVideo;
@@ -47,7 +47,7 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateVideoRequestOutput PickVideo() => IsVideo
+        public global::Hedra.GenerateVideoRequest PickVideo() => IsVideo
             ? Video!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Video' but the value was {ToString()}.");
 
@@ -464,9 +464,9 @@ namespace Hedra
         /// Processed through V2V infrastructure internally.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Hedra.GenerateMotionControlRequestOutput? MotionControl { get; init; }
+        public global::Hedra.GenerateMotionControlRequest? MotionControl { get; init; }
 #else
-        public global::Hedra.GenerateMotionControlRequestOutput? MotionControl { get; }
+        public global::Hedra.GenerateMotionControlRequest? MotionControl { get; }
 #endif
 
         /// <summary>
@@ -484,7 +484,7 @@ namespace Hedra
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Hedra.GenerateMotionControlRequestOutput? value)
+            out global::Hedra.GenerateMotionControlRequest? value)
         {
             value = MotionControl;
             return IsMotionControl;
@@ -493,23 +493,23 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateMotionControlRequestOutput PickMotionControl() => IsMotionControl
+        public global::Hedra.GenerateMotionControlRequest PickMotionControl() => IsMotionControl
             ? MotionControl!
             : throw new global::System.InvalidOperationException($"Expected union variant 'MotionControl' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Input(global::Hedra.GenerateVideoRequestOutput value) => new Input((global::Hedra.GenerateVideoRequestOutput?)value);
+        public static implicit operator Input(global::Hedra.GenerateVideoRequest value) => new Input((global::Hedra.GenerateVideoRequest?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Hedra.GenerateVideoRequestOutput?(Input @this) => @this.Video;
+        public static implicit operator global::Hedra.GenerateVideoRequest?(Input @this) => @this.Video;
 
         /// <summary>
         /// 
         /// </summary>
-        public Input(global::Hedra.GenerateVideoRequestOutput? value)
+        public Input(global::Hedra.GenerateVideoRequest? value)
         {
             Video = value;
         }
@@ -517,7 +517,7 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public static Input FromVideo(global::Hedra.GenerateVideoRequestOutput? value) => new Input(value);
+        public static Input FromVideo(global::Hedra.GenerateVideoRequest? value) => new Input(value);
 
         /// <summary>
         /// 
@@ -775,17 +775,17 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Input(global::Hedra.GenerateMotionControlRequestOutput value) => new Input((global::Hedra.GenerateMotionControlRequestOutput?)value);
+        public static implicit operator Input(global::Hedra.GenerateMotionControlRequest value) => new Input((global::Hedra.GenerateMotionControlRequest?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Hedra.GenerateMotionControlRequestOutput?(Input @this) => @this.MotionControl;
+        public static implicit operator global::Hedra.GenerateMotionControlRequest?(Input @this) => @this.MotionControl;
 
         /// <summary>
         /// 
         /// </summary>
-        public Input(global::Hedra.GenerateMotionControlRequestOutput? value)
+        public Input(global::Hedra.GenerateMotionControlRequest? value)
         {
             MotionControl = value;
         }
@@ -793,14 +793,14 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public static Input FromMotionControl(global::Hedra.GenerateMotionControlRequestOutput? value) => new Input(value);
+        public static Input FromMotionControl(global::Hedra.GenerateMotionControlRequest? value) => new Input(value);
 
         /// <summary>
         /// 
         /// </summary>
         public Input(
             global::Hedra.GenerationInputDiscriminatorType? type,
-            global::Hedra.GenerateVideoRequestOutput? video,
+            global::Hedra.GenerateVideoRequest? video,
             global::Hedra.GenerateTextToSpeechRequest? textToSpeech,
             global::Hedra.GenerateTextToSoundRequest? textToSound,
             global::Hedra.GenerateImageRequest? image,
@@ -812,7 +812,7 @@ namespace Hedra
             global::Hedra.GenerateAudioFromVideoRequest? audioFromVideo,
             global::Hedra.GenerateVideoWithAudioRequest? videoWithAudio,
             global::Hedra.GenerateVideoToVideoRequest? videoToVideo,
-            global::Hedra.GenerateMotionControlRequestOutput? motionControl
+            global::Hedra.GenerateMotionControlRequest? motionControl
             )
         {
             Type = type;
@@ -882,7 +882,7 @@ namespace Hedra
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Hedra.GenerateVideoRequestOutput, TResult>? video = null,
+            global::System.Func<global::Hedra.GenerateVideoRequest, TResult>? video = null,
             global::System.Func<global::Hedra.GenerateTextToSpeechRequest, TResult>? textToSpeech = null,
             global::System.Func<global::Hedra.GenerateTextToSoundRequest, TResult>? textToSound = null,
             global::System.Func<global::Hedra.GenerateImageRequest, TResult>? image = null,
@@ -894,7 +894,7 @@ namespace Hedra
             global::System.Func<global::Hedra.GenerateAudioFromVideoRequest, TResult>? audioFromVideo = null,
             global::System.Func<global::Hedra.GenerateVideoWithAudioRequest, TResult>? videoWithAudio = null,
             global::System.Func<global::Hedra.GenerateVideoToVideoRequest, TResult>? videoToVideo = null,
-            global::System.Func<global::Hedra.GenerateMotionControlRequestOutput, TResult>? motionControl = null,
+            global::System.Func<global::Hedra.GenerateMotionControlRequest, TResult>? motionControl = null,
             bool validate = true)
         {
             if (validate)
@@ -962,7 +962,7 @@ namespace Hedra
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Hedra.GenerateVideoRequestOutput>? video = null,
+            global::System.Action<global::Hedra.GenerateVideoRequest>? video = null,
 
             global::System.Action<global::Hedra.GenerateTextToSpeechRequest>? textToSpeech = null,
 
@@ -986,7 +986,7 @@ namespace Hedra
 
             global::System.Action<global::Hedra.GenerateVideoToVideoRequest>? videoToVideo = null,
 
-            global::System.Action<global::Hedra.GenerateMotionControlRequestOutput>? motionControl = null,
+            global::System.Action<global::Hedra.GenerateMotionControlRequest>? motionControl = null,
             bool validate = true)
         {
             if (validate)
@@ -1052,7 +1052,7 @@ namespace Hedra
         /// 
         /// </summary>
         public void Switch(
-            global::System.Action<global::Hedra.GenerateVideoRequestOutput>? video = null,
+            global::System.Action<global::Hedra.GenerateVideoRequest>? video = null,
             global::System.Action<global::Hedra.GenerateTextToSpeechRequest>? textToSpeech = null,
             global::System.Action<global::Hedra.GenerateTextToSoundRequest>? textToSound = null,
             global::System.Action<global::Hedra.GenerateImageRequest>? image = null,
@@ -1064,7 +1064,7 @@ namespace Hedra
             global::System.Action<global::Hedra.GenerateAudioFromVideoRequest>? audioFromVideo = null,
             global::System.Action<global::Hedra.GenerateVideoWithAudioRequest>? videoWithAudio = null,
             global::System.Action<global::Hedra.GenerateVideoToVideoRequest>? videoToVideo = null,
-            global::System.Action<global::Hedra.GenerateMotionControlRequestOutput>? motionControl = null,
+            global::System.Action<global::Hedra.GenerateMotionControlRequest>? motionControl = null,
             bool validate = true)
         {
             if (validate)
@@ -1134,7 +1134,7 @@ namespace Hedra
             var fields = new object?[]
             {
                 Video,
-                typeof(global::Hedra.GenerateVideoRequestOutput),
+                typeof(global::Hedra.GenerateVideoRequest),
                 TextToSpeech,
                 typeof(global::Hedra.GenerateTextToSpeechRequest),
                 TextToSound,
@@ -1158,7 +1158,7 @@ namespace Hedra
                 VideoToVideo,
                 typeof(global::Hedra.GenerateVideoToVideoRequest),
                 MotionControl,
-                typeof(global::Hedra.GenerateMotionControlRequestOutput),
+                typeof(global::Hedra.GenerateMotionControlRequest),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -1175,7 +1175,7 @@ namespace Hedra
         public bool Equals(Input other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateVideoRequestOutput?>.Default.Equals(Video, other.Video) &&
+                global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateVideoRequest?>.Default.Equals(Video, other.Video) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateTextToSpeechRequest?>.Default.Equals(TextToSpeech, other.TextToSpeech) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateTextToSoundRequest?>.Default.Equals(TextToSound, other.TextToSound) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateImageRequest?>.Default.Equals(Image, other.Image) &&
@@ -1187,7 +1187,7 @@ namespace Hedra
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateAudioFromVideoRequest?>.Default.Equals(AudioFromVideo, other.AudioFromVideo) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateVideoWithAudioRequest?>.Default.Equals(VideoWithAudio, other.VideoWithAudio) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateVideoToVideoRequest?>.Default.Equals(VideoToVideo, other.VideoToVideo) &&
-                global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateMotionControlRequestOutput?>.Default.Equals(MotionControl, other.MotionControl) 
+                global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateMotionControlRequest?>.Default.Equals(MotionControl, other.MotionControl) 
                 ;
         }
 
