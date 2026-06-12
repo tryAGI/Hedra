@@ -120,6 +120,8 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.CreateAssetResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.CreditBalance))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, int>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Hedra.WorkspaceCreditUsage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.WorkspaceCreditUsage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.ErrorCode), TypeInfoPropertyName = "ErrorCode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateAudioFromVideoRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Guid>))]
