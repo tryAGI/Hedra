@@ -30,10 +30,16 @@ namespace Hedra
         public required int Used { get; set; }
 
         /// <summary>
-        /// Credits for each workspace mapped by workspace_id. Only included if user is in a workspace.
+        /// DEPRECATED: use workspace_credit_pool[id].available instead. Available credits for each workspace mapped by workspace_id. Only included if user is in a workspace.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("workspace_credits")]
         public global::System.Collections.Generic.Dictionary<string, int>? WorkspaceCredits { get; set; }
+
+        /// <summary>
+        /// Per-workspace credit pool usage (used/allocated/available) keyed by workspace_id. Only included if user is in a workspace.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("workspace_credit_pool")]
+        public global::System.Collections.Generic.Dictionary<string, global::Hedra.WorkspaceCreditUsage>? WorkspaceCreditPool { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -54,7 +60,10 @@ namespace Hedra
         /// Credits used in the current billing period.
         /// </param>
         /// <param name="workspaceCredits">
-        /// Credits for each workspace mapped by workspace_id. Only included if user is in a workspace.
+        /// DEPRECATED: use workspace_credit_pool[id].available instead. Available credits for each workspace mapped by workspace_id. Only included if user is in a workspace.
+        /// </param>
+        /// <param name="workspaceCreditPool">
+        /// Per-workspace credit pool usage (used/allocated/available) keyed by workspace_id. Only included if user is in a workspace.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -63,12 +72,14 @@ namespace Hedra
             int remaining,
             int expiring,
             int used,
-            global::System.Collections.Generic.Dictionary<string, int>? workspaceCredits)
+            global::System.Collections.Generic.Dictionary<string, int>? workspaceCredits,
+            global::System.Collections.Generic.Dictionary<string, global::Hedra.WorkspaceCreditUsage>? workspaceCreditPool)
         {
             this.Remaining = remaining;
             this.Expiring = expiring;
             this.Used = used;
             this.WorkspaceCredits = workspaceCredits;
+            this.WorkspaceCreditPool = workspaceCreditPool;
         }
 
         /// <summary>
