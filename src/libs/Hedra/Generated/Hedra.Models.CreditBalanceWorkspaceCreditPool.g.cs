@@ -4,9 +4,9 @@
 namespace Hedra
 {
     /// <summary>
-    /// DEPRECATED: use workspace_credit_pool[id].available instead. Available credits for each workspace mapped by workspace_id. Only included if user is in a workspace.
+    /// Per-workspace credit pool usage (used/allocated/available) keyed by workspace_id. Only included if user is in a workspace.
     /// </summary>
-    public sealed partial class CreditBalanceWorkspaceCredits
+    public sealed partial class CreditBalanceWorkspaceCreditPool
     {
 
         /// <summary>
