@@ -53,7 +53,7 @@ public partial class Tests
 
         //// 4. Generate a talking avatar video
         GenerateAssetPublicGenerationsPostResponse generation = await client.GenerateAssetAsync(
-            request: new GenerateVideoRequestInput
+            request: new GenerateVideoRequest
             {
                 AiModelId = modelId,
                 StartKeyframeId = imageAsset.Id,
