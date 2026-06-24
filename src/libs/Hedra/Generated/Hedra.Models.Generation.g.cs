@@ -53,6 +53,12 @@ namespace Hedra
         public int? EtaSec { get; set; }
 
         /// <summary>
+        /// Absolute UTC timestamp when the generation is estimated to complete. Clients should anchor a countdown to this rather than decaying eta_sec, since it self-corrects as the backend refines the estimate.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("estimated_completion_at")]
+        public string? EstimatedCompletionAt { get; set; }
+
+        /// <summary>
         /// Date the generation was submitted.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
@@ -125,6 +131,9 @@ namespace Hedra
         /// <param name="etaSec">
         /// Estimated time remaining in seconds until generation completes.
         /// </param>
+        /// <param name="estimatedCompletionAt">
+        /// Absolute UTC timestamp when the generation is estimated to complete. Clients should anchor a countdown to this rather than decaying eta_sec, since it self-corrects as the backend refines the estimate.
+        /// </param>
         /// <param name="creditCost">
         /// Credits consumed (debits) for this generation.
         /// </param>
@@ -154,6 +163,7 @@ namespace Hedra
             double progress,
             string createdAt,
             int? etaSec,
+            string? estimatedCompletionAt,
             int? creditCost,
             string? batchGenerationId,
             global::Hedra.Asset? asset,
@@ -167,6 +177,7 @@ namespace Hedra
             this.Status = status;
             this.Progress = progress;
             this.EtaSec = etaSec;
+            this.EstimatedCompletionAt = estimatedCompletionAt;
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
             this.CreditCost = creditCost;
             this.BatchGenerationId = batchGenerationId;
