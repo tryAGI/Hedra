@@ -40,11 +40,11 @@ namespace Hedra
             };
         partial void PrepareListModelsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::System.Collections.Generic.IList<string>? types);
+            global::System.Collections.Generic.IList<global::Hedra.GenerationType>? types);
         partial void PrepareListModelsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::System.Collections.Generic.IList<string>? types);
+            global::System.Collections.Generic.IList<global::Hedra.GenerationType>? types);
         partial void ProcessListModelsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -62,7 +62,7 @@ namespace Hedra
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<global::Hedra.AIModel>> ListModelsAsync(
-            global::System.Collections.Generic.IList<string>? types = default,
+            global::System.Collections.Generic.IList<global::Hedra.GenerationType>? types = default,
             global::Hedra.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -82,7 +82,7 @@ namespace Hedra
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Hedra.AutoSDKHttpResponse<global::System.Collections.Generic.IList<global::Hedra.AIModel>>> ListModelsAsResponseAsync(
-            global::System.Collections.Generic.IList<string>? types = default,
+            global::System.Collections.Generic.IList<global::Hedra.GenerationType>? types = default,
             global::Hedra.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
