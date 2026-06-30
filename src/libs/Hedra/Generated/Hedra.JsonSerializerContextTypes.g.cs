@@ -472,31 +472,35 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>? Type111 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.GenerationType>? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.DateTime? Type112 { get; set; }
+        public global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Hedra.AIModel>? Type113 { get; set; }
+        public global::System.DateTime? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Hedra.Asset>? Type114 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.AIModel>? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateAssetPublicGenerationsPostResponse? Type115 { get; set; }
+        public global::System.Collections.Generic.IList<global::Hedra.Asset>? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateAssetPublicGenerationsPostResponseDiscriminator? Type116 { get; set; }
+        public global::Hedra.GenerateAssetPublicGenerationsPostResponse? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Hedra.GenerateAssetPublicGenerationsPostResponseDiscriminatorType? Type117 { get; set; }
+        public global::Hedra.GenerateAssetPublicGenerationsPostResponseDiscriminator? Type117 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GenerateAssetPublicGenerationsPostResponseDiscriminatorType? Type118 { get; set; }
 
         /// <summary>
         /// 
@@ -569,10 +573,14 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Hedra.AIModel>? ListType17 { get; set; }
+        public global::System.Collections.Generic.List<global::Hedra.GenerationType>? ListType17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Hedra.Asset>? ListType18 { get; set; }
+        public global::System.Collections.Generic.List<global::Hedra.AIModel>? ListType18 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Hedra.Asset>? ListType19 { get; set; }
     }
 }

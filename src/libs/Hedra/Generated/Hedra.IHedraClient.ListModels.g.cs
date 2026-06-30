@@ -12,7 +12,7 @@ namespace Hedra
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<global::Hedra.AIModel>> ListModelsAsync(
-            global::System.Collections.Generic.IList<string>? types = default,
+            global::System.Collections.Generic.IList<global::Hedra.GenerationType>? types = default,
             global::Hedra.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -23,7 +23,7 @@ namespace Hedra
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Hedra.AutoSDKHttpResponse<global::System.Collections.Generic.IList<global::Hedra.AIModel>>> ListModelsAsResponseAsync(
-            global::System.Collections.Generic.IList<string>? types = default,
+            global::System.Collections.Generic.IList<global::Hedra.GenerationType>? types = default,
             global::Hedra.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

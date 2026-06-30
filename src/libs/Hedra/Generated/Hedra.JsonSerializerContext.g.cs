@@ -193,6 +193,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateAssetPublicGenerationsPostRequest), TypeInfoPropertyName = "GenerateAssetPublicGenerationsPostRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateAssetPublicGenerationsPostRequestDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateAssetPublicGenerationsPostRequestDiscriminatorType), TypeInfoPropertyName = "GenerateAssetPublicGenerationsPostRequestDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.GenerationType>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>), TypeInfoPropertyName = "AnyOfAssetTypeGenerationTypeObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.AIModel>))]
@@ -217,6 +218,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.Generation>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.AnyOf<string, int?>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.VoiceLabel>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.GenerationType>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.AIModel>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.Asset>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
