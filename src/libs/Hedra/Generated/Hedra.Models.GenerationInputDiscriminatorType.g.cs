@@ -11,10 +11,6 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        AudioFromVideo,
-        /// <summary>
-        /// 
-        /// </summary>
         AudioIsolation,
         /// <summary>
         /// 
@@ -59,10 +55,6 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        VideoWithAudio,
-        /// <summary>
-        /// 
-        /// </summary>
         VoiceClone,
     }
 
@@ -78,7 +70,6 @@ namespace Hedra
         {
             return value switch
             {
-                GenerationInputDiscriminatorType.AudioFromVideo => "audio_from_video",
                 GenerationInputDiscriminatorType.AudioIsolation => "audio_isolation",
                 GenerationInputDiscriminatorType.Image => "image",
                 GenerationInputDiscriminatorType.ImageToImage => "image_to_image",
@@ -90,7 +81,6 @@ namespace Hedra
                 GenerationInputDiscriminatorType.Video => "video",
                 GenerationInputDiscriminatorType.VideoToVideo => "video_to_video",
                 GenerationInputDiscriminatorType.VideoUpscale => "video_upscale",
-                GenerationInputDiscriminatorType.VideoWithAudio => "video_with_audio",
                 GenerationInputDiscriminatorType.VoiceClone => "voice_clone",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -102,7 +92,6 @@ namespace Hedra
         {
             return value switch
             {
-                "audio_from_video" => GenerationInputDiscriminatorType.AudioFromVideo,
                 "audio_isolation" => GenerationInputDiscriminatorType.AudioIsolation,
                 "image" => GenerationInputDiscriminatorType.Image,
                 "image_to_image" => GenerationInputDiscriminatorType.ImageToImage,
@@ -114,7 +103,6 @@ namespace Hedra
                 "video" => GenerationInputDiscriminatorType.Video,
                 "video_to_video" => GenerationInputDiscriminatorType.VideoToVideo,
                 "video_upscale" => GenerationInputDiscriminatorType.VideoUpscale,
-                "video_with_audio" => GenerationInputDiscriminatorType.VideoWithAudio,
                 "voice_clone" => GenerationInputDiscriminatorType.VoiceClone,
                 _ => null,
             };

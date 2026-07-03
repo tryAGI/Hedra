@@ -348,80 +348,6 @@ namespace Hedra
             : throw new global::System.InvalidOperationException($"Expected union variant 'VoiceClone' but the value was {ToString()}.");
 
         /// <summary>
-        /// Audio generation request that extracts sound effects from video using Mirelo Studio.
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Hedra.GenerateAudioFromVideoRequest? AudioFromVideo { get; init; }
-#else
-        public global::Hedra.GenerateAudioFromVideoRequest? AudioFromVideo { get; }
-#endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AudioFromVideo))]
-#endif
-        public bool IsAudioFromVideo => AudioFromVideo != null;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool TryPickAudioFromVideo(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Hedra.GenerateAudioFromVideoRequest? value)
-        {
-            value = AudioFromVideo;
-            return IsAudioFromVideo;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::Hedra.GenerateAudioFromVideoRequest PickAudioFromVideo() => IsAudioFromVideo
-            ? AudioFromVideo!
-            : throw new global::System.InvalidOperationException($"Expected union variant 'AudioFromVideo' but the value was {ToString()}.");
-
-        /// <summary>
-        /// Video generation request that adds synchronized sound effects to video using Mirelo Studio.
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Hedra.GenerateVideoWithAudioRequest? VideoWithAudio { get; init; }
-#else
-        public global::Hedra.GenerateVideoWithAudioRequest? VideoWithAudio { get; }
-#endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(VideoWithAudio))]
-#endif
-        public bool IsVideoWithAudio => VideoWithAudio != null;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool TryPickVideoWithAudio(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Hedra.GenerateVideoWithAudioRequest? value)
-        {
-            value = VideoWithAudio;
-            return IsVideoWithAudio;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::Hedra.GenerateVideoWithAudioRequest PickVideoWithAudio() => IsVideoWithAudio
-            ? VideoWithAudio!
-            : throw new global::System.InvalidOperationException($"Expected union variant 'VideoWithAudio' but the value was {ToString()}.");
-
-        /// <summary>
         /// Video-to-video edit request for Kling O1 Edit model.<br/>
         /// Transforms videos using natural language while preserving motion.
         /// </summary>
@@ -706,52 +632,6 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator Input(global::Hedra.GenerateAudioFromVideoRequest value) => new Input((global::Hedra.GenerateAudioFromVideoRequest?)value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::Hedra.GenerateAudioFromVideoRequest?(Input @this) => @this.AudioFromVideo;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public Input(global::Hedra.GenerateAudioFromVideoRequest? value)
-        {
-            AudioFromVideo = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static Input FromAudioFromVideo(global::Hedra.GenerateAudioFromVideoRequest? value) => new Input(value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator Input(global::Hedra.GenerateVideoWithAudioRequest value) => new Input((global::Hedra.GenerateVideoWithAudioRequest?)value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::Hedra.GenerateVideoWithAudioRequest?(Input @this) => @this.VideoWithAudio;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public Input(global::Hedra.GenerateVideoWithAudioRequest? value)
-        {
-            VideoWithAudio = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static Input FromVideoWithAudio(global::Hedra.GenerateVideoWithAudioRequest? value) => new Input(value);
-
-        /// <summary>
-        /// 
-        /// </summary>
         public static implicit operator Input(global::Hedra.GenerateVideoToVideoRequest value) => new Input((global::Hedra.GenerateVideoToVideoRequest?)value);
 
         /// <summary>
@@ -809,8 +689,6 @@ namespace Hedra
             global::Hedra.GenerateIsolatedAudioRequest? audioIsolation,
             global::Hedra.GenerateSpeechToSpeechRequest? speechToSpeech,
             global::Hedra.GenerateVoiceCloneRequest? voiceClone,
-            global::Hedra.GenerateAudioFromVideoRequest? audioFromVideo,
-            global::Hedra.GenerateVideoWithAudioRequest? videoWithAudio,
             global::Hedra.GenerateVideoToVideoRequest? videoToVideo,
             global::Hedra.GenerateMotionControlRequest? motionControl
             )
@@ -826,8 +704,6 @@ namespace Hedra
             AudioIsolation = audioIsolation;
             SpeechToSpeech = speechToSpeech;
             VoiceClone = voiceClone;
-            AudioFromVideo = audioFromVideo;
-            VideoWithAudio = videoWithAudio;
             VideoToVideo = videoToVideo;
             MotionControl = motionControl;
         }
@@ -838,8 +714,6 @@ namespace Hedra
         public object? Object =>
             MotionControl as object ??
             VideoToVideo as object ??
-            VideoWithAudio as object ??
-            AudioFromVideo as object ??
             VoiceClone as object ??
             SpeechToSpeech as object ??
             AudioIsolation as object ??
@@ -864,8 +738,6 @@ namespace Hedra
             AudioIsolation?.ToString() ??
             SpeechToSpeech?.ToString() ??
             VoiceClone?.ToString() ??
-            AudioFromVideo?.ToString() ??
-            VideoWithAudio?.ToString() ??
             VideoToVideo?.ToString() ??
             MotionControl?.ToString() 
             ;
@@ -875,7 +747,7 @@ namespace Hedra
         /// </summary>
         public bool Validate()
         {
-            return IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsAudioFromVideo && !IsVideoWithAudio && !IsVideoToVideo && !IsMotionControl || !IsVideo && IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsAudioFromVideo && !IsVideoWithAudio && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsAudioFromVideo && !IsVideoWithAudio && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsAudioFromVideo && !IsVideoWithAudio && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsAudioFromVideo && !IsVideoWithAudio && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsAudioFromVideo && !IsVideoWithAudio && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsAudioFromVideo && !IsVideoWithAudio && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && IsSpeechToSpeech && !IsVoiceClone && !IsAudioFromVideo && !IsVideoWithAudio && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && IsVoiceClone && !IsAudioFromVideo && !IsVideoWithAudio && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && IsAudioFromVideo && !IsVideoWithAudio && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsAudioFromVideo && IsVideoWithAudio && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsAudioFromVideo && !IsVideoWithAudio && IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsAudioFromVideo && !IsVideoWithAudio && !IsVideoToVideo && IsMotionControl;
+            return IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && IsMotionControl;
         }
 
         /// <summary>
@@ -891,8 +763,6 @@ namespace Hedra
             global::System.Func<global::Hedra.GenerateIsolatedAudioRequest, TResult>? audioIsolation = null,
             global::System.Func<global::Hedra.GenerateSpeechToSpeechRequest, TResult>? speechToSpeech = null,
             global::System.Func<global::Hedra.GenerateVoiceCloneRequest, TResult>? voiceClone = null,
-            global::System.Func<global::Hedra.GenerateAudioFromVideoRequest, TResult>? audioFromVideo = null,
-            global::System.Func<global::Hedra.GenerateVideoWithAudioRequest, TResult>? videoWithAudio = null,
             global::System.Func<global::Hedra.GenerateVideoToVideoRequest, TResult>? videoToVideo = null,
             global::System.Func<global::Hedra.GenerateMotionControlRequest, TResult>? motionControl = null,
             bool validate = true)
@@ -938,14 +808,6 @@ namespace Hedra
             {
                 return voiceClone(VoiceClone!);
             }
-            else if (IsAudioFromVideo && audioFromVideo != null)
-            {
-                return audioFromVideo(AudioFromVideo!);
-            }
-            else if (IsVideoWithAudio && videoWithAudio != null)
-            {
-                return videoWithAudio(VideoWithAudio!);
-            }
             else if (IsVideoToVideo && videoToVideo != null)
             {
                 return videoToVideo(VideoToVideo!);
@@ -980,10 +842,6 @@ namespace Hedra
 
             global::System.Action<global::Hedra.GenerateVoiceCloneRequest>? voiceClone = null,
 
-            global::System.Action<global::Hedra.GenerateAudioFromVideoRequest>? audioFromVideo = null,
-
-            global::System.Action<global::Hedra.GenerateVideoWithAudioRequest>? videoWithAudio = null,
-
             global::System.Action<global::Hedra.GenerateVideoToVideoRequest>? videoToVideo = null,
 
             global::System.Action<global::Hedra.GenerateMotionControlRequest>? motionControl = null,
@@ -1029,14 +887,6 @@ namespace Hedra
             else if (IsVoiceClone)
             {
                 voiceClone?.Invoke(VoiceClone!);
-            }
-            else if (IsAudioFromVideo)
-            {
-                audioFromVideo?.Invoke(AudioFromVideo!);
-            }
-            else if (IsVideoWithAudio)
-            {
-                videoWithAudio?.Invoke(VideoWithAudio!);
             }
             else if (IsVideoToVideo)
             {
@@ -1061,8 +911,6 @@ namespace Hedra
             global::System.Action<global::Hedra.GenerateIsolatedAudioRequest>? audioIsolation = null,
             global::System.Action<global::Hedra.GenerateSpeechToSpeechRequest>? speechToSpeech = null,
             global::System.Action<global::Hedra.GenerateVoiceCloneRequest>? voiceClone = null,
-            global::System.Action<global::Hedra.GenerateAudioFromVideoRequest>? audioFromVideo = null,
-            global::System.Action<global::Hedra.GenerateVideoWithAudioRequest>? videoWithAudio = null,
             global::System.Action<global::Hedra.GenerateVideoToVideoRequest>? videoToVideo = null,
             global::System.Action<global::Hedra.GenerateMotionControlRequest>? motionControl = null,
             bool validate = true)
@@ -1107,14 +955,6 @@ namespace Hedra
             else if (IsVoiceClone)
             {
                 voiceClone?.Invoke(VoiceClone!);
-            }
-            else if (IsAudioFromVideo)
-            {
-                audioFromVideo?.Invoke(AudioFromVideo!);
-            }
-            else if (IsVideoWithAudio)
-            {
-                videoWithAudio?.Invoke(VideoWithAudio!);
             }
             else if (IsVideoToVideo)
             {
@@ -1151,10 +991,6 @@ namespace Hedra
                 typeof(global::Hedra.GenerateSpeechToSpeechRequest),
                 VoiceClone,
                 typeof(global::Hedra.GenerateVoiceCloneRequest),
-                AudioFromVideo,
-                typeof(global::Hedra.GenerateAudioFromVideoRequest),
-                VideoWithAudio,
-                typeof(global::Hedra.GenerateVideoWithAudioRequest),
                 VideoToVideo,
                 typeof(global::Hedra.GenerateVideoToVideoRequest),
                 MotionControl,
@@ -1184,8 +1020,6 @@ namespace Hedra
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateIsolatedAudioRequest?>.Default.Equals(AudioIsolation, other.AudioIsolation) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateSpeechToSpeechRequest?>.Default.Equals(SpeechToSpeech, other.SpeechToSpeech) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateVoiceCloneRequest?>.Default.Equals(VoiceClone, other.VoiceClone) &&
-                global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateAudioFromVideoRequest?>.Default.Equals(AudioFromVideo, other.AudioFromVideo) &&
-                global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateVideoWithAudioRequest?>.Default.Equals(VideoWithAudio, other.VideoWithAudio) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateVideoToVideoRequest?>.Default.Equals(VideoToVideo, other.VideoToVideo) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateMotionControlRequest?>.Default.Equals(MotionControl, other.MotionControl) 
                 ;

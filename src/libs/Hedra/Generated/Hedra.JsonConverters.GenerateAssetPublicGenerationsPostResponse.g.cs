@@ -84,20 +84,6 @@ namespace Hedra.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Hedra.GenerateVoiceCloneResponse)}");
                 voiceClone = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Hedra.GenerateAudioFromVideoResponse? audioFromVideo = default;
-            if (discriminator?.Type == global::Hedra.GenerateAssetPublicGenerationsPostResponseDiscriminatorType.AudioFromVideo)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GenerateAudioFromVideoResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GenerateAudioFromVideoResponse> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Hedra.GenerateAudioFromVideoResponse)}");
-                audioFromVideo = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
-            }
-            global::Hedra.GenerateVideoWithAudioResponse? videoWithAudio = default;
-            if (discriminator?.Type == global::Hedra.GenerateAssetPublicGenerationsPostResponseDiscriminatorType.VideoWithAudio)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GenerateVideoWithAudioResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GenerateVideoWithAudioResponse> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Hedra.GenerateVideoWithAudioResponse)}");
-                videoWithAudio = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
-            }
             global::Hedra.GenerateVideoToVideoResponse? videoToVideo = default;
             if (discriminator?.Type == global::Hedra.GenerateAssetPublicGenerationsPostResponseDiscriminatorType.VideoToVideo)
             {
@@ -132,10 +118,6 @@ namespace Hedra.JsonConverters
                 speechToSpeech,
 
                 voiceClone,
-
-                audioFromVideo,
-
-                videoWithAudio,
 
                 videoToVideo,
 
@@ -207,18 +189,6 @@ namespace Hedra.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GenerateVoiceCloneResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GenerateVoiceCloneResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.GenerateVoiceCloneResponse).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.VoiceClone!, typeInfo);
-            }
-            else if (value.IsAudioFromVideo)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GenerateAudioFromVideoResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GenerateAudioFromVideoResponse?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.GenerateAudioFromVideoResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AudioFromVideo!, typeInfo);
-            }
-            else if (value.IsVideoWithAudio)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GenerateVideoWithAudioResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GenerateVideoWithAudioResponse?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.GenerateVideoWithAudioResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VideoWithAudio!, typeInfo);
             }
             else if (value.IsVideoToVideo)
             {

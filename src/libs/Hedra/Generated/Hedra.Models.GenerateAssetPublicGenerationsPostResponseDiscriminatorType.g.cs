@@ -11,10 +11,6 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        AudioFromVideo,
-        /// <summary>
-        /// 
-        /// </summary>
         AudioIsolation,
         /// <summary>
         /// 
@@ -59,10 +55,6 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        VideoWithAudio,
-        /// <summary>
-        /// 
-        /// </summary>
         VoiceClone,
     }
 
@@ -78,7 +70,6 @@ namespace Hedra
         {
             return value switch
             {
-                GenerateAssetPublicGenerationsPostResponseDiscriminatorType.AudioFromVideo => "audio_from_video",
                 GenerateAssetPublicGenerationsPostResponseDiscriminatorType.AudioIsolation => "audio_isolation",
                 GenerateAssetPublicGenerationsPostResponseDiscriminatorType.Image => "image",
                 GenerateAssetPublicGenerationsPostResponseDiscriminatorType.ImageToImage => "image_to_image",
@@ -90,7 +81,6 @@ namespace Hedra
                 GenerateAssetPublicGenerationsPostResponseDiscriminatorType.Video => "video",
                 GenerateAssetPublicGenerationsPostResponseDiscriminatorType.VideoToVideo => "video_to_video",
                 GenerateAssetPublicGenerationsPostResponseDiscriminatorType.VideoUpscale => "video_upscale",
-                GenerateAssetPublicGenerationsPostResponseDiscriminatorType.VideoWithAudio => "video_with_audio",
                 GenerateAssetPublicGenerationsPostResponseDiscriminatorType.VoiceClone => "voice_clone",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -102,7 +92,6 @@ namespace Hedra
         {
             return value switch
             {
-                "audio_from_video" => GenerateAssetPublicGenerationsPostResponseDiscriminatorType.AudioFromVideo,
                 "audio_isolation" => GenerateAssetPublicGenerationsPostResponseDiscriminatorType.AudioIsolation,
                 "image" => GenerateAssetPublicGenerationsPostResponseDiscriminatorType.Image,
                 "image_to_image" => GenerateAssetPublicGenerationsPostResponseDiscriminatorType.ImageToImage,
@@ -114,7 +103,6 @@ namespace Hedra
                 "video" => GenerateAssetPublicGenerationsPostResponseDiscriminatorType.Video,
                 "video_to_video" => GenerateAssetPublicGenerationsPostResponseDiscriminatorType.VideoToVideo,
                 "video_upscale" => GenerateAssetPublicGenerationsPostResponseDiscriminatorType.VideoUpscale,
-                "video_with_audio" => GenerateAssetPublicGenerationsPostResponseDiscriminatorType.VideoWithAudio,
                 "voice_clone" => GenerateAssetPublicGenerationsPostResponseDiscriminatorType.VoiceClone,
                 _ => null,
             };
