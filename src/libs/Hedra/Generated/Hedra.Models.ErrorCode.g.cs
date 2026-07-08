@@ -21,6 +21,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        AlreadyInProgress,
+        /// <summary>
+        /// 
+        /// </summary>
         DeadlineExceeded,
         /// <summary>
         /// 
@@ -81,6 +85,7 @@ namespace Hedra
             return value switch
             {
                 ErrorCode.AlreadyExists => "ALREADY_EXISTS",
+                ErrorCode.AlreadyInProgress => "ALREADY_IN_PROGRESS",
                 ErrorCode.DeadlineExceeded => "DEADLINE_EXCEEDED",
                 ErrorCode.FailedPrecondition => "FAILED_PRECONDITION",
                 ErrorCode.Internal => "INTERNAL",
@@ -104,6 +109,7 @@ namespace Hedra
             return value switch
             {
                 "ALREADY_EXISTS" => ErrorCode.AlreadyExists,
+                "ALREADY_IN_PROGRESS" => ErrorCode.AlreadyInProgress,
                 "DEADLINE_EXCEEDED" => ErrorCode.DeadlineExceeded,
                 "FAILED_PRECONDITION" => ErrorCode.FailedPrecondition,
                 "INTERNAL" => ErrorCode.Internal,
