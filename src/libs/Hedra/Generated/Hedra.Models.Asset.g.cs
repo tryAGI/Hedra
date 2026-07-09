@@ -34,8 +34,7 @@ namespace Hedra
         /// URL of the thumbnail image.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("thumbnail_url")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ThumbnailUrl { get; set; }
+        public string? ThumbnailUrl { get; set; }
 
         /// <summary>
         /// Optional description of the asset.
@@ -96,14 +95,14 @@ namespace Hedra
         /// <param name="name">
         /// Name of the asset. Default to user-provided file name.
         /// </param>
-        /// <param name="thumbnailUrl">
-        /// URL of the thumbnail image.
-        /// </param>
         /// <param name="createdAt">
         /// Date the asset was created.
         /// </param>
         /// <param name="asset1">
         /// The asset itself.
+        /// </param>
+        /// <param name="thumbnailUrl">
+        /// URL of the thumbnail image.
         /// </param>
         /// <param name="description">
         /// Optional description of the asset.
@@ -126,9 +125,9 @@ namespace Hedra
             global::System.Guid id,
             global::Hedra.AssetType type,
             string name,
-            string thumbnailUrl,
             string createdAt,
             global::Hedra.Asset1 asset1,
+            string? thumbnailUrl,
             string? description,
             bool? isFavorite,
             bool? recent,
@@ -137,7 +136,7 @@ namespace Hedra
             this.Id = id;
             this.Type = type;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.ThumbnailUrl = thumbnailUrl ?? throw new global::System.ArgumentNullException(nameof(thumbnailUrl));
+            this.ThumbnailUrl = thumbnailUrl;
             this.Description = description;
             this.IsFavorite = isFavorite;
             this.Recent = recent;

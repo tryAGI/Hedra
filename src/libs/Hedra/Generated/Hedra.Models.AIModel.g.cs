@@ -9,11 +9,10 @@ namespace Hedra
     public sealed partial class AIModel
     {
         /// <summary>
-        /// ID of the model
+        /// Environment-specific UUID of the model, or null for a code-backed model with no `ai_models` row (identified by `slug`). Being removed in favor of `slug` (model-registry plan step 7); prefer `slug`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// Stable cross-environment identifier for the model, e.g. ``google/nano-banana``. Unique and identical across local/staging/production. Prefer ``slug`` over ``id`` when referencing models — ``id`` is environment-specific and will be removed in a later migration (model-registry plan step 7).
@@ -185,9 +184,6 @@ namespace Hedra
         /// <summary>
         /// Initializes a new instance of the <see cref="AIModel" /> class.
         /// </summary>
-        /// <param name="id">
-        /// ID of the model
-        /// </param>
         /// <param name="slug">
         /// Stable cross-environment identifier for the model, e.g. ``google/nano-banana``. Unique and identical across local/staging/production. Prefer ``slug`` over ``id`` when referencing models — ``id`` is environment-specific and will be removed in a later migration (model-registry plan step 7).
         /// </param>
@@ -199,6 +195,9 @@ namespace Hedra
         /// </param>
         /// <param name="priceDetails">
         /// Pricing details of the model.
+        /// </param>
+        /// <param name="id">
+        /// Environment-specific UUID of the model, or null for a code-backed model with no `ai_models` row (identified by `slug`). Being removed in favor of `slug` (model-registry plan step 7); prefer `slug`.
         /// </param>
         /// <param name="description">
         /// Description of the model.
@@ -271,11 +270,11 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AIModel(
-            string id,
             string slug,
             string name,
             string type,
             global::Hedra.AIModelPrice priceDetails,
+            string? id,
             string? description,
             global::System.Collections.Generic.IList<string>? aspectRatios,
             global::System.Collections.Generic.IList<double>? aspectRatioRange,
@@ -299,7 +298,7 @@ namespace Hedra
             bool? premium,
             int? displayOrder)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.Id = id;
             this.Slug = slug ?? throw new global::System.ArgumentNullException(nameof(slug));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;

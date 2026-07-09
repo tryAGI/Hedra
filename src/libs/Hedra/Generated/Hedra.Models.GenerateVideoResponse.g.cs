@@ -39,6 +39,12 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
+        /// Optional human-friendly name for the generated asset.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// ID of the model to use for the generation. Provide this OR `model_slug`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
@@ -225,6 +231,9 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: video
         /// </param>
+        /// <param name="name">
+        /// Optional human-friendly name for the generated asset.
+        /// </param>
         /// <param name="aiModelId">
         /// ID of the model to use for the generation. Provide this OR `model_slug`.
         /// </param>
@@ -292,6 +301,7 @@ namespace Hedra
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
+            string? name,
             global::System.Guid? aiModelId,
             string? modelSlug,
             global::System.Guid? startKeyframeId,
@@ -315,6 +325,7 @@ namespace Hedra
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.Name = name;
             this.AiModelId = aiModelId;
             this.ModelSlug = modelSlug;
             this.StartKeyframeId = startKeyframeId;

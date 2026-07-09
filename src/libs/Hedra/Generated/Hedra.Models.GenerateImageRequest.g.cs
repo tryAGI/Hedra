@@ -40,6 +40,12 @@ namespace Hedra
         public global::Hedra.GenerateImageRequestType? Type { get; set; }
 
         /// <summary>
+        /// Optional human-friendly name for the generated asset.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// The text prompt for image generation or image editing.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text_prompt")]
@@ -121,6 +127,9 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: image
         /// </param>
+        /// <param name="name">
+        /// Optional human-friendly name for the generated asset.
+        /// </param>
         /// <param name="aspectRatio">
         /// The aspect ratio to use.
         /// </param>
@@ -157,6 +166,7 @@ namespace Hedra
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             global::Hedra.GenerateImageRequestType? type,
+            string? name,
             string? aspectRatio,
             string? resolution,
             global::System.Guid? startKeyframeId,
@@ -171,6 +181,7 @@ namespace Hedra
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.Name = name;
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.AspectRatio = aspectRatio;
             this.Resolution = resolution;
