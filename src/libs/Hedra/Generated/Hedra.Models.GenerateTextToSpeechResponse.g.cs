@@ -39,6 +39,12 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
+        /// Optional human-friendly name for the generated asset.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// The id of the Voice to use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice_id")]
@@ -171,6 +177,9 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: text_to_speech
         /// </param>
+        /// <param name="name">
+        /// Optional human-friendly name for the generated asset.
+        /// </param>
         /// <param name="modelId">
         /// The id of the model to use.
         /// </param>
@@ -208,6 +217,7 @@ namespace Hedra
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
             string? type,
+            string? name,
             global::System.Guid? modelId,
             string? modelSlug,
             double? stability,
@@ -220,6 +230,7 @@ namespace Hedra
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
             this.Type = type;
+            this.Name = name;
             this.VoiceId = voiceId;
             this.ModelId = modelId;
             this.ModelSlug = modelSlug;
