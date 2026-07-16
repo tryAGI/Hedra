@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// The id of the image asset resulting from the generation. None if failed.
+    /// The id of the image asset. Set even on failure when the client reserved an asset id; None only when no id was reserved.
     /// </summary>
     public sealed partial class BatchImageResultItemAssetId
     {

@@ -33,6 +33,18 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::System.Guid>? GenerationIds { get; set; }
 
         /// <summary>
+        /// Optional pre-reserved asset ID. Used as the produced media+asset resource_id so the client knows the asset's identity at request time. For batch operations (batch_size &gt; 1), use reserved_asset_ids instead. Named distinctly from the response's `asset_id` (the produced asset) so the two don't collide across the request/response inheritance chain — mirrors generation_id (request) vs id (response).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reserved_asset_id")]
+        public global::System.Guid? ReservedAssetId { get; set; }
+
+        /// <summary>
+        /// Optional list of pre-reserved asset IDs for batch operations. Length must match batch_size, parallel to generation_ids. Mutually exclusive with reserved_asset_id.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reserved_asset_ids")]
+        public global::System.Collections.Generic.IList<global::System.Guid>? ReservedAssetIds { get; set; }
+
+        /// <summary>
         /// Default Value: image_upscale
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
@@ -148,6 +160,12 @@ namespace Hedra
         /// <param name="generationIds">
         /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
         /// </param>
+        /// <param name="reservedAssetId">
+        /// Optional pre-reserved asset ID. Used as the produced media+asset resource_id so the client knows the asset's identity at request time. For batch operations (batch_size &gt; 1), use reserved_asset_ids instead. Named distinctly from the response's `asset_id` (the produced asset) so the two don't collide across the request/response inheritance chain — mirrors generation_id (request) vs id (response).
+        /// </param>
+        /// <param name="reservedAssetIds">
+        /// Optional list of pre-reserved asset IDs for batch operations. Length must match batch_size, parallel to generation_ids. Mutually exclusive with reserved_asset_id.
+        /// </param>
         /// <param name="type">
         /// Default Value: image_upscale
         /// </param>
@@ -180,6 +198,8 @@ namespace Hedra
             global::System.Guid? agentThreadId,
             global::System.Guid? generationId,
             global::System.Collections.Generic.IList<global::System.Guid>? generationIds,
+            global::System.Guid? reservedAssetId,
+            global::System.Collections.Generic.IList<global::System.Guid>? reservedAssetIds,
             string? type,
             global::System.Guid? aiModelId,
             string? modelSlug,
@@ -191,6 +211,8 @@ namespace Hedra
             this.AgentThreadId = agentThreadId;
             this.GenerationId = generationId;
             this.GenerationIds = generationIds;
+            this.ReservedAssetId = reservedAssetId;
+            this.ReservedAssetIds = reservedAssetIds;
             this.Type = type;
             this.AiModelId = aiModelId;
             this.ModelSlug = modelSlug;

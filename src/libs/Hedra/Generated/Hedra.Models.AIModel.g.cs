@@ -60,6 +60,12 @@ namespace Hedra
         public global::System.Collections.Generic.IList<string>? Resolutions { get; set; }
 
         /// <summary>
+        /// Backend-declared default output resolution for this model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("default_resolution")]
+        public string? DefaultResolution { get; set; }
+
+        /// <summary>
         /// Durations the model supports.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("durations")]
@@ -211,6 +217,9 @@ namespace Hedra
         /// <param name="resolutions">
         /// Resolutions the model supports.
         /// </param>
+        /// <param name="defaultResolution">
+        /// Backend-declared default output resolution for this model.
+        /// </param>
         /// <param name="durations">
         /// Durations the model supports.
         /// </param>
@@ -279,6 +288,7 @@ namespace Hedra
             global::System.Collections.Generic.IList<string>? aspectRatios,
             global::System.Collections.Generic.IList<double>? aspectRatioRange,
             global::System.Collections.Generic.IList<string>? resolutions,
+            string? defaultResolution,
             global::System.Collections.Generic.IList<string>? durations,
             bool? requiresStartFrame,
             bool? requiresEndFrame,
@@ -306,6 +316,7 @@ namespace Hedra
             this.AspectRatios = aspectRatios;
             this.AspectRatioRange = aspectRatioRange;
             this.Resolutions = resolutions;
+            this.DefaultResolution = defaultResolution;
             this.Durations = durations;
             this.RequiresStartFrame = requiresStartFrame;
             this.RequiresEndFrame = requiresEndFrame;
