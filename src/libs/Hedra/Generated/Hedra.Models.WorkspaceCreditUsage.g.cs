@@ -47,6 +47,12 @@ namespace Hedra
         public int? ApiCredits { get; set; }
 
         /// <summary>
+        /// Lifetime micro-dollars spent from the API wallet (carried across billing periods — the wallet has none). Only present while the API wallet is enabled and funded.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("api_consumed_usd_micros")]
+        public int? ApiConsumedUsdMicros { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -70,6 +76,9 @@ namespace Hedra
         /// <param name="apiCredits">
         /// Display-credit view of api_usd_micros (floor at 140 credits/$). Informational; API charges are USD-denominated.
         /// </param>
+        /// <param name="apiConsumedUsdMicros">
+        /// Lifetime micro-dollars spent from the API wallet (carried across billing periods — the wallet has none). Only present while the API wallet is enabled and funded.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -78,13 +87,15 @@ namespace Hedra
             int allocated,
             int available,
             int? apiUsdMicros,
-            int? apiCredits)
+            int? apiCredits,
+            int? apiConsumedUsdMicros)
         {
             this.Used = used;
             this.Allocated = allocated;
             this.Available = available;
             this.ApiUsdMicros = apiUsdMicros;
             this.ApiCredits = apiCredits;
+            this.ApiConsumedUsdMicros = apiConsumedUsdMicros;
         }
 
         /// <summary>

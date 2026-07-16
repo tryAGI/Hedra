@@ -30,6 +30,12 @@ namespace Hedra
         public string? WorkspaceId { get; set; }
 
         /// <summary>
+        /// Optional pre-reserved asset ID, used as the produced media+asset resource_id so the client knows the upload's identity before it completes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reserved_asset_id")]
+        public global::System.Guid? ReservedAssetId { get; set; }
+
+        /// <summary>
         /// The id of the newly created asset. Should be used for upload.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -61,6 +67,9 @@ namespace Hedra
         /// The id of the newly created asset. Should be used for upload.
         /// </param>
         /// <param name="workspaceId"></param>
+        /// <param name="reservedAssetId">
+        /// Optional pre-reserved asset ID, used as the produced media+asset resource_id so the client knows the upload's identity before it completes.
+        /// </param>
         /// <param name="uploadUrl">
         /// Presigned S3 URL for uploading the asset file using HTTP PUT. Only present when the asset type is VIDEO.
         /// </param>
@@ -72,11 +81,13 @@ namespace Hedra
             global::Hedra.AssetType type,
             global::System.Guid id,
             string? workspaceId,
+            global::System.Guid? reservedAssetId,
             string? uploadUrl)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Type = type;
             this.WorkspaceId = workspaceId;
+            this.ReservedAssetId = reservedAssetId;
             this.Id = id;
             this.UploadUrl = uploadUrl;
         }

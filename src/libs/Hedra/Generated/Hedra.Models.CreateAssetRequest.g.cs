@@ -30,6 +30,12 @@ namespace Hedra
         public string? WorkspaceId { get; set; }
 
         /// <summary>
+        /// Optional pre-reserved asset ID, used as the produced media+asset resource_id so the client knows the upload's identity before it completes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reserved_asset_id")]
+        public global::System.Guid? ReservedAssetId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -45,17 +51,22 @@ namespace Hedra
         /// The type of the asset.
         /// </param>
         /// <param name="workspaceId"></param>
+        /// <param name="reservedAssetId">
+        /// Optional pre-reserved asset ID, used as the produced media+asset resource_id so the client knows the upload's identity before it completes.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateAssetRequest(
             string name,
             global::Hedra.AssetType type,
-            string? workspaceId)
+            string? workspaceId,
+            global::System.Guid? reservedAssetId)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Type = type;
             this.WorkspaceId = workspaceId;
+            this.ReservedAssetId = reservedAssetId;
         }
 
         /// <summary>

@@ -15,7 +15,7 @@ namespace Hedra
         public global::System.Guid? Id { get; set; }
 
         /// <summary>
-        /// The id of the video asset resulting from the generation. None if failed.
+        /// The id of the video asset. Set even on failure when the client reserved an asset id; None only when no id was reserved.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("asset_id")]
         public global::System.Guid? AssetId { get; set; }
@@ -76,7 +76,7 @@ namespace Hedra
         /// The id of the generation created. None if failed.
         /// </param>
         /// <param name="assetId">
-        /// The id of the video asset resulting from the generation. None if failed.
+        /// The id of the video asset. Set even on failure when the client reserved an asset id; None only when no id was reserved.
         /// </param>
         /// <param name="error">
         /// Error message if this item failed.

@@ -38,6 +38,9 @@ namespace Hedra
         /// The type of the asset.
         /// </param>
         /// <param name="workspaceId"></param>
+        /// <param name="reservedAssetId">
+        /// Optional pre-reserved asset ID, used as the produced media+asset resource_id so the client knows the upload's identity before it completes.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -45,6 +48,7 @@ namespace Hedra
             string name,
             global::Hedra.AssetType type,
             string? workspaceId = default,
+            global::System.Guid? reservedAssetId = default,
             global::Hedra.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
