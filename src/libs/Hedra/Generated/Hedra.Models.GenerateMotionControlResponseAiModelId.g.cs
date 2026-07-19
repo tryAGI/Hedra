@@ -4,8 +4,9 @@
 namespace Hedra
 {
     /// <summary>
-    /// The id of the Motion Control model to use. Provide this OR `model_slug`.
+    /// Deprecated. Use `model_slug` to select the motion control model.
     /// </summary>
+    [global::System.Obsolete("This model marked as deprecated.")]
     public sealed partial class GenerateMotionControlResponseAiModelId
     {
 

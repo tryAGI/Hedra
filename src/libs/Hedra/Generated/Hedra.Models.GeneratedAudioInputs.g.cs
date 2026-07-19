@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Hedra
@@ -16,9 +18,10 @@ namespace Hedra
         public required string TextPrompt { get; set; }
 
         /// <summary>
-        /// The id of the model used for generation.
+        /// Deprecated. Use `model_slug` to identify the model used for generation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
@@ -69,9 +72,6 @@ namespace Hedra
         /// <param name="textPrompt">
         /// Prompt for audio generation.
         /// </param>
-        /// <param name="aiModelId">
-        /// The id of the model used for generation.
-        /// </param>
         /// <param name="modelSlug">
         /// The slug of the model used for generation. Alternative to `ai_model_id`.
         /// </param>
@@ -95,7 +95,6 @@ namespace Hedra
 #endif
         public GeneratedAudioInputs(
             string textPrompt,
-            global::System.Guid? aiModelId,
             string? modelSlug,
             string? voiceName,
             global::System.Guid? voiceId,
@@ -104,7 +103,6 @@ namespace Hedra
             string? language)
         {
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
-            this.AiModelId = aiModelId;
             this.ModelSlug = modelSlug;
             this.VoiceName = voiceName;
             this.VoiceId = voiceId;

@@ -4,8 +4,9 @@
 namespace Hedra
 {
     /// <summary>
-    /// The model to use for upscaling. Provide this OR `model_slug`.
+    /// Deprecated. Use `model_slug` to select the video upscale model.
     /// </summary>
+    [global::System.Obsolete("This model marked as deprecated.")]
     public sealed partial class GenerateVideoUpscaleRequestAiModelId
     {
 

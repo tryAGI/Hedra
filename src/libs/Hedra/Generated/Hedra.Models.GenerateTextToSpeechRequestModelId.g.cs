@@ -4,8 +4,9 @@
 namespace Hedra
 {
     /// <summary>
-    /// The id of the model to use.
+    /// Deprecated. Use `model_slug` to select the model.
     /// </summary>
+    [global::System.Obsolete("This model marked as deprecated.")]
     public sealed partial class GenerateTextToSpeechRequestModelId
     {
 

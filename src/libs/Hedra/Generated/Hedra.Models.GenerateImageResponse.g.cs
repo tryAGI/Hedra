@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Hedra
@@ -83,9 +85,10 @@ namespace Hedra
         public global::System.Guid? StartKeyframeId { get; set; }
 
         /// <summary>
-        /// The model to use. Provide this OR `model_slug`.
+        /// Deprecated. Use `model_slug` to select the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
@@ -226,9 +229,6 @@ namespace Hedra
         /// <param name="startKeyframeId">
         /// The id of the Image asset to use as the start keyframe.
         /// </param>
-        /// <param name="aiModelId">
-        /// The model to use. Provide this OR `model_slug`.
-        /// </param>
         /// <param name="modelSlug">
         /// The slug of the model to use. Alternative to `ai_model_id`.
         /// </param>
@@ -273,7 +273,6 @@ namespace Hedra
             string? aspectRatio,
             string? resolution,
             global::System.Guid? startKeyframeId,
-            global::System.Guid? aiModelId,
             string? modelSlug,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageIds,
             int? batchSize,
@@ -294,7 +293,6 @@ namespace Hedra
             this.AspectRatio = aspectRatio;
             this.Resolution = resolution;
             this.StartKeyframeId = startKeyframeId;
-            this.AiModelId = aiModelId;
             this.ModelSlug = modelSlug;
             this.ReferenceImageIds = referenceImageIds;
             this.BatchSize = batchSize;
