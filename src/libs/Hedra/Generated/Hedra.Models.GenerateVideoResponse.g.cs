@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Hedra
@@ -57,9 +59,10 @@ namespace Hedra
         public string? Name { get; set; }
 
         /// <summary>
-        /// ID of the model to use for the generation. Provide this OR `model_slug`.
+        /// Deprecated. Use `model_slug` to select the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
@@ -252,9 +255,6 @@ namespace Hedra
         /// <param name="name">
         /// Optional human-friendly name for the generated asset.
         /// </param>
-        /// <param name="aiModelId">
-        /// ID of the model to use for the generation. Provide this OR `model_slug`.
-        /// </param>
         /// <param name="modelSlug">
         /// Slug of the model to use for the generation. Alternative to `ai_model_id`.
         /// </param>
@@ -322,7 +322,6 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? reservedAssetIds,
             string? type,
             string? name,
-            global::System.Guid? aiModelId,
             string? modelSlug,
             global::System.Guid? startKeyframeId,
             string? startKeyframeUrl,
@@ -348,7 +347,6 @@ namespace Hedra
             this.ReservedAssetIds = reservedAssetIds;
             this.Type = type;
             this.Name = name;
-            this.AiModelId = aiModelId;
             this.ModelSlug = modelSlug;
             this.StartKeyframeId = startKeyframeId;
             this.StartKeyframeUrl = startKeyframeUrl;

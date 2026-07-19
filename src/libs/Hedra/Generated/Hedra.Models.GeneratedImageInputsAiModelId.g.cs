@@ -4,8 +4,9 @@
 namespace Hedra
 {
     /// <summary>
-    /// The id of the model used for generation.
+    /// Deprecated. Use `model_slug` to identify the model used for generation.
     /// </summary>
+    [global::System.Obsolete("This model marked as deprecated.")]
     public sealed partial class GeneratedImageInputsAiModelId
     {
 

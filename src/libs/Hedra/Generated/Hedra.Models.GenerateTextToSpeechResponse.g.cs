@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Hedra
@@ -64,9 +66,10 @@ namespace Hedra
         public required global::System.Guid VoiceId { get; set; }
 
         /// <summary>
-        /// The id of the model to use.
+        /// Deprecated. Use `model_slug` to select the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Guid? ModelId { get; set; }
 
         /// <summary>
@@ -198,9 +201,6 @@ namespace Hedra
         /// <param name="name">
         /// Optional human-friendly name for the generated asset.
         /// </param>
-        /// <param name="modelId">
-        /// The id of the model to use.
-        /// </param>
         /// <param name="modelSlug">
         /// The slug of the model to use. Alternative to `model_id`.
         /// </param>
@@ -238,7 +238,6 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? reservedAssetIds,
             string? type,
             string? name,
-            global::System.Guid? modelId,
             string? modelSlug,
             double? stability,
             double? speed,
@@ -254,7 +253,6 @@ namespace Hedra
             this.Type = type;
             this.Name = name;
             this.VoiceId = voiceId;
-            this.ModelId = modelId;
             this.ModelSlug = modelSlug;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Stability = stability;

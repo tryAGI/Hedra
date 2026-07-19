@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Hedra
@@ -51,9 +53,10 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
-        /// The model to use for upscaling. Provide this OR `model_slug`.
+        /// Deprecated. Use `model_slug` to select the video upscale model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
@@ -169,9 +172,6 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: video_upscale
         /// </param>
-        /// <param name="aiModelId">
-        /// The model to use for upscaling. Provide this OR `model_slug`.
-        /// </param>
         /// <param name="modelSlug">
         /// The slug of the model to use for upscaling. Alternative to `ai_model_id`.
         /// </param>
@@ -201,7 +201,6 @@ namespace Hedra
             global::System.Guid? reservedAssetId,
             global::System.Collections.Generic.IList<global::System.Guid>? reservedAssetIds,
             string? type,
-            global::System.Guid? aiModelId,
             string? modelSlug,
             double? upscaleFactor,
             string? targetResolution,
@@ -214,7 +213,6 @@ namespace Hedra
             this.ReservedAssetId = reservedAssetId;
             this.ReservedAssetIds = reservedAssetIds;
             this.Type = type;
-            this.AiModelId = aiModelId;
             this.ModelSlug = modelSlug;
             this.VideoId = videoId;
             this.UpscaleFactor = upscaleFactor;

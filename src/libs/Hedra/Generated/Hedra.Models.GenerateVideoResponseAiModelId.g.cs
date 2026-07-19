@@ -4,8 +4,9 @@
 namespace Hedra
 {
     /// <summary>
-    /// ID of the model to use for the generation. Provide this OR `model_slug`.
+    /// Deprecated. Use `model_slug` to select the model.
     /// </summary>
+    [global::System.Obsolete("This model marked as deprecated.")]
     public sealed partial class GenerateVideoResponseAiModelId
     {
 

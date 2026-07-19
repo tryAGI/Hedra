@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Hedra
@@ -51,9 +53,10 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
-        /// The id of the Motion Control model to use. Provide this OR `model_slug`.
+        /// Deprecated. Use `model_slug` to select the motion control model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
@@ -177,9 +180,6 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: motion_control
         /// </param>
-        /// <param name="aiModelId">
-        /// The id of the Motion Control model to use. Provide this OR `model_slug`.
-        /// </param>
         /// <param name="modelSlug">
         /// The slug of the Motion Control model. Alternative to `ai_model_id`.
         /// </param>
@@ -205,7 +205,6 @@ namespace Hedra
             global::System.Guid? reservedAssetId,
             global::System.Collections.Generic.IList<global::System.Guid>? reservedAssetIds,
             string? type,
-            global::System.Guid? aiModelId,
             string? modelSlug,
             int? etaSec)
         {
@@ -216,7 +215,6 @@ namespace Hedra
             this.ReservedAssetId = reservedAssetId;
             this.ReservedAssetIds = reservedAssetIds;
             this.Type = type;
-            this.AiModelId = aiModelId;
             this.ModelSlug = modelSlug;
             this.VideoId = videoId;
             this.StartKeyframeId = startKeyframeId;

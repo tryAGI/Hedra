@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Hedra
@@ -58,9 +60,10 @@ namespace Hedra
         public required global::System.Guid AudioId { get; set; }
 
         /// <summary>
-        /// The id of the model to use for audio isolation. Provide this OR `model_slug`.
+        /// Deprecated. Use `model_slug` to select the speech-to-speech model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
@@ -167,9 +170,6 @@ namespace Hedra
         /// <param name="type">
         /// Default Value: speech_to_speech
         /// </param>
-        /// <param name="aiModelId">
-        /// The id of the model to use for audio isolation. Provide this OR `model_slug`.
-        /// </param>
         /// <param name="modelSlug">
         /// The slug of the model to use for audio isolation. Alternative to `ai_model_id`.
         /// </param>
@@ -194,7 +194,6 @@ namespace Hedra
             global::System.Guid? reservedAssetId,
             global::System.Collections.Generic.IList<global::System.Guid>? reservedAssetIds,
             string? type,
-            global::System.Guid? aiModelId,
             string? modelSlug,
             int? etaSec)
         {
@@ -206,7 +205,6 @@ namespace Hedra
             this.ReservedAssetIds = reservedAssetIds;
             this.Type = type;
             this.AudioId = audioId;
-            this.AiModelId = aiModelId;
             this.ModelSlug = modelSlug;
             this.VoiceId = voiceId;
             this.Id = id;
