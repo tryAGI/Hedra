@@ -73,10 +73,16 @@ namespace Hedra
         public string? AspectRatio { get; set; }
 
         /// <summary>
-        /// The resolution to use formatted like '540p', '1080p', '1440p (2K QHD)', etc.
+        /// The resolution to use. Valid values depend on the model: some offer pixel-height tokens like '540p', '1080p' or '1440p (2K QHD)', while others offer '1K', '2K' and '4K'. Read the model's advertised resolutions rather than assuming one vocabulary — a token the model does not offer is rejected.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("resolution")]
         public string? Resolution { get; set; }
+
+        /// <summary>
+        /// Output image encoding, for models whose provider endpoint accepts one (e.g. 'png', 'jpeg', 'webp'). None keeps the encoding the model already sends, so nothing about the request changes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("output_format")]
+        public string? OutputFormat { get; set; }
 
         /// <summary>
         /// The id of the Image asset to use as the start keyframe.
@@ -116,6 +122,12 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("enhance_prompt")]
         public bool? EnhancePrompt { get; set; }
+
+        /// <summary>
+        /// Seed for reproducible output, for models whose provider accepts one. None leaves the argument out of the provider request entirely, so the provider's own random-seed behavior applies.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
+        public int? Seed { get; set; }
 
         /// <summary>
         /// The id of the resulting image asset.
@@ -224,7 +236,10 @@ namespace Hedra
         /// The aspect ratio to use.
         /// </param>
         /// <param name="resolution">
-        /// The resolution to use formatted like '540p', '1080p', '1440p (2K QHD)', etc.
+        /// The resolution to use. Valid values depend on the model: some offer pixel-height tokens like '540p', '1080p' or '1440p (2K QHD)', while others offer '1K', '2K' and '4K'. Read the model's advertised resolutions rather than assuming one vocabulary — a token the model does not offer is rejected.
+        /// </param>
+        /// <param name="outputFormat">
+        /// Output image encoding, for models whose provider endpoint accepts one (e.g. 'png', 'jpeg', 'webp'). None keeps the encoding the model already sends, so nothing about the request changes.
         /// </param>
         /// <param name="startKeyframeId">
         /// The id of the Image asset to use as the start keyframe.
@@ -242,6 +257,9 @@ namespace Hedra
         /// <param name="enhancePrompt">
         /// If true, automatically enhance the prompt before generation.<br/>
         /// Default Value: false
+        /// </param>
+        /// <param name="seed">
+        /// Seed for reproducible output, for models whose provider accepts one. None leaves the argument out of the provider request entirely, so the provider's own random-seed behavior applies.
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -272,11 +290,13 @@ namespace Hedra
             string? name,
             string? aspectRatio,
             string? resolution,
+            string? outputFormat,
             global::System.Guid? startKeyframeId,
             string? modelSlug,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageIds,
             int? batchSize,
             bool? enhancePrompt,
+            int? seed,
             int? etaSec,
             string? batchGenerationId,
             global::System.Collections.Generic.IList<global::Hedra.BatchImageResultItem>? batchResults)
@@ -292,11 +312,13 @@ namespace Hedra
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.AspectRatio = aspectRatio;
             this.Resolution = resolution;
+            this.OutputFormat = outputFormat;
             this.StartKeyframeId = startKeyframeId;
             this.ModelSlug = modelSlug;
             this.ReferenceImageIds = referenceImageIds;
             this.BatchSize = batchSize;
             this.EnhancePrompt = enhancePrompt;
+            this.Seed = seed;
             this.AssetId = assetId;
             this.Id = id;
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));

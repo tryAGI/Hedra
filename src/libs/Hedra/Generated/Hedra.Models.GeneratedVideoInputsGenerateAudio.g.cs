@@ -4,9 +4,9 @@
 namespace Hedra
 {
     /// <summary>
-    /// The resolution to use. Valid values depend on the model: some offer pixel-height tokens like '540p', '1080p' or '1440p (2K QHD)', while others offer '1K', '2K' and '4K'. Read the model's advertised resolutions rather than assuming one vocabulary — a token the model does not offer is rejected.
+    /// Whether to generate native audio, for models with an audio toggle. None preserves the legacy default (audio on); an explicit false is forwarded to the provider and charges the model's audio-off price.
     /// </summary>
-    public sealed partial class GenerateImageResponseResolution
+    public sealed partial class GeneratedVideoInputsGenerateAudio
     {
 
         /// <summary>
