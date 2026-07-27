@@ -49,6 +49,18 @@ namespace Hedra
         public int? DurationMs { get; set; }
 
         /// <summary>
+        /// Whether to generate native audio, for models with an audio toggle. None preserves the legacy default (audio on); an explicit false is forwarded to the provider and charges the model's audio-off price.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("generate_audio")]
+        public bool? GenerateAudio { get; set; }
+
+        /// <summary>
+        /// Seed for reproducible output, for models whose provider accepts one. None leaves the argument out of the provider request entirely, so the provider's own random-seed behavior applies.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
+        public int? Seed { get; set; }
+
+        /// <summary>
         /// Normalized coordinates for speaker position(s). A single point for single-speaker; a list for multi-speaker (one per speaker, same length as audio_id list).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("bounding_box_target")]
@@ -104,6 +116,12 @@ namespace Hedra
         /// <param name="durationMs">
         /// Duration of the video in milliseconds.
         /// </param>
+        /// <param name="generateAudio">
+        /// Whether to generate native audio, for models with an audio toggle. None preserves the legacy default (audio on); an explicit false is forwarded to the provider and charges the model's audio-off price.
+        /// </param>
+        /// <param name="seed">
+        /// Seed for reproducible output, for models whose provider accepts one. None leaves the argument out of the provider request entirely, so the provider's own random-seed behavior applies.
+        /// </param>
         /// <param name="boundingBoxTarget">
         /// Normalized coordinates for speaker position(s). A single point for single-speaker; a list for multi-speaker (one per speaker, same length as audio_id list).
         /// </param>
@@ -129,6 +147,8 @@ namespace Hedra
             string? resolution,
             string? aspectRatio,
             int? durationMs,
+            bool? generateAudio,
+            int? seed,
             global::Hedra.AnyOf<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>, object>? boundingBoxTarget,
             global::Hedra.GeneratedVideoInputsCharacterOrientation2? characterOrientation,
             bool? enhancePrompt,
@@ -140,6 +160,8 @@ namespace Hedra
             this.Resolution = resolution;
             this.AspectRatio = aspectRatio;
             this.DurationMs = durationMs;
+            this.GenerateAudio = generateAudio;
+            this.Seed = seed;
             this.BoundingBoxTarget = boundingBoxTarget;
             this.CharacterOrientation = characterOrientation;
             this.EnhancePrompt = enhancePrompt;
