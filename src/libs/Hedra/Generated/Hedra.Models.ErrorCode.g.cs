@@ -33,6 +33,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        Gone,
+        /// <summary>
+        /// 
+        /// </summary>
         Internal,
         /// <summary>
         /// 
@@ -88,6 +92,7 @@ namespace Hedra
                 ErrorCode.AlreadyInProgress => "ALREADY_IN_PROGRESS",
                 ErrorCode.DeadlineExceeded => "DEADLINE_EXCEEDED",
                 ErrorCode.FailedPrecondition => "FAILED_PRECONDITION",
+                ErrorCode.Gone => "GONE",
                 ErrorCode.Internal => "INTERNAL",
                 ErrorCode.InvalidArgument => "INVALID_ARGUMENT",
                 ErrorCode.MissingCredits => "MISSING_CREDITS",
@@ -112,6 +117,7 @@ namespace Hedra
                 "ALREADY_IN_PROGRESS" => ErrorCode.AlreadyInProgress,
                 "DEADLINE_EXCEEDED" => ErrorCode.DeadlineExceeded,
                 "FAILED_PRECONDITION" => ErrorCode.FailedPrecondition,
+                "GONE" => ErrorCode.Gone,
                 "INTERNAL" => ErrorCode.Internal,
                 "INVALID_ARGUMENT" => ErrorCode.InvalidArgument,
                 "MISSING_CREDITS" => ErrorCode.MissingCredits,
