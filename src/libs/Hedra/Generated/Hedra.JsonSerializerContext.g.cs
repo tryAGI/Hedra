@@ -41,6 +41,10 @@ namespace Hedra
 
             typeof(global::Hedra.JsonConverters.GenerationInputDiscriminatorTypeNullableJsonConverter),
 
+            typeof(global::Hedra.JsonConverters.GenerationReasonCodeJsonConverter),
+
+            typeof(global::Hedra.JsonConverters.GenerationReasonCodeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerationStatusJsonConverter),
 
             typeof(global::Hedra.JsonConverters.GenerationStatusNullableJsonConverter),
@@ -168,6 +172,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationInputDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationInputDiscriminatorType), TypeInfoPropertyName = "GenerationInputDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationError2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationReasonCode))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationStatusResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationType), TypeInfoPropertyName = "GenerationType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.HTTPValidationError))]
