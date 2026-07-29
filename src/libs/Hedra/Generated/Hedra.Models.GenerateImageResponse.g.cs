@@ -130,6 +130,18 @@ namespace Hedra
         public int? Seed { get; set; }
 
         /// <summary>
+        /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("guidance_scale")]
+        public double? GuidanceScale { get; set; }
+
+        /// <summary>
+        /// Denoising steps to run, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("num_inference_steps")]
+        public int? NumInferenceSteps { get; set; }
+
+        /// <summary>
         /// The id of the resulting image asset.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("asset_id")]
@@ -261,6 +273,12 @@ namespace Hedra
         /// <param name="seed">
         /// Seed for reproducible output, for models whose provider accepts one. None leaves the argument out of the provider request entirely, so the provider's own random-seed behavior applies.
         /// </param>
+        /// <param name="guidanceScale">
+        /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </param>
+        /// <param name="numInferenceSteps">
+        /// Denoising steps to run, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </param>
@@ -297,6 +315,8 @@ namespace Hedra
             int? batchSize,
             bool? enhancePrompt,
             int? seed,
+            double? guidanceScale,
+            int? numInferenceSteps,
             int? etaSec,
             string? batchGenerationId,
             global::System.Collections.Generic.IList<global::Hedra.BatchImageResultItem>? batchResults)
@@ -319,6 +339,8 @@ namespace Hedra
             this.BatchSize = batchSize;
             this.EnhancePrompt = enhancePrompt;
             this.Seed = seed;
+            this.GuidanceScale = guidanceScale;
+            this.NumInferenceSteps = numInferenceSteps;
             this.AssetId = assetId;
             this.Id = id;
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));

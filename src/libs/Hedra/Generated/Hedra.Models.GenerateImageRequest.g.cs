@@ -130,6 +130,18 @@ namespace Hedra
         public int? Seed { get; set; }
 
         /// <summary>
+        /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("guidance_scale")]
+        public double? GuidanceScale { get; set; }
+
+        /// <summary>
+        /// Denoising steps to run, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("num_inference_steps")]
+        public int? NumInferenceSteps { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -192,6 +204,12 @@ namespace Hedra
         /// <param name="seed">
         /// Seed for reproducible output, for models whose provider accepts one. None leaves the argument out of the provider request entirely, so the provider's own random-seed behavior applies.
         /// </param>
+        /// <param name="guidanceScale">
+        /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </param>
+        /// <param name="numInferenceSteps">
+        /// Denoising steps to run, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -213,7 +231,9 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageIds,
             int? batchSize,
             bool? enhancePrompt,
-            int? seed)
+            int? seed,
+            double? guidanceScale,
+            int? numInferenceSteps)
         {
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
@@ -233,6 +253,8 @@ namespace Hedra
             this.BatchSize = batchSize;
             this.EnhancePrompt = enhancePrompt;
             this.Seed = seed;
+            this.GuidanceScale = guidanceScale;
+            this.NumInferenceSteps = numInferenceSteps;
         }
 
         /// <summary>
