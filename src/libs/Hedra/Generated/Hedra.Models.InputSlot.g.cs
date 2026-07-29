@@ -6,7 +6,24 @@ namespace Hedra
     /// <summary>
     /// A typed input slot describing one kind of input a model accepts.<br/>
     /// Each slot has a media type (image, video, audio) and a role that distinguishes<br/>
-    /// it from other slots of the same type (e.g., start_frame vs end_frame vs reference).
+    /// it from other slots of the same type (e.g., start_frame vs end_frame vs reference).<br/>
+    /// Every constraint below is **enforced**, not advisory — a slot is published<br/>
+    /// to `/models` and to the v3 JSON Schema, so declaring a limit nothing checks<br/>
+    /// would advertise a promise we don't keep:<br/>
+    /// - `min_count` / `max_count` — published as the public list's<br/>
+    ///   `minItems`/`maxItems`, so submit validation rejects both ends;<br/>
+    ///   `max_count` is re-checked at the v3 gateway (before any download) and at<br/>
+    ///   dispatch for reference media.<br/>
+    /// - `max_file_size_bytes` — tightens the per-kind ingestion cap (never<br/>
+    ///   widens it). On an image slot this is not written here:<br/>
+    ///   `VideoModel.declarative_input_modes` stamps it from the model's<br/>
+    ///   `max_input_image_bytes`, so a value set on the slot is overwritten.<br/>
+    /// - `min_dimension_px` / `max_dimension_px` — checked at v3 ingestion against<br/>
+    ///   the image header or the video's ffprobe, before the asset row and the<br/>
+    ///   moderation call.<br/>
+    /// - `min_duration_ms` / `max_duration_ms` — checked against the ffprobe<br/>
+    ///   result at v3 ingestion and by the dispatch video validator.<br/>
+    /// - `max_total_duration_ms` — checked across the slot's files at dispatch.
     /// </summary>
     public sealed partial class InputSlot
     {
@@ -30,6 +47,13 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("required")]
         public bool? Required { get; set; }
+
+        /// <summary>
+        /// Minimum number of files for this slot when it is used. A slot that is present at all carries at least one file, so the default is 1; it rises where the provider needs more.<br/>
+        /// Default Value: 1
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("min_count")]
+        public int? MinCount { get; set; }
 
         /// <summary>
         /// Maximum number of files for this slot.<br/>
@@ -93,6 +117,10 @@ namespace Hedra
         /// Whether this input is mandatory.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="minCount">
+        /// Minimum number of files for this slot when it is used. A slot that is present at all carries at least one file, so the default is 1; it rises where the provider needs more.<br/>
+        /// Default Value: 1
+        /// </param>
         /// <param name="maxCount">
         /// Maximum number of files for this slot.<br/>
         /// Default Value: 1
@@ -122,6 +150,7 @@ namespace Hedra
             string type,
             string role,
             bool? required,
+            int? minCount,
             int? maxCount,
             long? maxFileSizeBytes,
             int? minDimensionPx,
@@ -133,6 +162,7 @@ namespace Hedra
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Role = role ?? throw new global::System.ArgumentNullException(nameof(role));
             this.Required = required;
+            this.MinCount = minCount;
             this.MaxCount = maxCount;
             this.MaxFileSizeBytes = maxFileSizeBytes;
             this.MinDimensionPx = minDimensionPx;

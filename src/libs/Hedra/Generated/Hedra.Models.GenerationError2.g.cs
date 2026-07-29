@@ -30,6 +30,12 @@ namespace Hedra
         public required string Message { get; set; }
 
         /// <summary>
+        /// The input field this failure blames, as the rejecting side named it. Set only when the failure is about one specific field — typically an `INVALID_ARGUMENT` schema rejection — so clients can point at it without parsing `message`. Absent means the failure is not attributable to a single field.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("param")]
+        public string? Param { get; set; }
+
+        /// <summary>
         /// Credits the generation required. Set only for `MISSING_CREDITS`, and only when the failing check knew the cost.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("credits_needed")]
@@ -59,6 +65,9 @@ namespace Hedra
         /// <param name="reasonCode">
         /// Which of several situations sharing `type` actually occurred, when the provider named one. Clients key user-facing copy off the (`type`, `reason_code`) pair and must treat an unrecognized value as absent, falling back to the copy for `type` alone. Absent means `type` says everything we know — not that the finer situation was ruled out.
         /// </param>
+        /// <param name="param">
+        /// The input field this failure blames, as the rejecting side named it. Set only when the failure is about one specific field — typically an `INVALID_ARGUMENT` schema rejection — so clients can point at it without parsing `message`. Absent means the failure is not attributable to a single field.
+        /// </param>
         /// <param name="creditsNeeded">
         /// Credits the generation required. Set only for `MISSING_CREDITS`, and only when the failing check knew the cost.
         /// </param>
@@ -72,12 +81,14 @@ namespace Hedra
             global::Hedra.ErrorCode type,
             string message,
             global::Hedra.GenerationReasonCode? reasonCode,
+            string? param,
             int? creditsNeeded,
             int? creditsAvailable)
         {
             this.Type = type;
             this.ReasonCode = reasonCode;
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
+            this.Param = param;
             this.CreditsNeeded = creditsNeeded;
             this.CreditsAvailable = creditsAvailable;
         }
