@@ -36,6 +36,12 @@ namespace Hedra
         public string? Param { get; set; }
 
         /// <summary>
+        /// Every field-level problem this failure reported, as `field`/`message` pairs in the rejecting side's own vocabulary — so a caller with several bad fields can fix them all in one pass instead of one per round-trip. `param` remains the primary field. Absent when the failure named at most one field.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("violations")]
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>? Violations { get; set; }
+
+        /// <summary>
         /// Credits the generation required. Set only for `MISSING_CREDITS`, and only when the failing check knew the cost.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("credits_needed")]
@@ -68,6 +74,9 @@ namespace Hedra
         /// <param name="param">
         /// The input field this failure blames, as the rejecting side named it. Set only when the failure is about one specific field — typically an `INVALID_ARGUMENT` schema rejection — so clients can point at it without parsing `message`. Absent means the failure is not attributable to a single field.
         /// </param>
+        /// <param name="violations">
+        /// Every field-level problem this failure reported, as `field`/`message` pairs in the rejecting side's own vocabulary — so a caller with several bad fields can fix them all in one pass instead of one per round-trip. `param` remains the primary field. Absent when the failure named at most one field.
+        /// </param>
         /// <param name="creditsNeeded">
         /// Credits the generation required. Set only for `MISSING_CREDITS`, and only when the failing check knew the cost.
         /// </param>
@@ -82,6 +91,7 @@ namespace Hedra
             string message,
             global::Hedra.GenerationReasonCode? reasonCode,
             string? param,
+            global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>? violations,
             int? creditsNeeded,
             int? creditsAvailable)
         {
@@ -89,6 +99,7 @@ namespace Hedra
             this.ReasonCode = reasonCode;
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
             this.Param = param;
+            this.Violations = violations;
             this.CreditsNeeded = creditsNeeded;
             this.CreditsAvailable = creditsAvailable;
         }

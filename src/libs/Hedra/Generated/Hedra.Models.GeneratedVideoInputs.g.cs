@@ -93,6 +93,12 @@ namespace Hedra
         public string? ShotType { get; set; }
 
         /// <summary>
+        /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cfg_scale")]
+        public double? CfgScale { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -138,6 +144,9 @@ namespace Hedra
         /// <param name="shotType">
         /// Shot type for multi-shot generation. Currently only 'customize' is supported.
         /// </param>
+        /// <param name="cfgScale">
+        /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -153,7 +162,8 @@ namespace Hedra
             global::Hedra.GeneratedVideoInputsCharacterOrientation2? characterOrientation,
             bool? enhancePrompt,
             global::System.Collections.Generic.IList<global::Hedra.VideoShot>? multiPrompt,
-            string? shotType)
+            string? shotType,
+            double? cfgScale)
         {
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.ModelSlug = modelSlug;
@@ -167,6 +177,7 @@ namespace Hedra
             this.EnhancePrompt = enhancePrompt;
             this.MultiPrompt = multiPrompt;
             this.ShotType = shotType;
+            this.CfgScale = cfgScale;
         }
 
         /// <summary>
