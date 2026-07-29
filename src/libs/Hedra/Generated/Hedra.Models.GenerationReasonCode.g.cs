@@ -7,9 +7,13 @@ namespace Hedra
     /// Fine-grained generation reason codes, published as ``reason_code``.<br/>
     /// The second level under the coarse ``ErrorCode`` (AIP-193), mirroring<br/>
     /// ``AgentErrorCode`` on the agent side. ``ErrorCode`` drives HTTP status and<br/>
-    /// retryability and is deliberately small; this says which of several<br/>
-    /// situations sharing that code actually occurred, and it is what clients key<br/>
-    /// user-facing copy off.<br/>
+    /// is deliberately small; this says which of several situations sharing that<br/>
+    /// code actually occurred, and it is what clients key user-facing copy off.<br/>
+    /// ``ErrorCode`` also carries the default retryability, but it cannot always<br/>
+    /// be right: one coarse code can cover both a deterministic refusal and a<br/>
+    /// nondeterministic one. Where a provider draws that distinction and we can<br/>
+    /// read it, the reason code is what refines it — see<br/>
+    /// ``MODERATION_OUTPUT_TRANSIENT``.<br/>
     /// ``MODERATION_FAILED`` is the motivating case. It currently renders one<br/>
     /// sentence — "Try rephrasing your prompt" — for every moderation rejection,<br/>
     /// which is wrong advice when a provider refused a reference image or video<br/>
@@ -26,6 +30,10 @@ namespace Hedra
         /// 
         /// </summary>
         ModerationLikeness,
+        /// <summary>
+        /// 
+        /// </summary>
+        ModerationOutputTransient,
     }
 
     /// <summary>
@@ -41,6 +49,7 @@ namespace Hedra
             return value switch
             {
                 GenerationReasonCode.ModerationLikeness => "MODERATION_LIKENESS",
+                GenerationReasonCode.ModerationOutputTransient => "MODERATION_OUTPUT_TRANSIENT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,6 +61,7 @@ namespace Hedra
             return value switch
             {
                 "MODERATION_LIKENESS" => GenerationReasonCode.ModerationLikeness,
+                "MODERATION_OUTPUT_TRANSIENT" => GenerationReasonCode.ModerationOutputTransient,
                 _ => null,
             };
         }
