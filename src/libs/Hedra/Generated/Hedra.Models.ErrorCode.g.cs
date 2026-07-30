@@ -37,15 +37,15 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        InsufficientBalance,
+        /// <summary>
+        /// 
+        /// </summary>
         Internal,
         /// <summary>
         /// 
         /// </summary>
         InvalidArgument,
-        /// <summary>
-        /// 
-        /// </summary>
-        MissingCredits,
         /// <summary>
         /// 
         /// </summary>
@@ -93,9 +93,9 @@ namespace Hedra
                 ErrorCode.DeadlineExceeded => "DEADLINE_EXCEEDED",
                 ErrorCode.FailedPrecondition => "FAILED_PRECONDITION",
                 ErrorCode.Gone => "GONE",
+                ErrorCode.InsufficientBalance => "INSUFFICIENT_BALANCE",
                 ErrorCode.Internal => "INTERNAL",
                 ErrorCode.InvalidArgument => "INVALID_ARGUMENT",
-                ErrorCode.MissingCredits => "MISSING_CREDITS",
                 ErrorCode.ModerationFailed => "MODERATION_FAILED",
                 ErrorCode.NotFound => "NOT_FOUND",
                 ErrorCode.PermissionDenied => "PERMISSION_DENIED",
@@ -118,9 +118,9 @@ namespace Hedra
                 "DEADLINE_EXCEEDED" => ErrorCode.DeadlineExceeded,
                 "FAILED_PRECONDITION" => ErrorCode.FailedPrecondition,
                 "GONE" => ErrorCode.Gone,
+                "INSUFFICIENT_BALANCE" => ErrorCode.InsufficientBalance,
                 "INTERNAL" => ErrorCode.Internal,
                 "INVALID_ARGUMENT" => ErrorCode.InvalidArgument,
-                "MISSING_CREDITS" => ErrorCode.MissingCredits,
                 "MODERATION_FAILED" => ErrorCode.ModerationFailed,
                 "NOT_FOUND" => ErrorCode.NotFound,
                 "PERMISSION_DENIED" => ErrorCode.PermissionDenied,
