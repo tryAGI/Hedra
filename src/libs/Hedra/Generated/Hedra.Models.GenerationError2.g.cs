@@ -42,13 +42,13 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>? Violations { get; set; }
 
         /// <summary>
-        /// Credits the generation required. Set only for `MISSING_CREDITS`, and only when the failing check knew the cost.
+        /// Credits the generation required. Set only for `INSUFFICIENT_BALANCE`, and only when the failing check knew the cost.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("credits_needed")]
         public int? CreditsNeeded { get; set; }
 
         /// <summary>
-        /// Credits the account had when the generation was rejected. Set only for `MISSING_CREDITS`. Paired with `credits_needed` so clients can render the shortfall without parsing `message`.
+        /// Credits the account had when the generation was rejected. Set only for `INSUFFICIENT_BALANCE`. Paired with `credits_needed` so clients can render the shortfall without parsing `message`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("credits_available")]
         public int? CreditsAvailable { get; set; }
@@ -78,10 +78,10 @@ namespace Hedra
         /// Every field-level problem this failure reported, as `field`/`message` pairs in the rejecting side's own vocabulary — so a caller with several bad fields can fix them all in one pass instead of one per round-trip. `param` remains the primary field. Absent when the failure named at most one field.
         /// </param>
         /// <param name="creditsNeeded">
-        /// Credits the generation required. Set only for `MISSING_CREDITS`, and only when the failing check knew the cost.
+        /// Credits the generation required. Set only for `INSUFFICIENT_BALANCE`, and only when the failing check knew the cost.
         /// </param>
         /// <param name="creditsAvailable">
-        /// Credits the account had when the generation was rejected. Set only for `MISSING_CREDITS`. Paired with `credits_needed` so clients can render the shortfall without parsing `message`.
+        /// Credits the account had when the generation was rejected. Set only for `INSUFFICIENT_BALANCE`. Paired with `credits_needed` so clients can render the shortfall without parsing `message`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

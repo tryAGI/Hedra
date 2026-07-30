@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// Credits the account had when the generation was rejected. Set only for `MISSING_CREDITS`. Paired with `credits_needed` so clients can render the shortfall without parsing `message`.
+    /// Credits the account had when the generation was rejected. Set only for `INSUFFICIENT_BALANCE`. Paired with `credits_needed` so clients can render the shortfall without parsing `message`.
     /// </summary>
     public sealed partial class GenerationErrorCreditsAvailable
     {
