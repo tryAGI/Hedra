@@ -61,6 +61,12 @@ namespace Hedra
         public int? Seed { get; set; }
 
         /// <summary>
+        /// What to avoid in the generated video, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("negative_prompt")]
+        public string? NegativePrompt { get; set; }
+
+        /// <summary>
         /// Normalized coordinates for speaker position(s). A single point for single-speaker; a list for multi-speaker (one per speaker, same length as audio_id list).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("bounding_box_target")]
@@ -128,6 +134,9 @@ namespace Hedra
         /// <param name="seed">
         /// Seed for reproducible output, for models whose provider accepts one. None leaves the argument out of the provider request entirely, so the provider's own random-seed behavior applies.
         /// </param>
+        /// <param name="negativePrompt">
+        /// What to avoid in the generated video, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies.
+        /// </param>
         /// <param name="boundingBoxTarget">
         /// Normalized coordinates for speaker position(s). A single point for single-speaker; a list for multi-speaker (one per speaker, same length as audio_id list).
         /// </param>
@@ -158,6 +167,7 @@ namespace Hedra
             int? durationMs,
             bool? generateAudio,
             int? seed,
+            string? negativePrompt,
             global::Hedra.AnyOf<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>, object>? boundingBoxTarget,
             global::Hedra.GeneratedVideoInputsCharacterOrientation2? characterOrientation,
             bool? enhancePrompt,
@@ -172,6 +182,7 @@ namespace Hedra
             this.DurationMs = durationMs;
             this.GenerateAudio = generateAudio;
             this.Seed = seed;
+            this.NegativePrompt = negativePrompt;
             this.BoundingBoxTarget = boundingBoxTarget;
             this.CharacterOrientation = characterOrientation;
             this.EnhancePrompt = enhancePrompt;
