@@ -22,8 +22,13 @@ namespace Hedra
     ///   the image header or the video's ffprobe, before the asset row and the<br/>
     ///   moderation call.<br/>
     /// - `min_duration_ms` / `max_duration_ms` — checked against the ffprobe<br/>
-    ///   result at v3 ingestion and by the dispatch video validator.<br/>
-    /// - `max_total_duration_ms` — checked across the slot's files at dispatch.
+    ///   result at v3 ingestion and by the dispatch video validator, **on video<br/>
+    ///   slots only**. Nothing checks them on an audio slot: the avatar path<br/>
+    ///   truncates over-length audio to the cap instead of rejecting it, so v3<br/>
+    ///   publication withholds these two keys for audio (ENG-9769) rather than<br/>
+    ///   advertise a gate that does not exist.<br/>
+    /// - `max_total_duration_ms` — checked across the slot's files at dispatch,<br/>
+    ///   for audio and video alike.
     /// </summary>
     public sealed partial class InputSlot
     {

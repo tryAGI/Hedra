@@ -130,6 +130,12 @@ namespace Hedra
         public int? Seed { get; set; }
 
         /// <summary>
+        /// What to avoid in the generated image, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("negative_prompt")]
+        public string? NegativePrompt { get; set; }
+
+        /// <summary>
         /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("guidance_scale")]
@@ -204,6 +210,9 @@ namespace Hedra
         /// <param name="seed">
         /// Seed for reproducible output, for models whose provider accepts one. None leaves the argument out of the provider request entirely, so the provider's own random-seed behavior applies.
         /// </param>
+        /// <param name="negativePrompt">
+        /// What to avoid in the generated image, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies.
+        /// </param>
         /// <param name="guidanceScale">
         /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
         /// </param>
@@ -232,6 +241,7 @@ namespace Hedra
             int? batchSize,
             bool? enhancePrompt,
             int? seed,
+            string? negativePrompt,
             double? guidanceScale,
             int? numInferenceSteps)
         {
@@ -253,6 +263,7 @@ namespace Hedra
             this.BatchSize = batchSize;
             this.EnhancePrompt = enhancePrompt;
             this.Seed = seed;
+            this.NegativePrompt = negativePrompt;
             this.GuidanceScale = guidanceScale;
             this.NumInferenceSteps = numInferenceSteps;
         }
