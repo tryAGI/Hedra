@@ -21,12 +21,10 @@ namespace Hedra
     /// - `min_dimension_px` / `max_dimension_px` — checked at v3 ingestion against<br/>
     ///   the image header or the video's ffprobe, before the asset row and the<br/>
     ///   moderation call.<br/>
-    /// - `min_duration_ms` / `max_duration_ms` — checked against the ffprobe<br/>
-    ///   result at v3 ingestion and by the dispatch video validator, **on video<br/>
-    ///   slots only**. Nothing checks them on an audio slot: the avatar path<br/>
-    ///   truncates over-length audio to the cap instead of rejecting it, so v3<br/>
-    ///   publication withholds these two keys for audio (ENG-9769) rather than<br/>
-    ///   advertise a gate that does not exist.<br/>
+    /// - `min_duration_ms` / `max_duration_ms` — checked at v3 ingestion, against<br/>
+    ///   the ffprobe result on a video slot and the decoded length on an audio one,<br/>
+    ///   and again by the dispatch video validator. Both kinds get the shared<br/>
+    ///   `DURATION_MAX_TOLERANCE_MS` grace on the maximum; the minimum is exact.<br/>
     /// - `max_total_duration_ms` — checked across the slot's files at dispatch,<br/>
     ///   for audio and video alike.
     /// </summary>
