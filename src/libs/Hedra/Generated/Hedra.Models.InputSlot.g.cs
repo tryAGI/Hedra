@@ -15,15 +15,19 @@ namespace Hedra
     ///   `max_count` is re-checked at the v3 gateway (before any download) and at<br/>
     ///   dispatch for reference media.<br/>
     /// - `max_file_size_bytes` — tightens the per-kind ingestion cap (never<br/>
-    ///   widens it). On an image slot this is not written here:<br/>
+    ///   widens it). Ingestion-scoped: it applies when the file enters the<br/>
+    ///   system, not to an asset reference — asset rows store no byte size.<br/>
+    ///   On an image slot this is not written here:<br/>
     ///   `VideoModel.declarative_input_modes` stamps it from the model's<br/>
     ///   `max_input_image_bytes`, so a value set on the slot is overwritten.<br/>
     /// - `min_dimension_px` / `max_dimension_px` — checked at v3 ingestion against<br/>
     ///   the image header or the video's ffprobe, before the asset row and the<br/>
-    ///   moderation call.<br/>
+    ///   moderation call, and on asset references against the row's stored<br/>
+    ///   width/height.<br/>
     /// - `min_duration_ms` / `max_duration_ms` — checked at v3 ingestion, against<br/>
     ///   the ffprobe result on a video slot and the decoded length on an audio one,<br/>
-    ///   and again by the dispatch video validator. Both kinds get the shared<br/>
+    ///   on asset references against the row's stored `duration_ms`, and again by<br/>
+    ///   the dispatch video validator. Both kinds get the shared<br/>
     ///   `DURATION_MAX_TOLERANCE_MS` grace on the maximum; the minimum is exact.<br/>
     /// - `max_total_duration_ms` — checked across the slot's files at dispatch,<br/>
     ///   for audio and video alike.
