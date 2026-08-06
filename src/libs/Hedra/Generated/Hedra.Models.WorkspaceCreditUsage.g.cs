@@ -4,12 +4,9 @@
 namespace Hedra
 {
     /// <summary>
-    /// Per-workspace credit usage for the current period, from the workspace credit pool.<br/>
-    /// All three fields are display credits and stay continuous across the USD<br/>
-    /// cutover: for converted pools `available`/`used` are floor views of the<br/>
-    /// pool's micro-dollar buckets computed on read, and `allocated` serves the<br/>
-    /// frozen credit value, which round-trips exactly (regrants re-denominate<br/>
-    /// it at ENG-8818). Pinned by test_display_coherence_usd.py.
+    /// Per-workspace credit usage for the current period, from the workspace<br/>
+    /// credit pool. `used`/`allocated`/`available` are display credits; the<br/>
+    /// `api_*` fields expose the segregated, USD-denominated API wallet.
     /// </summary>
     public sealed partial class WorkspaceCreditUsage
     {
