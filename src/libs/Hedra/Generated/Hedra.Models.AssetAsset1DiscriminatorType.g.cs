@@ -31,10 +31,6 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
-        UploadedThreeD,
-        /// <summary>
-        /// 
-        /// </summary>
         UploadedVideo,
         /// <summary>
         /// 
@@ -59,7 +55,6 @@ namespace Hedra
                 AssetAsset1DiscriminatorType.GeneratedVideo => "generated_video",
                 AssetAsset1DiscriminatorType.UploadedAudio => "uploaded_audio",
                 AssetAsset1DiscriminatorType.UploadedImage => "uploaded_image",
-                AssetAsset1DiscriminatorType.UploadedThreeD => "uploaded_three_d",
                 AssetAsset1DiscriminatorType.UploadedVideo => "uploaded_video",
                 AssetAsset1DiscriminatorType.Voice => "voice",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -77,7 +72,6 @@ namespace Hedra
                 "generated_video" => AssetAsset1DiscriminatorType.GeneratedVideo,
                 "uploaded_audio" => AssetAsset1DiscriminatorType.UploadedAudio,
                 "uploaded_image" => AssetAsset1DiscriminatorType.UploadedImage,
-                "uploaded_three_d" => AssetAsset1DiscriminatorType.UploadedThreeD,
                 "uploaded_video" => AssetAsset1DiscriminatorType.UploadedVideo,
                 "voice" => AssetAsset1DiscriminatorType.Voice,
                 _ => null,
