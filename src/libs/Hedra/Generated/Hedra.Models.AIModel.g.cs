@@ -163,6 +163,18 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::Hedra.InputMode>? Inputs { get; set; }
 
         /// <summary>
+        /// Machine-readable conditional input rules the backend enforces at submit. Each rule's `when` is conjunctive over the closed keys `resolution` (matched against the effective resolution: the requested one, or `default_resolution` when omitted) and `references_present`; its `then` narrows the advertised menus — `audio_input_max_duration_ms` caps the driving audio, `durations` (int ms) replaces the offered duration menu, and `disallowed_resolutions` removes resolutions. When several rules match: numeric caps take the minimum, `durations` intersect, `disallowed_resolutions` union. Null when the model declares none.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conditional_constraints")]
+        public global::System.Collections.Generic.IList<global::Hedra.ConditionalConstraint>? ConditionalConstraints { get; set; }
+
+        /// <summary>
+        /// Ordered `slug`s of models to suggest when the user switches away after a failed generation (moderation/capacity rejection). Slug is the stable catalog identity to match on; the legacy `id` is nullable and absent on newer models, so it cannot address them. Only models present and not disabled in this build are listed. Null when the model declares no alternatives.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("alternative_model_slugs")]
+        public global::System.Collections.Generic.IList<string>? AlternativeModelSlugs { get; set; }
+
+        /// <summary>
         /// URL of the model's logo in SVG format.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("logo_url")]
@@ -265,6 +277,12 @@ namespace Hedra
         /// <param name="inputs">
         /// List of input modes the model supports. Each mode groups mutually exclusive input slots. The frontend picks one mode. text_to_video (no inputs) is always implicitly available for VIDEO type models. Null means the model has no declarative input specifications (use requires_* booleans).
         /// </param>
+        /// <param name="conditionalConstraints">
+        /// Machine-readable conditional input rules the backend enforces at submit. Each rule's `when` is conjunctive over the closed keys `resolution` (matched against the effective resolution: the requested one, or `default_resolution` when omitted) and `references_present`; its `then` narrows the advertised menus — `audio_input_max_duration_ms` caps the driving audio, `durations` (int ms) replaces the offered duration menu, and `disallowed_resolutions` removes resolutions. When several rules match: numeric caps take the minimum, `durations` intersect, `disallowed_resolutions` union. Null when the model declares none.
+        /// </param>
+        /// <param name="alternativeModelSlugs">
+        /// Ordered `slug`s of models to suggest when the user switches away after a failed generation (moderation/capacity rejection). Slug is the stable catalog identity to match on; the legacy `id` is nullable and absent on newer models, so it cannot address them. Only models present and not disabled in this build are listed. Null when the model declares no alternatives.
+        /// </param>
         /// <param name="logoUrl">
         /// URL of the model's logo in SVG format.
         /// </param>
@@ -304,6 +322,8 @@ namespace Hedra
             int? minPromptLength,
             int? maxPromptLength,
             global::System.Collections.Generic.IList<global::Hedra.InputMode>? inputs,
+            global::System.Collections.Generic.IList<global::Hedra.ConditionalConstraint>? conditionalConstraints,
+            global::System.Collections.Generic.IList<string>? alternativeModelSlugs,
             string? logoUrl,
             bool? premium,
             int? displayOrder)
@@ -333,6 +353,8 @@ namespace Hedra
             this.MinPromptLength = minPromptLength;
             this.MaxPromptLength = maxPromptLength;
             this.Inputs = inputs;
+            this.ConditionalConstraints = conditionalConstraints;
+            this.AlternativeModelSlugs = alternativeModelSlugs;
             this.LogoUrl = logoUrl;
             this.Premium = premium;
             this.DisplayOrder = displayOrder;

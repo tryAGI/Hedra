@@ -106,6 +106,18 @@ namespace Hedra
         public int? MaxTotalDurationMs { get; set; }
 
         /// <summary>
+        /// Minimum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by the BytePlus input normalization at dispatch.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("min_aspect_ratio")]
+        public double? MinAspectRatio { get; set; }
+
+        /// <summary>
+        /// Maximum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by the BytePlus input normalization at dispatch.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_aspect_ratio")]
+        public double? MaxAspectRatio { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -150,6 +162,12 @@ namespace Hedra
         /// <param name="maxTotalDurationMs">
         /// Maximum combined duration across all files in this slot in milliseconds (video/audio only).
         /// </param>
+        /// <param name="minAspectRatio">
+        /// Minimum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by the BytePlus input normalization at dispatch.
+        /// </param>
+        /// <param name="maxAspectRatio">
+        /// Maximum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by the BytePlus input normalization at dispatch.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -164,7 +182,9 @@ namespace Hedra
             int? maxDimensionPx,
             int? minDurationMs,
             int? maxDurationMs,
-            int? maxTotalDurationMs)
+            int? maxTotalDurationMs,
+            double? minAspectRatio,
+            double? maxAspectRatio)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Role = role ?? throw new global::System.ArgumentNullException(nameof(role));
@@ -177,6 +197,8 @@ namespace Hedra
             this.MinDurationMs = minDurationMs;
             this.MaxDurationMs = maxDurationMs;
             this.MaxTotalDurationMs = maxTotalDurationMs;
+            this.MinAspectRatio = minAspectRatio;
+            this.MaxAspectRatio = maxAspectRatio;
         }
 
         /// <summary>

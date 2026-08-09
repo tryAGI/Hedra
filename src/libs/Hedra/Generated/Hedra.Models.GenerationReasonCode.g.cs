@@ -29,6 +29,14 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        ImageAspectRatioUnsupported,
+        /// <summary>
+        /// 
+        /// </summary>
+        ImageResolutionUnsupported,
+        /// <summary>
+        /// 
+        /// </summary>
         ModerationLikeness,
         /// <summary>
         /// 
@@ -48,6 +56,8 @@ namespace Hedra
         {
             return value switch
             {
+                GenerationReasonCode.ImageAspectRatioUnsupported => "IMAGE_ASPECT_RATIO_UNSUPPORTED",
+                GenerationReasonCode.ImageResolutionUnsupported => "IMAGE_RESOLUTION_UNSUPPORTED",
                 GenerationReasonCode.ModerationLikeness => "MODERATION_LIKENESS",
                 GenerationReasonCode.ModerationOutputTransient => "MODERATION_OUTPUT_TRANSIENT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -60,6 +70,8 @@ namespace Hedra
         {
             return value switch
             {
+                "IMAGE_ASPECT_RATIO_UNSUPPORTED" => GenerationReasonCode.ImageAspectRatioUnsupported,
+                "IMAGE_RESOLUTION_UNSUPPORTED" => GenerationReasonCode.ImageResolutionUnsupported,
                 "MODERATION_LIKENESS" => GenerationReasonCode.ModerationLikeness,
                 "MODERATION_OUTPUT_TRANSIENT" => GenerationReasonCode.ModerationOutputTransient,
                 _ => null,
