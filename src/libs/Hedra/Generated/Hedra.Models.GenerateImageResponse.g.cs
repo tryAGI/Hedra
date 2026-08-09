@@ -117,6 +117,12 @@ namespace Hedra
         public int? BatchSize { get; set; }
 
         /// <summary>
+        /// Unique identifier linking all generations in a batch.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("batch_generation_id")]
+        public string? BatchGenerationId { get; set; }
+
+        /// <summary>
         /// If true, automatically enhance the prompt before generation.<br/>
         /// Default Value: false
         /// </summary>
@@ -188,12 +194,6 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("eta_sec")]
         public int? EtaSec { get; set; }
-
-        /// <summary>
-        /// Unique identifier linking all generations in a batch.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("batch_generation_id")]
-        public string? BatchGenerationId { get; set; }
 
         /// <summary>
         /// All generation results in the batch. Always populated (even for batch_size=1). The main response fields (id, asset_id, etc.) reflect the first successful generation.
@@ -272,6 +272,9 @@ namespace Hedra
         /// Number of image variations to generate (1-8). When &gt; 1, batch_results will contain all generation results.<br/>
         /// Default Value: 1
         /// </param>
+        /// <param name="batchGenerationId">
+        /// Unique identifier linking all generations in a batch.
+        /// </param>
         /// <param name="enhancePrompt">
         /// If true, automatically enhance the prompt before generation.<br/>
         /// Default Value: false
@@ -290,9 +293,6 @@ namespace Hedra
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
-        /// </param>
-        /// <param name="batchGenerationId">
-        /// Unique identifier linking all generations in a batch.
         /// </param>
         /// <param name="batchResults">
         /// All generation results in the batch. Always populated (even for batch_size=1). The main response fields (id, asset_id, etc.) reflect the first successful generation.
@@ -322,13 +322,13 @@ namespace Hedra
             string? modelSlug,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageIds,
             int? batchSize,
+            string? batchGenerationId,
             bool? enhancePrompt,
             int? seed,
             string? negativePrompt,
             double? guidanceScale,
             int? numInferenceSteps,
             int? etaSec,
-            string? batchGenerationId,
             global::System.Collections.Generic.IList<global::Hedra.BatchImageResultItem>? batchResults)
         {
             this.WorkspaceId = workspaceId;
@@ -347,6 +347,7 @@ namespace Hedra
             this.ModelSlug = modelSlug;
             this.ReferenceImageIds = referenceImageIds;
             this.BatchSize = batchSize;
+            this.BatchGenerationId = batchGenerationId;
             this.EnhancePrompt = enhancePrompt;
             this.Seed = seed;
             this.NegativePrompt = negativePrompt;
@@ -358,7 +359,6 @@ namespace Hedra
             this.Status = status;
             this.Progress = progress;
             this.EtaSec = etaSec;
-            this.BatchGenerationId = batchGenerationId;
             this.BatchResults = batchResults;
         }
 
