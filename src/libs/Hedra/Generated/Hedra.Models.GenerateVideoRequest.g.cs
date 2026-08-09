@@ -153,6 +153,12 @@ namespace Hedra
         public int? BatchSize { get; set; }
 
         /// <summary>
+        /// Optional client-minted identifier linking generations submitted as one batch. Clients that fan a batch out as separate requests stamp the same value on each so grids can group the variations. When batch_size &gt; 1 and this is omitted, the server mints one.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("batch_generation_id")]
+        public string? BatchGenerationId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -226,6 +232,9 @@ namespace Hedra
         /// Number of video variations to generate (1-8). When &gt; 1, batch_results will contain all generation results.<br/>
         /// Default Value: 1
         /// </param>
+        /// <param name="batchGenerationId">
+        /// Optional client-minted identifier linking generations submitted as one batch. Clients that fan a batch out as separate requests stamp the same value on each so grids can group the variations. When batch_size &gt; 1 and this is omitted, the server mints one.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -251,7 +260,8 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageIds,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceVideoIds,
             global::System.Guid? videoId,
-            int? batchSize)
+            int? batchSize,
+            string? batchGenerationId)
         {
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
@@ -275,6 +285,7 @@ namespace Hedra
             this.VideoId = videoId;
             this.GeneratedVideoInputs = generatedVideoInputs ?? throw new global::System.ArgumentNullException(nameof(generatedVideoInputs));
             this.BatchSize = batchSize;
+            this.BatchGenerationId = batchGenerationId;
         }
 
         /// <summary>

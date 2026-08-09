@@ -153,6 +153,12 @@ namespace Hedra
         public int? BatchSize { get; set; }
 
         /// <summary>
+        /// Unique identifier linking all generations in a batch.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("batch_generation_id")]
+        public string? BatchGenerationId { get; set; }
+
+        /// <summary>
         /// The id of the generation created.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -193,12 +199,6 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("eta_sec")]
         public int? EtaSec { get; set; }
-
-        /// <summary>
-        /// Unique identifier linking all generations in a batch.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("batch_generation_id")]
-        public string? BatchGenerationId { get; set; }
 
         /// <summary>
         /// All generation results in the batch. Always populated (even for batch_size=1). The main response fields (id, asset_id, etc.) reflect the first successful generation.
@@ -295,11 +295,11 @@ namespace Hedra
         /// Number of video variations to generate (1-8). When &gt; 1, batch_results will contain all generation results.<br/>
         /// Default Value: 1
         /// </param>
-        /// <param name="etaSec">
-        /// Estimated time until completion in seconds. May be None if no historical data available.
-        /// </param>
         /// <param name="batchGenerationId">
         /// Unique identifier linking all generations in a batch.
+        /// </param>
+        /// <param name="etaSec">
+        /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </param>
         /// <param name="batchResults">
         /// All generation results in the batch. Always populated (even for batch_size=1). The main response fields (id, asset_id, etc.) reflect the first successful generation.
@@ -335,8 +335,8 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? referenceVideoIds,
             global::System.Guid? videoId,
             int? batchSize,
-            int? etaSec,
             string? batchGenerationId,
+            int? etaSec,
             global::System.Collections.Generic.IList<global::Hedra.BatchVideoResultItem>? batchResults)
         {
             this.WorkspaceId = workspaceId;
@@ -361,13 +361,13 @@ namespace Hedra
             this.VideoId = videoId;
             this.GeneratedVideoInputs = generatedVideoInputs ?? throw new global::System.ArgumentNullException(nameof(generatedVideoInputs));
             this.BatchSize = batchSize;
+            this.BatchGenerationId = batchGenerationId;
             this.Id = id;
             this.AssetId = assetId;
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
             this.Status = status;
             this.Progress = progress;
             this.EtaSec = etaSec;
-            this.BatchGenerationId = batchGenerationId;
             this.BatchResults = batchResults;
         }
 
