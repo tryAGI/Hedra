@@ -23,6 +23,12 @@ namespace Hedra
         public global::Hedra.GenerationReasonCode? ReasonCode { get; set; }
 
         /// <summary>
+        /// Interpolation values for `reason_code` copy — machine-generated numbers (dimensions, bounds) the client formats into localised text, so no English needs to cross the wire. Keys are declared per reason code. Absent whenever `reason_code` is, and for codes whose copy needs no values.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reason_params")]
+        public object? ReasonParams { get; set; }
+
+        /// <summary>
         /// The error message.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
@@ -71,6 +77,9 @@ namespace Hedra
         /// <param name="reasonCode">
         /// Which of several situations sharing `type` actually occurred, when the provider named one. Clients key user-facing copy off the (`type`, `reason_code`) pair and must treat an unrecognized value as absent, falling back to the copy for `type` alone. Absent means `type` says everything we know — not that the finer situation was ruled out.
         /// </param>
+        /// <param name="reasonParams">
+        /// Interpolation values for `reason_code` copy — machine-generated numbers (dimensions, bounds) the client formats into localised text, so no English needs to cross the wire. Keys are declared per reason code. Absent whenever `reason_code` is, and for codes whose copy needs no values.
+        /// </param>
         /// <param name="param">
         /// The input field this failure blames, as the rejecting side named it. Set only when the failure is about one specific field — typically an `INVALID_ARGUMENT` schema rejection — so clients can point at it without parsing `message`. Absent means the failure is not attributable to a single field.
         /// </param>
@@ -90,6 +99,7 @@ namespace Hedra
             global::Hedra.ErrorCode type,
             string message,
             global::Hedra.GenerationReasonCode? reasonCode,
+            object? reasonParams,
             string? param,
             global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>? violations,
             int? creditsNeeded,
@@ -97,6 +107,7 @@ namespace Hedra
         {
             this.Type = type;
             this.ReasonCode = reasonCode;
+            this.ReasonParams = reasonParams;
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
             this.Param = param;
             this.Violations = violations;
