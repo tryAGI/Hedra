@@ -30,7 +30,9 @@ namespace Hedra
     ///   the dispatch video validator. Both kinds get the shared<br/>
     ///   `DURATION_MAX_TOLERANCE_MS` grace on the maximum; the minimum is exact.<br/>
     /// - `max_total_duration_ms` — checked across the slot's files at dispatch,<br/>
-    ///   for audio and video alike.
+    ///   for audio and video alike, with the same `DURATION_MAX_TOLERANCE_MS`<br/>
+    ///   grace the per-file maximum gets: the sum is of probed durations, which<br/>
+    ///   overshoot the nominal length for the same encoder reasons.
     /// </summary>
     public sealed partial class InputSlot
     {
