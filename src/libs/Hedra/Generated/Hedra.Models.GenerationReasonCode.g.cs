@@ -42,6 +42,14 @@ namespace Hedra
         /// 
         /// </summary>
         ModerationOutputTransient,
+        /// <summary>
+        /// 
+        /// </summary>
+        ReferenceMediaDurationUnsupported,
+        /// <summary>
+        /// 
+        /// </summary>
+        ReferenceMediaTotalDurationUnsupported,
     }
 
     /// <summary>
@@ -60,6 +68,8 @@ namespace Hedra
                 GenerationReasonCode.ImageResolutionUnsupported => "IMAGE_RESOLUTION_UNSUPPORTED",
                 GenerationReasonCode.ModerationLikeness => "MODERATION_LIKENESS",
                 GenerationReasonCode.ModerationOutputTransient => "MODERATION_OUTPUT_TRANSIENT",
+                GenerationReasonCode.ReferenceMediaDurationUnsupported => "REFERENCE_MEDIA_DURATION_UNSUPPORTED",
+                GenerationReasonCode.ReferenceMediaTotalDurationUnsupported => "REFERENCE_MEDIA_TOTAL_DURATION_UNSUPPORTED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -74,6 +84,8 @@ namespace Hedra
                 "IMAGE_RESOLUTION_UNSUPPORTED" => GenerationReasonCode.ImageResolutionUnsupported,
                 "MODERATION_LIKENESS" => GenerationReasonCode.ModerationLikeness,
                 "MODERATION_OUTPUT_TRANSIENT" => GenerationReasonCode.ModerationOutputTransient,
+                "REFERENCE_MEDIA_DURATION_UNSUPPORTED" => GenerationReasonCode.ReferenceMediaDurationUnsupported,
+                "REFERENCE_MEDIA_TOTAL_DURATION_UNSUPPORTED" => GenerationReasonCode.ReferenceMediaTotalDurationUnsupported,
                 _ => null,
             };
         }
