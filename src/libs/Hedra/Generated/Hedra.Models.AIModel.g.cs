@@ -139,6 +139,12 @@ namespace Hedra
         public global::Hedra.Pricing? Pricing { get; set; }
 
         /// <summary>
+        /// Min and max credits one generation can cost across the model's resolution/duration menu, computed server-side through the model's own pricing (sentinel durations billed as charged, audio-off discounts included). Null for models priced from a resolved asset (audio-driven, extension) — render the base price_details cost instead.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("credit_range")]
+        public global::System.Collections.Generic.IList<int>? CreditRange { get; set; }
+
+        /// <summary>
         /// Width and height for each aspect_ratio and resolution tuple.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
@@ -265,6 +271,9 @@ namespace Hedra
         /// <param name="pricing">
         /// Extensible pricing information with dimension modifiers for resolution, audio, etc.
         /// </param>
+        /// <param name="creditRange">
+        /// Min and max credits one generation can cost across the model's resolution/duration menu, computed server-side through the model's own pricing (sentinel durations billed as charged, audio-off discounts included). Null for models priced from a resolved asset (audio-driven, extension) — render the base price_details cost instead.
+        /// </param>
         /// <param name="dimensions">
         /// Width and height for each aspect_ratio and resolution tuple.
         /// </param>
@@ -318,6 +327,7 @@ namespace Hedra
             int? maxDurationMs,
             bool? customResolution,
             global::Hedra.Pricing? pricing,
+            global::System.Collections.Generic.IList<int>? creditRange,
             global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>>? dimensions,
             int? minPromptLength,
             int? maxPromptLength,
@@ -349,6 +359,7 @@ namespace Hedra
             this.CustomResolution = customResolution;
             this.PriceDetails = priceDetails ?? throw new global::System.ArgumentNullException(nameof(priceDetails));
             this.Pricing = pricing;
+            this.CreditRange = creditRange;
             this.Dimensions = dimensions;
             this.MinPromptLength = minPromptLength;
             this.MaxPromptLength = maxPromptLength;
