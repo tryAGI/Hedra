@@ -4,9 +4,9 @@
 namespace Hedra
 {
     /// <summary>
-    /// Shot type for multi-shot generation: 'customize' uses each shot's declared duration, 'intelligent' lets the model determine the shot structure.
+    /// Optional list of pre-reserved generation IDs for batch operations. Length must match batch_size. Mutually exclusive with generation_id.
     /// </summary>
-    public sealed partial class GeneratedVideoInputsShotType
+    public sealed partial class GenerateTextToMusicResponseGenerationIds
     {
 
         /// <summary>

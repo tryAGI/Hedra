@@ -4,9 +4,9 @@
 namespace Hedra
 {
     /// <summary>
-    /// Shot type for multi-shot generation: 'customize' uses each shot's declared duration, 'intelligent' lets the model determine the shot structure.
+    /// Optional custom lyrics (up to 10,000 characters). Sent to the provider inside the prompt (ElevenLabs prompt-mode reads lyrics from the prompt text and uses them with the requested length to place vocals).
     /// </summary>
-    public sealed partial class GeneratedVideoInputsShotType
+    public sealed partial class GenerateTextToMusicResponseLyrics
     {
 
         /// <summary>

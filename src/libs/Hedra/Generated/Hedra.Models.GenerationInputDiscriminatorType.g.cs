@@ -35,6 +35,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        TextToMusic,
+        /// <summary>
+        /// 
+        /// </summary>
         TextToSound,
         /// <summary>
         /// 
@@ -76,6 +80,7 @@ namespace Hedra
                 GenerationInputDiscriminatorType.ImageUpscale => "image_upscale",
                 GenerationInputDiscriminatorType.MotionControl => "motion_control",
                 GenerationInputDiscriminatorType.SpeechToSpeech => "speech_to_speech",
+                GenerationInputDiscriminatorType.TextToMusic => "text_to_music",
                 GenerationInputDiscriminatorType.TextToSound => "text_to_sound",
                 GenerationInputDiscriminatorType.TextToSpeech => "text_to_speech",
                 GenerationInputDiscriminatorType.Video => "video",
@@ -98,6 +103,7 @@ namespace Hedra
                 "image_upscale" => GenerationInputDiscriminatorType.ImageUpscale,
                 "motion_control" => GenerationInputDiscriminatorType.MotionControl,
                 "speech_to_speech" => GenerationInputDiscriminatorType.SpeechToSpeech,
+                "text_to_music" => GenerationInputDiscriminatorType.TextToMusic,
                 "text_to_sound" => GenerationInputDiscriminatorType.TextToSound,
                 "text_to_speech" => GenerationInputDiscriminatorType.TextToSpeech,
                 "video" => GenerationInputDiscriminatorType.Video,

@@ -93,10 +93,10 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::Hedra.VideoShot>? MultiPrompt { get; set; }
 
         /// <summary>
-        /// Shot type for multi-shot generation. Currently only 'customize' is supported.
+        /// Shot type for multi-shot generation: 'customize' uses each shot's declared duration, 'intelligent' lets the model determine the shot structure.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("shot_type")]
-        public string? ShotType { get; set; }
+        public global::Hedra.GeneratedVideoInputsShotType2? ShotType { get; set; }
 
         /// <summary>
         /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
@@ -151,7 +151,7 @@ namespace Hedra
         /// List of shots for multi-shot video generation. When provided, text_prompt is ignored and total duration is the sum of shot durations.
         /// </param>
         /// <param name="shotType">
-        /// Shot type for multi-shot generation. Currently only 'customize' is supported.
+        /// Shot type for multi-shot generation: 'customize' uses each shot's declared duration, 'intelligent' lets the model determine the shot structure.
         /// </param>
         /// <param name="cfgScale">
         /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
@@ -172,7 +172,7 @@ namespace Hedra
             global::Hedra.GeneratedVideoInputsCharacterOrientation2? characterOrientation,
             bool? enhancePrompt,
             global::System.Collections.Generic.IList<global::Hedra.VideoShot>? multiPrompt,
-            string? shotType,
+            global::Hedra.GeneratedVideoInputsShotType2? shotType,
             double? cfgScale)
         {
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
