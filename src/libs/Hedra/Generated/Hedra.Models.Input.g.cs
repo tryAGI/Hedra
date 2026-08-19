@@ -129,6 +129,43 @@ namespace Hedra
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::Hedra.GenerateTextToMusicRequest? TextToMusic { get; init; }
+#else
+        public global::Hedra.GenerateTextToMusicRequest? TextToMusic { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TextToMusic))]
+#endif
+        public bool IsTextToMusic => TextToMusic != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTextToMusic(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hedra.GenerateTextToMusicRequest? value)
+        {
+            value = TextToMusic;
+            return IsTextToMusic;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hedra.GenerateTextToMusicRequest PickTextToMusic() => IsTextToMusic
+            ? TextToMusic!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TextToMusic' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::Hedra.GenerateImageRequest? Image { get; init; }
 #else
         public global::Hedra.GenerateImageRequest? Image { get; }
@@ -494,6 +531,29 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator Input(global::Hedra.GenerateTextToMusicRequest value) => new Input((global::Hedra.GenerateTextToMusicRequest?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Hedra.GenerateTextToMusicRequest?(Input @this) => @this.TextToMusic;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Input(global::Hedra.GenerateTextToMusicRequest? value)
+        {
+            TextToMusic = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Input FromTextToMusic(global::Hedra.GenerateTextToMusicRequest? value) => new Input(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Input(global::Hedra.GenerateImageRequest value) => new Input((global::Hedra.GenerateImageRequest?)value);
 
         /// <summary>
@@ -683,6 +743,7 @@ namespace Hedra
             global::Hedra.GenerateVideoRequest? video,
             global::Hedra.GenerateTextToSpeechRequest? textToSpeech,
             global::Hedra.GenerateTextToSoundRequest? textToSound,
+            global::Hedra.GenerateTextToMusicRequest? textToMusic,
             global::Hedra.GenerateImageRequest? image,
             global::Hedra.GenerateImageUpscaleRequest? imageUpscale,
             global::Hedra.GenerateVideoUpscaleRequest? videoUpscale,
@@ -698,6 +759,7 @@ namespace Hedra
             Video = video;
             TextToSpeech = textToSpeech;
             TextToSound = textToSound;
+            TextToMusic = textToMusic;
             Image = image;
             ImageUpscale = imageUpscale;
             VideoUpscale = videoUpscale;
@@ -720,6 +782,7 @@ namespace Hedra
             VideoUpscale as object ??
             ImageUpscale as object ??
             Image as object ??
+            TextToMusic as object ??
             TextToSound as object ??
             TextToSpeech as object ??
             Video as object 
@@ -732,6 +795,7 @@ namespace Hedra
             Video?.ToString() ??
             TextToSpeech?.ToString() ??
             TextToSound?.ToString() ??
+            TextToMusic?.ToString() ??
             Image?.ToString() ??
             ImageUpscale?.ToString() ??
             VideoUpscale?.ToString() ??
@@ -747,7 +811,7 @@ namespace Hedra
         /// </summary>
         public bool Validate()
         {
-            return IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && IsMotionControl;
+            return IsVideo && !IsTextToSpeech && !IsTextToSound && !IsTextToMusic && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && IsTextToSpeech && !IsTextToSound && !IsTextToMusic && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && IsTextToSound && !IsTextToMusic && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && IsTextToMusic && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsTextToMusic && IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsTextToMusic && !IsImage && IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsTextToMusic && !IsImage && !IsImageUpscale && IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsTextToMusic && !IsImage && !IsImageUpscale && !IsVideoUpscale && IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsTextToMusic && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsTextToMusic && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && IsVoiceClone && !IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsTextToMusic && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && IsVideoToVideo && !IsMotionControl || !IsVideo && !IsTextToSpeech && !IsTextToSound && !IsTextToMusic && !IsImage && !IsImageUpscale && !IsVideoUpscale && !IsAudioIsolation && !IsSpeechToSpeech && !IsVoiceClone && !IsVideoToVideo && IsMotionControl;
         }
 
         /// <summary>
@@ -757,6 +821,7 @@ namespace Hedra
             global::System.Func<global::Hedra.GenerateVideoRequest, TResult>? video = null,
             global::System.Func<global::Hedra.GenerateTextToSpeechRequest, TResult>? textToSpeech = null,
             global::System.Func<global::Hedra.GenerateTextToSoundRequest, TResult>? textToSound = null,
+            global::System.Func<global::Hedra.GenerateTextToMusicRequest, TResult>? textToMusic = null,
             global::System.Func<global::Hedra.GenerateImageRequest, TResult>? image = null,
             global::System.Func<global::Hedra.GenerateImageUpscaleRequest, TResult>? imageUpscale = null,
             global::System.Func<global::Hedra.GenerateVideoUpscaleRequest, TResult>? videoUpscale = null,
@@ -783,6 +848,10 @@ namespace Hedra
             else if (IsTextToSound && textToSound != null)
             {
                 return textToSound(TextToSound!);
+            }
+            else if (IsTextToMusic && textToMusic != null)
+            {
+                return textToMusic(TextToMusic!);
             }
             else if (IsImage && image != null)
             {
@@ -830,6 +899,8 @@ namespace Hedra
 
             global::System.Action<global::Hedra.GenerateTextToSoundRequest>? textToSound = null,
 
+            global::System.Action<global::Hedra.GenerateTextToMusicRequest>? textToMusic = null,
+
             global::System.Action<global::Hedra.GenerateImageRequest>? image = null,
 
             global::System.Action<global::Hedra.GenerateImageUpscaleRequest>? imageUpscale = null,
@@ -863,6 +934,10 @@ namespace Hedra
             else if (IsTextToSound)
             {
                 textToSound?.Invoke(TextToSound!);
+            }
+            else if (IsTextToMusic)
+            {
+                textToMusic?.Invoke(TextToMusic!);
             }
             else if (IsImage)
             {
@@ -905,6 +980,7 @@ namespace Hedra
             global::System.Action<global::Hedra.GenerateVideoRequest>? video = null,
             global::System.Action<global::Hedra.GenerateTextToSpeechRequest>? textToSpeech = null,
             global::System.Action<global::Hedra.GenerateTextToSoundRequest>? textToSound = null,
+            global::System.Action<global::Hedra.GenerateTextToMusicRequest>? textToMusic = null,
             global::System.Action<global::Hedra.GenerateImageRequest>? image = null,
             global::System.Action<global::Hedra.GenerateImageUpscaleRequest>? imageUpscale = null,
             global::System.Action<global::Hedra.GenerateVideoUpscaleRequest>? videoUpscale = null,
@@ -931,6 +1007,10 @@ namespace Hedra
             else if (IsTextToSound)
             {
                 textToSound?.Invoke(TextToSound!);
+            }
+            else if (IsTextToMusic)
+            {
+                textToMusic?.Invoke(TextToMusic!);
             }
             else if (IsImage)
             {
@@ -979,6 +1059,8 @@ namespace Hedra
                 typeof(global::Hedra.GenerateTextToSpeechRequest),
                 TextToSound,
                 typeof(global::Hedra.GenerateTextToSoundRequest),
+                TextToMusic,
+                typeof(global::Hedra.GenerateTextToMusicRequest),
                 Image,
                 typeof(global::Hedra.GenerateImageRequest),
                 ImageUpscale,
@@ -1014,6 +1096,7 @@ namespace Hedra
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateVideoRequest?>.Default.Equals(Video, other.Video) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateTextToSpeechRequest?>.Default.Equals(TextToSpeech, other.TextToSpeech) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateTextToSoundRequest?>.Default.Equals(TextToSound, other.TextToSound) &&
+                global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateTextToMusicRequest?>.Default.Equals(TextToMusic, other.TextToMusic) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateImageRequest?>.Default.Equals(Image, other.Image) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateImageUpscaleRequest?>.Default.Equals(ImageUpscale, other.ImageUpscale) &&
                 global::System.Collections.Generic.EqualityComparer<global::Hedra.GenerateVideoUpscaleRequest?>.Default.Equals(VideoUpscale, other.VideoUpscale) &&

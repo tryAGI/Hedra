@@ -35,6 +35,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        TextToMusic,
+        /// <summary>
+        /// 
+        /// </summary>
         TextToSound,
         /// <summary>
         /// 
@@ -76,6 +80,7 @@ namespace Hedra
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.ImageUpscale => "image_upscale",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.MotionControl => "motion_control",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.SpeechToSpeech => "speech_to_speech",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToMusic => "text_to_music",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSound => "text_to_sound",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSpeech => "text_to_speech",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.Video => "video",
@@ -98,6 +103,7 @@ namespace Hedra
                 "image_upscale" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.ImageUpscale,
                 "motion_control" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.MotionControl,
                 "speech_to_speech" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.SpeechToSpeech,
+                "text_to_music" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToMusic,
                 "text_to_sound" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSound,
                 "text_to_speech" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSpeech,
                 "video" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.Video,

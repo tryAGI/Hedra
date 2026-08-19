@@ -16,7 +16,7 @@ namespace Hedra
         public required string Prompt { get; set; }
 
         /// <summary>
-        /// Duration of this shot in milliseconds (3000-15000).
+        /// Duration of this shot in milliseconds (1000-15000).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -35,7 +35,7 @@ namespace Hedra
         /// Prompt for this shot.
         /// </param>
         /// <param name="durationMs">
-        /// Duration of this shot in milliseconds (3000-15000).
+        /// Duration of this shot in milliseconds (1000-15000).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

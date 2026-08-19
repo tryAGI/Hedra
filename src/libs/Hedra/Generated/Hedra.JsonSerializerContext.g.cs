@@ -37,6 +37,10 @@ namespace Hedra
 
             typeof(global::Hedra.JsonConverters.GeneratedVideoInputsCharacterOrientation2NullableJsonConverter),
 
+            typeof(global::Hedra.JsonConverters.GeneratedVideoInputsShotType2JsonConverter),
+
+            typeof(global::Hedra.JsonConverters.GeneratedVideoInputsShotType2NullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerationInputDiscriminatorTypeJsonConverter),
 
             typeof(global::Hedra.JsonConverters.GenerationInputDiscriminatorTypeNullableJsonConverter),
@@ -148,6 +152,8 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateMotionControlResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateSpeechToSpeechRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateSpeechToSpeechResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateTextToMusicRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateTextToMusicResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateTextToSoundRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateTextToSoundResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateTextToSpeechRequest))]
@@ -173,6 +179,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedVideoInputsCharacterOrientation2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.VideoShot>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.VideoShot))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedVideoInputsShotType2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.Generation))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.Input), TypeInfoPropertyName = "Input2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationInputDiscriminator))]

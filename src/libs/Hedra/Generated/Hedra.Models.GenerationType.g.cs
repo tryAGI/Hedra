@@ -41,6 +41,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        Music,
+        /// <summary>
+        /// 
+        /// </summary>
         SpeechToSpeech,
         /// <summary>
         /// 
@@ -91,6 +95,7 @@ namespace Hedra
                 GenerationType.AudioIsolation => "audio_isolation",
                 GenerationType.Image => "image",
                 GenerationType.ImageUpscale => "image_upscale",
+                GenerationType.Music => "music",
                 GenerationType.SpeechToSpeech => "speech_to_speech",
                 GenerationType.TextToSound => "text_to_sound",
                 GenerationType.TextToSpeech => "text_to_speech",
@@ -116,6 +121,7 @@ namespace Hedra
                 "audio_isolation" => GenerationType.AudioIsolation,
                 "image" => GenerationType.Image,
                 "image_upscale" => GenerationType.ImageUpscale,
+                "music" => GenerationType.Music,
                 "speech_to_speech" => GenerationType.SpeechToSpeech,
                 "text_to_sound" => GenerationType.TextToSound,
                 "text_to_speech" => GenerationType.TextToSpeech,

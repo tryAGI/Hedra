@@ -42,6 +42,13 @@ namespace Hedra.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Hedra.GenerateTextToSoundRequest)}");
                 textToSound = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Hedra.GenerateTextToMusicRequest? textToMusic = default;
+            if (discriminator?.Type == global::Hedra.GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToMusic)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GenerateTextToMusicRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GenerateTextToMusicRequest> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Hedra.GenerateTextToMusicRequest)}");
+                textToMusic = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Hedra.GenerateImageRequest? image = default;
             if (discriminator?.Type == global::Hedra.GenerateAssetPublicGenerationsPostRequestDiscriminatorType.Image)
             {
@@ -107,6 +114,8 @@ namespace Hedra.JsonConverters
 
                 textToSound,
 
+                textToMusic,
+
                 image,
 
                 imageUpscale,
@@ -153,6 +162,12 @@ namespace Hedra.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GenerateTextToSoundRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GenerateTextToSoundRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.GenerateTextToSoundRequest).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.TextToSound!, typeInfo);
+            }
+            else if (value.IsTextToMusic)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GenerateTextToMusicRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GenerateTextToMusicRequest?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.GenerateTextToMusicRequest).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TextToMusic!, typeInfo);
             }
             else if (value.IsImage)
             {
