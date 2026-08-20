@@ -33,6 +33,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        ImageFileSizeUnsupported,
+        /// <summary>
+        /// 
+        /// </summary>
         ImageResolutionUnsupported,
         /// <summary>
         /// 
@@ -42,6 +46,10 @@ namespace Hedra
         /// 
         /// </summary>
         ModerationOutputTransient,
+        /// <summary>
+        /// 
+        /// </summary>
+        MusicPromptCopyrightPolicy,
         /// <summary>
         /// 
         /// </summary>
@@ -69,9 +77,11 @@ namespace Hedra
             return value switch
             {
                 GenerationReasonCode.ImageAspectRatioUnsupported => "IMAGE_ASPECT_RATIO_UNSUPPORTED",
+                GenerationReasonCode.ImageFileSizeUnsupported => "IMAGE_FILE_SIZE_UNSUPPORTED",
                 GenerationReasonCode.ImageResolutionUnsupported => "IMAGE_RESOLUTION_UNSUPPORTED",
                 GenerationReasonCode.ModerationLikeness => "MODERATION_LIKENESS",
                 GenerationReasonCode.ModerationOutputTransient => "MODERATION_OUTPUT_TRANSIENT",
+                GenerationReasonCode.MusicPromptCopyrightPolicy => "MUSIC_PROMPT_COPYRIGHT_POLICY",
                 GenerationReasonCode.ReferenceImageDimensionsUnsupported => "REFERENCE_IMAGE_DIMENSIONS_UNSUPPORTED",
                 GenerationReasonCode.ReferenceMediaDurationUnsupported => "REFERENCE_MEDIA_DURATION_UNSUPPORTED",
                 GenerationReasonCode.ReferenceMediaTotalDurationUnsupported => "REFERENCE_MEDIA_TOTAL_DURATION_UNSUPPORTED",
@@ -86,9 +96,11 @@ namespace Hedra
             return value switch
             {
                 "IMAGE_ASPECT_RATIO_UNSUPPORTED" => GenerationReasonCode.ImageAspectRatioUnsupported,
+                "IMAGE_FILE_SIZE_UNSUPPORTED" => GenerationReasonCode.ImageFileSizeUnsupported,
                 "IMAGE_RESOLUTION_UNSUPPORTED" => GenerationReasonCode.ImageResolutionUnsupported,
                 "MODERATION_LIKENESS" => GenerationReasonCode.ModerationLikeness,
                 "MODERATION_OUTPUT_TRANSIENT" => GenerationReasonCode.ModerationOutputTransient,
+                "MUSIC_PROMPT_COPYRIGHT_POLICY" => GenerationReasonCode.MusicPromptCopyrightPolicy,
                 "REFERENCE_IMAGE_DIMENSIONS_UNSUPPORTED" => GenerationReasonCode.ReferenceImageDimensionsUnsupported,
                 "REFERENCE_MEDIA_DURATION_UNSUPPORTED" => GenerationReasonCode.ReferenceMediaDurationUnsupported,
                 "REFERENCE_MEDIA_TOTAL_DURATION_UNSUPPORTED" => GenerationReasonCode.ReferenceMediaTotalDurationUnsupported,

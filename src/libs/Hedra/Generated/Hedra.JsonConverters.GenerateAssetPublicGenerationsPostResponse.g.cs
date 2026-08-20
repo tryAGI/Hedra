@@ -98,6 +98,13 @@ namespace Hedra.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Hedra.GenerateVideoToVideoResponse)}");
                 videoToVideo = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Hedra.GenerateVideoBackgroundRemovalResponse? videoBackgroundRemoval = default;
+            if (discriminator?.Type == global::Hedra.GenerateAssetPublicGenerationsPostResponseDiscriminatorType.VideoBackgroundRemoval)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GenerateVideoBackgroundRemovalResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GenerateVideoBackgroundRemovalResponse> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Hedra.GenerateVideoBackgroundRemovalResponse)}");
+                videoBackgroundRemoval = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Hedra.GenerateMotionControlResponse? motionControl = default;
             if (discriminator?.Type == global::Hedra.GenerateAssetPublicGenerationsPostResponseDiscriminatorType.MotionControl)
             {
@@ -129,6 +136,8 @@ namespace Hedra.JsonConverters
                 voiceClone,
 
                 videoToVideo,
+
+                videoBackgroundRemoval,
 
                 motionControl
                 );
@@ -210,6 +219,12 @@ namespace Hedra.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GenerateVideoToVideoResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GenerateVideoToVideoResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.GenerateVideoToVideoResponse).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.VideoToVideo!, typeInfo);
+            }
+            else if (value.IsVideoBackgroundRemoval)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hedra.GenerateVideoBackgroundRemovalResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hedra.GenerateVideoBackgroundRemovalResponse?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hedra.GenerateVideoBackgroundRemovalResponse).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VideoBackgroundRemoval!, typeInfo);
             }
             else if (value.IsMotionControl)
             {

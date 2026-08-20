@@ -79,10 +79,16 @@ namespace Hedra
         public string? TargetResolution { get; set; }
 
         /// <summary>
-        /// Optional upscale factor (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
+        /// Optional upscale factor in [1, 4] (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("upscale_factor")]
         public double? UpscaleFactor { get; set; }
+
+        /// <summary>
+        /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and out-of-menu values are rejected.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("options")]
+        public object? Options { get; set; }
 
         /// <summary>
         /// The id of the resulting image asset.
@@ -179,7 +185,10 @@ namespace Hedra
         /// Target output resolution (e.g. '1080p', '2K', '4K'). Preferred over upscale_factor.
         /// </param>
         /// <param name="upscaleFactor">
-        /// Optional upscale factor (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
+        /// Optional upscale factor in [1, 4] (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
+        /// </param>
+        /// <param name="options">
+        /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and out-of-menu values are rejected.
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -204,6 +213,7 @@ namespace Hedra
             string? modelSlug,
             string? targetResolution,
             double? upscaleFactor,
+            object? options,
             int? etaSec)
         {
             this.WorkspaceId = workspaceId;
@@ -217,6 +227,7 @@ namespace Hedra
             this.ImageId = imageId;
             this.TargetResolution = targetResolution;
             this.UpscaleFactor = upscaleFactor;
+            this.Options = options;
             this.AssetId = assetId;
             this.Id = id;
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));

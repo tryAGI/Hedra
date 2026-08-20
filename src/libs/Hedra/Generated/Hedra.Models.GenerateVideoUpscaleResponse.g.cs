@@ -85,6 +85,24 @@ namespace Hedra
         public string? TargetResolution { get; set; }
 
         /// <summary>
+        /// Target output frame rate, from the model's published `target_frame_rates` menu. A source already at or above the target keeps its own rate. Omitted keeps the source rate.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target_fps")]
+        public int? TargetFps { get; set; }
+
+        /// <summary>
+        /// Interpolation engine from the model's published `fps_engines` menu; requires `target_fps`. Omitted uses the default engine. Non-default engines scale the charge by their published `price_multiplier`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fps_engine")]
+        public string? FpsEngine { get; set; }
+
+        /// <summary>
+        /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and out-of-menu values are rejected.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("options")]
+        public object? Options { get; set; }
+
+        /// <summary>
         /// The id of the resulting upscaled video asset.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("asset_id")]
@@ -181,6 +199,15 @@ namespace Hedra
         /// <param name="targetResolution">
         /// Target output resolution. Must be one of: 1080p, 2K, 4K.
         /// </param>
+        /// <param name="targetFps">
+        /// Target output frame rate, from the model's published `target_frame_rates` menu. A source already at or above the target keeps its own rate. Omitted keeps the source rate.
+        /// </param>
+        /// <param name="fpsEngine">
+        /// Interpolation engine from the model's published `fps_engines` menu; requires `target_fps`. Omitted uses the default engine. Non-default engines scale the charge by their published `price_multiplier`.
+        /// </param>
+        /// <param name="options">
+        /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and out-of-menu values are rejected.
+        /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </param>
@@ -204,6 +231,9 @@ namespace Hedra
             string? modelSlug,
             double? upscaleFactor,
             string? targetResolution,
+            int? targetFps,
+            string? fpsEngine,
+            object? options,
             int? etaSec)
         {
             this.WorkspaceId = workspaceId;
@@ -217,6 +247,9 @@ namespace Hedra
             this.VideoId = videoId;
             this.UpscaleFactor = upscaleFactor;
             this.TargetResolution = targetResolution;
+            this.TargetFps = targetFps;
+            this.FpsEngine = fpsEngine;
+            this.Options = options;
             this.AssetId = assetId;
             this.Id = id;
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
