@@ -79,10 +79,16 @@ namespace Hedra
         public string? TargetResolution { get; set; }
 
         /// <summary>
-        /// Optional upscale factor (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
+        /// Optional upscale factor in [1, 4] (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("upscale_factor")]
         public double? UpscaleFactor { get; set; }
+
+        /// <summary>
+        /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and out-of-menu values are rejected.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("options")]
+        public object? Options { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -122,7 +128,10 @@ namespace Hedra
         /// Target output resolution (e.g. '1080p', '2K', '4K'). Preferred over upscale_factor.
         /// </param>
         /// <param name="upscaleFactor">
-        /// Optional upscale factor (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
+        /// Optional upscale factor in [1, 4] (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
+        /// </param>
+        /// <param name="options">
+        /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and out-of-menu values are rejected.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -138,7 +147,8 @@ namespace Hedra
             string? type,
             string? modelSlug,
             string? targetResolution,
-            double? upscaleFactor)
+            double? upscaleFactor,
+            object? options)
         {
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
@@ -151,6 +161,7 @@ namespace Hedra
             this.ImageId = imageId;
             this.TargetResolution = targetResolution;
             this.UpscaleFactor = upscaleFactor;
+            this.Options = options;
         }
 
         /// <summary>

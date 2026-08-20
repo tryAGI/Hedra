@@ -57,6 +57,10 @@ namespace Hedra
 
             typeof(global::Hedra.JsonConverters.GenerationTypeNullableJsonConverter),
 
+            typeof(global::Hedra.JsonConverters.ModelOptionTypeJsonConverter),
+
+            typeof(global::Hedra.JsonConverters.ModelOptionTypeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.SupportedLanguageJsonConverter),
 
             typeof(global::Hedra.JsonConverters.SupportedLanguageNullableJsonConverter),
@@ -77,13 +81,23 @@ namespace Hedra
 
             typeof(global::Hedra.JsonConverters.GenerateAssetPublicGenerationsPostResponseJsonConverter),
 
+            typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<string, bool?>),
+
+            typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<string, bool?>),
+
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>),
 
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>),
+
+            typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<string, bool?>),
+
+            typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<string, bool?>),
 
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>, object>),
 
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<string, int?, double?>),
+
+            typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<string, bool?>),
 
             typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<string, int?>),
 
@@ -98,11 +112,13 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.FpsEngineOption>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.FpsEngineOption))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AIModelPrice))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.Pricing))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.Dimension))]
@@ -110,6 +126,8 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.InputMode))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.ConditionalConstraint>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.ConditionalConstraint))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.ModelOption>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.ModelOption))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.Asset))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Guid))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AssetType), TypeInfoPropertyName = "AssetType2")]
@@ -144,6 +162,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateImageResponseType), TypeInfoPropertyName = "GenerateImageResponseType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.BatchImageResultItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateImageUpscaleRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<string, bool?>), TypeInfoPropertyName = "AnyOfStringBoolean2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateImageUpscaleResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateIsolatedAudioRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateIsolatedAudioResponse))]
@@ -159,6 +178,8 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateTextToSpeechRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.SupportedLanguage), TypeInfoPropertyName = "SupportedLanguage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateTextToSpeechResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateVideoBackgroundRemovalRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateVideoBackgroundRemovalResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateVideoRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>), TypeInfoPropertyName = "AnyOfGuidIListGuidObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateVideoResponse))]
@@ -197,6 +218,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.InputSlot>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.InputSlot))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.ModelOptionType), TypeInfoPropertyName = "ModelOptionType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.PageInfo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.PagedResponseGeneration))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.Generation>))]
@@ -221,8 +243,10 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<int>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.FpsEngineOption>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.InputMode>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.ConditionalConstraint>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.ModelOption>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Guid>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Hedra.BatchImageResultItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.List<global::System.Guid>, object>))]

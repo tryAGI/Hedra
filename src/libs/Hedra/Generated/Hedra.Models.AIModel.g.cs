@@ -72,6 +72,18 @@ namespace Hedra
         public global::System.Collections.Generic.IList<string>? Durations { get; set; }
 
         /// <summary>
+        /// Output frame rates a video-upscale model can interpolate up to. Absent when the model offers no frame-rate control.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target_frame_rates")]
+        public global::System.Collections.Generic.IList<int>? TargetFrameRates { get; set; }
+
+        /// <summary>
+        /// Interpolation engines offered with `target_fps`, in display order; the first is the default. `price_multiplier` scales the whole upscale charge.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fps_engines")]
+        public global::System.Collections.Generic.IList<global::Hedra.FpsEngineOption>? FpsEngines { get; set; }
+
+        /// <summary>
         /// Whether the model is conditioned by a start frame.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requires_start_frame")]
@@ -175,6 +187,12 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::Hedra.ConditionalConstraint>? ConditionalConstraints { get; set; }
 
         /// <summary>
+        /// Scalar options the model accepts per generation (closed enums and booleans), price-neutral unless a value declares a `price_multiplier` — the quote endpoint reflects any declared multiplier, so clients never do pricing math. Submit validates the request's `options` payload against this declaration; every default equals the provider's own default, so omission and explicit-default are equivalent. Null when the model publishes none.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("options")]
+        public global::System.Collections.Generic.IList<global::Hedra.ModelOption>? Options { get; set; }
+
+        /// <summary>
         /// Ordered `slug`s of models to suggest when the user switches away after a failed generation (moderation/capacity rejection). Slug is the stable catalog identity to match on; the legacy `id` is nullable and absent on newer models, so it cannot address them. Only models present and not disabled in this build are listed. Null when the model declares no alternatives.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("alternative_model_slugs")]
@@ -241,6 +259,12 @@ namespace Hedra
         /// <param name="durations">
         /// Durations the model supports.
         /// </param>
+        /// <param name="targetFrameRates">
+        /// Output frame rates a video-upscale model can interpolate up to. Absent when the model offers no frame-rate control.
+        /// </param>
+        /// <param name="fpsEngines">
+        /// Interpolation engines offered with `target_fps`, in display order; the first is the default. `price_multiplier` scales the whole upscale charge.
+        /// </param>
         /// <param name="requiresStartFrame">
         /// Whether the model is conditioned by a start frame.
         /// </param>
@@ -289,6 +313,9 @@ namespace Hedra
         /// <param name="conditionalConstraints">
         /// Machine-readable conditional input rules the backend enforces at submit. Each rule's `when` is conjunctive over the closed keys `resolution` (matched against the effective resolution: the requested one, or `default_resolution` when omitted) and `references_present`; its `then` narrows the advertised menus — `audio_input_max_duration_ms` caps the driving audio, `durations` (int ms) replaces the offered duration menu, and `disallowed_resolutions` removes resolutions. When several rules match: numeric caps take the minimum, `durations` intersect, `disallowed_resolutions` union. Null when the model declares none.
         /// </param>
+        /// <param name="options">
+        /// Scalar options the model accepts per generation (closed enums and booleans), price-neutral unless a value declares a `price_multiplier` — the quote endpoint reflects any declared multiplier, so clients never do pricing math. Submit validates the request's `options` payload against this declaration; every default equals the provider's own default, so omission and explicit-default are equivalent. Null when the model publishes none.
+        /// </param>
         /// <param name="alternativeModelSlugs">
         /// Ordered `slug`s of models to suggest when the user switches away after a failed generation (moderation/capacity rejection). Slug is the stable catalog identity to match on; the legacy `id` is nullable and absent on newer models, so it cannot address them. Only models present and not disabled in this build are listed. Null when the model declares no alternatives.
         /// </param>
@@ -317,6 +344,8 @@ namespace Hedra
             global::System.Collections.Generic.IList<string>? resolutions,
             string? defaultResolution,
             global::System.Collections.Generic.IList<string>? durations,
+            global::System.Collections.Generic.IList<int>? targetFrameRates,
+            global::System.Collections.Generic.IList<global::Hedra.FpsEngineOption>? fpsEngines,
             bool? requiresStartFrame,
             bool? requiresEndFrame,
             bool? requiresAudioInput,
@@ -333,6 +362,7 @@ namespace Hedra
             int? maxPromptLength,
             global::System.Collections.Generic.IList<global::Hedra.InputMode>? inputs,
             global::System.Collections.Generic.IList<global::Hedra.ConditionalConstraint>? conditionalConstraints,
+            global::System.Collections.Generic.IList<global::Hedra.ModelOption>? options,
             global::System.Collections.Generic.IList<string>? alternativeModelSlugs,
             string? logoUrl,
             bool? premium,
@@ -348,6 +378,8 @@ namespace Hedra
             this.Resolutions = resolutions;
             this.DefaultResolution = defaultResolution;
             this.Durations = durations;
+            this.TargetFrameRates = targetFrameRates;
+            this.FpsEngines = fpsEngines;
             this.RequiresStartFrame = requiresStartFrame;
             this.RequiresEndFrame = requiresEndFrame;
             this.RequiresAudioInput = requiresAudioInput;
@@ -365,6 +397,7 @@ namespace Hedra
             this.MaxPromptLength = maxPromptLength;
             this.Inputs = inputs;
             this.ConditionalConstraints = conditionalConstraints;
+            this.Options = options;
             this.AlternativeModelSlugs = alternativeModelSlugs;
             this.LogoUrl = logoUrl;
             this.Premium = premium;

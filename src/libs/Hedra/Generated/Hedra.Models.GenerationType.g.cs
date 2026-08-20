@@ -61,6 +61,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        VideoBackgroundRemoval,
+        /// <summary>
+        /// 
+        /// </summary>
         VideoStitching,
         /// <summary>
         /// 
@@ -100,6 +104,7 @@ namespace Hedra
                 GenerationType.TextToSound => "text_to_sound",
                 GenerationType.TextToSpeech => "text_to_speech",
                 GenerationType.Video => "video",
+                GenerationType.VideoBackgroundRemoval => "video_background_removal",
                 GenerationType.VideoStitching => "video_stitching",
                 GenerationType.VideoToVideo => "video_to_video",
                 GenerationType.VideoUpscale => "video_upscale",
@@ -126,6 +131,7 @@ namespace Hedra
                 "text_to_sound" => GenerationType.TextToSound,
                 "text_to_speech" => GenerationType.TextToSpeech,
                 "video" => GenerationType.Video,
+                "video_background_removal" => GenerationType.VideoBackgroundRemoval,
                 "video_stitching" => GenerationType.VideoStitching,
                 "video_to_video" => GenerationType.VideoToVideo,
                 "video_upscale" => GenerationType.VideoUpscale,

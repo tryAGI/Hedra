@@ -51,6 +51,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        VideoBackgroundRemoval,
+        /// <summary>
+        /// 
+        /// </summary>
         VideoToVideo,
         /// <summary>
         /// 
@@ -84,6 +88,7 @@ namespace Hedra
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSound => "text_to_sound",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSpeech => "text_to_speech",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.Video => "video",
+                GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoBackgroundRemoval => "video_background_removal",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoToVideo => "video_to_video",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoUpscale => "video_upscale",
                 GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VoiceClone => "voice_clone",
@@ -107,6 +112,7 @@ namespace Hedra
                 "text_to_sound" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSound,
                 "text_to_speech" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.TextToSpeech,
                 "video" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.Video,
+                "video_background_removal" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoBackgroundRemoval,
                 "video_to_video" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoToVideo,
                 "video_upscale" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VideoUpscale,
                 "voice_clone" => GenerateAssetPublicGenerationsPostRequestDiscriminatorType.VoiceClone,

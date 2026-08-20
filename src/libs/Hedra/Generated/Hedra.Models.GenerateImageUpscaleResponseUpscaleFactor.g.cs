@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// Optional upscale factor (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
+    /// Optional upscale factor in [1, 4] (e.g. 2.0 for 2x). Deprecated: prefer target_resolution.
     /// </summary>
     public sealed partial class GenerateImageUpscaleResponseUpscaleFactor
     {

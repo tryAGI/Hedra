@@ -51,6 +51,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        VideoBackgroundRemoval,
+        /// <summary>
+        /// 
+        /// </summary>
         VideoToVideo,
         /// <summary>
         /// 
@@ -84,6 +88,7 @@ namespace Hedra
                 GenerationInputDiscriminatorType.TextToSound => "text_to_sound",
                 GenerationInputDiscriminatorType.TextToSpeech => "text_to_speech",
                 GenerationInputDiscriminatorType.Video => "video",
+                GenerationInputDiscriminatorType.VideoBackgroundRemoval => "video_background_removal",
                 GenerationInputDiscriminatorType.VideoToVideo => "video_to_video",
                 GenerationInputDiscriminatorType.VideoUpscale => "video_upscale",
                 GenerationInputDiscriminatorType.VoiceClone => "voice_clone",
@@ -107,6 +112,7 @@ namespace Hedra
                 "text_to_sound" => GenerationInputDiscriminatorType.TextToSound,
                 "text_to_speech" => GenerationInputDiscriminatorType.TextToSpeech,
                 "video" => GenerationInputDiscriminatorType.Video,
+                "video_background_removal" => GenerationInputDiscriminatorType.VideoBackgroundRemoval,
                 "video_to_video" => GenerationInputDiscriminatorType.VideoToVideo,
                 "video_upscale" => GenerationInputDiscriminatorType.VideoUpscale,
                 "voice_clone" => GenerationInputDiscriminatorType.VoiceClone,

@@ -105,6 +105,12 @@ namespace Hedra
         public double? CfgScale { get; set; }
 
         /// <summary>
+        /// For background removal: optimize for a person instead of an object. None uses the model default.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("subject_is_person")]
+        public bool? SubjectIsPerson { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -156,6 +162,9 @@ namespace Hedra
         /// <param name="cfgScale">
         /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
         /// </param>
+        /// <param name="subjectIsPerson">
+        /// For background removal: optimize for a person instead of an object. None uses the model default.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -173,7 +182,8 @@ namespace Hedra
             bool? enhancePrompt,
             global::System.Collections.Generic.IList<global::Hedra.VideoShot>? multiPrompt,
             global::Hedra.GeneratedVideoInputsShotType2? shotType,
-            double? cfgScale)
+            double? cfgScale,
+            bool? subjectIsPerson)
         {
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.ModelSlug = modelSlug;
@@ -189,6 +199,7 @@ namespace Hedra
             this.MultiPrompt = multiPrompt;
             this.ShotType = shotType;
             this.CfgScale = cfgScale;
+            this.SubjectIsPerson = subjectIsPerson;
         }
 
         /// <summary>
