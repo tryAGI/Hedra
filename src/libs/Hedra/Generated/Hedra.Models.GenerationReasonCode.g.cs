@@ -21,11 +21,25 @@ namespace Hedra
     /// it cannot help. Providers name that case distinctly (BytePlus as the<br/>
     /// ``.PrivacyInformation`` sub-code, Google as a likeness message), so the<br/>
     /// distinction is theirs, not ours to infer.<br/>
+    /// The per-member comments below name the ``reason_params`` keys a code uses<br/>
+    /// when it carries values. Those names are fixed per code, but their<br/>
+    /// *presence* is not: the same situation is often detectable at more than one<br/>
+    /// point in the pipeline, and those points do not hold the same facts — a<br/>
+    /// pre-dispatch check that decoded the image knows its dimensions, while the<br/>
+    /// provider rejection of the same image knows only that it was refused. Both<br/>
+    /// publish the code; only the first can publish the numbers. Emitting the<br/>
+    /// code either way is deliberate, because the code is what a client keys copy<br/>
+    /// off, and a client that gates on the values it needs degrades to coarser<br/>
+    /// copy on its own. Never invent a value to fill a key.<br/>
     /// Append-only, and pinned by ``test/lint/test_error_codes_are_append_only``:<br/>
     /// clients switch on these string values.
     /// </summary>
     public enum GenerationReasonCode
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        AudioReferenceRequiresVisual,
         /// <summary>
         /// 
         /// </summary>
@@ -38,6 +52,10 @@ namespace Hedra
         /// 
         /// </summary>
         ImageResolutionUnsupported,
+        /// <summary>
+        /// 
+        /// </summary>
+        ImageSubjectNotDetected,
         /// <summary>
         /// 
         /// </summary>
@@ -76,9 +94,11 @@ namespace Hedra
         {
             return value switch
             {
+                GenerationReasonCode.AudioReferenceRequiresVisual => "AUDIO_REFERENCE_REQUIRES_VISUAL",
                 GenerationReasonCode.ImageAspectRatioUnsupported => "IMAGE_ASPECT_RATIO_UNSUPPORTED",
                 GenerationReasonCode.ImageFileSizeUnsupported => "IMAGE_FILE_SIZE_UNSUPPORTED",
                 GenerationReasonCode.ImageResolutionUnsupported => "IMAGE_RESOLUTION_UNSUPPORTED",
+                GenerationReasonCode.ImageSubjectNotDetected => "IMAGE_SUBJECT_NOT_DETECTED",
                 GenerationReasonCode.ModerationLikeness => "MODERATION_LIKENESS",
                 GenerationReasonCode.ModerationOutputTransient => "MODERATION_OUTPUT_TRANSIENT",
                 GenerationReasonCode.MusicPromptCopyrightPolicy => "MUSIC_PROMPT_COPYRIGHT_POLICY",
@@ -95,9 +115,11 @@ namespace Hedra
         {
             return value switch
             {
+                "AUDIO_REFERENCE_REQUIRES_VISUAL" => GenerationReasonCode.AudioReferenceRequiresVisual,
                 "IMAGE_ASPECT_RATIO_UNSUPPORTED" => GenerationReasonCode.ImageAspectRatioUnsupported,
                 "IMAGE_FILE_SIZE_UNSUPPORTED" => GenerationReasonCode.ImageFileSizeUnsupported,
                 "IMAGE_RESOLUTION_UNSUPPORTED" => GenerationReasonCode.ImageResolutionUnsupported,
+                "IMAGE_SUBJECT_NOT_DETECTED" => GenerationReasonCode.ImageSubjectNotDetected,
                 "MODERATION_LIKENESS" => GenerationReasonCode.ModerationLikeness,
                 "MODERATION_OUTPUT_TRANSIENT" => GenerationReasonCode.ModerationOutputTransient,
                 "MUSIC_PROMPT_COPYRIGHT_POLICY" => GenerationReasonCode.MusicPromptCopyrightPolicy,
