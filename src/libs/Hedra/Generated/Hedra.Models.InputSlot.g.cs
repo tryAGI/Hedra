@@ -108,13 +108,13 @@ namespace Hedra
         public int? MaxTotalDurationMs { get; set; }
 
         /// <summary>
-        /// Minimum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by the BytePlus input normalization at dispatch.
+        /// Minimum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by pre-dispatch input validation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("min_aspect_ratio")]
         public double? MinAspectRatio { get; set; }
 
         /// <summary>
-        /// Maximum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by the BytePlus input normalization at dispatch.
+        /// Maximum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by pre-dispatch input validation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_aspect_ratio")]
         public double? MaxAspectRatio { get; set; }
@@ -165,10 +165,10 @@ namespace Hedra
         /// Maximum combined duration across all files in this slot in milliseconds (video/audio only).
         /// </param>
         /// <param name="minAspectRatio">
-        /// Minimum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by the BytePlus input normalization at dispatch.
+        /// Minimum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by pre-dispatch input validation.
         /// </param>
         /// <param name="maxAspectRatio">
-        /// Maximum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by the BytePlus input normalization at dispatch.
+        /// Maximum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by pre-dispatch input validation.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

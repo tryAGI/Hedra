@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// Maximum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by the BytePlus input normalization at dispatch.
+    /// Maximum width/height ratio for image inputs (image only). Scale-invariant, so the caller must crop rather than resize to satisfy it; enforced by pre-dispatch input validation.
     /// </summary>
     public sealed partial class InputSlotMaxAspectRatio
     {
