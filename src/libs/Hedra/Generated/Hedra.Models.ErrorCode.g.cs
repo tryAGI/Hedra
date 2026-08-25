@@ -25,6 +25,10 @@ namespace Hedra
         /// <summary>
         /// 
         /// </summary>
+        Cancelled,
+        /// <summary>
+        /// 
+        /// </summary>
         DeadlineExceeded,
         /// <summary>
         /// 
@@ -90,6 +94,7 @@ namespace Hedra
             {
                 ErrorCode.AlreadyExists => "ALREADY_EXISTS",
                 ErrorCode.AlreadyInProgress => "ALREADY_IN_PROGRESS",
+                ErrorCode.Cancelled => "CANCELLED",
                 ErrorCode.DeadlineExceeded => "DEADLINE_EXCEEDED",
                 ErrorCode.FailedPrecondition => "FAILED_PRECONDITION",
                 ErrorCode.Gone => "GONE",
@@ -115,6 +120,7 @@ namespace Hedra
             {
                 "ALREADY_EXISTS" => ErrorCode.AlreadyExists,
                 "ALREADY_IN_PROGRESS" => ErrorCode.AlreadyInProgress,
+                "CANCELLED" => ErrorCode.Cancelled,
                 "DEADLINE_EXCEEDED" => ErrorCode.DeadlineExceeded,
                 "FAILED_PRECONDITION" => ErrorCode.FailedPrecondition,
                 "GONE" => ErrorCode.Gone,
