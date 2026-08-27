@@ -49,7 +49,7 @@ namespace Hedra
         public string? Error { get; set; }
 
         /// <summary>
-        /// Estimated time until completion in seconds. None if unavailable.
+        /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("eta_sec")]
         public int? EtaSec { get; set; }
@@ -82,7 +82,7 @@ namespace Hedra
         /// Error message if this item failed.
         /// </param>
         /// <param name="etaSec">
-        /// Estimated time until completion in seconds. None if unavailable.
+        /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

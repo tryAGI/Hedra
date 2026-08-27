@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// Slug of the model to use for the generation. Alternative to `ai_model_id`.
+    /// The slug of the model to use. Alternative to the deprecated model id.
     /// </summary>
     public sealed partial class GenerateVideoResponseModelSlug
     {

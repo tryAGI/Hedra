@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// Deprecated. Use `model_slug` to select the video-to-video model.
+    /// Deprecated. Use `model_slug` to select the model.
     /// </summary>
     [global::System.Obsolete("This model marked as deprecated.")]
     public sealed partial class GenerateVideoToVideoRequestAiModelId

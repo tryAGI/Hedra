@@ -108,7 +108,7 @@ namespace Hedra
         public required double Progress { get; set; }
 
         /// <summary>
-        /// Estimated time until completion in seconds.
+        /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("eta_sec")]
         public int? EtaSec { get; set; }
@@ -167,7 +167,7 @@ namespace Hedra
         /// Default Value: true
         /// </param>
         /// <param name="etaSec">
-        /// Estimated time until completion in seconds.
+        /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

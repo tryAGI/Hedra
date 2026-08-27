@@ -66,7 +66,7 @@ namespace Hedra
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
-        /// Slug of the model to use for the generation. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
         public string? ModelSlug { get; set; }
@@ -144,6 +144,12 @@ namespace Hedra
         [global::System.Text.Json.Serialization.JsonPropertyName("generated_video_inputs")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Hedra.GeneratedVideoInputs GeneratedVideoInputs { get; set; }
+
+        /// <summary>
+        /// Optional durable post-processing applied after generation. These settings do not change the selected model or publish an Upscale catalog entry.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("post_processing")]
+        public global::Hedra.VideoPostProcessingSettings? PostProcessing { get; set; }
 
         /// <summary>
         /// Number of video variations to generate (1-8). When &gt; 1, batch_results will contain all generation results.<br/>
@@ -256,7 +262,7 @@ namespace Hedra
         /// Optional human-friendly name for the generated asset.
         /// </param>
         /// <param name="modelSlug">
-        /// Slug of the model to use for the generation. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </param>
         /// <param name="startKeyframeId">
         /// The id of the Image asset to use as the start keyframe.
@@ -290,6 +296,9 @@ namespace Hedra
         /// </param>
         /// <param name="videoId">
         /// The id of the Video asset to use as input. For V2V (motion control) models this is the driving video; for Google Veo models this triggers video extension.
+        /// </param>
+        /// <param name="postProcessing">
+        /// Optional durable post-processing applied after generation. These settings do not change the selected model or publish an Upscale catalog entry.
         /// </param>
         /// <param name="batchSize">
         /// Number of video variations to generate (1-8). When &gt; 1, batch_results will contain all generation results.<br/>
@@ -334,6 +343,7 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageIds,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceVideoIds,
             global::System.Guid? videoId,
+            global::Hedra.VideoPostProcessingSettings? postProcessing,
             int? batchSize,
             string? batchGenerationId,
             int? etaSec,
@@ -360,6 +370,7 @@ namespace Hedra
             this.ReferenceVideoIds = referenceVideoIds;
             this.VideoId = videoId;
             this.GeneratedVideoInputs = generatedVideoInputs ?? throw new global::System.ArgumentNullException(nameof(generatedVideoInputs));
+            this.PostProcessing = postProcessing;
             this.BatchSize = batchSize;
             this.BatchGenerationId = batchGenerationId;
             this.Id = id;

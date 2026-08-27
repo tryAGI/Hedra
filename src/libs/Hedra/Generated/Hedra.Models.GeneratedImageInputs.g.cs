@@ -18,14 +18,14 @@ namespace Hedra
         public required string TextPrompt { get; set; }
 
         /// <summary>
-        /// Deprecated. Use `model_slug` to identify the model used for generation.
+        /// Deprecated. Use `model_slug` to select the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
-        /// The slug of the model used for generation. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
         public string? ModelSlug { get; set; }
@@ -67,7 +67,7 @@ namespace Hedra
         /// Prompt for image generation.
         /// </param>
         /// <param name="modelSlug">
-        /// The slug of the model used for generation. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </param>
         /// <param name="aspectRatio">
         /// Aspect ratio used for generation.

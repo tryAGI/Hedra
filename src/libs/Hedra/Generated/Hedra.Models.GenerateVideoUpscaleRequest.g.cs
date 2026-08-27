@@ -53,14 +53,14 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
-        /// Deprecated. Use `model_slug` to select the video upscale model.
+        /// Deprecated. Use `model_slug` to select the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
-        /// The slug of the model to use for upscaling. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
         public string? ModelSlug { get; set; }
@@ -134,7 +134,7 @@ namespace Hedra
         /// Default Value: video_upscale
         /// </param>
         /// <param name="modelSlug">
-        /// The slug of the model to use for upscaling. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </param>
         /// <param name="upscaleFactor">
         /// Computed scale factor derived from target_resolution and source video dimensions.
