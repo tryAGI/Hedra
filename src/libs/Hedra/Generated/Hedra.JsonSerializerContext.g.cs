@@ -65,6 +65,10 @@ namespace Hedra
 
             typeof(global::Hedra.JsonConverters.SupportedLanguageNullableJsonConverter),
 
+            typeof(global::Hedra.JsonConverters.VideoPostProcessingSettingsFpsEngine2JsonConverter),
+
+            typeof(global::Hedra.JsonConverters.VideoPostProcessingSettingsFpsEngine2NullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.GenerateAssetPublicGenerationsPostRequestDiscriminatorTypeJsonConverter),
 
             typeof(global::Hedra.JsonConverters.GenerateAssetPublicGenerationsPostRequestDiscriminatorTypeNullableJsonConverter),
@@ -168,6 +172,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateIsolatedAudioResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateMotionControlRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedVideoInputs))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.VideoPostProcessingSettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateMotionControlResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateSpeechToSpeechRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateSpeechToSpeechResponse))]
@@ -227,6 +232,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.AnyOf<string, int?>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<string, int?>), TypeInfoPropertyName = "AnyOfStringInt322")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.VideoPostProcessingSettingsFpsEngine2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.VoiceLabel>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.VoiceLabel))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateAssetPublicGenerationsPostRequest), TypeInfoPropertyName = "GenerateAssetPublicGenerationsPostRequest2")]

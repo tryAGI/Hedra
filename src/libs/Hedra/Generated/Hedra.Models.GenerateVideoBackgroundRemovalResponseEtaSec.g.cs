@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// Estimated time until completion in seconds.
+    /// Estimated time until completion in seconds. May be None if no historical data available.
     /// </summary>
     public sealed partial class GenerateVideoBackgroundRemovalResponseEtaSec
     {

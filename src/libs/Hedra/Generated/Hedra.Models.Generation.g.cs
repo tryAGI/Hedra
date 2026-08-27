@@ -47,7 +47,7 @@ namespace Hedra
         public required double Progress { get; set; }
 
         /// <summary>
-        /// Estimated time remaining in seconds until generation completes.
+        /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("eta_sec")]
         public int? EtaSec { get; set; }
@@ -129,7 +129,7 @@ namespace Hedra
         /// Date the generation was submitted.
         /// </param>
         /// <param name="etaSec">
-        /// Estimated time remaining in seconds until generation completes.
+        /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </param>
         /// <param name="estimatedCompletionAt">
         /// Absolute UTC timestamp when the generation is estimated to complete. Clients should anchor a countdown to this rather than decaying eta_sec, since it self-corrects as the backend refines the estimate.

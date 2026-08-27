@@ -53,14 +53,14 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
-        /// Deprecated. Use `model_slug` to select the sound effect model.
+        /// Deprecated. Use `model_slug` to select the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
-        /// The slug of the model to use for sound effect generation. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
         public string? ModelSlug { get; set; }
@@ -186,7 +186,7 @@ namespace Hedra
         /// Default Value: text_to_sound
         /// </param>
         /// <param name="modelSlug">
-        /// The slug of the model to use for sound effect generation. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </param>
         /// <param name="durationSeconds">
         /// The duration of the sound effect in seconds (0.5-30). If not specified, duration is automatically determined from the prompt.

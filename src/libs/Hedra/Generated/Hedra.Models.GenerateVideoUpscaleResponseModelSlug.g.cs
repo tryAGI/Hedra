@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// The slug of the model to use for upscaling. Alternative to `ai_model_id`.
+    /// The slug of the model to use. Alternative to the deprecated model id.
     /// </summary>
     public sealed partial class GenerateVideoUpscaleResponseModelSlug
     {

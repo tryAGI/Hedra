@@ -98,7 +98,7 @@ namespace Hedra
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
-        /// The slug of the model to use. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
         public string? ModelSlug { get; set; }
@@ -263,7 +263,7 @@ namespace Hedra
         /// The id of the Image asset to use as the start keyframe.
         /// </param>
         /// <param name="modelSlug">
-        /// The slug of the model to use. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </param>
         /// <param name="referenceImageIds">
         /// The id(s) of the image(s) to reference in the generation. This is only used for image-to-image generation and will supersede start_keyframe_id.

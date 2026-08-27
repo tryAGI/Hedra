@@ -73,7 +73,7 @@ namespace Hedra
         public global::System.Guid? ModelId { get; set; }
 
         /// <summary>
-        /// The slug of the model to use. Alternative to `model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
         public string? ModelSlug { get; set; }
@@ -202,7 +202,7 @@ namespace Hedra
         /// Optional human-friendly name for the generated asset.
         /// </param>
         /// <param name="modelSlug">
-        /// The slug of the model to use. Alternative to `model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </param>
         /// <param name="stability">
         /// Stability should be between 0-1, where 0 is the most stable and 1 is the most unstable. This varies the consistency between your outputs.<br/>

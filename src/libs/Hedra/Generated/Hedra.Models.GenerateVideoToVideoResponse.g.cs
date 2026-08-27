@@ -53,14 +53,14 @@ namespace Hedra
         public string? Type { get; set; }
 
         /// <summary>
-        /// Deprecated. Use `model_slug` to select the video-to-video model.
+        /// Deprecated. Use `model_slug` to select the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ai_model_id")]
         [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Guid? AiModelId { get; set; }
 
         /// <summary>
-        /// The slug of the model to use. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_slug")]
         public string? ModelSlug { get; set; }
@@ -97,6 +97,12 @@ namespace Hedra
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keep_audio")]
         public bool? KeepAudio { get; set; }
+
+        /// <summary>
+        /// Optional FPS and HDR processing applied before delivery.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("post_processing")]
+        public global::Hedra.VideoPostProcessingSettings? PostProcessing { get; set; }
 
         /// <summary>
         /// The id of the generation. Can be used to check status.
@@ -190,7 +196,7 @@ namespace Hedra
         /// Default Value: video_to_video
         /// </param>
         /// <param name="modelSlug">
-        /// The slug of the model to use. Alternative to `ai_model_id`.
+        /// The slug of the model to use. Alternative to the deprecated model id.
         /// </param>
         /// <param name="referenceImageAssetIds">
         /// Optional ids of reference image assets for style transfer. Reference as @Image1, @Image2, etc. in prompt.
@@ -201,6 +207,9 @@ namespace Hedra
         /// <param name="keepAudio">
         /// Whether to preserve the original audio from the input video. Automatically disabled when generate_audio is enabled.<br/>
         /// Default Value: true
+        /// </param>
+        /// <param name="postProcessing">
+        /// Optional FPS and HDR processing applied before delivery.
         /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
@@ -227,6 +236,7 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::System.Guid>? referenceImageAssetIds,
             global::System.Collections.Generic.IList<global::Hedra.KlingEditElement>? elements,
             bool? keepAudio,
+            global::Hedra.VideoPostProcessingSettings? postProcessing,
             int? etaSec)
         {
             this.WorkspaceId = workspaceId;
@@ -242,6 +252,7 @@ namespace Hedra
             this.ReferenceImageAssetIds = referenceImageAssetIds;
             this.Elements = elements;
             this.KeepAudio = keepAudio;
+            this.PostProcessing = postProcessing;
             this.Id = id;
             this.AssetId = assetId;
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
