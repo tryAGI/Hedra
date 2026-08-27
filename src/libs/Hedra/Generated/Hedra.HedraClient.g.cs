@@ -10,7 +10,7 @@ namespace Hedra
     public sealed partial class HedraClient : global::Hedra.IHedraClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const string DefaultBaseUrl = "https://mercury.dev.dream-ai.com/api";
 
@@ -40,7 +40,7 @@ namespace Hedra
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Hedra.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {

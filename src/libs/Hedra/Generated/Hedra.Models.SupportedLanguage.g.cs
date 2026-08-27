@@ -4,172 +4,172 @@
 namespace Hedra
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SupportedLanguage
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Afrikaans,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Arabic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bulgarian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Catalan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chinese,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chinese_Yue,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Croatian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Czech,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Danish,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Dutch,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         English,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Filipino,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Finnish,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         French,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         German,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Greek,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hebrew,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hindi,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hungarian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Indonesian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Italian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Japanese,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Korean,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Malay,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Norwegian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Nynorsk,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Persian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Polish,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Portuguese,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Romanian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Russian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Slovak,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Slovenian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Spanish,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Swedish,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tamil,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Thai,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Turkish,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ukrainian,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Vietnamese,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
     }

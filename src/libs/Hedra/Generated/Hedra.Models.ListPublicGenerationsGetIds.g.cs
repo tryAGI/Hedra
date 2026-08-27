@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ListPublicGenerationsGetIds
     {

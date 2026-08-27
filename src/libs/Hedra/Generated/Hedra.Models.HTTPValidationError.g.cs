@@ -4,12 +4,12 @@
 namespace Hedra
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class HTTPValidationError
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
         public global::System.Collections.Generic.IList<global::Hedra.ValidationError>? Detail { get; set; }

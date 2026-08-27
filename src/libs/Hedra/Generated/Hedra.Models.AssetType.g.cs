@@ -4,36 +4,36 @@
 namespace Hedra
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AssetType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Audio,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Image,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RichText,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ThreeD,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Video,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Voice,
     }

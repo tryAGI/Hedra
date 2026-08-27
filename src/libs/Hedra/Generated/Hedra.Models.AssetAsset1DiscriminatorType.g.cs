@@ -4,36 +4,36 @@
 namespace Hedra
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AssetAsset1DiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GeneratedAudio,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GeneratedImage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GeneratedVideo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UploadedAudio,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UploadedImage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UploadedVideo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Voice,
     }

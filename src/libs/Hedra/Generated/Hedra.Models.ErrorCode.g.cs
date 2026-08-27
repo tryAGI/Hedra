@@ -15,67 +15,67 @@ namespace Hedra
     public enum ErrorCode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AlreadyExists,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AlreadyInProgress,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cancelled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DeadlineExceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FailedPrecondition,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gone,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InsufficientBalance,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Internal,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidArgument,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModerationFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PermissionDenied,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ResourceExhausted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unauthorized,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unavailable,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unknown,
     }

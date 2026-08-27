@@ -67,7 +67,7 @@ namespace Hedra
             ref string content);
 
         /// <summary>
-        /// List 
+        /// List
         /// </summary>
         /// <param name="type"></param>
         /// <param name="createdBefore"></param>
@@ -107,7 +107,7 @@ namespace Hedra
             return __response.Body;
         }
         /// <summary>
-        /// List 
+        /// List
         /// </summary>
         /// <param name="type"></param>
         /// <param name="createdBefore"></param>
@@ -207,7 +207,7 @@ namespace Hedra
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Hedra.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

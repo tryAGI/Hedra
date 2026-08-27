@@ -147,7 +147,7 @@ namespace Hedra
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Hedra.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateAssetRequest
     {
@@ -24,7 +24,7 @@ namespace Hedra
         public required global::Hedra.AssetType Type { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("workspace_id")]
         public string? WorkspaceId { get; set; }

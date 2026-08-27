@@ -20,7 +20,7 @@ namespace Hedra.JsonConverters
                     {
                         return global::Hedra.AssetAsset1DiscriminatorTypeExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:
