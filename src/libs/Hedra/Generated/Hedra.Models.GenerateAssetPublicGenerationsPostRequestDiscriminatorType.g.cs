@@ -4,64 +4,64 @@
 namespace Hedra
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GenerateAssetPublicGenerationsPostRequestDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AudioIsolation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Image,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ImageToImage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ImageUpscale,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MotionControl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SpeechToSpeech,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TextToMusic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TextToSound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TextToSpeech,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Video,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VideoBackgroundRemoval,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VideoToVideo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VideoUpscale,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VoiceClone,
     }

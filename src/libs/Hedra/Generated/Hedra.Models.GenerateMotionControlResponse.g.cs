@@ -11,7 +11,7 @@ namespace Hedra
     public sealed partial class GenerateMotionControlResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("workspace_id")]
         public string? WorkspaceId { get; set; }

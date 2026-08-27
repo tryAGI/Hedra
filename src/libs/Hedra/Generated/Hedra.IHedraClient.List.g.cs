@@ -5,7 +5,7 @@ namespace Hedra
     public partial interface IHedraClient
     {
         /// <summary>
-        /// List 
+        /// List
         /// </summary>
         /// <param name="type"></param>
         /// <param name="createdBefore"></param>
@@ -30,7 +30,7 @@ namespace Hedra
             global::Hedra.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List 
+        /// List
         /// </summary>
         /// <param name="type"></param>
         /// <param name="createdBefore"></param>

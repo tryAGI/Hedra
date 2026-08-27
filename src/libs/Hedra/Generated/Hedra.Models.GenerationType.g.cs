@@ -11,71 +11,71 @@ namespace Hedra
     public enum GenerationType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentResponse,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AssetsToAudioTextPrompt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AssetsToImageTextPrompt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AudioFromVideo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AudioIsolation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Image,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ImageUpscale,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Music,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SpeechToSpeech,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TextToSound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TextToSpeech,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Video,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VideoBackgroundRemoval,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VideoStitching,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VideoToVideo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VideoUpscale,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VoiceClone,
     }

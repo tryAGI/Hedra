@@ -9,11 +9,11 @@ namespace Hedra
     public enum GenerateImageResponseType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Image,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ImageToImage,
     }

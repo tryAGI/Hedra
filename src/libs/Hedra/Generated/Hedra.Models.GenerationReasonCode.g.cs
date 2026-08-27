@@ -37,47 +37,47 @@ namespace Hedra
     public enum GenerationReasonCode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AudioReferenceRequiresVisual,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ImageAspectRatioUnsupported,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ImageFileSizeUnsupported,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ImageResolutionUnsupported,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ImageSubjectNotDetected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModerationLikeness,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModerationOutputTransient,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MusicPromptCopyrightPolicy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ReferenceImageDimensionsUnsupported,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ReferenceMediaDurationUnsupported,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ReferenceMediaTotalDurationUnsupported,
     }

@@ -4,16 +4,16 @@
 namespace Hedra
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GeneratedVideoInputsShotType2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Customize,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Intelligent,
     }

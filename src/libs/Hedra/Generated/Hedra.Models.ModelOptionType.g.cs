@@ -4,16 +4,16 @@
 namespace Hedra
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ModelOptionType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Boolean,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Enum,
     }
