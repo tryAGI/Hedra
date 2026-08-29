@@ -154,6 +154,26 @@ namespace Hedra
         public int? NumInferenceSteps { get; set; }
 
         /// <summary>
+        /// Ground the generation in live Google Search results, for models whose provider offers the tool. Grounded requests carry a surcharge, which the model's quoted price already includes.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("google_search")]
+        public bool? GoogleSearch { get; set; }
+
+        /// <summary>
+        /// Let the grounding tool return images as well as text, for models whose provider offers image search. Grounded requests carry a surcharge, which the model's quoted price already includes.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("image_search")]
+        public bool? ImageSearch { get; set; }
+
+        /// <summary>
+        /// How much the model reasons before it draws, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Each model's offered levels are published on its input schema.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("thinking_level")]
+        public string? ThinkingLevel { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -228,6 +248,17 @@ namespace Hedra
         /// <param name="numInferenceSteps">
         /// Denoising steps to run, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
         /// </param>
+        /// <param name="googleSearch">
+        /// Ground the generation in live Google Search results, for models whose provider offers the tool. Grounded requests carry a surcharge, which the model's quoted price already includes.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="imageSearch">
+        /// Let the grounding tool return images as well as text, for models whose provider offers image search. Grounded requests carry a surcharge, which the model's quoted price already includes.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="thinkingLevel">
+        /// How much the model reasons before it draws, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Each model's offered levels are published on its input schema.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -253,7 +284,10 @@ namespace Hedra
             int? seed,
             string? negativePrompt,
             double? guidanceScale,
-            int? numInferenceSteps)
+            int? numInferenceSteps,
+            bool? googleSearch,
+            bool? imageSearch,
+            string? thinkingLevel)
         {
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
@@ -277,6 +311,9 @@ namespace Hedra
             this.NegativePrompt = negativePrompt;
             this.GuidanceScale = guidanceScale;
             this.NumInferenceSteps = numInferenceSteps;
+            this.GoogleSearch = googleSearch;
+            this.ImageSearch = imageSearch;
+            this.ThinkingLevel = thinkingLevel;
         }
 
         /// <summary>
