@@ -151,7 +151,7 @@ namespace Hedra
         public global::Hedra.Pricing? Pricing { get; set; }
 
         /// <summary>
-        /// Min and max credits one generation can cost across the model's resolution/duration menu, computed server-side through the model's own pricing (sentinel durations billed as charged, audio-off discounts included). Null for models priced from a resolved asset (audio-driven, extension) — render the base price_details cost instead.
+        /// Min and max credits one generation can cost across the model's resolution/duration grid, computed server-side through the model's own pricing (sentinel durations billed as charged, audio-off discounts included). Null for models priced from a resolved asset (audio-driven, extension) — render the base price_details cost instead.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("credit_range")]
         public global::System.Collections.Generic.IList<int>? CreditRange { get; set; }
@@ -181,7 +181,7 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::Hedra.InputMode>? Inputs { get; set; }
 
         /// <summary>
-        /// Machine-readable conditional input rules the backend enforces at submit. Each rule's `when` is conjunctive over the closed keys `resolution` (matched against the effective resolution: the requested one, or `default_resolution` when omitted) and `references_present`; its `then` narrows the advertised menus — `audio_input_max_duration_ms` caps the driving audio, `durations` (int ms) replaces the offered duration menu, and `disallowed_resolutions` removes resolutions. When several rules match: numeric caps take the minimum, `durations` intersect, `disallowed_resolutions` union. Null when the model declares none.
+        /// Machine-readable conditional input rules the backend enforces at submit. Each rule's `when` is conjunctive over the closed keys `resolution` (matched against the effective resolution: the requested one, or `default_resolution` when omitted) and `references_present`; its `then` narrows what the model advertises — `audio_input_max_duration_ms` caps the driving audio, `durations` (int ms) replaces the offered durations, and `disallowed_resolutions` removes resolutions. When several rules match: numeric caps take the minimum, `durations` intersect, `disallowed_resolutions` union. Null when the model declares none.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("conditional_constraints")]
         public global::System.Collections.Generic.IList<global::Hedra.ConditionalConstraint>? ConditionalConstraints { get; set; }
@@ -296,7 +296,7 @@ namespace Hedra
         /// Extensible pricing information with dimension modifiers for resolution, audio, etc.
         /// </param>
         /// <param name="creditRange">
-        /// Min and max credits one generation can cost across the model's resolution/duration menu, computed server-side through the model's own pricing (sentinel durations billed as charged, audio-off discounts included). Null for models priced from a resolved asset (audio-driven, extension) — render the base price_details cost instead.
+        /// Min and max credits one generation can cost across the model's resolution/duration grid, computed server-side through the model's own pricing (sentinel durations billed as charged, audio-off discounts included). Null for models priced from a resolved asset (audio-driven, extension) — render the base price_details cost instead.
         /// </param>
         /// <param name="dimensions">
         /// Width and height for each aspect_ratio and resolution tuple.
@@ -311,7 +311,7 @@ namespace Hedra
         /// List of input modes the model supports. Each mode groups mutually exclusive input slots. The frontend picks one mode. text_to_video (no inputs) is always implicitly available for VIDEO type models. Null means the model has no declarative input specifications (use requires_* booleans).
         /// </param>
         /// <param name="conditionalConstraints">
-        /// Machine-readable conditional input rules the backend enforces at submit. Each rule's `when` is conjunctive over the closed keys `resolution` (matched against the effective resolution: the requested one, or `default_resolution` when omitted) and `references_present`; its `then` narrows the advertised menus — `audio_input_max_duration_ms` caps the driving audio, `durations` (int ms) replaces the offered duration menu, and `disallowed_resolutions` removes resolutions. When several rules match: numeric caps take the minimum, `durations` intersect, `disallowed_resolutions` union. Null when the model declares none.
+        /// Machine-readable conditional input rules the backend enforces at submit. Each rule's `when` is conjunctive over the closed keys `resolution` (matched against the effective resolution: the requested one, or `default_resolution` when omitted) and `references_present`; its `then` narrows what the model advertises — `audio_input_max_duration_ms` caps the driving audio, `durations` (int ms) replaces the offered durations, and `disallowed_resolutions` removes resolutions. When several rules match: numeric caps take the minimum, `durations` intersect, `disallowed_resolutions` union. Null when the model declares none.
         /// </param>
         /// <param name="options">
         /// Scalar options the model accepts per generation (closed enums and booleans), price-neutral unless a value declares a `price_multiplier` — the quote endpoint reflects any declared multiplier, so clients never do pricing math. Submit validates the request's `options` payload against this declaration; every default equals the provider's own default, so omission and explicit-default are equivalent. Null when the model publishes none.

@@ -21,7 +21,7 @@ namespace Hedra
         public required global::Hedra.ConstraintCondition When { get; set; }
 
         /// <summary>
-        /// Menu narrowing applied while `when` matches.
+        /// How the advertised values narrow while `when` matches.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("then")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -40,7 +40,7 @@ namespace Hedra
         /// Conjunctive conditions; all present keys must match.
         /// </param>
         /// <param name="then">
-        /// Menu narrowing applied while `when` matches.
+        /// How the advertised values narrow while `when` matches.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

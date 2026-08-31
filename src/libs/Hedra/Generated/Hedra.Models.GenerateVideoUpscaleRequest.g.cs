@@ -85,13 +85,13 @@ namespace Hedra
         public string? TargetResolution { get; set; }
 
         /// <summary>
-        /// Target output frame rate, from the model's published `target_frame_rates` menu. A source already at or above the target keeps its own rate. Omitted keeps the source rate.
+        /// Target output frame rate, from the model's published `target_frame_rates`. A source already at or above the target keeps its own rate. Omitted keeps the source rate.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target_fps")]
         public int? TargetFps { get; set; }
 
         /// <summary>
-        /// Interpolation engine from the model's published `fps_engines` menu; requires `target_fps`. Omitted uses the default engine. Non-default engines scale the charge by their published `price_multiplier`.
+        /// Interpolation engine from the model's published `fps_engines`; requires `target_fps`. Omitted uses the default engine. Non-default engines scale the charge by their published `price_multiplier`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fps_engine")]
         public string? FpsEngine { get; set; }
@@ -143,10 +143,10 @@ namespace Hedra
         /// Target output resolution. Must be one of: 1080p, 2K, 4K.
         /// </param>
         /// <param name="targetFps">
-        /// Target output frame rate, from the model's published `target_frame_rates` menu. A source already at or above the target keeps its own rate. Omitted keeps the source rate.
+        /// Target output frame rate, from the model's published `target_frame_rates`. A source already at or above the target keeps its own rate. Omitted keeps the source rate.
         /// </param>
         /// <param name="fpsEngine">
-        /// Interpolation engine from the model's published `fps_engines` menu; requires `target_fps`. Omitted uses the default engine. Non-default engines scale the charge by their published `price_multiplier`.
+        /// Interpolation engine from the model's published `fps_engines`; requires `target_fps`. Omitted uses the default engine. Non-default engines scale the charge by their published `price_multiplier`.
         /// </param>
         /// <param name="options">
         /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and out-of-menu values are rejected.
