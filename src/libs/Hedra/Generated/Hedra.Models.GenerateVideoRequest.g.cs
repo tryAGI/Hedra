@@ -133,7 +133,7 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::System.Guid>? ReferenceVideoIds { get; set; }
 
         /// <summary>
-        /// The id of the Video asset to use as input. For V2V (motion control) models this is the driving video; for Google Veo models this triggers video extension.
+        /// The id of the Video asset to use as input. For motion control models this is the driving video; for Google Veo models this triggers video extension.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("video_id")]
         public global::System.Guid? VideoId { get; set; }
@@ -232,7 +232,7 @@ namespace Hedra
         /// The id(s) of the video(s) to reference in the generation.
         /// </param>
         /// <param name="videoId">
-        /// The id of the Video asset to use as input. For V2V (motion control) models this is the driving video; for Google Veo models this triggers video extension.
+        /// The id of the Video asset to use as input. For motion control models this is the driving video; for Google Veo models this triggers video extension.
         /// </param>
         /// <param name="postProcessing">
         /// Optional durable post-processing applied after generation. These settings do not change the selected model or publish an Upscale catalog entry.

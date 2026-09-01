@@ -104,7 +104,7 @@ namespace Hedra
         public string? ModelSlug { get; set; }
 
         /// <summary>
-        /// The id(s) of the image(s) to reference in the generation. This is only used for image-to-image generation and will supersede start_keyframe_id.
+        /// The id(s) of the image(s) to reference in the generation. This is only used when editing an existing image and will supersede start_keyframe_id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("reference_image_ids")]
         public global::System.Collections.Generic.IList<global::System.Guid>? ReferenceImageIds { get; set; }
@@ -223,7 +223,7 @@ namespace Hedra
         /// The slug of the model to use. Alternative to the deprecated model id.
         /// </param>
         /// <param name="referenceImageIds">
-        /// The id(s) of the image(s) to reference in the generation. This is only used for image-to-image generation and will supersede start_keyframe_id.
+        /// The id(s) of the image(s) to reference in the generation. This is only used when editing an existing image and will supersede start_keyframe_id.
         /// </param>
         /// <param name="batchSize">
         /// Number of image variations to generate (1-8). When &gt; 1, batch_results will contain all generation results.<br/>
