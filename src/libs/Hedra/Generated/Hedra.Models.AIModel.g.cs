@@ -102,7 +102,7 @@ namespace Hedra
         public bool? RequiresAudioInput { get; set; }
 
         /// <summary>
-        /// Whether the model requires video input (video-to-video).
+        /// Whether the model is conditioned by a source video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requires_input_video")]
         public bool? RequiresInputVideo { get; set; }
@@ -275,7 +275,7 @@ namespace Hedra
         /// Whether the model is conditioned by audio input.
         /// </param>
         /// <param name="requiresInputVideo">
-        /// Whether the model requires video input (video-to-video).
+        /// Whether the model is conditioned by a source video.
         /// </param>
         /// <param name="requiresCharacterOrientation">
         /// Whether the model requires character orientation (motion control).
