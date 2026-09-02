@@ -175,6 +175,21 @@ namespace Hedra
         public int? MaxPromptLength { get; set; }
 
         /// <summary>
+        /// Whether the model accepts automatic server-side prompt enhancement during generation.<br/>
+        /// Default Value: true
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("supports_prompt_enhancement")]
+        public bool? SupportsPromptEnhancement { get; set; }
+
+        /// <summary>
+        /// Whether enhancement is unavailable, uses the generic contract, or uses a reviewed model-specific guide.<br/>
+        /// Default Value: generic
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("prompt_enhancement_mode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AIModelPromptEnhancementModeJsonConverter))]
+        public global::Hedra.AIModelPromptEnhancementMode? PromptEnhancementMode { get; set; }
+
+        /// <summary>
         /// List of input modes the model supports. Each mode groups mutually exclusive input slots. The frontend picks one mode. text_to_video (no inputs) is always implicitly available for VIDEO type models. Null means the model has no declarative input specifications (use requires_* booleans).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("inputs")]
@@ -307,6 +322,14 @@ namespace Hedra
         /// <param name="maxPromptLength">
         /// Maximum character count for text prompts. Null means no maximum.
         /// </param>
+        /// <param name="supportsPromptEnhancement">
+        /// Whether the model accepts automatic server-side prompt enhancement during generation.<br/>
+        /// Default Value: true
+        /// </param>
+        /// <param name="promptEnhancementMode">
+        /// Whether enhancement is unavailable, uses the generic contract, or uses a reviewed model-specific guide.<br/>
+        /// Default Value: generic
+        /// </param>
         /// <param name="inputs">
         /// List of input modes the model supports. Each mode groups mutually exclusive input slots. The frontend picks one mode. text_to_video (no inputs) is always implicitly available for VIDEO type models. Null means the model has no declarative input specifications (use requires_* booleans).
         /// </param>
@@ -360,6 +383,8 @@ namespace Hedra
             global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>>? dimensions,
             int? minPromptLength,
             int? maxPromptLength,
+            bool? supportsPromptEnhancement,
+            global::Hedra.AIModelPromptEnhancementMode? promptEnhancementMode,
             global::System.Collections.Generic.IList<global::Hedra.InputMode>? inputs,
             global::System.Collections.Generic.IList<global::Hedra.ConditionalConstraint>? conditionalConstraints,
             global::System.Collections.Generic.IList<global::Hedra.ModelOption>? options,
@@ -395,6 +420,8 @@ namespace Hedra
             this.Dimensions = dimensions;
             this.MinPromptLength = minPromptLength;
             this.MaxPromptLength = maxPromptLength;
+            this.SupportsPromptEnhancement = supportsPromptEnhancement;
+            this.PromptEnhancementMode = promptEnhancementMode;
             this.Inputs = inputs;
             this.ConditionalConstraints = conditionalConstraints;
             this.Options = options;
