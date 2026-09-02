@@ -13,6 +13,10 @@ namespace Hedra
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
         {
+            typeof(global::Hedra.JsonConverters.AIModelPromptEnhancementModeJsonConverter),
+
+            typeof(global::Hedra.JsonConverters.AIModelPromptEnhancementModeNullableJsonConverter),
+
             typeof(global::Hedra.JsonConverters.AssetAsset1DiscriminatorTypeJsonConverter),
 
             typeof(global::Hedra.JsonConverters.AssetAsset1DiscriminatorTypeNullableJsonConverter),
@@ -127,6 +131,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.Dimension))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AIModelPromptEnhancementMode), TypeInfoPropertyName = "AIModelPromptEnhancementMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.InputMode>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.InputMode))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.ConditionalConstraint>))]
