@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// Width and height for each aspect_ratio and resolution tuple.
+    ///
     /// </summary>
     public sealed partial class AIModelDimensions
     {

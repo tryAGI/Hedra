@@ -4,16 +4,48 @@
 namespace Hedra
 {
     /// <summary>
-    /// Interpolation quality used with target_fps. Omitted uses standard; high consumes twice the FPS-stage credits.
+    ///
     /// </summary>
-    public sealed partial class VideoPostProcessingSettingsFpsEngine
+    public enum VideoPostProcessingSettingsFpsEngine
     {
-
         /// <summary>
-        /// Additional properties that are not explicitly defined in the schema
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonExtensionData]
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+        High,
+        /// <summary>
+        ///
+        /// </summary>
+        Standard,
+    }
 
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class VideoPostProcessingSettingsFpsEngineExtensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this VideoPostProcessingSettingsFpsEngine value)
+        {
+            return value switch
+            {
+                VideoPostProcessingSettingsFpsEngine.High => "high",
+                VideoPostProcessingSettingsFpsEngine.Standard => "standard",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static VideoPostProcessingSettingsFpsEngine? ToEnum(string value)
+        {
+            return value switch
+            {
+                "high" => VideoPostProcessingSettingsFpsEngine.High,
+                "standard" => VideoPostProcessingSettingsFpsEngine.Standard,
+                _ => null,
+            };
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace Hedra
         /// Interpolation quality used with target_fps. Omitted uses standard; high consumes twice the FPS-stage credits.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fps_engine")]
-        public global::Hedra.VideoPostProcessingSettingsFpsEngine2? FpsEngine { get; set; }
+        public global::Hedra.VideoPostProcessingSettingsFpsEngine? FpsEngine { get; set; }
 
         /// <summary>
         /// Convert the completed SDR video to a 10-bit HDR output.<br/>
@@ -54,7 +54,7 @@ namespace Hedra
 #endif
         public VideoPostProcessingSettings(
             int? targetFps,
-            global::Hedra.VideoPostProcessingSettingsFpsEngine2? fpsEngine,
+            global::Hedra.VideoPostProcessingSettingsFpsEngine? fpsEngine,
             bool? hdr)
         {
             this.TargetFps = targetFps;

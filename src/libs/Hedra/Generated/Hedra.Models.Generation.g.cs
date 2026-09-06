@@ -93,7 +93,7 @@ namespace Hedra
         /// Generation error if any. Value is not present unless the status of the generation is 'error' and error_message field is not present.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Hedra.GenerationError2? Error { get; set; }
+        public global::Hedra.GenerationError? Error { get; set; }
 
         /// <summary>
         /// Error message. Value is not present unless the status of the generation is 'error' and error field is not present.
@@ -168,7 +168,7 @@ namespace Hedra
             string? batchGenerationId,
             global::Hedra.Asset? asset,
             int? audioStartMs,
-            global::Hedra.GenerationError2? error,
+            global::Hedra.GenerationError? error,
             string? errorMessage)
         {
             this.Id = id;

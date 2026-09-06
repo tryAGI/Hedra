@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// Per-workspace credit pool usage (used/allocated/available) keyed by workspace_id. Only included if user is in a workspace.
+    ///
     /// </summary>
     public sealed partial class CreditBalanceWorkspaceCreditPool
     {
