@@ -4,7 +4,7 @@
 namespace Hedra
 {
     /// <summary>
-    /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and out-of-menu values are rejected.
+    ///
     /// </summary>
     public sealed partial class GenerateVideoUpscaleResponseOptions
     {

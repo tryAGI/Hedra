@@ -77,7 +77,7 @@ namespace Hedra
         /// For motion control models: 'video' matches reference video orientation (better for complex motions, max 30s), 'image' preserves character image orientation (better for camera movements, max 10s).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("character_orientation")]
-        public global::Hedra.GeneratedVideoInputsCharacterOrientation2? CharacterOrientation { get; set; }
+        public global::Hedra.GeneratedVideoInputsCharacterOrientation? CharacterOrientation { get; set; }
 
         /// <summary>
         /// If true, automatically enhance the prompt before generation.<br/>
@@ -96,7 +96,7 @@ namespace Hedra
         /// Shot type for multi-shot generation: 'customize' uses each shot's declared duration, 'intelligent' lets the model determine the shot structure.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("shot_type")]
-        public global::Hedra.GeneratedVideoInputsShotType2? ShotType { get; set; }
+        public global::Hedra.GeneratedVideoInputsShotType? ShotType { get; set; }
 
         /// <summary>
         /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
@@ -178,10 +178,10 @@ namespace Hedra
             int? seed,
             string? negativePrompt,
             global::Hedra.AnyOf<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>, object>? boundingBoxTarget,
-            global::Hedra.GeneratedVideoInputsCharacterOrientation2? characterOrientation,
+            global::Hedra.GeneratedVideoInputsCharacterOrientation? characterOrientation,
             bool? enhancePrompt,
             global::System.Collections.Generic.IList<global::Hedra.VideoShot>? multiPrompt,
-            global::Hedra.GeneratedVideoInputsShotType2? shotType,
+            global::Hedra.GeneratedVideoInputsShotType? shotType,
             double? cfgScale,
             bool? subjectIsPerson)
         {

@@ -3,10 +3,10 @@
 namespace Hedra.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class GeneratedVideoInputsCharacterOrientation2JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Hedra.GeneratedVideoInputsCharacterOrientation2>
+    public sealed class GeneratedVideoInputsShotTypeNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Hedra.GeneratedVideoInputsShotType?>
     {
         /// <inheritdoc />
-        public override global::Hedra.GeneratedVideoInputsCharacterOrientation2 Read(
+        public override global::Hedra.GeneratedVideoInputsShotType? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Hedra.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Hedra.GeneratedVideoInputsCharacterOrientation2Extensions.ToEnum(stringValue) ?? default;
+                        return global::Hedra.GeneratedVideoInputsShotTypeExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Hedra.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Hedra.GeneratedVideoInputsCharacterOrientation2)numValue;
+                    return (global::Hedra.GeneratedVideoInputsShotType)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Hedra.GeneratedVideoInputsCharacterOrientation2);
+                    return default(global::Hedra.GeneratedVideoInputsShotType?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace Hedra.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Hedra.GeneratedVideoInputsCharacterOrientation2 value,
+            global::Hedra.GeneratedVideoInputsShotType? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Hedra.GeneratedVideoInputsCharacterOrientation2Extensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Hedra.GeneratedVideoInputsShotTypeExtensions.ToValueString(value.Value));
+            }
         }
     }
 }

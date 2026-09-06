@@ -405,7 +405,7 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GeneratedVideoInputsCharacterOrientation2? Type93 { get; set; }
+        public global::Hedra.GeneratedVideoInputsCharacterOrientation? Type93 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -417,7 +417,7 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GeneratedVideoInputsShotType2? Type96 { get; set; }
+        public global::Hedra.GeneratedVideoInputsShotType? Type96 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -437,7 +437,7 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerationError2? Type101 { get; set; }
+        public global::Hedra.GenerationError? Type101 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -525,7 +525,7 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.VideoPostProcessingSettingsFpsEngine2? Type123 { get; set; }
+        public global::Hedra.VideoPostProcessingSettingsFpsEngine? Type123 { get; set; }
         /// <summary>
         ///
         /// </summary>

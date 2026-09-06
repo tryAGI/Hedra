@@ -37,13 +37,13 @@ namespace Hedra
 
             typeof(global::Hedra.JsonConverters.GenerateImageResponseTypeNullableJsonConverter),
 
-            typeof(global::Hedra.JsonConverters.GeneratedVideoInputsCharacterOrientation2JsonConverter),
+            typeof(global::Hedra.JsonConverters.GeneratedVideoInputsCharacterOrientationJsonConverter),
 
-            typeof(global::Hedra.JsonConverters.GeneratedVideoInputsCharacterOrientation2NullableJsonConverter),
+            typeof(global::Hedra.JsonConverters.GeneratedVideoInputsCharacterOrientationNullableJsonConverter),
 
-            typeof(global::Hedra.JsonConverters.GeneratedVideoInputsShotType2JsonConverter),
+            typeof(global::Hedra.JsonConverters.GeneratedVideoInputsShotTypeJsonConverter),
 
-            typeof(global::Hedra.JsonConverters.GeneratedVideoInputsShotType2NullableJsonConverter),
+            typeof(global::Hedra.JsonConverters.GeneratedVideoInputsShotTypeNullableJsonConverter),
 
             typeof(global::Hedra.JsonConverters.GenerationInputDiscriminatorTypeJsonConverter),
 
@@ -69,9 +69,9 @@ namespace Hedra
 
             typeof(global::Hedra.JsonConverters.SupportedLanguageNullableJsonConverter),
 
-            typeof(global::Hedra.JsonConverters.VideoPostProcessingSettingsFpsEngine2JsonConverter),
+            typeof(global::Hedra.JsonConverters.VideoPostProcessingSettingsFpsEngineJsonConverter),
 
-            typeof(global::Hedra.JsonConverters.VideoPostProcessingSettingsFpsEngine2NullableJsonConverter),
+            typeof(global::Hedra.JsonConverters.VideoPostProcessingSettingsFpsEngineNullableJsonConverter),
 
             typeof(global::Hedra.JsonConverters.GenerateAssetPublicGenerationsPostRequestDiscriminatorTypeJsonConverter),
 
@@ -208,15 +208,15 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedImageInputs))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>, object>), TypeInfoPropertyName = "AnyOfIListDoubleIListIListDoubleObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedVideoInputsCharacterOrientation2), TypeInfoPropertyName = "GeneratedVideoInputsCharacterOrientation22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedVideoInputsCharacterOrientation), TypeInfoPropertyName = "GeneratedVideoInputsCharacterOrientation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.VideoShot>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.VideoShot))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedVideoInputsShotType2), TypeInfoPropertyName = "GeneratedVideoInputsShotType22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GeneratedVideoInputsShotType), TypeInfoPropertyName = "GeneratedVideoInputsShotType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.Generation))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.Input), TypeInfoPropertyName = "Input2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationInputDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationInputDiscriminatorType), TypeInfoPropertyName = "GenerationInputDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationError2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerationReasonCode), TypeInfoPropertyName = "GenerationReasonCode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<string, int?, double?>), TypeInfoPropertyName = "AnyOfStringInt32Double2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>))]
@@ -238,7 +238,7 @@ namespace Hedra
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.AnyOf<string, int?>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.AnyOf<string, int?>), TypeInfoPropertyName = "AnyOfStringInt322")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.VideoPostProcessingSettingsFpsEngine2), TypeInfoPropertyName = "VideoPostProcessingSettingsFpsEngine22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.VideoPostProcessingSettingsFpsEngine), TypeInfoPropertyName = "VideoPostProcessingSettingsFpsEngine2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Hedra.VoiceLabel>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.VoiceLabel))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Hedra.GenerateAssetPublicGenerationsPostRequest), TypeInfoPropertyName = "GenerateAssetPublicGenerationsPostRequest2")]

@@ -56,7 +56,7 @@ namespace Hedra
         /// Generation error if any. Value is not present unless the status of the generation is 'error' and error_message field is not present.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Hedra.GenerationError2? Error { get; set; }
+        public global::Hedra.GenerationError? Error { get; set; }
 
         /// <summary>
         /// Error message. Value is not present unless the status of the generation is 'error'
@@ -143,7 +143,7 @@ namespace Hedra
             global::Hedra.GenerationStatus status,
             double progress,
             string createdAt,
-            global::Hedra.GenerationError2? error,
+            global::Hedra.GenerationError? error,
             string? errorMessage,
             string? url,
             string? downloadUrl,
