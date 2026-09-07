@@ -80,6 +80,18 @@ namespace Hedra
         ///
         /// </summary>
         ReferenceMediaTotalDurationUnsupported,
+        /// <summary>
+        ///
+        /// </summary>
+        VideoDimensionsUnsupported,
+        /// <summary>
+        ///
+        /// </summary>
+        VideoMultipleSubjects,
+        /// <summary>
+        ///
+        /// </summary>
+        VideoValidMotionTooShort,
     }
 
     /// <summary>
@@ -105,6 +117,9 @@ namespace Hedra
                 GenerationReasonCode.ReferenceImageDimensionsUnsupported => "REFERENCE_IMAGE_DIMENSIONS_UNSUPPORTED",
                 GenerationReasonCode.ReferenceMediaDurationUnsupported => "REFERENCE_MEDIA_DURATION_UNSUPPORTED",
                 GenerationReasonCode.ReferenceMediaTotalDurationUnsupported => "REFERENCE_MEDIA_TOTAL_DURATION_UNSUPPORTED",
+                GenerationReasonCode.VideoDimensionsUnsupported => "VIDEO_DIMENSIONS_UNSUPPORTED",
+                GenerationReasonCode.VideoMultipleSubjects => "VIDEO_MULTIPLE_SUBJECTS",
+                GenerationReasonCode.VideoValidMotionTooShort => "VIDEO_VALID_MOTION_TOO_SHORT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -126,6 +141,9 @@ namespace Hedra
                 "REFERENCE_IMAGE_DIMENSIONS_UNSUPPORTED" => GenerationReasonCode.ReferenceImageDimensionsUnsupported,
                 "REFERENCE_MEDIA_DURATION_UNSUPPORTED" => GenerationReasonCode.ReferenceMediaDurationUnsupported,
                 "REFERENCE_MEDIA_TOTAL_DURATION_UNSUPPORTED" => GenerationReasonCode.ReferenceMediaTotalDurationUnsupported,
+                "VIDEO_DIMENSIONS_UNSUPPORTED" => GenerationReasonCode.VideoDimensionsUnsupported,
+                "VIDEO_MULTIPLE_SUBJECTS" => GenerationReasonCode.VideoMultipleSubjects,
+                "VIDEO_VALID_MOTION_TOO_SHORT" => GenerationReasonCode.VideoValidMotionTooShort,
                 _ => null,
             };
         }
