@@ -83,6 +83,10 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
+        TaskInputConstraint,
+        /// <summary>
+        ///
+        /// </summary>
         VideoDimensionsUnsupported,
         /// <summary>
         ///
@@ -117,6 +121,7 @@ namespace Hedra
                 GenerationReasonCode.ReferenceImageDimensionsUnsupported => "REFERENCE_IMAGE_DIMENSIONS_UNSUPPORTED",
                 GenerationReasonCode.ReferenceMediaDurationUnsupported => "REFERENCE_MEDIA_DURATION_UNSUPPORTED",
                 GenerationReasonCode.ReferenceMediaTotalDurationUnsupported => "REFERENCE_MEDIA_TOTAL_DURATION_UNSUPPORTED",
+                GenerationReasonCode.TaskInputConstraint => "TASK_INPUT_CONSTRAINT",
                 GenerationReasonCode.VideoDimensionsUnsupported => "VIDEO_DIMENSIONS_UNSUPPORTED",
                 GenerationReasonCode.VideoMultipleSubjects => "VIDEO_MULTIPLE_SUBJECTS",
                 GenerationReasonCode.VideoValidMotionTooShort => "VIDEO_VALID_MOTION_TOO_SHORT",
@@ -141,6 +146,7 @@ namespace Hedra
                 "REFERENCE_IMAGE_DIMENSIONS_UNSUPPORTED" => GenerationReasonCode.ReferenceImageDimensionsUnsupported,
                 "REFERENCE_MEDIA_DURATION_UNSUPPORTED" => GenerationReasonCode.ReferenceMediaDurationUnsupported,
                 "REFERENCE_MEDIA_TOTAL_DURATION_UNSUPPORTED" => GenerationReasonCode.ReferenceMediaTotalDurationUnsupported,
+                "TASK_INPUT_CONSTRAINT" => GenerationReasonCode.TaskInputConstraint,
                 "VIDEO_DIMENSIONS_UNSUPPORTED" => GenerationReasonCode.VideoDimensionsUnsupported,
                 "VIDEO_MULTIPLE_SUBJECTS" => GenerationReasonCode.VideoMultipleSubjects,
                 "VIDEO_VALID_MOTION_TOO_SHORT" => GenerationReasonCode.VideoValidMotionTooShort,
