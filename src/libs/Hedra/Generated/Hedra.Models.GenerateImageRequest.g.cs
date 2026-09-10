@@ -174,6 +174,18 @@ namespace Hedra
         public string? ThinkingLevel { get; set; }
 
         /// <summary>
+        /// How strongly the reference images influence the result, for models whose provider accepts it. Applies to every reference. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("style_strength")]
+        public double? StyleStrength { get; set; }
+
+        /// <summary>
+        /// How far the model may drift from the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Each model's offered levels are published on its input schema.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("creativity")]
+        public string? Creativity { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -259,6 +271,12 @@ namespace Hedra
         /// <param name="thinkingLevel">
         /// How much the model reasons before it draws, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Each model's offered levels are published on its input schema.
         /// </param>
+        /// <param name="styleStrength">
+        /// How strongly the reference images influence the result, for models whose provider accepts it. Applies to every reference. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </param>
+        /// <param name="creativity">
+        /// How far the model may drift from the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Each model's offered levels are published on its input schema.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -287,7 +305,9 @@ namespace Hedra
             int? numInferenceSteps,
             bool? googleSearch,
             bool? imageSearch,
-            string? thinkingLevel)
+            string? thinkingLevel,
+            double? styleStrength,
+            string? creativity)
         {
             this.WorkspaceId = workspaceId;
             this.AgentThreadId = agentThreadId;
@@ -314,6 +334,8 @@ namespace Hedra
             this.GoogleSearch = googleSearch;
             this.ImageSearch = imageSearch;
             this.ThinkingLevel = thinkingLevel;
+            this.StyleStrength = styleStrength;
+            this.Creativity = creativity;
         }
 
         /// <summary>

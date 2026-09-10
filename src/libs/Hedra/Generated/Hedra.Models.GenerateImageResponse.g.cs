@@ -174,6 +174,18 @@ namespace Hedra
         public string? ThinkingLevel { get; set; }
 
         /// <summary>
+        /// How strongly the reference images influence the result, for models whose provider accepts it. Applies to every reference. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("style_strength")]
+        public double? StyleStrength { get; set; }
+
+        /// <summary>
+        /// How far the model may drift from the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Each model's offered levels are published on its input schema.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("creativity")]
+        public string? Creativity { get; set; }
+
+        /// <summary>
         /// The id of the resulting image asset.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("asset_id")]
@@ -322,6 +334,12 @@ namespace Hedra
         /// <param name="thinkingLevel">
         /// How much the model reasons before it draws, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Each model's offered levels are published on its input schema.
         /// </param>
+        /// <param name="styleStrength">
+        /// How strongly the reference images influence the result, for models whose provider accepts it. Applies to every reference. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
+        /// </param>
+        /// <param name="creativity">
+        /// How far the model may drift from the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Each model's offered levels are published on its input schema.
+        /// </param>
         /// <param name="etaSec">
         /// Estimated time until completion in seconds. May be None if no historical data available.
         /// </param>
@@ -362,6 +380,8 @@ namespace Hedra
             bool? googleSearch,
             bool? imageSearch,
             string? thinkingLevel,
+            double? styleStrength,
+            string? creativity,
             int? etaSec,
             global::System.Collections.Generic.IList<global::Hedra.BatchImageResultItem>? batchResults)
         {
@@ -390,6 +410,8 @@ namespace Hedra
             this.GoogleSearch = googleSearch;
             this.ImageSearch = imageSearch;
             this.ThinkingLevel = thinkingLevel;
+            this.StyleStrength = styleStrength;
+            this.Creativity = creativity;
             this.AssetId = assetId;
             this.Id = id;
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
