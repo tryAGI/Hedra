@@ -121,7 +121,7 @@ namespace Hedra
                                 servers: s_ListModelsServers,
                                 defaultBaseUrl: "https://mercury.dev.dream-ai.com/api"));
                             __pathBuilder
-                                .AddOptionalParameter("types", types?.ToString())
+                                .AddOptionalParameter("types", types, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Hedra.AutoSDKRequestOptionsSupport.AppendQueryParameters(
