@@ -97,7 +97,7 @@ namespace Hedra
         public string? FpsEngine { get; set; }
 
         /// <summary>
-        /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and out-of-menu values are rejected.
+        /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and values the option does not list are rejected.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("options")]
         public object? Options { get; set; }
@@ -149,7 +149,7 @@ namespace Hedra
         /// Interpolation engine from the model's published `fps_engines`; requires `target_fps`. Omitted uses the default engine. Non-default engines scale the charge by their published `price_multiplier`.
         /// </param>
         /// <param name="options">
-        /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and out-of-menu values are rejected.
+        /// Per-generation option values, keyed by the option names the model publishes on `/models`. Unknown names and values the option does not list are rejected.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
