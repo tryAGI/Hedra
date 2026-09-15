@@ -27,12 +27,13 @@ namespace Hedra
     /// - `min_duration_ms` / `max_duration_ms` — checked at v3 ingestion, against<br/>
     ///   the ffprobe result on a video slot and the decoded length on an audio one,<br/>
     ///   on asset references against the row's stored `duration_ms`, and again by<br/>
-    ///   the dispatch video validator. Both kinds get the shared<br/>
-    ///   `DURATION_MAX_TOLERANCE_MS` grace on the maximum; the minimum is exact.<br/>
+    ///   the dispatch video validator. Both ends are enforced exactly.<br/>
     /// - `max_total_duration_ms` — checked across the slot's files at dispatch,<br/>
-    ///   for audio and video alike, with the same `DURATION_MAX_TOLERANCE_MS`<br/>
-    ///   grace the per-file maximum gets: the sum is of probed durations, which<br/>
-    ///   overshoot the nominal length for the same encoder reasons.
+    ///   for audio and video alike, and exactly.<br/>
+    /// A slot that must admit the encoder overshoot on a self-generated file says<br/>
+    /// so in the maximum itself, adding `DURATION_OVERSHOOT_HEADROOM_MS` to the<br/>
+    /// nominal figure. No bound carries an implicit grace, so what a caller reads<br/>
+    /// is what rejects the file.
     /// </summary>
     public sealed partial class InputSlot
     {
