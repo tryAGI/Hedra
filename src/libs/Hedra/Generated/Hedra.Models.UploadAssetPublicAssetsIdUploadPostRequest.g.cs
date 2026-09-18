@@ -6,17 +6,17 @@ namespace Hedra
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class BodyUploadAssetPublicAssetsIdUploadPost
+    public sealed partial class UploadAssetPublicAssetsIdUploadPostRequest
     {
         /// <summary>
-        ///
+        /// The file to upload.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required byte[] File { get; set; }
 
         /// <summary>
-        ///
+        /// The file to upload.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -29,14 +29,18 @@ namespace Hedra
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BodyUploadAssetPublicAssetsIdUploadPost" /> class.
+        /// Initializes a new instance of the <see cref="UploadAssetPublicAssetsIdUploadPostRequest" /> class.
         /// </summary>
-        /// <param name="file"></param>
-        /// <param name="filename"></param>
+        /// <param name="file">
+        /// The file to upload.
+        /// </param>
+        /// <param name="filename">
+        /// The file to upload.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public BodyUploadAssetPublicAssetsIdUploadPost(
+        public UploadAssetPublicAssetsIdUploadPostRequest(
             byte[] file,
             string filename)
         {
@@ -45,9 +49,9 @@ namespace Hedra
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BodyUploadAssetPublicAssetsIdUploadPost" /> class.
+        /// Initializes a new instance of the <see cref="UploadAssetPublicAssetsIdUploadPostRequest" /> class.
         /// </summary>
-        public BodyUploadAssetPublicAssetsIdUploadPost()
+        public UploadAssetPublicAssetsIdUploadPostRequest()
         {
         }
 

@@ -41,12 +41,12 @@ namespace Hedra
         partial void PrepareUploadAssetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid id,
-            global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost request);
+            global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest request);
         partial void PrepareUploadAssetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::System.Guid id,
-            global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost request);
+            global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest request);
         partial void ProcessUploadAssetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -67,7 +67,7 @@ namespace Hedra
         public async global::System.Threading.Tasks.Task<global::Hedra.Asset> UploadAssetAsync(
             global::System.Guid id,
 
-            global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost request,
+            global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest request,
             global::Hedra.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -92,7 +92,7 @@ namespace Hedra
         public async global::System.Threading.Tasks.Task<global::Hedra.AutoSDKHttpResponse<global::Hedra.Asset>> UploadAssetAsResponseAsync(
             global::System.Guid id,
 
-            global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost request,
+            global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest request,
             global::Hedra.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -532,8 +532,12 @@ namespace Hedra
         /// Upload Asset
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="file"></param>
-        /// <param name="filename"></param>
+        /// <param name="file">
+        /// The file to upload.
+        /// </param>
+        /// <param name="filename">
+        /// The file to upload.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -544,7 +548,7 @@ namespace Hedra
             global::Hedra.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost
+            var __request = new global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest
             {
                 File = file,
                 Filename = filename,
@@ -562,9 +566,11 @@ namespace Hedra
         /// </summary>
         /// <param name="id"></param>
         /// <param name="file">
-        /// The stream to send as the multipart 'file' file part.
+        /// The file to upload.
         /// </param>
-        /// <param name="filename"></param>
+        /// <param name="filename">
+        /// The file to upload.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
@@ -577,7 +583,7 @@ namespace Hedra
         {
 
             file = file ?? throw new global::System.ArgumentNullException(nameof(file));
-            var request = new global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost
+            var request = new global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest
             {
                 File = global::System.Array.Empty<byte>(),
                 Filename = filename,
@@ -1009,9 +1015,11 @@ namespace Hedra
         /// </summary>
         /// <param name="id"></param>
         /// <param name="file">
-        /// The stream to send as the multipart 'file' file part.
+        /// The file to upload.
         /// </param>
-        /// <param name="filename"></param>
+        /// <param name="filename">
+        /// The file to upload.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
@@ -1024,7 +1032,7 @@ namespace Hedra
         {
 
             file = file ?? throw new global::System.ArgumentNullException(nameof(file));
-            var request = new global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost
+            var request = new global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest
             {
                 File = global::System.Array.Empty<byte>(),
                 Filename = filename,
