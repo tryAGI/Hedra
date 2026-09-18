@@ -99,6 +99,12 @@ namespace Hedra
         public global::Hedra.GeneratedVideoInputsShotType? ShotType { get; set; }
 
         /// <summary>
+        /// Keyframed camera path, for models that steer the camera from one. None leaves the argument out of the provider request entirely.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("camera_trajectory")]
+        public global::System.Collections.Generic.IList<global::Hedra.CameraKeyframe>? CameraTrajectory { get; set; }
+
+        /// <summary>
         /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cfg_scale")]
@@ -159,6 +165,9 @@ namespace Hedra
         /// <param name="shotType">
         /// Shot type for multi-shot generation: 'customize' uses each shot's declared duration, 'intelligent' lets the model determine the shot structure.
         /// </param>
+        /// <param name="cameraTrajectory">
+        /// Keyframed camera path, for models that steer the camera from one. None leaves the argument out of the provider request entirely.
+        /// </param>
         /// <param name="cfgScale">
         /// How closely the model follows the prompt, for models whose provider accepts it. None leaves the argument out of the provider request entirely, so the provider's own default applies. Per-model bounds are published on each model's input schema.
         /// </param>
@@ -182,6 +191,7 @@ namespace Hedra
             bool? enhancePrompt,
             global::System.Collections.Generic.IList<global::Hedra.VideoShot>? multiPrompt,
             global::Hedra.GeneratedVideoInputsShotType? shotType,
+            global::System.Collections.Generic.IList<global::Hedra.CameraKeyframe>? cameraTrajectory,
             double? cfgScale,
             bool? subjectIsPerson)
         {
@@ -198,6 +208,7 @@ namespace Hedra
             this.EnhancePrompt = enhancePrompt;
             this.MultiPrompt = multiPrompt;
             this.ShotType = shotType;
+            this.CameraTrajectory = cameraTrajectory;
             this.CfgScale = cfgScale;
             this.SubjectIsPerson = subjectIsPerson;
         }
