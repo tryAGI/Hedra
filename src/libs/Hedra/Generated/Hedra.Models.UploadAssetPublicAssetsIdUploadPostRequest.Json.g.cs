@@ -2,7 +2,7 @@
 
 namespace Hedra
 {
-    public sealed partial class BodyUploadAssetPublicAssetsIdUploadPost
+    public sealed partial class UploadAssetPublicAssetsIdUploadPostRequest
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -47,20 +47,20 @@ namespace Hedra
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost? FromJson(
+        public static global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost),
-                jsonSerializerContext) as global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost;
+                typeof(global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest),
+                jsonSerializerContext) as global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest;
         }
 
         /// <summary>
         /// Deserializes a JSON string using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost? FromJson(
+        public static global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest? FromJson(
             string json)
         {
             return FromJson(
@@ -75,7 +75,7 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost? FromJson(
+        public static global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -86,7 +86,7 @@ namespace Hedra
                     global::Hedra.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest>(
                 json,
                 jsonSerializerOptions);
         }
@@ -94,20 +94,20 @@ namespace Hedra
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost;
+                typeof(global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest;
         }
 
         /// <summary>
         /// Deserializes a JSON stream using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::System.Threading.Tasks.ValueTask<global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream)
         {
             return FromJsonStreamAsync(
@@ -122,7 +122,7 @@ namespace Hedra
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -133,7 +133,7 @@ namespace Hedra
                     global::Hedra.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Hedra.BodyUploadAssetPublicAssetsIdUploadPost?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Hedra.UploadAssetPublicAssetsIdUploadPostRequest?>(
                 jsonStream,
                 jsonSerializerOptions);
         }
