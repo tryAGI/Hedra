@@ -39,7 +39,15 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
+        AudioDurationTooShort,
+        /// <summary>
+        ///
+        /// </summary>
         AudioReferenceRequiresVisual,
+        /// <summary>
+        ///
+        /// </summary>
+        AudioSpeakerCountUnsupported,
         /// <summary>
         ///
         /// </summary>
@@ -110,7 +118,9 @@ namespace Hedra
         {
             return value switch
             {
+                GenerationReasonCode.AudioDurationTooShort => "AUDIO_DURATION_TOO_SHORT",
                 GenerationReasonCode.AudioReferenceRequiresVisual => "AUDIO_REFERENCE_REQUIRES_VISUAL",
+                GenerationReasonCode.AudioSpeakerCountUnsupported => "AUDIO_SPEAKER_COUNT_UNSUPPORTED",
                 GenerationReasonCode.ImageAspectRatioUnsupported => "IMAGE_ASPECT_RATIO_UNSUPPORTED",
                 GenerationReasonCode.ImageFileSizeUnsupported => "IMAGE_FILE_SIZE_UNSUPPORTED",
                 GenerationReasonCode.ImageResolutionUnsupported => "IMAGE_RESOLUTION_UNSUPPORTED",
@@ -135,7 +145,9 @@ namespace Hedra
         {
             return value switch
             {
+                "AUDIO_DURATION_TOO_SHORT" => GenerationReasonCode.AudioDurationTooShort,
                 "AUDIO_REFERENCE_REQUIRES_VISUAL" => GenerationReasonCode.AudioReferenceRequiresVisual,
+                "AUDIO_SPEAKER_COUNT_UNSUPPORTED" => GenerationReasonCode.AudioSpeakerCountUnsupported,
                 "IMAGE_ASPECT_RATIO_UNSUPPORTED" => GenerationReasonCode.ImageAspectRatioUnsupported,
                 "IMAGE_FILE_SIZE_UNSUPPORTED" => GenerationReasonCode.ImageFileSizeUnsupported,
                 "IMAGE_RESOLUTION_UNSUPPORTED" => GenerationReasonCode.ImageResolutionUnsupported,
