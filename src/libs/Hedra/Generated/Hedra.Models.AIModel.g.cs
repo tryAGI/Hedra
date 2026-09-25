@@ -84,30 +84,6 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::Hedra.FpsEngineOption>? FpsEngines { get; set; }
 
         /// <summary>
-        /// Whether the model is conditioned by a start frame.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("requires_start_frame")]
-        public bool? RequiresStartFrame { get; set; }
-
-        /// <summary>
-        /// Whether the model is conditioned by an end frame.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("requires_end_frame")]
-        public bool? RequiresEndFrame { get; set; }
-
-        /// <summary>
-        /// Whether the model is conditioned by audio input.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("requires_audio_input")]
-        public bool? RequiresAudioInput { get; set; }
-
-        /// <summary>
-        /// Whether the model is conditioned by a source video.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("requires_input_video")]
-        public bool? RequiresInputVideo { get; set; }
-
-        /// <summary>
         /// Whether the model requires character orientation (motion control).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requires_character_orientation")]
@@ -190,7 +166,7 @@ namespace Hedra
         public global::Hedra.AIModelPromptEnhancementMode? PromptEnhancementMode { get; set; }
 
         /// <summary>
-        /// List of input modes the model supports. Each mode groups mutually exclusive input slots. The frontend picks one mode. text_to_video (no inputs) is always implicitly available for VIDEO type models. Null means the model has no declarative input specifications (use requires_* booleans).
+        /// List of input modes the model supports. Each mode groups mutually exclusive input slots. The frontend picks one mode. text_to_video (no inputs) is always implicitly available for VIDEO type models. Null means the model takes no media input.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("inputs")]
         public global::System.Collections.Generic.IList<global::Hedra.InputMode>? Inputs { get; set; }
@@ -280,18 +256,6 @@ namespace Hedra
         /// <param name="fpsEngines">
         /// Interpolation engines offered with `target_fps`, in display order; the first is the default. `price_multiplier` scales the whole upscale charge.
         /// </param>
-        /// <param name="requiresStartFrame">
-        /// Whether the model is conditioned by a start frame.
-        /// </param>
-        /// <param name="requiresEndFrame">
-        /// Whether the model is conditioned by an end frame.
-        /// </param>
-        /// <param name="requiresAudioInput">
-        /// Whether the model is conditioned by audio input.
-        /// </param>
-        /// <param name="requiresInputVideo">
-        /// Whether the model is conditioned by a source video.
-        /// </param>
         /// <param name="requiresCharacterOrientation">
         /// Whether the model requires character orientation (motion control).
         /// </param>
@@ -331,7 +295,7 @@ namespace Hedra
         /// Default Value: generic
         /// </param>
         /// <param name="inputs">
-        /// List of input modes the model supports. Each mode groups mutually exclusive input slots. The frontend picks one mode. text_to_video (no inputs) is always implicitly available for VIDEO type models. Null means the model has no declarative input specifications (use requires_* booleans).
+        /// List of input modes the model supports. Each mode groups mutually exclusive input slots. The frontend picks one mode. text_to_video (no inputs) is always implicitly available for VIDEO type models. Null means the model takes no media input.
         /// </param>
         /// <param name="conditionalConstraints">
         /// Machine-readable conditional input rules the backend enforces at submit. Each rule's `when` is conjunctive over the closed keys `resolution` (matched against the effective resolution: the requested one, or `default_resolution` when omitted) and `references_present`; its `then` narrows what the model advertises — `audio_input_max_duration_ms` caps the driving audio, `durations` (int ms) replaces the offered durations, and `disallowed_resolutions` removes resolutions. When several rules match: numeric caps take the minimum, `durations` intersect, `disallowed_resolutions` union. Null when the model declares none.
@@ -369,10 +333,6 @@ namespace Hedra
             global::System.Collections.Generic.IList<string>? durations,
             global::System.Collections.Generic.IList<int>? targetFrameRates,
             global::System.Collections.Generic.IList<global::Hedra.FpsEngineOption>? fpsEngines,
-            bool? requiresStartFrame,
-            bool? requiresEndFrame,
-            bool? requiresAudioInput,
-            bool? requiresInputVideo,
             bool? requiresCharacterOrientation,
             int? etaMs,
             global::System.Collections.Generic.IList<string>? tags,
@@ -405,10 +365,6 @@ namespace Hedra
             this.Durations = durations;
             this.TargetFrameRates = targetFrameRates;
             this.FpsEngines = fpsEngines;
-            this.RequiresStartFrame = requiresStartFrame;
-            this.RequiresEndFrame = requiresEndFrame;
-            this.RequiresAudioInput = requiresAudioInput;
-            this.RequiresInputVideo = requiresInputVideo;
             this.RequiresCharacterOrientation = requiresCharacterOrientation;
             this.EtaMs = etaMs;
             this.Tags = tags;
