@@ -67,6 +67,10 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
+        ModerationCopyright,
+        /// <summary>
+        ///
+        /// </summary>
         ModerationLikeness,
         /// <summary>
         ///
@@ -125,6 +129,7 @@ namespace Hedra
                 GenerationReasonCode.ImageFileSizeUnsupported => "IMAGE_FILE_SIZE_UNSUPPORTED",
                 GenerationReasonCode.ImageResolutionUnsupported => "IMAGE_RESOLUTION_UNSUPPORTED",
                 GenerationReasonCode.ImageSubjectNotDetected => "IMAGE_SUBJECT_NOT_DETECTED",
+                GenerationReasonCode.ModerationCopyright => "MODERATION_COPYRIGHT",
                 GenerationReasonCode.ModerationLikeness => "MODERATION_LIKENESS",
                 GenerationReasonCode.ModerationOutputTransient => "MODERATION_OUTPUT_TRANSIENT",
                 GenerationReasonCode.MusicPromptCopyrightPolicy => "MUSIC_PROMPT_COPYRIGHT_POLICY",
@@ -152,6 +157,7 @@ namespace Hedra
                 "IMAGE_FILE_SIZE_UNSUPPORTED" => GenerationReasonCode.ImageFileSizeUnsupported,
                 "IMAGE_RESOLUTION_UNSUPPORTED" => GenerationReasonCode.ImageResolutionUnsupported,
                 "IMAGE_SUBJECT_NOT_DETECTED" => GenerationReasonCode.ImageSubjectNotDetected,
+                "MODERATION_COPYRIGHT" => GenerationReasonCode.ModerationCopyright,
                 "MODERATION_LIKENESS" => GenerationReasonCode.ModerationLikeness,
                 "MODERATION_OUTPUT_TRANSIENT" => GenerationReasonCode.ModerationOutputTransient,
                 "MUSIC_PROMPT_COPYRIGHT_POLICY" => GenerationReasonCode.MusicPromptCopyrightPolicy,
