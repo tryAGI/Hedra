@@ -33,6 +33,10 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
+        ChatCompletion,
+        /// <summary>
+        ///
+        /// </summary>
         Image,
         /// <summary>
         ///
@@ -97,6 +101,7 @@ namespace Hedra
                 GenerationType.AssetsToImageTextPrompt => "assets_to_image_text_prompt",
                 GenerationType.AudioFromVideo => "audio_from_video",
                 GenerationType.AudioIsolation => "audio_isolation",
+                GenerationType.ChatCompletion => "chat_completion",
                 GenerationType.Image => "image",
                 GenerationType.ImageUpscale => "image_upscale",
                 GenerationType.Music => "music",
@@ -124,6 +129,7 @@ namespace Hedra
                 "assets_to_image_text_prompt" => GenerationType.AssetsToImageTextPrompt,
                 "audio_from_video" => GenerationType.AudioFromVideo,
                 "audio_isolation" => GenerationType.AudioIsolation,
+                "chat_completion" => GenerationType.ChatCompletion,
                 "image" => GenerationType.Image,
                 "image_upscale" => GenerationType.ImageUpscale,
                 "music" => GenerationType.Music,
