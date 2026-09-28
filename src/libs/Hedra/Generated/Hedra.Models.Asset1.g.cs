@@ -47,8 +47,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.UploadedImage PickUploadedImage() => IsUploadedImage
-            ? UploadedImage!
+        public global::Hedra.UploadedImage PickUploadedImage() => UploadedImage is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'UploadedImage' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.UploadedAudio PickUploadedAudio() => IsUploadedAudio
-            ? UploadedAudio!
+        public global::Hedra.UploadedAudio PickUploadedAudio() => UploadedAudio is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'UploadedAudio' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.UploadedVideo PickUploadedVideo() => IsUploadedVideo
-            ? UploadedVideo!
+        public global::Hedra.UploadedVideo PickUploadedVideo() => UploadedVideo is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'UploadedVideo' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GeneratedAudio PickGeneratedAudio() => IsGeneratedAudio
-            ? GeneratedAudio!
+        public global::Hedra.GeneratedAudio PickGeneratedAudio() => GeneratedAudio is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GeneratedAudio' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GeneratedImage PickGeneratedImage() => IsGeneratedImage
-            ? GeneratedImage!
+        public global::Hedra.GeneratedImage PickGeneratedImage() => GeneratedImage is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GeneratedImage' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GeneratedVideo PickGeneratedVideo() => IsGeneratedVideo
-            ? GeneratedVideo!
+        public global::Hedra.GeneratedVideo PickGeneratedVideo() => GeneratedVideo is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GeneratedVideo' but the value was {ToString()}.");
 
         /// <summary>
@@ -269,8 +269,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.Voice PickVoice() => IsVoice
-            ? Voice!
+        public global::Hedra.Voice PickVoice() => Voice is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Voice' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -510,33 +510,33 @@ namespace Hedra
                 Validate();
             }
 
-            if (IsUploadedImage && uploadedImage != null)
+            if (UploadedImage is { } __value0 && uploadedImage != null)
             {
-                return uploadedImage(UploadedImage!);
+                return uploadedImage(__value0);
             }
-            else if (IsUploadedAudio && uploadedAudio != null)
+            else if (UploadedAudio is { } __value1 && uploadedAudio != null)
             {
-                return uploadedAudio(UploadedAudio!);
+                return uploadedAudio(__value1);
             }
-            else if (IsUploadedVideo && uploadedVideo != null)
+            else if (UploadedVideo is { } __value2 && uploadedVideo != null)
             {
-                return uploadedVideo(UploadedVideo!);
+                return uploadedVideo(__value2);
             }
-            else if (IsGeneratedAudio && generatedAudio != null)
+            else if (GeneratedAudio is { } __value3 && generatedAudio != null)
             {
-                return generatedAudio(GeneratedAudio!);
+                return generatedAudio(__value3);
             }
-            else if (IsGeneratedImage && generatedImage != null)
+            else if (GeneratedImage is { } __value4 && generatedImage != null)
             {
-                return generatedImage(GeneratedImage!);
+                return generatedImage(__value4);
             }
-            else if (IsGeneratedVideo && generatedVideo != null)
+            else if (GeneratedVideo is { } __value5 && generatedVideo != null)
             {
-                return generatedVideo(GeneratedVideo!);
+                return generatedVideo(__value5);
             }
-            else if (IsVoice && voice != null)
+            else if (Voice is { } __value6 && voice != null)
             {
-                return voice(Voice!);
+                return voice(__value6);
             }
 
             return default(TResult);
@@ -566,33 +566,33 @@ namespace Hedra
                 Validate();
             }
 
-            if (IsUploadedImage)
+            if (UploadedImage is { } __value0)
             {
-                uploadedImage?.Invoke(UploadedImage!);
+                uploadedImage?.Invoke(__value0);
             }
-            else if (IsUploadedAudio)
+            else if (UploadedAudio is { } __value1)
             {
-                uploadedAudio?.Invoke(UploadedAudio!);
+                uploadedAudio?.Invoke(__value1);
             }
-            else if (IsUploadedVideo)
+            else if (UploadedVideo is { } __value2)
             {
-                uploadedVideo?.Invoke(UploadedVideo!);
+                uploadedVideo?.Invoke(__value2);
             }
-            else if (IsGeneratedAudio)
+            else if (GeneratedAudio is { } __value3)
             {
-                generatedAudio?.Invoke(GeneratedAudio!);
+                generatedAudio?.Invoke(__value3);
             }
-            else if (IsGeneratedImage)
+            else if (GeneratedImage is { } __value4)
             {
-                generatedImage?.Invoke(GeneratedImage!);
+                generatedImage?.Invoke(__value4);
             }
-            else if (IsGeneratedVideo)
+            else if (GeneratedVideo is { } __value5)
             {
-                generatedVideo?.Invoke(GeneratedVideo!);
+                generatedVideo?.Invoke(__value5);
             }
-            else if (IsVoice)
+            else if (Voice is { } __value6)
             {
-                voice?.Invoke(Voice!);
+                voice?.Invoke(__value6);
             }
         }
 
@@ -614,33 +614,33 @@ namespace Hedra
                 Validate();
             }
 
-            if (IsUploadedImage)
+            if (UploadedImage is { } __value0)
             {
-                uploadedImage?.Invoke(UploadedImage!);
+                uploadedImage?.Invoke(__value0);
             }
-            else if (IsUploadedAudio)
+            else if (UploadedAudio is { } __value1)
             {
-                uploadedAudio?.Invoke(UploadedAudio!);
+                uploadedAudio?.Invoke(__value1);
             }
-            else if (IsUploadedVideo)
+            else if (UploadedVideo is { } __value2)
             {
-                uploadedVideo?.Invoke(UploadedVideo!);
+                uploadedVideo?.Invoke(__value2);
             }
-            else if (IsGeneratedAudio)
+            else if (GeneratedAudio is { } __value3)
             {
-                generatedAudio?.Invoke(GeneratedAudio!);
+                generatedAudio?.Invoke(__value3);
             }
-            else if (IsGeneratedImage)
+            else if (GeneratedImage is { } __value4)
             {
-                generatedImage?.Invoke(GeneratedImage!);
+                generatedImage?.Invoke(__value4);
             }
-            else if (IsGeneratedVideo)
+            else if (GeneratedVideo is { } __value5)
             {
-                generatedVideo?.Invoke(GeneratedVideo!);
+                generatedVideo?.Invoke(__value5);
             }
-            else if (IsVoice)
+            else if (Voice is { } __value6)
             {
-                voice?.Invoke(Voice!);
+                voice?.Invoke(__value6);
             }
         }
 
