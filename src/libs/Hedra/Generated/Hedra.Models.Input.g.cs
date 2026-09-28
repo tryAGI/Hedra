@@ -47,8 +47,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateVideoRequest PickVideo() => IsVideo
-            ? Video!
+        public global::Hedra.GenerateVideoRequest PickVideo() => Video is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Video' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateTextToSpeechRequest PickTextToSpeech() => IsTextToSpeech
-            ? TextToSpeech!
+        public global::Hedra.GenerateTextToSpeechRequest PickTextToSpeech() => TextToSpeech is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TextToSpeech' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateTextToSoundRequest PickTextToSound() => IsTextToSound
-            ? TextToSound!
+        public global::Hedra.GenerateTextToSoundRequest PickTextToSound() => TextToSound is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TextToSound' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateTextToMusicRequest PickTextToMusic() => IsTextToMusic
-            ? TextToMusic!
+        public global::Hedra.GenerateTextToMusicRequest PickTextToMusic() => TextToMusic is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TextToMusic' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateImageRequest PickImage() => IsImage
-            ? Image!
+        public global::Hedra.GenerateImageRequest PickImage() => Image is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Image' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateImageUpscaleRequest PickImageUpscale() => IsImageUpscale
-            ? ImageUpscale!
+        public global::Hedra.GenerateImageUpscaleRequest PickImageUpscale() => ImageUpscale is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ImageUpscale' but the value was {ToString()}.");
 
         /// <summary>
@@ -269,8 +269,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateVideoUpscaleRequest PickVideoUpscale() => IsVideoUpscale
-            ? VideoUpscale!
+        public global::Hedra.GenerateVideoUpscaleRequest PickVideoUpscale() => VideoUpscale is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'VideoUpscale' but the value was {ToString()}.");
 
         /// <summary>
@@ -306,8 +306,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateIsolatedAudioRequest PickAudioIsolation() => IsAudioIsolation
-            ? AudioIsolation!
+        public global::Hedra.GenerateIsolatedAudioRequest PickAudioIsolation() => AudioIsolation is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AudioIsolation' but the value was {ToString()}.");
 
         /// <summary>
@@ -343,8 +343,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateSpeechToSpeechRequest PickSpeechToSpeech() => IsSpeechToSpeech
-            ? SpeechToSpeech!
+        public global::Hedra.GenerateSpeechToSpeechRequest PickSpeechToSpeech() => SpeechToSpeech is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SpeechToSpeech' but the value was {ToString()}.");
 
         /// <summary>
@@ -380,8 +380,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateVoiceCloneRequest PickVoiceClone() => IsVoiceClone
-            ? VoiceClone!
+        public global::Hedra.GenerateVoiceCloneRequest PickVoiceClone() => VoiceClone is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'VoiceClone' but the value was {ToString()}.");
 
         /// <summary>
@@ -418,8 +418,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateVideoToVideoRequest PickVideoToVideo() => IsVideoToVideo
-            ? VideoToVideo!
+        public global::Hedra.GenerateVideoToVideoRequest PickVideoToVideo() => VideoToVideo is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'VideoToVideo' but the value was {ToString()}.");
 
         /// <summary>
@@ -455,8 +455,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateVideoBackgroundRemovalRequest PickVideoBackgroundRemoval() => IsVideoBackgroundRemoval
-            ? VideoBackgroundRemoval!
+        public global::Hedra.GenerateVideoBackgroundRemovalRequest PickVideoBackgroundRemoval() => VideoBackgroundRemoval is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'VideoBackgroundRemoval' but the value was {ToString()}.");
 
         /// <summary>
@@ -493,8 +493,8 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.GenerateMotionControlRequest PickMotionControl() => IsMotionControl
-            ? MotionControl!
+        public global::Hedra.GenerateMotionControlRequest PickMotionControl() => MotionControl is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'MotionControl' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -902,57 +902,57 @@ namespace Hedra
                 Validate();
             }
 
-            if (IsVideo && video != null)
+            if (Video is { } __value0 && video != null)
             {
-                return video(Video!);
+                return video(__value0);
             }
-            else if (IsTextToSpeech && textToSpeech != null)
+            else if (TextToSpeech is { } __value1 && textToSpeech != null)
             {
-                return textToSpeech(TextToSpeech!);
+                return textToSpeech(__value1);
             }
-            else if (IsTextToSound && textToSound != null)
+            else if (TextToSound is { } __value2 && textToSound != null)
             {
-                return textToSound(TextToSound!);
+                return textToSound(__value2);
             }
-            else if (IsTextToMusic && textToMusic != null)
+            else if (TextToMusic is { } __value3 && textToMusic != null)
             {
-                return textToMusic(TextToMusic!);
+                return textToMusic(__value3);
             }
-            else if (IsImage && image != null)
+            else if (Image is { } __value4 && image != null)
             {
-                return image(Image!);
+                return image(__value4);
             }
-            else if (IsImageUpscale && imageUpscale != null)
+            else if (ImageUpscale is { } __value5 && imageUpscale != null)
             {
-                return imageUpscale(ImageUpscale!);
+                return imageUpscale(__value5);
             }
-            else if (IsVideoUpscale && videoUpscale != null)
+            else if (VideoUpscale is { } __value6 && videoUpscale != null)
             {
-                return videoUpscale(VideoUpscale!);
+                return videoUpscale(__value6);
             }
-            else if (IsAudioIsolation && audioIsolation != null)
+            else if (AudioIsolation is { } __value7 && audioIsolation != null)
             {
-                return audioIsolation(AudioIsolation!);
+                return audioIsolation(__value7);
             }
-            else if (IsSpeechToSpeech && speechToSpeech != null)
+            else if (SpeechToSpeech is { } __value8 && speechToSpeech != null)
             {
-                return speechToSpeech(SpeechToSpeech!);
+                return speechToSpeech(__value8);
             }
-            else if (IsVoiceClone && voiceClone != null)
+            else if (VoiceClone is { } __value9 && voiceClone != null)
             {
-                return voiceClone(VoiceClone!);
+                return voiceClone(__value9);
             }
-            else if (IsVideoToVideo && videoToVideo != null)
+            else if (VideoToVideo is { } __value10 && videoToVideo != null)
             {
-                return videoToVideo(VideoToVideo!);
+                return videoToVideo(__value10);
             }
-            else if (IsVideoBackgroundRemoval && videoBackgroundRemoval != null)
+            else if (VideoBackgroundRemoval is { } __value11 && videoBackgroundRemoval != null)
             {
-                return videoBackgroundRemoval(VideoBackgroundRemoval!);
+                return videoBackgroundRemoval(__value11);
             }
-            else if (IsMotionControl && motionControl != null)
+            else if (MotionControl is { } __value12 && motionControl != null)
             {
-                return motionControl(MotionControl!);
+                return motionControl(__value12);
             }
 
             return default(TResult);
@@ -994,57 +994,57 @@ namespace Hedra
                 Validate();
             }
 
-            if (IsVideo)
+            if (Video is { } __value0)
             {
-                video?.Invoke(Video!);
+                video?.Invoke(__value0);
             }
-            else if (IsTextToSpeech)
+            else if (TextToSpeech is { } __value1)
             {
-                textToSpeech?.Invoke(TextToSpeech!);
+                textToSpeech?.Invoke(__value1);
             }
-            else if (IsTextToSound)
+            else if (TextToSound is { } __value2)
             {
-                textToSound?.Invoke(TextToSound!);
+                textToSound?.Invoke(__value2);
             }
-            else if (IsTextToMusic)
+            else if (TextToMusic is { } __value3)
             {
-                textToMusic?.Invoke(TextToMusic!);
+                textToMusic?.Invoke(__value3);
             }
-            else if (IsImage)
+            else if (Image is { } __value4)
             {
-                image?.Invoke(Image!);
+                image?.Invoke(__value4);
             }
-            else if (IsImageUpscale)
+            else if (ImageUpscale is { } __value5)
             {
-                imageUpscale?.Invoke(ImageUpscale!);
+                imageUpscale?.Invoke(__value5);
             }
-            else if (IsVideoUpscale)
+            else if (VideoUpscale is { } __value6)
             {
-                videoUpscale?.Invoke(VideoUpscale!);
+                videoUpscale?.Invoke(__value6);
             }
-            else if (IsAudioIsolation)
+            else if (AudioIsolation is { } __value7)
             {
-                audioIsolation?.Invoke(AudioIsolation!);
+                audioIsolation?.Invoke(__value7);
             }
-            else if (IsSpeechToSpeech)
+            else if (SpeechToSpeech is { } __value8)
             {
-                speechToSpeech?.Invoke(SpeechToSpeech!);
+                speechToSpeech?.Invoke(__value8);
             }
-            else if (IsVoiceClone)
+            else if (VoiceClone is { } __value9)
             {
-                voiceClone?.Invoke(VoiceClone!);
+                voiceClone?.Invoke(__value9);
             }
-            else if (IsVideoToVideo)
+            else if (VideoToVideo is { } __value10)
             {
-                videoToVideo?.Invoke(VideoToVideo!);
+                videoToVideo?.Invoke(__value10);
             }
-            else if (IsVideoBackgroundRemoval)
+            else if (VideoBackgroundRemoval is { } __value11)
             {
-                videoBackgroundRemoval?.Invoke(VideoBackgroundRemoval!);
+                videoBackgroundRemoval?.Invoke(__value11);
             }
-            else if (IsMotionControl)
+            else if (MotionControl is { } __value12)
             {
-                motionControl?.Invoke(MotionControl!);
+                motionControl?.Invoke(__value12);
             }
         }
 
@@ -1072,57 +1072,57 @@ namespace Hedra
                 Validate();
             }
 
-            if (IsVideo)
+            if (Video is { } __value0)
             {
-                video?.Invoke(Video!);
+                video?.Invoke(__value0);
             }
-            else if (IsTextToSpeech)
+            else if (TextToSpeech is { } __value1)
             {
-                textToSpeech?.Invoke(TextToSpeech!);
+                textToSpeech?.Invoke(__value1);
             }
-            else if (IsTextToSound)
+            else if (TextToSound is { } __value2)
             {
-                textToSound?.Invoke(TextToSound!);
+                textToSound?.Invoke(__value2);
             }
-            else if (IsTextToMusic)
+            else if (TextToMusic is { } __value3)
             {
-                textToMusic?.Invoke(TextToMusic!);
+                textToMusic?.Invoke(__value3);
             }
-            else if (IsImage)
+            else if (Image is { } __value4)
             {
-                image?.Invoke(Image!);
+                image?.Invoke(__value4);
             }
-            else if (IsImageUpscale)
+            else if (ImageUpscale is { } __value5)
             {
-                imageUpscale?.Invoke(ImageUpscale!);
+                imageUpscale?.Invoke(__value5);
             }
-            else if (IsVideoUpscale)
+            else if (VideoUpscale is { } __value6)
             {
-                videoUpscale?.Invoke(VideoUpscale!);
+                videoUpscale?.Invoke(__value6);
             }
-            else if (IsAudioIsolation)
+            else if (AudioIsolation is { } __value7)
             {
-                audioIsolation?.Invoke(AudioIsolation!);
+                audioIsolation?.Invoke(__value7);
             }
-            else if (IsSpeechToSpeech)
+            else if (SpeechToSpeech is { } __value8)
             {
-                speechToSpeech?.Invoke(SpeechToSpeech!);
+                speechToSpeech?.Invoke(__value8);
             }
-            else if (IsVoiceClone)
+            else if (VoiceClone is { } __value9)
             {
-                voiceClone?.Invoke(VoiceClone!);
+                voiceClone?.Invoke(__value9);
             }
-            else if (IsVideoToVideo)
+            else if (VideoToVideo is { } __value10)
             {
-                videoToVideo?.Invoke(VideoToVideo!);
+                videoToVideo?.Invoke(__value10);
             }
-            else if (IsVideoBackgroundRemoval)
+            else if (VideoBackgroundRemoval is { } __value11)
             {
-                videoBackgroundRemoval?.Invoke(VideoBackgroundRemoval!);
+                videoBackgroundRemoval?.Invoke(__value11);
             }
-            else if (IsMotionControl)
+            else if (MotionControl is { } __value12)
             {
-                motionControl?.Invoke(MotionControl!);
+                motionControl?.Invoke(__value12);
             }
         }
 
