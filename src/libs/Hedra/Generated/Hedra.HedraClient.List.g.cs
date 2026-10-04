@@ -40,7 +40,7 @@ namespace Hedra
             };
         partial void PrepareListArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>? type,
+            ref global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?>? type,
             global::System.DateTime? createdBefore,
             global::System.DateTime? createdAfter,
             ref string? promptQuery,
@@ -50,7 +50,7 @@ namespace Hedra
         partial void PrepareListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>? type,
+            global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?>? type,
             global::System.DateTime? createdBefore,
             global::System.DateTime? createdAfter,
             string? promptQuery,
@@ -82,7 +82,7 @@ namespace Hedra
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Hedra.PagedResponseGeneration> ListAsync(
-            global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>? type = default,
+            global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?>? type = default,
             global::System.DateTime? createdBefore = default,
             global::System.DateTime? createdAfter = default,
             string? promptQuery = default,
@@ -122,7 +122,7 @@ namespace Hedra
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Hedra.AutoSDKHttpResponse<global::Hedra.PagedResponseGeneration>> ListAsResponseAsync(
-            global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>? type = default,
+            global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?>? type = default,
             global::System.DateTime? createdBefore = default,
             global::System.DateTime? createdAfter = default,
             string? promptQuery = default,

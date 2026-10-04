@@ -20,7 +20,7 @@ namespace Hedra
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Hedra.PagedResponseGeneration> ListAsync(
-            global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>? type = default,
+            global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?>? type = default,
             global::System.DateTime? createdBefore = default,
             global::System.DateTime? createdAfter = default,
             string? promptQuery = default,
@@ -45,7 +45,7 @@ namespace Hedra
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Hedra.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Hedra.AutoSDKHttpResponse<global::Hedra.PagedResponseGeneration>> ListAsResponseAsync(
-            global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>? type = default,
+            global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?>? type = default,
             global::System.DateTime? createdBefore = default,
             global::System.DateTime? createdAfter = default,
             string? promptQuery = default,
