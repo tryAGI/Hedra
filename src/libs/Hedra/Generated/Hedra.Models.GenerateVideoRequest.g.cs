@@ -99,8 +99,8 @@ namespace Hedra
         /// The id of the Audio asset to use, or a list of ids for multi-speaker generation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_id")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>))]
-        public global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>? AudioId { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hedra.JsonConverters.AnyOfJsonConverter<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>>))]
+        public global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>>? AudioId { get; set; }
 
         /// <summary>
         /// Optional TTS parameters for server-side audio generation. If provided (and audio_id is not), audio will be generated from these params before video generation.
@@ -262,7 +262,7 @@ namespace Hedra
             string? startKeyframeUrl,
             global::System.Guid? endKeyframeId,
             string? endKeyframeUrl,
-            global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>? audioId,
+            global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>>? audioId,
             global::Hedra.GenerateTextToSpeechRequest? audioGeneration,
             int? audioStartMs,
             global::System.Collections.Generic.IList<global::System.Guid>? referenceAudioIds,

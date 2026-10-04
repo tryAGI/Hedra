@@ -337,7 +337,7 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>, object>? Type76 { get; set; }
+        public global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.IList<global::System.Guid>>? Type76 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -393,7 +393,7 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.AnyOf<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>, object>? Type90 { get; set; }
+        public global::Hedra.AnyOf<global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>>? Type90 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -561,7 +561,7 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?, object>? Type132 { get; set; }
+        public global::Hedra.AnyOf<global::Hedra.AssetType?, global::Hedra.GenerationType?>? Type132 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -626,7 +626,7 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.List<global::System.Guid>, object>? ListType9 { get; set; }
+        public global::Hedra.AnyOf<global::System.Guid?, global::System.Collections.Generic.List<global::System.Guid>>? ListType9 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -642,7 +642,7 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
-        public global::Hedra.AnyOf<global::System.Collections.Generic.List<double>, global::System.Collections.Generic.List<global::System.Collections.Generic.List<double>>, object>? ListType13 { get; set; }
+        public global::Hedra.AnyOf<global::System.Collections.Generic.List<double>, global::System.Collections.Generic.List<global::System.Collections.Generic.List<double>>>? ListType13 { get; set; }
         /// <summary>
         ///
         /// </summary>
