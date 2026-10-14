@@ -14,7 +14,7 @@ namespace Hedra
     /// wherever the media changes it: MiniMax H3 offers six ratios from a prompt,<br/>
     /// none from a start frame, and a seventh (`adaptive`) from reference images.<br/>
     /// A model stamps its `supported_aspect_ratios` onto the modes it declares<br/>
-    /// (`VideoModel.declarative_input_modes`, and `ai_models._image_input_modes`<br/>
+    /// (`VideoModel.declarative_input_modes`, and `ImageModel.declarative_input_modes`<br/>
     /// for image), and `union_variant_inputs` carries each variant's onto the<br/>
     /// family's published entry, so one card states the ratios per mode rather<br/>
     /// than per variant.<br/>

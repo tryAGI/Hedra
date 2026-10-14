@@ -19,7 +19,8 @@ namespace Hedra
     ///   system, not to an asset reference — asset rows store no byte size.<br/>
     ///   On an image slot this is not written here:<br/>
     ///   `VideoModel.declarative_input_modes` stamps it from the model's<br/>
-    ///   `max_input_image_bytes`, so a value set on the slot is overwritten.<br/>
+    ///   `max_input_image_bytes`, so a value set on the slot is overwritten, and<br/>
+    ///   `ImageModel.declarative_input_modes` from `max_reference_image_bytes`.<br/>
     /// - `min_dimension_px` / `max_dimension_px` — checked at v3 ingestion against<br/>
     ///   the image header or the video's ffprobe, before the asset row and the<br/>
     ///   moderation call, and on asset references against the row's stored<br/>

@@ -67,6 +67,10 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
+        InputMediaRejected,
+        /// <summary>
+        ///
+        /// </summary>
         ModerationCopyright,
         /// <summary>
         ///
@@ -129,6 +133,7 @@ namespace Hedra
                 GenerationReasonCode.ImageFileSizeUnsupported => "IMAGE_FILE_SIZE_UNSUPPORTED",
                 GenerationReasonCode.ImageResolutionUnsupported => "IMAGE_RESOLUTION_UNSUPPORTED",
                 GenerationReasonCode.ImageSubjectNotDetected => "IMAGE_SUBJECT_NOT_DETECTED",
+                GenerationReasonCode.InputMediaRejected => "INPUT_MEDIA_REJECTED",
                 GenerationReasonCode.ModerationCopyright => "MODERATION_COPYRIGHT",
                 GenerationReasonCode.ModerationLikeness => "MODERATION_LIKENESS",
                 GenerationReasonCode.ModerationOutputTransient => "MODERATION_OUTPUT_TRANSIENT",
@@ -157,6 +162,7 @@ namespace Hedra
                 "IMAGE_FILE_SIZE_UNSUPPORTED" => GenerationReasonCode.ImageFileSizeUnsupported,
                 "IMAGE_RESOLUTION_UNSUPPORTED" => GenerationReasonCode.ImageResolutionUnsupported,
                 "IMAGE_SUBJECT_NOT_DETECTED" => GenerationReasonCode.ImageSubjectNotDetected,
+                "INPUT_MEDIA_REJECTED" => GenerationReasonCode.InputMediaRejected,
                 "MODERATION_COPYRIGHT" => GenerationReasonCode.ModerationCopyright,
                 "MODERATION_LIKENESS" => GenerationReasonCode.ModerationLikeness,
                 "MODERATION_OUTPUT_TRANSIENT" => GenerationReasonCode.ModerationOutputTransient,
