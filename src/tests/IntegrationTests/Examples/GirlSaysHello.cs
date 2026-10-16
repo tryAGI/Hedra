@@ -15,13 +15,14 @@ public partial class Tests
     {
         using var client = GetAuthenticatedClient();
 
-        //// 1. List available models to get a valid model ID
+        //// 1. List available models and select their current model slug
         var models = await client.ListModelsAsync();
         models.Should().NotBeEmpty();
 
         var model = models.First();
-        var modelId = Guid.Parse(model.Id);
-        Console.WriteLine($"Using model: {modelId}");
+        var modelSlug = model.Slug;
+        modelSlug.Should().NotBeNullOrWhiteSpace();
+        Console.WriteLine($"Using model: {modelSlug}");
 
         //// 2. Create and upload an audio asset
         CreateAssetResponse audioAsset = await client.CreateAssetAsync(
@@ -55,7 +56,7 @@ public partial class Tests
         GenerateAssetPublicGenerationsPostResponse generation = await client.GenerateAssetAsync(
             request: new GenerateVideoRequest
             {
-                AiModelId = modelId,
+                ModelSlug = modelSlug,
                 StartKeyframeId = imageAsset.Id,
                 AudioId = audioAsset.Id,
                 GeneratedVideoInputs = new GeneratedVideoInputs
