@@ -20,7 +20,7 @@ namespace Hedra
     /// than per variant.<br/>
     /// The four resolution fields after it answer the same question about output<br/>
     /// size: Kling 1.6 renders 720p from a prompt and 1080p from a start frame, and<br/>
-    /// Flux Kontext sizes an edit from the image it is given. `ai_models.to_api`<br/>
+    /// Grok Imagine sizes an edit from the image it is given. `ai_models.to_api`<br/>
     /// stamps all four from what the variant itself publishes.<br/>
     /// All five are absent where a family's variants declare the same mode with<br/>
     /// different values, which is a family that has not settled the mode. The<br/>
