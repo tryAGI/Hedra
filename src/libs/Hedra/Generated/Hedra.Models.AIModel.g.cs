@@ -190,6 +190,12 @@ namespace Hedra
         public global::System.Collections.Generic.IList<string>? AlternativeModelSlugs { get; set; }
 
         /// <summary>
+        /// `slug`s of models that this model replaces in the web app, which omits them from this catalog. A client with a saved selection of one should select this model. Null when the model replaces none.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("web_superseded_slugs")]
+        public global::System.Collections.Generic.IList<string>? WebSupersededSlugs { get; set; }
+
+        /// <summary>
         /// URL of the model's logo in SVG format.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("logo_url")]
@@ -306,6 +312,9 @@ namespace Hedra
         /// <param name="alternativeModelSlugs">
         /// Ordered `slug`s of models to suggest when the user switches away after a failed generation (moderation/capacity rejection). Slug is the stable catalog identity to match on; the legacy `id` is nullable and absent on newer models, so it cannot address them. Only models present and not disabled in this build are listed. Null when the model declares no alternatives.
         /// </param>
+        /// <param name="webSupersededSlugs">
+        /// `slug`s of models that this model replaces in the web app, which omits them from this catalog. A client with a saved selection of one should select this model. Null when the model replaces none.
+        /// </param>
         /// <param name="logoUrl">
         /// URL of the model's logo in SVG format.
         /// </param>
@@ -349,6 +358,7 @@ namespace Hedra
             global::System.Collections.Generic.IList<global::Hedra.ConditionalConstraint>? conditionalConstraints,
             global::System.Collections.Generic.IList<global::Hedra.ModelOption>? options,
             global::System.Collections.Generic.IList<string>? alternativeModelSlugs,
+            global::System.Collections.Generic.IList<string>? webSupersededSlugs,
             string? logoUrl,
             bool? premium,
             int? displayOrder)
@@ -382,6 +392,7 @@ namespace Hedra
             this.ConditionalConstraints = conditionalConstraints;
             this.Options = options;
             this.AlternativeModelSlugs = alternativeModelSlugs;
+            this.WebSupersededSlugs = webSupersededSlugs;
             this.LogoUrl = logoUrl;
             this.Premium = premium;
             this.DisplayOrder = displayOrder;
