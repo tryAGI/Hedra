@@ -184,7 +184,7 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::Hedra.ModelOption>? Options { get; set; }
 
         /// <summary>
-        /// Ordered `slug`s of models to suggest when the user switches away after a failed generation (moderation/capacity rejection). Slug is the stable catalog identity to match on; the legacy `id` is nullable and absent on newer models, so it cannot address them. Only models present and not disabled in this build are listed. Null when the model declares no alternatives.
+        /// Ordered `slug`s of models to suggest when the user switches away after a failed generation (moderation/capacity rejection). Slug is the stable catalog identity to match on; the legacy `id` is nullable and absent on newer models, so it cannot address them. Only models present, not disabled and past their embargo in this build are listed. Null when the model declares no alternatives.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("alternative_model_slugs")]
         public global::System.Collections.Generic.IList<string>? AlternativeModelSlugs { get; set; }
@@ -310,7 +310,7 @@ namespace Hedra
         /// Scalar options the model accepts per generation (closed enums and booleans), price-neutral unless a value declares a `price_multiplier` — the quote endpoint reflects any declared multiplier, so clients never do pricing math. Submit validates the request's `options` payload against this declaration; every default equals the provider's own default, so omission and explicit-default are equivalent. Null when the model publishes none.
         /// </param>
         /// <param name="alternativeModelSlugs">
-        /// Ordered `slug`s of models to suggest when the user switches away after a failed generation (moderation/capacity rejection). Slug is the stable catalog identity to match on; the legacy `id` is nullable and absent on newer models, so it cannot address them. Only models present and not disabled in this build are listed. Null when the model declares no alternatives.
+        /// Ordered `slug`s of models to suggest when the user switches away after a failed generation (moderation/capacity rejection). Slug is the stable catalog identity to match on; the legacy `id` is nullable and absent on newer models, so it cannot address them. Only models present, not disabled and past their embargo in this build are listed. Null when the model declares no alternatives.
         /// </param>
         /// <param name="webSupersededSlugs">
         /// `slug`s of models that this model replaces in the web app, which omits them from this catalog. A client with a saved selection of one should select this model. Null when the model replaces none.
