@@ -79,6 +79,10 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
+        ModerationMinors,
+        /// <summary>
+        ///
+        /// </summary>
         ModerationOutputTransient,
         /// <summary>
         ///
@@ -111,6 +115,10 @@ namespace Hedra
         /// <summary>
         ///
         /// </summary>
+        VideoSpeechEditUnsupported,
+        /// <summary>
+        ///
+        /// </summary>
         VideoValidMotionTooShort,
     }
 
@@ -136,6 +144,7 @@ namespace Hedra
                 GenerationReasonCode.InputMediaRejected => "INPUT_MEDIA_REJECTED",
                 GenerationReasonCode.ModerationCopyright => "MODERATION_COPYRIGHT",
                 GenerationReasonCode.ModerationLikeness => "MODERATION_LIKENESS",
+                GenerationReasonCode.ModerationMinors => "MODERATION_MINORS",
                 GenerationReasonCode.ModerationOutputTransient => "MODERATION_OUTPUT_TRANSIENT",
                 GenerationReasonCode.MusicPromptCopyrightPolicy => "MUSIC_PROMPT_COPYRIGHT_POLICY",
                 GenerationReasonCode.ReferenceImageDimensionsUnsupported => "REFERENCE_IMAGE_DIMENSIONS_UNSUPPORTED",
@@ -144,6 +153,7 @@ namespace Hedra
                 GenerationReasonCode.TaskInputConstraint => "TASK_INPUT_CONSTRAINT",
                 GenerationReasonCode.VideoDimensionsUnsupported => "VIDEO_DIMENSIONS_UNSUPPORTED",
                 GenerationReasonCode.VideoMultipleSubjects => "VIDEO_MULTIPLE_SUBJECTS",
+                GenerationReasonCode.VideoSpeechEditUnsupported => "VIDEO_SPEECH_EDIT_UNSUPPORTED",
                 GenerationReasonCode.VideoValidMotionTooShort => "VIDEO_VALID_MOTION_TOO_SHORT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -165,6 +175,7 @@ namespace Hedra
                 "INPUT_MEDIA_REJECTED" => GenerationReasonCode.InputMediaRejected,
                 "MODERATION_COPYRIGHT" => GenerationReasonCode.ModerationCopyright,
                 "MODERATION_LIKENESS" => GenerationReasonCode.ModerationLikeness,
+                "MODERATION_MINORS" => GenerationReasonCode.ModerationMinors,
                 "MODERATION_OUTPUT_TRANSIENT" => GenerationReasonCode.ModerationOutputTransient,
                 "MUSIC_PROMPT_COPYRIGHT_POLICY" => GenerationReasonCode.MusicPromptCopyrightPolicy,
                 "REFERENCE_IMAGE_DIMENSIONS_UNSUPPORTED" => GenerationReasonCode.ReferenceImageDimensionsUnsupported,
@@ -173,6 +184,7 @@ namespace Hedra
                 "TASK_INPUT_CONSTRAINT" => GenerationReasonCode.TaskInputConstraint,
                 "VIDEO_DIMENSIONS_UNSUPPORTED" => GenerationReasonCode.VideoDimensionsUnsupported,
                 "VIDEO_MULTIPLE_SUBJECTS" => GenerationReasonCode.VideoMultipleSubjects,
+                "VIDEO_SPEECH_EDIT_UNSUPPORTED" => GenerationReasonCode.VideoSpeechEditUnsupported,
                 "VIDEO_VALID_MOTION_TOO_SHORT" => GenerationReasonCode.VideoValidMotionTooShort,
                 _ => null,
             };
