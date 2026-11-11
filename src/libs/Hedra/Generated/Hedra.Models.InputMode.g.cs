@@ -74,6 +74,12 @@ namespace Hedra
         public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>>? Dimensions { get; set; }
 
         /// <summary>
+        /// The most characters a prompt may have in this mode, where the mode takes fewer than the model. Absent where it takes the model's bound.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_prompt_length")]
+        public int? MaxPromptLength { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -103,6 +109,9 @@ namespace Hedra
         /// <param name="dimensions">
         /// Width and height for each aspect_ratio and resolution tuple this mode offers. Absent where the mode states none.
         /// </param>
+        /// <param name="maxPromptLength">
+        /// The most characters a prompt may have in this mode, where the mode takes fewer than the model. Absent where it takes the model's bound.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -113,7 +122,8 @@ namespace Hedra
             global::System.Collections.Generic.IList<string>? resolutions,
             string? defaultResolution,
             bool? customResolution,
-            global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>>? dimensions)
+            global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.Dictionary<string, global::Hedra.Dimension>>? dimensions,
+            int? maxPromptLength)
         {
             this.Mode = mode ?? throw new global::System.ArgumentNullException(nameof(mode));
             this.Slots = slots ?? throw new global::System.ArgumentNullException(nameof(slots));
@@ -122,6 +132,7 @@ namespace Hedra
             this.DefaultResolution = defaultResolution;
             this.CustomResolution = customResolution;
             this.Dimensions = dimensions;
+            this.MaxPromptLength = maxPromptLength;
         }
 
         /// <summary>
