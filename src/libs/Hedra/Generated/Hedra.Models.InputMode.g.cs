@@ -15,17 +15,11 @@ namespace Hedra
     /// none from a start frame, and a seventh (`adaptive`) from reference images.<br/>
     /// A model stamps its `supported_aspect_ratios` onto the modes it declares<br/>
     /// (`VideoModel.declarative_input_modes`, and `ImageModel.declarative_input_modes`<br/>
-    /// for image), and `union_variant_inputs` carries each variant's onto the<br/>
-    /// family's published entry, so one card states the ratios per mode rather<br/>
-    /// than per variant.<br/>
+    /// for image), so the model's one catalog entry states the ratios per mode.<br/>
     /// The four resolution fields after it answer the same question about output<br/>
     /// size: Kling 1.6 renders 720p from a prompt and 1080p from a start frame, and<br/>
     /// Grok Imagine sizes an edit from the image it is given. `ai_models.to_api`<br/>
-    /// stamps all four from what the variant itself publishes.<br/>
-    /// All five are absent where a family's variants declare the same mode with<br/>
-    /// different values, which is a family that has not settled the mode. The<br/>
-    /// model's own field then stands, and `group_collapse` keeps the variants<br/>
-    /// rather than publishing one entry that drops the other answer.
+    /// stamps all four from what the model itself publishes.
     /// </summary>
     public sealed partial class InputMode
     {
