@@ -84,7 +84,7 @@ namespace Hedra
         public global::System.Collections.Generic.IList<global::Hedra.FpsEngineOption>? FpsEngines { get; set; }
 
         /// <summary>
-        /// Whether the model requires character orientation (motion control).
+        /// True on a motion-control model: a `video` request naming it runs as motion control (a `motion_control` request is also accepted) and takes an optional `generated_video_inputs.character_orientation`. No slot in `inputs` states this, because orientation is a choice that carries no media. Null on models that are neither video nor video-to-video.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requires_character_orientation")]
         public bool? RequiresCharacterOrientation { get; set; }
@@ -263,7 +263,7 @@ namespace Hedra
         /// Interpolation engines offered with `target_fps`, in display order; the first is the default. `price_multiplier` scales the whole upscale charge.
         /// </param>
         /// <param name="requiresCharacterOrientation">
-        /// Whether the model requires character orientation (motion control).
+        /// True on a motion-control model: a `video` request naming it runs as motion control (a `motion_control` request is also accepted) and takes an optional `generated_video_inputs.character_orientation`. No slot in `inputs` states this, because orientation is a choice that carries no media. Null on models that are neither video nor video-to-video.
         /// </param>
         /// <param name="etaMs">
         /// Average generation duration in milliseconds.
